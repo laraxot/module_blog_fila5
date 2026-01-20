@@ -1,0 +1,36 @@
+<?php
+
+return [
+    'fields' => [
+        'title' => [
+            'label' => 'title',
+            'placeholder' => 'title',
+            'helper_text' => 'title',
+            'description' => 'title',
+        ],
+        'sub_title' => [
+            'label' => 'sub_title',
+            'placeholder' => 'sub_title',
+            'helper_text' => 'sub_title',
+            'description' => 'sub_title',
+        ],
+        'method' => [
+            'label' => 'method',
+            'placeholder' => 'method',
+            'helper_text' => 'method',
+            'description' => 'method',
+        ],
+        'limit' => [
+            'label' => 'limit',
+            'placeholder' => 'limit',
+            'helper_text' => 'limit',
+            'description' => 'limit',
+        ],
+        '_tpl' => [
+            'label' => '_tpl',
+            'placeholder' => '_tpl',
+            'helper_text' => '_tpl',
+            'description' => '_tpl',
+        ],
+    ],
+];
