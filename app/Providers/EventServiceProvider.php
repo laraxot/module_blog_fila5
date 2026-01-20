@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Logout;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Modules\User\Listeners\LogoutListener;
+
 // use SocialiteProviders\Auth0\Auth0ExtendSocialite;
 // use SocialiteProviders\Manager\SocialiteWasCalled;
 
