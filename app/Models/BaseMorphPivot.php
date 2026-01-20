@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
-use Illuminate\Database\Eloquent\Relations\MorphPivot;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Xot\Traits\Updater;
 

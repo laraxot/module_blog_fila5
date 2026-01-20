@@ -176,8 +176,6 @@ class ThemeComposer
         return $article->render();
     }
 
-    
-
     public function getMethodData(string $method, int $number = 6): Paginator|array
     {
         $result = $this->{$method}($number);
@@ -388,6 +386,7 @@ class ThemeComposer
 
         /** @var list<array<string, mixed>> $typedResult */
         $typedResult = array_values($result);
+
         return $typedResult;
     }
 }

@@ -43,7 +43,7 @@ class BannerResource extends XotBaseResource
     }
 
     /**
-     * Ritorna i campi del form (compatibilità con XotBaseResource)
+     * Ritorna i campi del form (compatibilità con XotBaseResource).
      *
      * @return array<string|int, Component>
      */

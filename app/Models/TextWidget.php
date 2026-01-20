@@ -22,19 +22,20 @@ use Webmozart\Assert\Assert;
 /**
  * Modules\Blog\Models\TextWidget.
  *
- * @property int $id
- * @property string $key
- * @property string|null $image
- * @property string|null $title
- * @property string|null $content
- * @property int $active
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
+ * @property int                         $id
+ * @property string                      $key
+ * @property string|null                 $image
+ * @property string|null                 $title
+ * @property string|null                 $content
+ * @property int                         $active
+ * @property Carbon|null                 $created_at
+ * @property Carbon|null                 $updated_at
+ * @property string|null                 $updated_by
+ * @property string|null                 $created_by
  * @property MediaCollection<int, Media> $media
- * @property int|null $media_count
- * @method static TextWidgetFactory factory($count = null, $state = [])
+ * @property int|null                    $media_count
+ *
+ * @method static TextWidgetFactory  factory($count = null, $state = [])
  * @method static Builder|TextWidget newModelQuery()
  * @method static Builder|TextWidget newQuery()
  * @method static Builder|TextWidget onlyTrashed()
@@ -51,20 +52,26 @@ use Webmozart\Assert\Assert;
  * @method static Builder|TextWidget whereUpdatedBy($value)
  * @method static Builder|TextWidget withTrashed()
  * @method static Builder|TextWidget withoutTrashed()
+ *
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static Builder|TextWidget whereDeletedAt($value)
  * @method static Builder|TextWidget whereDeletedBy($value)
+ *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
+ *
  * @mixin Model
- * @method static TextWidget|null first()
+ *
+ * @method static TextWidget|null             first()
  * @method static Collection<int, TextWidget> get()
- * @method static TextWidget create(array $attributes = [])
- * @method static TextWidget firstOrCreate(array $attributes = [], array $values = [])
- * @method static Builder<static>|TextWidget where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|TextWidget whereNotNull((string|Expression) $columns)
- * @method static int count(string $columns = '*')
+ * @method static TextWidget                  create(array $attributes = [])
+ * @method static TextWidget                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Builder<static>|TextWidget  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|TextWidget  whereNotNull((string|Expression) $columns)
+ * @method static int                         count(string $columns = '*')
+ *
  * @mixin \Eloquent
  */
 class TextWidget extends BaseModel implements HasMedia

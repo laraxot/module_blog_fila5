@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Enums;
 
-use InvalidArgumentException;
-
 enum ArticleStatus: string
 {
     case DRAFT = 'draft';
@@ -30,7 +28,7 @@ enum ArticleStatus: string
             'published' => self::PUBLISHED,
             'archived' => self::ARCHIVED,
             'pending' => self::PENDING,
-            default => throw new InvalidArgumentException("Invalid status: {$value}"),
+            default => throw new \InvalidArgumentException("Invalid status: {$value}"),
         };
     }
 }

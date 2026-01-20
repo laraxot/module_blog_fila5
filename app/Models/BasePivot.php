@@ -16,7 +16,7 @@ use Modules\Xot\Models\XotBasePivot;
  * Standard properties (snakeAttributes, incrementing, perPage, etc.)
  * and common casts are inherited from XotBasePivot.
  *
- * @see \Modules\Xot\Models\XotBasePivot
+ * @see XotBasePivot
  */
 abstract class BasePivot extends XotBasePivot
 {

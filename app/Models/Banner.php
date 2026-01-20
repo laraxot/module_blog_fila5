@@ -23,16 +23,17 @@ use Spatie\Translatable\HasTranslations;
 /**
  * Modules\Cms\Models\Menu.
  *
- * @property int $id
- * @property string $name
- * @property array|null $items
+ * @property int         $id
+ * @property string      $name
+ * @property array|null  $items
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
- * @method static MenuFactory factory($count = null, $state = [])
+ *
+ * @method static MenuFactory  factory($count = null, $state = [])
  * @method static Builder|Menu newModelQuery()
  * @method static Builder|Menu newQuery()
  * @method static Builder|Menu onlyTrashed()
@@ -48,24 +49,26 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder|Menu whereUpdatedBy($value)
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
- * @property string|null $link
- * @property string|null $title
- * @property string|null $description
- * @property string|null $action_text
- * @property string|null $category_id
- * @property Carbon|null $start_date
- * @property Carbon|null $end_date
- * @property bool $hot_topic
- * @property int|null $open_markets_count
- * @property bool $landing_banner
- * @property int|null $pos
- * @property Category|null $category
- * @property string $desktop_thumbnail
- * @property string $desktop_thumbnail_webp
- * @property string $mobile_thumbnail
- * @property string $mobile_thumbnail_webp
+ *
+ * @property string|null                                       $link
+ * @property string|null                                       $title
+ * @property string|null                                       $description
+ * @property string|null                                       $action_text
+ * @property string|null                                       $category_id
+ * @property Carbon|null                                       $start_date
+ * @property Carbon|null                                       $end_date
+ * @property bool                                              $hot_topic
+ * @property int|null                                          $open_markets_count
+ * @property bool                                              $landing_banner
+ * @property int|null                                          $pos
+ * @property Category|null                                     $category
+ * @property string                                            $desktop_thumbnail
+ * @property string                                            $desktop_thumbnail_webp
+ * @property string                                            $mobile_thumbnail
+ * @property string                                            $mobile_thumbnail_webp
  * @property MediaCollection<int, \Modules\Media\Models\Media> $media
- * @property int|null $media_count
+ * @property int|null                                          $media_count
+ *
  * @method static Builder|Banner whereActionText($value)
  * @method static Builder|Banner whereCategoryId($value)
  * @method static Builder|Banner whereDescription($value)
@@ -77,16 +80,20 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder|Banner wherePos($value)
  * @method static Builder|Banner whereStartDate($value)
  * @method static Builder|Banner whereTitle($value)
+ *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
+ *
  * @mixin Model
- * @method static Banner|null first()
+ *
+ * @method static Banner|null             first()
  * @method static Collection<int, Banner> get()
- * @method static Banner create(array $attributes = [])
- * @method static Banner firstOrCreate(array $attributes = [], array $values = [])
- * @method static Builder<static>|Banner where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|Banner whereNotNull((string|Expression) $columns)
- * @method static int count(string $columns = '*')
+ * @method static Banner                  create(array $attributes = [])
+ * @method static Banner                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Builder<static>|Banner  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|Banner  whereNotNull((string|Expression) $columns)
+ * @method static int                     count(string $columns = '*')
+ *
  * @mixin \Eloquent
  */
 class Banner extends BaseModel implements HasMedia
@@ -185,7 +192,7 @@ class Banner extends BaseModel implements HasMedia
 
     public function getUrlCategoryPage(): string
     {
-        if ($this->category === null) {
+        if (null === $this->category) {
             return route('categories.index', ['lang' => app()->getLocale()]);
         }
 

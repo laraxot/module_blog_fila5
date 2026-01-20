@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Http\Livewire\Profile;
 
-use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -38,7 +37,7 @@ class Setting extends Component implements HasActions, HasForms
 
     public array $data = [];
 
-    protected static BackedEnum|string|null $navigationIcon = 'heroicon-o-document-text';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-document-text';
 
     public function mount(Profile $model, string $tpl = 'v1'): void
     {

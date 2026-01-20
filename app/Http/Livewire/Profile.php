@@ -23,7 +23,7 @@ use Modules\Xot\Actions\GetViewAction;
 use Webmozart\Assert\Assert;
 
 /**
- * @property \Filament\Schemas\Schema $form
+ * @property Schema $form
  */
 class Profile extends Page implements HasForms
 {
@@ -57,8 +57,6 @@ class Profile extends Page implements HasForms
             $this->data['created_by'],
             $this->data['deleted_at'],
             $this->data['deleted_by'],
-
-            
 
             $this->data['slug'],
             $this->data['extra']

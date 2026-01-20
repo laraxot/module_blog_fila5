@@ -16,7 +16,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * - Spatie Media Library support (HasMedia, InteractsWithMedia)
  * - Soft Deletes support
  *
- * @see \Modules\Xot\Models\XotBaseModel
+ * @see XotBaseModel
  */
 abstract class BaseModel extends XotBaseModel implements HasMedia
 {

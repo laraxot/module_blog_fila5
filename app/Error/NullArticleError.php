@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Error;
 
-use DomainException;
-
-class NullArticleError extends DomainException
+class NullArticleError extends \DomainException
 {
     public function __construct(string $articleId)
     {

@@ -25,5 +25,4 @@ class ListTextWidgets extends XotBaseListRecords
         ];
     }
     // protected static string $resource = TextWidgetResource::class;
-
 }

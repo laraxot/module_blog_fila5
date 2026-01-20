@@ -27,6 +27,6 @@ class Setting
                     ->required(),
             ])
             ->label('setting')
-            ->columns($context === 'form' ? 3 : 1);
+            ->columns('form' === $context ? 3 : 1);
     }
 }

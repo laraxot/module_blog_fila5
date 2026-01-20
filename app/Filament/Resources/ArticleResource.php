@@ -40,7 +40,7 @@ class ArticleResource extends XotBaseResource
     }
 
     /**
-     * @return array<int|string, \Filament\Schemas\Components\Component>
+     * @return array<int|string, Component>
      */
     public static function getFormFields(): array
     {
