@@ -70,7 +70,7 @@ use Webmozart\Assert\Assert;
  * @method static int                          count(string $columns = '*')
  *
  * @mixin \Eloquent
-  * */
+ * */
 class Transaction extends BaseModel
 {
     /** @var string */
