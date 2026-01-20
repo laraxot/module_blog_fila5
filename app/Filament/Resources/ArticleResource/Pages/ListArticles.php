@@ -15,8 +15,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Support\Facades\File;
-use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
-use LaraZeus\SpatieTranslatable\Resources\Pages\ListRecords\Concerns\Translatable;
+// use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
+// use LaraZeus\SpatieTranslatable\Resources\Pages\ListRecords\Concerns\Translatable;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Modules\Blog\Actions\Article\ImportArticlesFromByJsonTextAction;
 use Modules\Blog\Filament\Resources\ArticleResource;
@@ -26,7 +26,7 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListArticles extends XotBaseListRecords
 {
-    use Translatable;
+    // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     // protected static string $resource = ArticleResource::class;
     /**
@@ -85,7 +85,7 @@ class ListArticles extends XotBaseListRecords
     protected function getHeaderActions(): array
     {
         return [
-            'locale_switcher' => LocaleSwitcher::make(),
+            // 'locale_switcher' => LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
             'create' => CreateAction::make(),
             'import' => Action::make('import')
                 ->schema([

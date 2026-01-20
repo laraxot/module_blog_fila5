@@ -10,7 +10,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Support\Str;
-use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
+// use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\EditCategory;
@@ -23,7 +23,7 @@ use Webmozart\Assert\Assert;
 
 class CategoryResource extends XotBaseResource
 {
-    use Translatable;
+    // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     // protected static ?string $model = Category::class;
 

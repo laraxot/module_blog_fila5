@@ -11,13 +11,13 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
-use LaraZeus\SpatieTranslatable\Resources\Pages\ListRecords\Concerns\Translatable;
+// use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
+// use LaraZeus\SpatieTranslatable\Resources\Pages\ListRecords\Concerns\Translatable;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListCategories extends XotBaseListRecords
 {
-    use Translatable;
+    // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     /**
      * @return array<string, mixed>
@@ -56,7 +56,7 @@ class ListCategories extends XotBaseListRecords
     protected function getHeaderActions(): array
     {
         return [
-            'locale_switcher' => LocaleSwitcher::make(),
+            // 'locale_switcher' => LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
             'create' => CreateAction::make(),
         ];
     }

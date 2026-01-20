@@ -7,7 +7,7 @@ namespace Modules\Blog\Filament\Resources\ArticleResource\Pages;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\Checkbox;
-use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
+// use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 use Modules\Blog\Actions\Article\TranslateContentAction;
 use Modules\Blog\Filament\Resources\ArticleResource;
 use Modules\Blog\Models\Article;
@@ -22,7 +22,7 @@ class EditArticle extends LangBaseEditRecord
     protected function getHeaderActions(): array
     {
         return [
-            LocaleSwitcher::make(),
+            // LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
             DeleteAction::make(),
             Action::make('translate')
                 ->label('Copia Blocchi nelle altre lingue')

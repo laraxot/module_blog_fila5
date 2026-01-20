@@ -16,7 +16,7 @@ use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Illuminate\Support\Str;
-use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
+// use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 use Modules\Blog\Filament\Fields\ArticleContent;
 use Modules\Blog\Filament\Fields\ArticleFooter;
 use Modules\Blog\Filament\Fields\ArticleSidebar;
@@ -27,7 +27,7 @@ use Webmozart\Assert\Assert;
 
 class ArticleResource extends XotBaseResource
 {
-    use Translatable;
+    // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     protected static ?string $model = Article::class;
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources;
 
 use Filament\Resources\Pages\PageRegistration;
-use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
+// use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 use Modules\Blog\Filament\Resources\ProfileResource\Pages;
 use Modules\Blog\Filament\Resources\ProfileResource\Pages\CreateProfile;
 use Modules\Blog\Filament\Resources\ProfileResource\Pages\EditProfile;
@@ -17,7 +17,7 @@ use Modules\User\Filament\Resources\BaseProfileResource;
 
 class ProfileResource extends BaseProfileResource
 {
-    use Translatable;
+    // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     protected static ?string $model = Profile::class;
 

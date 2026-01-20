@@ -13,8 +13,8 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Schemas\Schema;
-use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
-use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
+// use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
+// use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
 use Modules\Blog\Actions\Article\TranslateContentAction;
 use Modules\Blog\Filament\Resources\ArticleResource;
 use Modules\Blog\Models\Article;
@@ -25,7 +25,7 @@ use Webmozart\Assert\Assert;
 
 class ViewArticle extends ViewRecord
 {
-    use Translatable;
+    // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     protected static string $resource = ArticleResource::class;
 
@@ -43,7 +43,7 @@ class ViewArticle extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            LocaleSwitcher::make(),
+            // LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
             EditAction::make(),
             DeleteAction::make(),
             // BetHeaderAction::make(),
