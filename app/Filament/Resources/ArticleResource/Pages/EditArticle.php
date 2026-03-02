@@ -13,7 +13,6 @@ use Modules\Blog\Filament\Resources\ArticleResource;
 use Modules\Blog\Models\Article;
 use Modules\Lang\Filament\Resources\Pages\LangBaseEditRecord;
 use Modules\Xot\Actions\Cast\SafeArrayCastAction;
-use Webmozart\Assert\Assert;
 
 class EditArticle extends LangBaseEditRecord
 {
