@@ -47,7 +47,7 @@ All Filament components in this module have been verified to be compatible with 
 
 ```bash
 # Verifica PHPStan
-cd /var/www/_bases/base_fixcity_fila4_mono/laravel
+cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 ./vendor/bin/phpstan analyse Modules/Blog
 
 # Output atteso:

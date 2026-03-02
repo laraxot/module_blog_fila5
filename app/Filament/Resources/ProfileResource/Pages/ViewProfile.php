@@ -15,7 +15,7 @@ class ViewProfile extends UserViewProfile
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            'delete' => DeleteAction::make(),
         ];
     }
 }

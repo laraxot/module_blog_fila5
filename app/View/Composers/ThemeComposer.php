@@ -171,9 +171,14 @@ class ThemeComposer
         Assert::isInstanceOf($article = Article::firstOrCreate(['slug' => $slug], ['sidebar_blocks' => []]), Article::class, '['.__LINE__.']['.__FILE__.']');
         // $page = Page::firstOrCreate(['slug' => $slug], ['content_blocks' => []]);
 
-        $article = new Blocks(blocks: $article->sidebar_blocks, model: $article);
+        $sidebarBlocks = $article->sidebar_blocks ?? [];
+        $blockComponent = new Blocks(
+            view: 'ui::components.render.blocks.v1',
+            blocks: is_array($sidebarBlocks) ? $sidebarBlocks : [],
+            model: $article,
+        );
 
-        return $article->render();
+        return $blockComponent->render();
     }
 
     public function getMethodData(string $method, int $number = 6): Paginator|array

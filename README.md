@@ -1,9 +1,9 @@
 # Module Blog Fila3 📚 Create, Manage, and Engage with Powerful Blog Features! 🚀
 
-[![Latest Release](https://img.shields.io/github/v/release/laraxot/module_blog_fila3)](https://github.com/laraxot/module_blog_fila3/releases)
-[![Build Status](https://img.shields.io/travis/laraxot/module_blog_fila3/master)](https://travis-ci.org/laraxot/module_blog_fila3)
-[![Total Downloads](https://img.shields.io/packagist/dt/laraxot/module_blog_fila3)](https://packagist.org/packages/laraxot/module_blog_fila3)
-[![License](https://img.shields.io/github/license/laraxot/module_blog_fila3)](LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/laraxot/module_blog_fila5)](https://github.com/laraxot/module_blog_fila5/releases)
+[![Build Status](https://img.shields.io/travis/laraxot/module_blog_fila5/master)](https://travis-ci.org/laraxot/module_blog_fila5)
+[![Total Downloads](https://img.shields.io/packagist/dt/laraxot/module_blog_fila5)](https://packagist.org/packages/laraxot/module_blog_fila5)
+[![License](https://img.shields.io/github/license/laraxot/module_blog_fila5)](LICENSE)
 
 **Module Blog Fila3** is the ultimate blogging module for Laravel, allowing you to easily create, manage, and publish engaging blog content with robust functionality and seamless integration! ✨
 
@@ -23,7 +23,7 @@
 
 1. **Install the module:**
     ```bash
-    git submodule add https://github.com/laraxot/module_blog_fila3.git Blog
+    git submodule add https://github.com/laraxot/module_blog_fila5.git Blog
     ```
 
 2. **Run Migrations:**

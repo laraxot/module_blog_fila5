@@ -23,8 +23,8 @@ class EditArticle extends LangBaseEditRecord
     {
         return [
             // LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
-            DeleteAction::make(),
-            Action::make('translate')
+            'delete' => DeleteAction::make(),
+            'translate' => Action::make('translate')
                 ->label('Copia Blocchi nelle altre lingue')
                 ->tooltip('translate')
                 ->icon('heroicon-o-language')
@@ -37,7 +37,6 @@ class EditArticle extends LangBaseEditRecord
                 ])
                 ->action(function (Article $record, ArticleResource $article_resource, array $data): void {
                     $locales = $article_resource->getTranslatableLocales();
-                    Assert::isArray($locales, 'getTranslatableLocales must return array');
 
                     /** @var array<string, mixed> $safeData */
                     $safeData = SafeArrayCastAction::cast($data);

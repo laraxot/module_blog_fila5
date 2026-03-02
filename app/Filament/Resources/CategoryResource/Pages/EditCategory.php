@@ -17,7 +17,7 @@ class EditCategory extends LangBaseEditRecord
     {
         return [
             // LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
-            DeleteAction::make(),
+            'delete' => DeleteAction::make(),
         ];
     }
 }
