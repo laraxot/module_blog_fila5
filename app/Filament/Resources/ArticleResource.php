@@ -93,19 +93,12 @@ class ArticleResource extends XotBaseResource
                     ->required()
                     // ->relationship('categories', 'title')
                     ->options(function () {
-                        $options = Category::getTreeCategoryOptions();
-                        Assert::isArray($options, 'getTreeCategoryOptions must return array');
-
-                        return $options;
+                        return Category::getTreeCategoryOptions();
                     })
                     ->createOptionForm(function () {
-                        $fields = CategoryResource::getFormFields();
-                        Assert::isArray($fields, 'getFormFields must return array');
-
-                        return $fields;
+                        return CategoryResource::getFormFields();
                     })
                     ->createOptionUsing(function (array $data) {
-                        Assert::isArray($data, 'Data must be an array');
                         // Cast to the expected type
                         $categoryData = [];
                         foreach ($data as $key => $value) {

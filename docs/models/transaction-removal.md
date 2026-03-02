@@ -10,7 +10,7 @@ Durante l'esecuzione di `php artisan migrate:fresh`, il sistema tentava di caric
 
 ```
 ErrorException 
-include(/var/www/_bases/base_fixcity_fila4_mono/laravel/vendor/composer/
+include(/var/www/_bases/base_fixcity_fila5_mono/laravel/vendor/composer/
 ../../Modules/Blog/app/Models/Transaction.php): 
 Failed to open stream: No such file or directory
 ```

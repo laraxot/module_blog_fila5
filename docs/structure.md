@@ -7,7 +7,7 @@ Data: 2025-04-23 19:09:55
 - **Namespace principale**: Modules\\Blog
 Modules\\Blog\\Database\\Factories
 Modules\\Blog\\Database\\Seeders
-- **Pacchetto Composer**: laraxot/module_blog_fila3
+- **Pacchetto Composer**: laraxot/module_blog_fila5
 marco sottana
 - **Dipendenze**: pboivin/filament-peek ^2.0 staudenmeir/laravel-adjacency-list ^1.22 spatie/laravel-feed ^4.4 staudenmeir/eloquent-has-many-deep * filament/spatie-laravel-tags-plugin ^3.2 codewithdennis/filament-select-tree ^3.1 thecodingmachine/safe ^2.5 laravel/pint ^1.13 nunomaduro/phpinsights ^2.11 larastan/larastan ^2.7 vimeo/psalm ^5.17 psalm/plugin-laravel ^2.8 enlightn/enlightn ^2.7 driftingly/rector-laravel ^0.26.2 symplify/phpstan-rules * rector/rector * 
 - **Totale file PHP**: 202

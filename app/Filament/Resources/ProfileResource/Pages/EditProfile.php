@@ -15,7 +15,7 @@ class EditProfile extends UserEditProfile
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            'delete' => DeleteAction::make(),
         ];
     }
 }

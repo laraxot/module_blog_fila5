@@ -2,7 +2,7 @@
 
 ## Panoramica
 
-Questo documento fornisce linee guida per l'integrazione dei server MCP (Model Context Protocol) con il modulo Blog, seguendo le regole di sviluppo e le convenzioni di codice stabilite per i progetti base_predict_fila3_mono.
+Questo documento fornisce linee guida per l'integrazione dei server MCP (Model Context Protocol) con il modulo Blog, seguendo le regole di sviluppo e le convenzioni di codice stabilite per i progetti base_predict_fila5_mono.
 
 ## Server MCP Consigliati
 
@@ -255,4 +255,4 @@ class EditPost extends EditRecord
 
 ## Conclusione
 
-L'integrazione dei server MCP con il modulo Blog consente di migliorare significativamente le funzionalità del modulo, fornendo analisi avanzate dei contenuti, memorizzazione efficiente dei metadati e interazioni complesse con il database. Seguendo le linee guida e gli esempi forniti in questo documento, è possibile implementare queste funzionalità in modo conforme alle regole di sviluppo stabilite per i progetti base_predict_fila3_mono.
+L'integrazione dei server MCP con il modulo Blog consente di migliorare significativamente le funzionalità del modulo, fornendo analisi avanzate dei contenuti, memorizzazione efficiente dei metadati e interazioni complesse con il database. Seguendo le linee guida e gli esempi forniti in questo documento, è possibile implementare queste funzionalità in modo conforme alle regole di sviluppo stabilite per i progetti base_predict_fila5_mono.
