@@ -93,7 +93,7 @@ Senza Blog:
 
 ## 11. References
 
-- [PRD Indice Centrale](../../../project_docs/PRD_INDEX_2026_03_12.md)
+- [PRD Indice Centrale](../../../../docs/project/PRD_INDEX_2026_03_12.md)
 - [README.md](../README.md)
 - [PRD Predict](../../Predict/docs/prd.md)
 
