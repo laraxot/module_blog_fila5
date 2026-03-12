@@ -28,9 +28,10 @@ class ArticleFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         $title = preg_replace('/\./', '', fake()->sentence(6));
+        $title = is_string($title) ? $title : implode('', $title);
 
         return [
             'slug' => Str::slug($title),

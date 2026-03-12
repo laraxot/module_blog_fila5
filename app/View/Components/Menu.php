@@ -6,7 +6,7 @@ namespace Modules\Blog\View\Components;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
-use Modules\Cms\Models\Menu as MenuModel;
+use Modules\Blog\Models\Menu as MenuModel;
 use Modules\Xot\Actions\GetViewAction;
 
 // use Modules\Xot\View\Components\XotBaseComponent;
