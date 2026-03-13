@@ -77,7 +77,6 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @property int|null                                                   $teams_count
  * @property UserContract|null                                          $user
  * @property string|null                                                $user_name
- *
  * @method static ProfileFactory                                factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
@@ -101,14 +100,12 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @method static EloquentBuilder|BaseProfile                   withExtraAttributes()
  * @method static EloquentBuilder|BaseProfile                   withoutPermission($permissions)
  * @method static EloquentBuilder|BaseProfile                   withoutRole($roles, $guard = null)
- *
  * @property DeviceUser           $pivot
  * @property Membership           $membership
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  * @property int                  $oauth_enable
  * @property int                  $credentials_enable
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Profile          whereCredentialsEnable($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Profile          whereOauthEnable($value)
  * @method static Profile|null                                           first()
@@ -118,9 +115,11 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Profile  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Profile  whereNotNull((string|Expression) $columns)
  * @method static int                                                    count(string $columns = '*')
- *
  * @property string $display_name
- *
+ * @property-read \Modules\Fixcity\Models\Profile|null $deleter
+ * @method static Builder<static>|Profile byUuid(string $uuid)
+ * @method static Builder<static>|Profile childrenWith(array $relations)
+ * @method static Builder<static>|Profile childrenWithCount(array $relations)
  * @mixin \Eloquent
  */
 class Profile extends BaseProfile
