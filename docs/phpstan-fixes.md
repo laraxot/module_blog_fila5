@@ -9,7 +9,6 @@ Il modulo Blog è stato completamente risolto per PHPStan Level 7 con 0 errori r
 ### Filament Resources - Array Compatibility
 - **ArticleResource/Pages/ListArticles.php**: 
   - Corretto `getHeaderActions()` per utilizzare array associativo con chiavi string
-  - Aggiornato PHPDoc: `@return array<string, \Filament\Actions\Action>`
   - Implementato pattern conforme alle best practices del progetto
 
 - **BannerResource/Pages/ListBanners.php**:

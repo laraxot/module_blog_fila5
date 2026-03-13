@@ -64,8 +64,9 @@ Sistema di navigazione e menu dinamici.
 **File Mantenuti**:
 - `app/Models/Transaction.php.old` - Modello originale
 - `app/Models/Transaction.to_predict.old` - Variante prediction
-- `database/factories/TransactionFactory.php.disabled` - Factory (minuscolo)
-- `database/Factories/TransactionFactory.php.disabled` - Factory (maiuscolo)
+- `database/factories/TransactionFactory.php.disabled` - Factory disabilitata
+
+**Nota**: In passato esistevano duplicati tra `database/factories/` e `database/Factories/`, ma ora si utilizza solo la convenzione corretta minuscola.
 
 **Funzionalità**:
 Il modello Transaction gestiva un sistema di crediti per utenti con le seguenti feature:
@@ -105,18 +106,18 @@ Factory attive nel modulo (directory `database/factories/`):
 - ✅ `UpvoteDownvoteFactory.php`
 
 Factory disabilitate:
-- ⏸️ `TransactionFactory.php.disabled` (cartella minuscolo)
-- ⏸️ `TransactionFactory.php.disabled` (cartella Factories/)
+- ⏸️ `TransactionFactory.php.disabled`
 
 ## Note sulla Struttura
 
-### Duplicazione Factory Directories
+### Convenzione Naming Database
 
-Esiste una duplicazione delle directory:
-- `database/factories/` (minuscolo) - Standard Laravel
-- `database/Factories/` (maiuscolo) - Legacy/Alternative
+Le directory del database seguono la convenzione Laravel standard:
+- `database/factories/` (minuscolo) - **CORRETTO** - Standard Laravel
+- `database/migrations/` (minuscolo) - **CORRETTO** - Standard Laravel  
+- `database/seeders/` (minuscolo) - **CORRETTO** - Standard Laravel
 
-**Best Practice**: Utilizzare solo `factories` (minuscolo) seguendo la convenzione Laravel.
+**Importante**: Non utilizzare mai le versioni con iniziale maiuscola (`Factories`, `Migrations`, `Seeders`).
 
 **TODO Futuro**: Consolidare in una sola directory.
 

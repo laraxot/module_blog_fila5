@@ -323,9 +323,9 @@ app/tests/Feature
 app/tests/Unit
 config
 database
-database/Factories
-database/Migrations
-database/Seeders
+database/factories
+database/migrations
+database/seeders
 docs
 docs/filament
 docs/fixes

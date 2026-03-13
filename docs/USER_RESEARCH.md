@@ -2,7 +2,6 @@
 
 **Module:** Blog  
 **Version:** 1.0.0  
-**Last Updated:** March 12, 2026  
 **Owner:** Product Team
 
 ---
@@ -66,4 +65,3 @@ Commenters have 3x retention rate.
 
 ---
 
-*Last Updated: March 12, 2026*
