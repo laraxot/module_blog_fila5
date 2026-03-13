@@ -25,7 +25,8 @@ Failed to open stream: No such file or directory
 
 #### Factory
 - ✅ `database/factories/TransactionFactory.php` → `.disabled`
-- ✅ `database/Factories/TransactionFactory.php` → `.disabled`
+
+**Nota**: In passato esisteva un duplicato in `database/Factories/` (con F maiuscola), ma ora si utilizza solo la convenzione corretta minuscola.
 
 #### Riferimenti
 - ✅ `app/Models/Profile.php` - Nessun riferimento attivo
@@ -61,17 +62,15 @@ class Transaction extends BaseModel
 
 ### 1. Disabilitazione Factory
 
-Le factory sono state rinominate per impedirne il caricamento automatico da Composer:
+La factory è stata rinominata per impedirne il caricamento automatico da Composer:
 
 ```bash
-# Cartella factories (minuscolo)
+# Cartella factories (minuscolo - convenzione corretta)
 mv database/factories/TransactionFactory.php \
    database/factories/TransactionFactory.php.disabled
-
-# Cartella Factories (maiuscolo) 
-mv database/Factories/TransactionFactory.php \
-   database/Factories/TransactionFactory.php.disabled
 ```
+
+**Nota**: In passato esisteva un duplicato in `database/Factories/` (maiuscolo), ora rimosso a favore della sola convenzione Laravel standard.
 
 ### 2. Verifica Riferimenti
 
@@ -97,7 +96,8 @@ I file sono stati mantenuti con estensione `.old` o `.disabled` invece di essere
 
 ### Factory Disabilitate
 - `database/factories/TransactionFactory.php.disabled` (28 righe)
-- `database/Factories/TransactionFactory.php.disabled` (28 righe)
+
+**Nota**: Il duplicato in `database/Factories/` è stato rimosso per mantenere solo la convenzione Laravel standard.
 
 ## Impatto
 

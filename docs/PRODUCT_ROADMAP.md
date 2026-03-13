@@ -2,7 +2,6 @@
 
 **Module:** Blog  
 **Version:** 1.0.0  
-**Last Updated:** March 12, 2026  
 **Owner:** Product Team  
 **Status:** In Development
 
@@ -101,4 +100,3 @@ To create a **best-in-class content publishing platform** that drives user engag
 
 ---
 
-*Last Updated: March 12, 2026*
