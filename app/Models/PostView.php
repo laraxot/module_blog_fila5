@@ -24,6 +24,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property int         $user_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
  * @method static PostViewFactory  factory($count = null, $state = [])
  * @method static Builder|PostView newModelQuery()
  * @method static Builder|PostView newQuery()
@@ -38,18 +39,22 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|PostView whereUserId($value)
  * @method static Builder|PostView withTrashed()
  * @method static Builder|PostView withoutTrashed()
+ *
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static Builder|PostView whereCreatedBy($value)
  * @method static Builder|PostView whereDeletedAt($value)
  * @method static Builder|PostView whereDeletedBy($value)
  * @method static Builder|PostView whereUpdatedBy($value)
+ *
  * @property ProfileContract|null        $creator
  * @property ProfileContract|null        $updater
  * @property MediaCollection<int, Media> $media
  * @property int|null                    $media_count
+ *
  * @method static PostView|null             first()
  * @method static Collection<int, PostView> get()
  * @method static PostView                  create(array $attributes = [])
@@ -57,7 +62,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|PostView  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|PostView  whereNotNull((string|Expression) $columns)
  * @method static int                       count(string $columns = '*')
- * @property-read \Modules\Fixcity\Models\Profile|null $deleter
+ *
+ * @property \Modules\Fixcity\Models\Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class PostView extends BaseModel
