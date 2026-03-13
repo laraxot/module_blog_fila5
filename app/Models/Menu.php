@@ -30,6 +30,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static MenuFactory  factory($count = null, $state = [])
  * @method static Builder|Menu newModelQuery()
  * @method static Builder|Menu newQuery()
@@ -46,6 +47,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Menu whereUpdatedBy($value)
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
+ *
  * @property string                      $title
  * @property int|null                    $parent_id
  * @property Collection|Menu[]           $children
@@ -72,6 +74,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property int|null                    $siblings_count
  * @property Collection|Menu[]           $siblingsAndSelf            All the parent's children.
  * @property int|null                    $siblings_and_self_count
+ *
  * @method static Collection<int, static>                                 all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu breadthFirst()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu depthFirst()
@@ -89,16 +92,20 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu whereTitle($value)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu withGlobalScopes(array $scopes)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
+ *
  * @property Profile|null $creator
  * @property Profile|null $updater
+ *
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Collection<int, static> get($columns = ['*'])
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Collection<int, static> get($columns = ['*'])
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static Collection<int, static> get($columns = ['*'])
+ *
  * @property-read int $depth
  * @property-read string $path
+ *
  * @method static Menu|null                                           first()
  * @method static \Illuminate\Database\Eloquent\Collection<int, Menu> get()
  * @method static Menu                                                create(array $attributes = [])
@@ -106,7 +113,9 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder<static>|Menu                                where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Menu                                whereNotNull((string|Expression) $columns)
  * @method static int                                                 count(string $columns = '*')
- * @property-read \Modules\Fixcity\Models\Profile|null $deleter
+ *
+ * @property \Modules\Fixcity\Models\Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Menu extends BaseModel implements HasMedia

@@ -32,6 +32,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static MenuFactory  factory($count = null, $state = [])
  * @method static Builder|Menu newModelQuery()
  * @method static Builder|Menu newQuery()
@@ -48,6 +49,7 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder|Menu whereUpdatedBy($value)
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
+ *
  * @property string|null                                       $link
  * @property string|null                                       $title
  * @property string|null                                       $description
@@ -66,6 +68,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string                                            $mobile_thumbnail_webp
  * @property MediaCollection<int, \Modules\Media\Models\Media> $media
  * @property int|null                                          $media_count
+ *
  * @method static Builder|Banner whereActionText($value)
  * @method static Builder|Banner whereCategoryId($value)
  * @method static Builder|Banner whereDescription($value)
@@ -77,9 +80,12 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder|Banner wherePos($value)
  * @method static Builder|Banner whereStartDate($value)
  * @method static Builder|Banner whereTitle($value)
+ *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
+ *
  * @mixin Model
+ *
  * @method static Banner|null             first()
  * @method static Collection<int, Banner> get()
  * @method static Banner                  create(array $attributes = [])
@@ -87,7 +93,9 @@ use Spatie\Translatable\HasTranslations;
  * @method static Builder<static>|Banner  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Banner  whereNotNull((string|Expression) $columns)
  * @method static int                     count(string $columns = '*')
- * @property-read \Modules\Fixcity\Models\Profile|null $deleter
+ *
+ * @property \Modules\Fixcity\Models\Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Banner extends BaseModel implements HasMedia
