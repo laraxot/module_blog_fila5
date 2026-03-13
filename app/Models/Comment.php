@@ -36,7 +36,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property int|null                 $comments_count
  * @property Comment|null             $parentComment
  * @property UserContract|null        $user
- *
  * @method static CommentFactory  factory($count = null, $state = [])
  * @method static Builder|Comment newModelQuery()
  * @method static Builder|Comment newQuery()
@@ -51,17 +50,14 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|Comment whereUserId($value)
  * @method static Builder|Comment withTrashed()
  * @method static Builder|Comment withoutTrashed()
- *
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
- *
  * @method static Builder|Comment whereCreatedBy($value)
  * @method static Builder|Comment whereDeletedAt($value)
  * @method static Builder|Comment whereDeletedBy($value)
  * @method static Builder|Comment whereUpdatedBy($value)
- *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  * @property string|null          $commentable_type
@@ -72,7 +68,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property string|null          $extra
  * @property string|null          $approved_at
  * @property string               $original_text
- *
  * @method static Builder|Comment whereApprovedAt($value)
  * @method static Builder|Comment whereCommentableId($value)
  * @method static Builder|Comment whereCommentableType($value)
@@ -81,12 +76,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|Comment whereExtra($value)
  * @method static Builder|Comment whereOriginalText($value)
  * @method static Builder|Comment whereText($value)
- *
  * @property ProfileContract|null        $creator
  * @property ProfileContract|null        $updater
  * @property MediaCollection<int, Media> $media
  * @property int|null                    $media_count
- *
  * @method static Comment|null             first()
  * @method static Collection<int, Comment> get()
  * @method static Comment                  create(array $attributes = [])
@@ -94,7 +87,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|Comment  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Comment  whereNotNull((string|Expression) $columns)
  * @method static int                      count(string $columns = '*')
- *
+ * @property-read \Modules\Fixcity\Models\Profile|null $deleter
  * @mixin \Eloquent
  */
 class Comment extends BaseModel

@@ -30,7 +30,6 @@ use Webmozart\Assert\Assert;
  * @property string|null $created_by
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
- *
  * @method static TransactionFactory  factory($count = null, $state = [])
  * @method static Builder|Transaction newModelQuery()
  * @method static Builder|Transaction newQuery()
@@ -51,14 +50,12 @@ use Webmozart\Assert\Assert;
  * @method static Builder|Transaction whereUserId($value)
  * @method static Builder|Transaction withTrashed()
  * @method static Builder|Transaction withoutTrashed()
- *
  * @property ProfileContract|null        $creator
  * @property ProfileContract|null        $updater
  * @property MediaCollection<int, Media> $media
  * @property int|null                    $media_count
  * @property float|null                  $stocks_count
  * @property float|null                  $stocks_value
- *
  * @method static Builder<static>|Transaction  whereStocksCount($value)
  * @method static Builder<static>|Transaction  whereStocksValue($value)
  * @method static Transaction|null             first()
@@ -68,9 +65,9 @@ use Webmozart\Assert\Assert;
  * @method static Builder<static>|Transaction  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Transaction  whereNotNull((string|Expression) $columns)
  * @method static int                          count(string $columns = '*')
- *
+ * @property-read \Modules\Fixcity\Models\Profile|null $deleter
  * @mixin \Eloquent
- * */
+ */
 class Transaction extends BaseModel
 {
     /** @var string */
