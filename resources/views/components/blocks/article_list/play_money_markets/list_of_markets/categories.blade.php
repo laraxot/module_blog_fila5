@@ -8,10 +8,7 @@
                             fill="currentColor"></path>
                     </svg>
                 @endif
-                <a href="
-                    {{-- {{ url('categories/'.$category->slug) }} --}}
-                    {{ route('category.view', ['lang'=>$lang,'slug' => $category->slug ]) }}
-                    "
+                <a href="{{ url(app()->getLocale().'/categories/'.$category->slug) }}"
                     @if($loop->index + 1 == $article->categories->count())
                         class="text-base font-bold leading-4 rounded-lg hover:text-blue-1"
                     @else
