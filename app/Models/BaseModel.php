@@ -31,15 +31,15 @@ abstract class BaseModel extends XotBaseModel implements HasMedia
     protected $connection = 'blog';
 
     /**
-     * Database Architecture: Multi-Database via TenantServiceProvider
-     * 
+     * Database Architecture: Multi-Database via TenantServiceProvider.
+     *
      * The 'blog' connection is configured in:
      * - config/local/predict/database.php (static configuration)
      * - Modules/Tenant/app/Providers/TenantServiceProvider.php (dynamic registration)
-     * 
+     *
      * Default: Points to 'predict_data' database (same as DB_DATABASE)
      * Can be overridden via DB_BLOG_DATABASE environment variable.
-     * 
+     *
      * @see \Modules\Tenant\Providers\TenantServiceProvider::registerDB()
      * @see config/local/predict/database.php
      */
