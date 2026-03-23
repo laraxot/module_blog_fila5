@@ -71,4 +71,13 @@ class YourModel extends BaseModel
 - Il BaseModel è una classe astratta, quindi non può essere istanziata direttamente
 - Tutti i modelli che estendono BaseModel ereditano automaticamente la gestione dei media
 - Il soft delete è abilitato di default
-- Gli attributi sono automaticamente convertiti in snake_case quando serializzati 
+- Gli attributi sono automaticamente convertiti in snake_case quando serializzati
+
+## Connessione `predict_data`
+
+`BaseModel` impone `protected $connection = 'blog'`, quindi tutte le query puntano al database reale `predict_data` configurato in `config/local/predict/database.php`. Così `articles`, `categories`, `blog_statuses`, `comments` e gli altri componenti del modulo Blog vivono nello stesso schema di Predict senza repliche o alias.
+
+## `Article` + `tighten/parental`
+
+Chi estende `BaseModel` (soprattutto `Modules\Predict\Models\Predict` che estende `Modules\Blog\Models\Article`) sfrutta `Parental\HasChildren`. Lo stesso record rimane in `predict_data.articles`, ma il campo `type` decide quale classe PHP lo rappresenta: `Articles` è un tipo di Blog Post condiviso. Modifiche a questa tabella devono sempre rispettare lo schema centralizzato e mantenere la connection `blog`.
+
