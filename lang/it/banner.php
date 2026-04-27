@@ -10,8 +10,8 @@ return [
             'name' => 'Content',
         ],
         'sort' => 28,
-        'icon' => 'banner.navigation',
-        'label' => 'banner.navigation',
+        'icon' => 'heroicon-o-rectangle-stack',
+        'label' => 'Banner',
     ],
     'fields' => [
         'id' => [
