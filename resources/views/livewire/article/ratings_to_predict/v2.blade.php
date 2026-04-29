@@ -64,11 +64,6 @@
             />
             </x-filament::input.wrapper> --}}
 
-
-            {{-- <x-filament-panels::form.actions
-                :actions="$this->getFormActions()"
-            /> --}}
-
             @if(Auth::check())
                 <x-filament::button color="danger" wire:click="save" class="button-big-3 w-100">
                     Add Rating
