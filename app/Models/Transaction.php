@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\TransactionFactory;
+use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Xot\Contracts\ProfileContract;
@@ -17,10 +18,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Webmozart\Assert\Assert;
 
 /**
- * @property int         $id
+ * @property int $id
  * @property string|null $model_type
- * @property int|null    $model_id
- * @property int|null    $credits
+ * @property int|null $model_id
+ * @property int|null $credits
  * @property string|null $user_id
  * @property string|null $note
  * @property string|null $date
@@ -31,7 +32,7 @@ use Webmozart\Assert\Assert;
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
  *
- * @method static TransactionFactory  factory($count = null, $state = [])
+ * @method static TransactionFactory factory($count = null, $state = [])
  * @method static Builder|Transaction newModelQuery()
  * @method static Builder|Transaction newQuery()
  * @method static Builder|Transaction onlyTrashed()
@@ -52,24 +53,24 @@ use Webmozart\Assert\Assert;
  * @method static Builder|Transaction withTrashed()
  * @method static Builder|Transaction withoutTrashed()
  *
- * @property ProfileContract|null        $creator
- * @property ProfileContract|null        $updater
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  * @property MediaCollection<int, Media> $media
- * @property int|null                    $media_count
- * @property float|null                  $stocks_count
- * @property float|null                  $stocks_value
+ * @property int|null $media_count
+ * @property float|null $stocks_count
+ * @property float|null $stocks_value
  *
- * @method static Builder<static>|Transaction  whereStocksCount($value)
- * @method static Builder<static>|Transaction  whereStocksValue($value)
- * @method static Transaction|null             first()
+ * @method static Builder<static>|Transaction whereStocksCount($value)
+ * @method static Builder<static>|Transaction whereStocksValue($value)
+ * @method static Transaction|null first()
  * @method static Collection<int, Transaction> get()
- * @method static Transaction                  create(array $attributes = [])
- * @method static Transaction                  firstOrCreate(array $attributes = [], array $values = [])
- * @method static Builder<static>|Transaction  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|Transaction  whereNotNull((string|Expression) $columns)
- * @method static int                          count(string $columns = '*')
+ * @method static Transaction create(array $attributes = [])
+ * @method static Transaction firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Builder<static>|Transaction where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|Transaction whereNotNull((string|Expression) $columns)
+ * @method static int count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property Profile|null $deleter
  *
  * @mixin \Eloquent
  */

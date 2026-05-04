@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Tenant\Providers\TenantServiceProvider;
 use Modules\Xot\Models\XotBaseModel;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -40,7 +41,7 @@ abstract class BaseModel extends XotBaseModel implements HasMedia
      * Default: Points to 'predict_data' database (same as DB_DATABASE)
      * Can be overridden via DB_BLOG_DATABASE environment variable.
      *
-     * @see \Modules\Tenant\Providers\TenantServiceProvider::registerDB()
+     * @see TenantServiceProvider::registerDB()
      * @see config/local/predict/database.php
      */
 

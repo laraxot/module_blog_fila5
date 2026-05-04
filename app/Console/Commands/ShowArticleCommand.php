@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Blog\Models\Article;
 use Webmozart\Assert\Assert;
 
@@ -44,13 +45,13 @@ class ShowArticleCommand extends Command
         foreach ($ratings as $rating) {
             /** @var Article $tmpArticle */
             $tmpArticle = $article->loadSum(['ratings as value_sum' => static function ($query) use ($rating): void {
-                Assert::isInstanceOf($query, \Illuminate\Database\Eloquent\Builder::class);
+                Assert::isInstanceOf($query, Builder::class);
                 $query
                     ->where('ratings.id', $rating->id)
                     ->where('rating_morph.user_id', '!=', null);
             }], 'rating_morph.value')
                 ->loadSum(['ratings as value_tot' => static function ($query) use ($ratings): void {
-                    Assert::isInstanceOf($query, \Illuminate\Database\Eloquent\Builder::class);
+                    Assert::isInstanceOf($query, Builder::class);
                     $query
                         ->whereIn('ratings.id', $ratings->modelKeys())
                         ->where('rating_morph.user_id', '!=', null);
@@ -63,7 +64,7 @@ class ShowArticleCommand extends Command
             }], 'rating_morph.value')
             */
                 ->loadCount(['ratings as value_count' => static function ($query) use ($rating): void {
-                    Assert::isInstanceOf($query, \Illuminate\Database\Eloquent\Builder::class);
+                    Assert::isInstanceOf($query, Builder::class);
                     $query
                         ->where('ratings.id', $rating->id)
                         ->where('rating_morph.user_id', '!=', null);

@@ -15,15 +15,15 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Modules\Blog\Models\Taggable.
  *
- * @property int         $id
- * @property int         $tag_id
- * @property string      $taggable_type
- * @property int         $taggable_id
+ * @property int $id
+ * @property int $tag_id
+ * @property string $taggable_type
+ * @property int $taggable_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- * @property array       $custom_properties
+ * @property array $custom_properties
  *
  * @method static Builder|Taggable newModelQuery()
  * @method static Builder|Taggable newQuery()
@@ -49,13 +49,13 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *
- * @method static Taggable|null             first()
+ * @method static Taggable|null first()
  * @method static Collection<int, Taggable> get()
- * @method static Taggable                  create(array $attributes = [])
- * @method static Taggable                  firstOrCreate(array $attributes = [], array $values = [])
- * @method static Builder<static>|Taggable  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|Taggable  whereNotNull((string|Expression) $columns)
- * @method static int                       count(string $columns = '*')
+ * @method static Taggable create(array $attributes = [])
+ * @method static Taggable firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Builder<static>|Taggable where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|Taggable whereNotNull((string|Expression) $columns)
+ * @method static int count(string $columns = '*')
  *
  * @mixin \Eloquent
  */
@@ -104,7 +104,7 @@ class Taggable extends BaseMorphPivot
     /**
      * Get the value of custom property with the given name.
      *
-     * @param mixed|null $default
+     * @param  mixed|null  $default
      */
     public function getCustomProperty(string $propertyName, $default = null): mixed
     {
@@ -112,8 +112,7 @@ class Taggable extends BaseMorphPivot
     }
 
     /**
-     * @param int|string|float|array|null $value
-     *
+     * @param  int|string|float|array|null  $value
      * @return $this
      */
     public function setCustomProperty(string $name, $value): self
