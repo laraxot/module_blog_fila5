@@ -26,6 +26,6 @@ class Search
                     ->required(),
             ])
             ->label('Pagina Search')
-            ->columns($context === 'form' ? 3 : 1);
+            ->columns('form' === $context ? 3 : 1);
     }
 }
