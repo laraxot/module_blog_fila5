@@ -43,6 +43,6 @@ class Filter
                 // ->required(),
             ])
             ->label('filter')
-            ->columns($context === 'form' ? 3 : 1);
+            ->columns('form' === $context ? 3 : 1);
     }
 }

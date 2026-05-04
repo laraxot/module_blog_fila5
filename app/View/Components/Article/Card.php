@@ -19,7 +19,9 @@ class Card extends Component
     public function __construct(
         public Article $article,
         public bool $showAuthor = false,
-        public string $tpl = 'v1') {}
+        public string $tpl = 'v1')
+    {
+    }
 
     public function render(): Renderable
     {
