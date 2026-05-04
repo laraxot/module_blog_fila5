@@ -15,7 +15,7 @@ class GetBloodline
 
     public function execute(?int $category_id): Collection
     {
-        if ($category_id === null) {
+        if (null === $category_id) {
             return collect([]);
         }
         Assert::notNull($category = Category::find($category_id), '['.__LINE__.']['.__FILE__.']');
