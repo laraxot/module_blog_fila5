@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Seeders;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Article;
@@ -36,25 +38,25 @@ class ArticleSeeder extends Seeder
         }
 
         // Featured posts
-        for ($i = 0; $i < 2; ++$i) {
+        for ($i = 0; $i < 2; $i++) {
             $this->createArticle(['is_featured' => 1]);
         }
 
         // Published posts
-        for ($i = 0; $i < 26; ++$i) {
+        for ($i = 0; $i < 26; $i++) {
             $this->createArticle();
         }
 
         // Draft posts
-        for ($i = 0; $i < 2; ++$i) {
+        for ($i = 0; $i < 2; $i++) {
             $this->createArticle(['published_at' => null]);
         }
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection<int, Article>
+     * @return Collection<int, Article>
      */
-    private function createArticle(array $data = []): \Illuminate\Database\Eloquent\Collection
+    private function createArticle(array $data = []): Collection
     {
         $date = $this->date->subDay();
 
@@ -77,17 +79,17 @@ class ArticleSeeder extends Seeder
         /** @var array<string, mixed> $mergedData */
         $mergedData = array_merge($defaults, $data);
 
-        /** @var \Illuminate\Database\Eloquent\Factories\Factory<Article> $factory */
+        /** @var Factory<Article> $factory */
         $factory = Article::factory();
         Assert::object($factory, 'Factory must be an object');
         Assert::methodExists($factory, 'create', 'Factory must have create method');
 
         $result = $factory->create($mergedData);
-        if ($result instanceof \Illuminate\Database\Eloquent\Collection) {
+        if ($result instanceof Collection) {
             /* @var \Illuminate\Database\Eloquent\Collection<int, Article> */
             return $result;
         }
 
-        return new \Illuminate\Database\Eloquent\Collection();
+        return new Collection;
     }
 }

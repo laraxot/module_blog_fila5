@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Blog\Models\ArticleCategory;
 
 class ArticleCategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Blog\Models\ArticleCategory::class;
+    protected $model = ArticleCategory::class;
 
     /**
      * Define the model's default state.
