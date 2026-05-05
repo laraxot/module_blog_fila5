@@ -21,7 +21,7 @@ class Footer extends Component
     public function __construct(
         array|string|null $blocks,
         public Model $article,
-        public string $tpl = 'v1'
+        public string $tpl = 'v1',
     ) {
         if (! \is_array($blocks)) {
             $blocks = [];

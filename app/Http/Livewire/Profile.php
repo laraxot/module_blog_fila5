@@ -38,7 +38,7 @@ class Profile extends Page implements HasForms
 
     public function mount(
         BlogProfile $model,
-        string $tpl = 'v1'
+        string $tpl = 'v1',
     ): void {
         $this->model = $model;
         $this->tpl = $tpl;
