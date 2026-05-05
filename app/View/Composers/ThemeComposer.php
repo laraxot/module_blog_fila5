@@ -67,7 +67,7 @@ class ThemeComposer
             ->take($number)
             ->orderBy('published_at', 'desc')
             ->get();
-        if (0 === $rows->count()/* @phpstan-ignore method.nonObject */) {
+        if ($rows->count() === 0/* @phpstan-ignore method.nonObject */) {
             $rows = Article::get();
             Article::whereRaw('1=1')->update(['show_on_homepage' => true]);
         }
