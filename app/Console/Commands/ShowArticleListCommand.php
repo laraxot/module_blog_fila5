@@ -11,15 +11,11 @@ class ShowArticleListCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var string
      */
     protected $signature = 'blog:article-list';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
     protected $description = 'Visualizza lista articoli';
 

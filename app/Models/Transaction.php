@@ -76,7 +76,6 @@ use Webmozart\Assert\Assert;
  */
 class Transaction extends BaseModel
 {
-    /** @var string */
     protected $connection = 'blog';
 
     protected $fillable = [

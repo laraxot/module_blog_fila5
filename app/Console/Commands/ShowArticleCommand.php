@@ -13,15 +13,11 @@ class ShowArticleCommand extends Command
 {
     /**
      * The name and signature of the console command.
-     *
-     * @var string
      */
     protected $signature = 'blog:article-show {articleId}';
 
     /**
      * The console command description.
-     *
-     * @var string
      */
     protected $description = 'Visualizza articolo';
 
@@ -49,13 +45,15 @@ class ShowArticleCommand extends Command
                 $query
                     ->where('ratings.id', $rating->id)
                     ->where('rating_morph.user_id', '!=', null);
-            }], 'rating_morph.value')
+            },
+            ], 'rating_morph.value')
                 ->loadSum(['ratings as value_tot' => static function ($query) use ($ratings): void {
                     Assert::isInstanceOf($query, Builder::class);
                     $query
                         ->whereIn('ratings.id', $ratings->modelKeys())
                         ->where('rating_morph.user_id', '!=', null);
-                }], 'rating_morph.value')
+                },
+                ], 'rating_morph.value')
             /*
             ->loadAvg(['ratings as value_avg' => static function ($query) use ($rating) {
                 $query
@@ -68,7 +66,8 @@ class ShowArticleCommand extends Command
                     $query
                         ->where('ratings.id', $rating->id)
                         ->where('rating_morph.user_id', '!=', null);
-                }], 'rating_morph.value');
+                },
+                ], 'rating_morph.value');
 
             // Use getAttribute to safely access dynamic properties
             $valueSum = $tmpArticle->getAttribute('value_sum');

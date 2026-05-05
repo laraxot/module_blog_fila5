@@ -15,16 +15,13 @@ class ArticleData extends Data
     public function __construct(
         #[WithCast(DateTimeInterfaceCast::class)]
         public readonly ?Carbon $bet_end_date = null,
-
         #[WithCast(DateTimeInterfaceCast::class)]
         public readonly ?Carbon $event_start_date = null,
-
         #[WithCast(DateTimeInterfaceCast::class)]
         public readonly ?Carbon $event_end_date = null,
 
         /** @var array<mixed> */
         public readonly array $category = [],
-
         public readonly string $title = '',
         public readonly string $slug = '',
         public readonly ArticleStatus $status = ArticleStatus::DRAFT,
@@ -39,13 +36,11 @@ class ArticleData extends Data
 
         /** @var array<mixed> */
         public readonly array $wagers = [],
-
         public readonly float $volume_play_money = 0.0,
         public readonly float $volume_real_money = 0.0,
 
         /** @var array<mixed> */
         public readonly array $outcomes = [],
-
         public readonly ?string $thumbnail_2x = null,
     ) {
     }
@@ -58,9 +53,9 @@ class ArticleData extends Data
     public static function fromArray(array $data): self
     {
         return new self(
-            bet_end_date: (isset($data['bet_end_date']) && (is_string($data['bet_end_date']) || $data['bet_end_date'] instanceof \DateTimeInterface)) ? Carbon::parse($data['bet_end_date']) : null,
-            event_start_date: (isset($data['event_start_date']) && (is_string($data['event_start_date']) || $data['event_start_date'] instanceof \DateTimeInterface)) ? Carbon::parse($data['event_start_date']) : null,
-            event_end_date: (isset($data['event_end_date']) && (is_string($data['event_end_date']) || $data['event_end_date'] instanceof \DateTimeInterface)) ? Carbon::parse($data['event_end_date']) : null,
+            bet_end_date: isset($data['bet_end_date']) && (is_string($data['bet_end_date']) || $data['bet_end_date'] instanceof \DateTimeInterface) ? Carbon::parse($data['bet_end_date']) : null,
+            event_start_date: isset($data['event_start_date']) && (is_string($data['event_start_date']) || $data['event_start_date'] instanceof \DateTimeInterface) ? Carbon::parse($data['event_start_date']) : null,
+            event_end_date: isset($data['event_end_date']) && (is_string($data['event_end_date']) || $data['event_end_date'] instanceof \DateTimeInterface) ? Carbon::parse($data['event_end_date']) : null,
             category: is_array($data['category'] ?? null) ? (array) $data['category'] : [],
             title: is_string($data['title'] ?? null) ? $data['title'] : '',
             slug: is_string($data['slug'] ?? null) ? $data['slug'] : '',

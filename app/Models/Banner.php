@@ -14,12 +14,10 @@ use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\MenuFactory;
 use Modules\Fixcity\Models\Profile;
 use Modules\Xot\Contracts\ProfileContract;
-use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\Translatable\HasTranslations;
 
 /**
  * Modules\Cms\Models\Menu.

@@ -26,8 +26,6 @@ abstract class BaseModel extends XotBaseModel implements HasMedia
 
     /**
      * The connection name for the model.
-     *
-     * @var string
      */
     protected $connection = 'blog';
 

@@ -26,7 +26,7 @@ class Lists extends Component
     public int $postCount = 0;
 
     /**
-     * @var \Illuminate\Support\Collection<int,\Illuminate\Support\Collection>
+     * @var \Illuminate\Support\Collection<int, \Illuminate\Support\Collection<int|string, mixed>>
      */
     public \Illuminate\Support\Collection $postChunks;
 
@@ -42,10 +42,8 @@ class Lists extends Component
 
     public string $tpl;
 
-    /**
-     * @var array
-     */
-    protected $queryString = [
+    /** @var array<string, array<string, mixed>> */
+    protected array $queryString = [
         'category' => ['except' => ''],
         'order' => ['except' => 'date_desc'],
     ];
@@ -117,7 +115,7 @@ class Lists extends Component
         $this->currentChunk = 0;
 
         $postIds = $this->getArticleQuery()->pluck('id');
-        $this->postCount = $postIds->count(); /* @phpstan-ignore method.nonObject */
+        $this->postCount = $postIds->count();
         $this->postChunks = $postIds->chunk(self::ITEMS_PER_PAGE);
     }
 }
