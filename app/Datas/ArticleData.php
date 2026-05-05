@@ -8,13 +8,12 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Modules\Blog\Actions\Category\GetBloodline;
 use Modules\Blog\Models\Article;
-use Modules\Blog\Models\Category;
 use Spatie\LaravelData\Data;
 use Webmozart\Assert\Assert;
 
 class ArticleData extends Data implements \Stringable
 {
-    public string $title = '';
+    public string $title;
 
     public function __construct(
         public string $id,
@@ -42,13 +41,14 @@ class ArticleData extends Data implements \Stringable
         // public string $ratingId;
         // public int $credit;
     ) {
+        $resolved = $title;
         if (is_array($title)) {
             $lang = app()->getLocale();
-            $title = $title[$lang] ?? last($title);
+            $resolved = $title[$lang] ?? last($title);
         }
-        if (is_string($title)) {
-            $this->title = $title;
-        }
+        $this->title = is_string($resolved)
+            ? $resolved
+            : (is_scalar($resolved) ? (string) $resolved : '');
         // $this->url = $this->getUrl();
         $this->categories = $this->getCategories();
 

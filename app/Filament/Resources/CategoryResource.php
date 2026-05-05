@@ -11,7 +11,6 @@ use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Support\Str;
 // use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
-use Modules\Blog\Filament\Resources\CategoryResource\Pages;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\ListCategories;
@@ -55,13 +54,8 @@ class CategoryResource extends XotBaseResource
                 ->maxLength(2048),
             Select::make('parent_id')
                 ->label('Categoria Padre')
-                ->options(function () {
-                    // Category::where('parent_id', null)->pluck('title', 'id')
-                    // Category::tree()->get()->toTree()->pluck('title', 'id')
-                    /** @var array<array<string>|string> $options */
-                    $options = SafeArrayCastAction::cast(Category::getTreeCategoryOptions());
-
-                    return $options;
+                ->options(static function (): array {
+                    return SafeArrayCastAction::cast(Category::getTreeCategoryOptions());
                 })
                 ->searchable(),
             TextInput::make('description')

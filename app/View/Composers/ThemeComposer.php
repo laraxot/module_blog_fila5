@@ -7,6 +7,7 @@ namespace Modules\Blog\View\Composers;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -28,7 +29,7 @@ class ThemeComposer
      *
      * @return Collection<int, Category>
      */
-    public function categories()
+    public function categories(): Collection
     {
         return Category::tree()->get()->toTree();
     }
@@ -38,7 +39,7 @@ class ThemeComposer
      *
      * @return Collection<int, Category>
      */
-    public function getCategoriesArticles()
+    public function getCategoriesArticles(): Collection
     {
         return $this->categories();
     }
@@ -133,11 +134,9 @@ class ThemeComposer
     {
         // $footerAuthors = Profile::profileIsAuthor()
         // ->take(8)
-        $footerAuthors = Profile::inRandomOrder()
+        return Profile::inRandomOrder()
             ->limit(8)
             ->get();
-
-        return $footerAuthors;
     }
 
     public function getTags(): Collection
@@ -153,7 +152,7 @@ class ThemeComposer
     /**
      * @return Collection<(int|string), mixed>
      */
-    public function getMoreArticles(Model $model)
+    public function getMoreArticles(Model $model): Collection
     {
         return collect([]);
     }
@@ -161,7 +160,7 @@ class ThemeComposer
     /**
      * @return LengthAwarePaginator<Article>
      */
-    public function getPaginatedArticles(int $num = 15)
+    public function getPaginatedArticles(int $num = 15): LengthAwarePaginator
     {
         return Article::paginate($num);
     }
@@ -344,7 +343,7 @@ class ThemeComposer
                 $lang = app()->getLocale();
                 $content['title'] = $content['title'][$lang] ?? last($content['title']);
             }
-            /* @var array $content */
+            /** @var array $content */
             $tmp[] = ArticleData::from($content);
         }
 
@@ -367,31 +366,21 @@ class ThemeComposer
      */
     public function getHotTopics(): array
     {
-        $result = Category::with([
-            'categoryArticles' => function ($query) {
-                if (is_object($query) && method_exists($query, 'withCount')) {
-                    $query->withCount('ratings');
-                }
-
-                return $query;
+        return Category::with([
+            'categoryArticles' => static function (Builder $query): Builder {
+                return $query->withCount('ratings');
             },
-            // 'banner'
         ])
             ->get()
-            ->map(fn ($category): array => [
-                'image' => $category->getFirstMediaUrl('category'), // ?? 'https://placehold.co/300x200',
+            ->map(fn (Category $category): array => [
+                'image' => $category->getFirstMediaUrl('category'),
                 'slug' => $category->slug,
                 'title' => $category->title,
-                'ratings_sum' => $category->categoryArticles->sum('ratings_count'),
+                'ratings_sum' => (int) $category->categoryArticles->sum('ratings_count'),
             ])
             ->sortByDesc('ratings_sum')
             ->take(3)
             ->values()
-            ->toArray();
-
-        /** @var list<array<string, mixed>> $typedResult */
-        $typedResult = array_values($result);
-
-        return $typedResult;
+            ->all();
     }
 }

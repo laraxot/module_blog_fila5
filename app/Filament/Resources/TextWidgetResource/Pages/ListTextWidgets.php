@@ -6,7 +6,6 @@ namespace Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Modules\Blog\Filament\Resources\TextWidgetResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListTextWidgets extends XotBaseListRecords

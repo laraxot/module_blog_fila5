@@ -7,7 +7,6 @@ namespace Modules\Blog\Providers\Filament;
 use Filament\Panel;
 // use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 use Modules\Xot\Providers\Filament\XotBasePanelProvider;
-use Pboivin\FilamentPeek\FilamentPeekPlugin;
 
 class AdminPanelProvider extends XotBasePanelProvider
 {

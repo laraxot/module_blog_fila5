@@ -5,22 +5,17 @@ declare(strict_types=1);
 namespace Modules\Blog\Http\Livewire;
 
 use Filament\Actions\Action;
-use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Arr;
-use Modules\Blog\Aggregates\ArticleAggregate;
-use Modules\Blog\Datas\RatingArticleData;
 // use Modules\Blog\Models\Profile;
 use Modules\Blog\Models\Profile as BlogProfile;
 use Modules\Xot\Actions\Cast\SafeArrayCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
-use Webmozart\Assert\Assert;
 
 /**
  * @property Schema $form
@@ -43,8 +38,8 @@ class Profile extends Page implements HasForms
 
     public function mount(
         BlogProfile $model,
-        string $tpl = 'v1'): void
-    {
+        string $tpl = 'v1'
+    ): void {
         $this->model = $model;
         $this->tpl = $tpl;
         $this->data = $this->model->toArray();

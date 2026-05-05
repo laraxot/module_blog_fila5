@@ -8,7 +8,6 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -21,7 +20,6 @@ use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\CreateTextWidget;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\EditTextWidget;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\ListTextWidgets;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\ViewTextWidget;
-use Modules\Blog\Models\TextWidget;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class TextWidgetResource extends XotBaseResource
