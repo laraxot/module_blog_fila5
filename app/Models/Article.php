@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -29,7 +28,6 @@ use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
-use Safe\DateTime;
 use Spatie\Comments\Models\Concerns\HasComments;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
@@ -43,35 +41,35 @@ use Webmozart\Assert\Assert;
 /**
  * Modules\Blog\Models\Article.
  *
- * @property Profile|null                $author
- * @property Collection<int, Category>   $categories
- * @property int|null                    $categories_count
- * @property Collection<int, Comment>    $comments
- * @property int|null                    $comments_count
- * @property string                      $human_read_time
+ * @property Profile|null $author
+ * @property Collection<int, Category> $categories
+ * @property int|null $categories_count
+ * @property Collection<int, Comment> $comments
+ * @property int|null $comments_count
+ * @property string $human_read_time
  * @property MediaCollection<int, Media> $media
- * @property int|null                    $media_count
- * @property Collection<int, Tag>        $tags
- * @property Collection<int, Status>     $statuses
- * @property int|null                    $statuses_count
- * @property int|null                    $tags_count
- * @property UserContract|null           $user
- * @property string                      $body
- * @property Carbon                      $published_at
- * @property Carbon                      $updated_at
- * @property string                      $slug
- * @property string                      $title
- * @property string                      $description
- * @property string                      $main_image_upload
- * @property string                      $main_image_url
- * @property array|string                $content_blocks
+ * @property int|null $media_count
+ * @property Collection<int, Tag> $tags
+ * @property Collection<int, Status> $statuses
+ * @property int|null $statuses_count
+ * @property int|null $tags_count
+ * @property UserContract|null $user
+ * @property string $body
+ * @property Carbon $published_at
+ * @property Carbon $updated_at
+ * @property string $slug
+ * @property string $title
+ * @property string $description
+ * @property string $main_image_upload
+ * @property string $main_image_url
+ * @property array|string $content_blocks
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article article(string $id)
  * @method static \Illuminate\Database\Eloquent\Builder|Article author(string $profile_id)
  * @method static \Illuminate\Database\Eloquent\Builder|Article category(string $id)
  * @method static \Illuminate\Database\Eloquent\Builder|Article currentStatus(...$names)
  * @method static \Illuminate\Database\Eloquent\Builder|Article differentFromCurrentArticle(string $current_article)
- * @method static ArticleFactory                                factory($count = null, $state = [])
+ * @method static ArticleFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article onlyTrashed()
@@ -90,31 +88,31 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTags((ArrayAccess|Tag|array|string) $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTrashed()
  *
- * @property string                          $id
- * @property string                          $uuid
- * @property string|null                     $content
- * @property string|null                     $picture
- * @property int|null                        $category_id
- * @property int|null                        $author_id
- * @property string|null                     $status
- * @property int                             $show_on_homepage
- * @property int|null                        $read_time
- * @property string|null                     $excerpt
- * @property string                          $created_at
+ * @property string $id
+ * @property string $uuid
+ * @property string|null $content
+ * @property string|null $picture
+ * @property int|null $category_id
+ * @property int|null $author_id
+ * @property string|null $status
+ * @property int $show_on_homepage
+ * @property int|null $read_time
+ * @property string|null $excerpt
+ * @property string $created_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string|null                     $updated_by
- * @property string|null                     $created_by
- * @property string|null                     $deleted_by
- * @property array|null                      $footer_blocks
- * @property array|null                      $sidebar_blocks
- * @property int                             $is_featured
- * @property string|null                     $closed_at
- * @property Category|null                   $category
- * @property string                          $main_image
- * @property Collection<int, Rating>         $ratings
- * @property int|null                        $ratings_count
- * @property mixed                           $translations
- * @property string|null                     $rewarded_at
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $deleted_by
+ * @property array|null $footer_blocks
+ * @property array|null $sidebar_blocks
+ * @property int $is_featured
+ * @property string|null $closed_at
+ * @property Category|null $category
+ * @property string $main_image
+ * @property Collection<int, Rating> $ratings
+ * @property int|null $ratings_count
+ * @property mixed $translations
+ * @property string|null $rewarded_at
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereAuthorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereCategoryId($value)
@@ -145,21 +143,21 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUuid($value)
  *
- * @property int         $status_display
+ * @property int $status_display
  * @property string|null $bet_end_date
  * @property string|null $event_start_date
  * @property string|null $event_end_date
- * @property int         $is_wagerable
- * @property int|null    $wagers_count
- * @property int|null    $wagers_count_canonical
- * @property int|null    $wagers_count_total
- * @property int|null    $wagers
+ * @property int $is_wagerable
+ * @property int|null $wagers_count
+ * @property int|null $wagers_count_canonical
+ * @property int|null $wagers_count_total
+ * @property int|null $wagers
  * @property string|null $brier_score
  * @property string|null $brier_score_play_money
  * @property string|null $brier_score_real_money
- * @property float|null  $volume_play_money
- * @property float|null  $volume_real_money
- * @property int         $is_following
+ * @property float|null $volume_play_money
+ * @property float|null $volume_real_money
+ * @property int $is_following
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereBetEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereBrierScore($value)
@@ -189,37 +187,37 @@ use Webmozart\Assert\Assert;
  *
  * @mixin Model
  *
- * @property string|null                                      $type
- * @property string|null                                      $extra
- * @property string|null                                      $resolved_at
- * @property string|null                                      $liquidity
- * @property float|null                                       $stocks_count
- * @property float|null                                       $stocks_value
- * @property string                                           $sum_credit_yes
- * @property string                                           $sum_credit_no
- * @property int                                              $count_credit_yes
- * @property int                                              $count_credit_no
+ * @property string|null $type
+ * @property string|null $extra
+ * @property string|null $resolved_at
+ * @property string|null $liquidity
+ * @property float|null $stocks_count
+ * @property float|null $stocks_value
+ * @property string $sum_credit_yes
+ * @property string $sum_credit_no
+ * @property int $count_credit_yes
+ * @property int $count_credit_no
  * @property Collection<int, CommentNotificationSubscription> $notificationSubscriptions
- * @property int|null                                         $notification_subscriptions_count
+ * @property int|null $notification_subscriptions_count
  *
- * @method static EloquentBuilder<static>|Article                       whereCountCreditNo($value)
- * @method static EloquentBuilder<static>|Article                       whereCountCreditYes($value)
- * @method static EloquentBuilder<static>|Article                       whereExtra($value)
- * @method static EloquentBuilder<static>|Article                       whereLiquidity($value)
- * @method static EloquentBuilder<static>|Article                       whereResolvedAt($value)
- * @method static EloquentBuilder<static>|Article                       whereStocksCount($value)
- * @method static EloquentBuilder<static>|Article                       whereStocksValue($value)
- * @method static EloquentBuilder<static>|Article                       whereSumCreditNo($value)
- * @method static EloquentBuilder<static>|Article                       whereSumCreditYes($value)
- * @method static EloquentBuilder<static>|Article                       whereType($value)
- * @method static EloquentBuilder<static>|Article                       withAnyTagsOfType(array|string $type)
- * @method static Article|null                                          first()
- * @method static Collection<int, Article>                              get()
- * @method static Article                                               create(array $attributes = [])
- * @method static Article                                               firstOrCreate(array $attributes = [], array $values = [])
+ * @method static EloquentBuilder<static>|Article whereCountCreditNo($value)
+ * @method static EloquentBuilder<static>|Article whereCountCreditYes($value)
+ * @method static EloquentBuilder<static>|Article whereExtra($value)
+ * @method static EloquentBuilder<static>|Article whereLiquidity($value)
+ * @method static EloquentBuilder<static>|Article whereResolvedAt($value)
+ * @method static EloquentBuilder<static>|Article whereStocksCount($value)
+ * @method static EloquentBuilder<static>|Article whereStocksValue($value)
+ * @method static EloquentBuilder<static>|Article whereSumCreditNo($value)
+ * @method static EloquentBuilder<static>|Article whereSumCreditYes($value)
+ * @method static EloquentBuilder<static>|Article whereType($value)
+ * @method static EloquentBuilder<static>|Article withAnyTagsOfType(array|string $type)
+ * @method static Article|null first()
+ * @method static Collection<int, Article> get()
+ * @method static Article create(array $attributes = [])
+ * @method static Article firstOrCreate(array $attributes = [], array $values = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereNotNull((string|Expression) $columns)
- * @method static int                                                   count(string $columns = '*')
+ * @method static int count(string $columns = '*')
  *
  * @property \Modules\Fixcity\Models\Profile|null $deleter
  *
@@ -237,68 +235,13 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     use HasTranslations;
 
     /** @var array<int, string> */
-    public $translatable = [
+    public array $translatable = [
         'title',
         // 'description',
         'content_blocks',
         'sidebar_blocks',
         'footer_blocks',
     ];
-
-    /**
-     * Ottiene la traduzione di un attributo in una specifica lingua.
-     *
-     * @param string $key               Il nome dell'attributo da tradurre
-     * @param string $locale            Il codice della lingua richiesta
-     * @param bool   $useFallbackLocale Se utilizzare o meno la lingua di fallback
-     *
-     * @return array|string|int|null Il valore tradotto dell'attributo
-     */
-    public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
-    {
-        if (! $this->isTranslatableAttribute($key)) {
-            $value = $this->getAttribute($key);
-
-            return null !== $value ? (string) $value : null;
-        }
-
-        $translations = $this->getTranslations($key);
-
-        $translation = $translations[$locale] ?? '';
-
-        if ('' !== $translation || ! $useFallbackLocale) {
-            $value = $translation;
-        } else {
-            $fallbackLocale = config('app.fallback_locale');
-            $fallbackKey = is_string($fallbackLocale) ? $fallbackLocale : 'en';
-            $value = $translations[$fallbackKey] ?? '';
-        }
-
-        return match (true) {
-            is_string($value) => $value,
-            is_array($value) => $value,
-            is_int($value) => $value,
-            default => null,
-        };
-    }
-
-    /**
-     * Attributi assegnabili in massa (mass assignment).
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'id' => 'string',
-            'uuid' => 'string',
-            'published_at' => 'datetime',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
-            'main_image_upload' => 'string',
-            'main_image_url' => 'string',
-        ];
-    }
 
     /**
      * Attributi assegnabili in massa (mass assignment).
@@ -371,6 +314,42 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     ];
 
     /**
+     * Ottiene la traduzione di un attributo in una specifica lingua.
+     *
+     * @param  string  $key  Il nome dell'attributo da tradurre
+     * @param  string  $locale  Il codice della lingua richiesta
+     * @param  bool  $useFallbackLocale  Se utilizzare o meno la lingua di fallback
+     * @return array|string|int|null Il valore tradotto dell'attributo
+     */
+    public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
+    {
+        if (! $this->isTranslatableAttribute($key)) {
+            $value = $this->getAttribute($key);
+
+            return $value !== null ? (string) $value : null;
+        }
+
+        $translations = $this->getTranslations($key);
+
+        $translation = $translations[$locale] ?? '';
+
+        if ($translation !== '' || ! $useFallbackLocale) {
+            $value = $translation;
+        } else {
+            $fallbackLocale = config('app.fallback_locale');
+            $fallbackKey = is_string($fallbackLocale) ? $fallbackLocale : 'en';
+            $value = $translations[$fallbackKey] ?? '';
+        }
+
+        return match (true) {
+            is_string($value) => $value,
+            is_array($value) => $value,
+            is_int($value) => $value,
+            default => null,
+        };
+    }
+
+    /**
      * Restituisce tutti i feed item.
      *
      * @return Collection<int, Article>
@@ -388,7 +367,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
      */
     public static function latest(?string $column = null): EloquentBuilder
     {
-        $column = $column ?? static::CREATED_AT;
+        $column = $column ?? self::CREATED_AT;
 
         /** @var EloquentBuilder $query */
         $query = static::query()->latest($column);
@@ -448,7 +427,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     public function getThumbnail(): ?string
     {
-        if (null !== $this->getMedia()->first()) {
+        if ($this->getMedia()->first() !== null) {
             return $this->getMedia()->first()->getUrl();
         }
 
@@ -475,10 +454,8 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * Scope a query to only include articles different from current article.
-     *
-     * @return EloquentBuilder
      */
-    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $current_article)
+    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $current_article): EloquentBuilder
     {
         return $query->where('id', '!=', $current_article);
     }
@@ -489,43 +466,6 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     public function author(): BelongsTo
     {
         return $this->belongsTo(Profile::class, 'user_id'); // ->withTrashed();
-    }
-
-    // /**
-    //  * Get the tags of the article
-    //  *
-    //  * @return \Illuminate\Database\Eloquent\Collection
-    //  */
-    // public function tags()
-    // {
-    //    return $this->belongsToMany(Tag::class);
-    // }
-
-    /*
-     * Get the comments of the article.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    /**
-     * Get the article's main image.
-     */
-    protected function mainImage(): Attribute
-    {
-        return new Attribute(
-            get: static function ($value, $attributes): string {
-                /** @var array<string, mixed> $attributes */
-                $imageUpload = $attributes['main_image_upload'] ?? null;
-                $imageUrl = $attributes['main_image_url'] ?? null;
-                $result = $imageUpload ?? $imageUrl ?? '#';
-
-                return is_string($result) ? $result : (string) $result;
-            }
-        );
     }
 
     public function getTitle(): string
@@ -548,7 +488,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
             return Storage::url($this->main_image_upload);
         }
 
-        if (null !== $this->main_image_url) {
+        if ($this->main_image_url !== null) {
             return $this->main_image_url;
         }
 
@@ -569,7 +509,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     public function getUuidAttribute(?string $value): string
     {
-        if (null !== $value && '' !== $value) {
+        if ($value !== null && $value !== '') {
             return $value;
         }
         // dddx($value);
@@ -615,7 +555,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         $hours = $diff->h;
         $minutes = $diff->i;
 
-        if (0 === $month && 0 === $days && 0 === $hours && 0 === $minutes) {
+        if ($month === 0 && $days === 0 && $hours === 0 && $minutes === 0) {
             return (string) (__('blog::article.single_expired') ?? '');
         }
 
@@ -664,17 +604,15 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         /** @var array<int, array<string, mixed>> */
         $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
 
-        $filtered = collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
+        return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
             foreach ($name_blocks as $block) {
-                if (($value['type'] ?? null) == $block) {
+                if (($value['type'] ?? null) === $block) {
                     return true;
                 }
             }
 
             return false;
         })->toArray();
-
-        return $filtered;
     }
 
     /**
@@ -686,10 +624,10 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
 
         /** @var array<string, mixed> */
-        $filtered = collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
+        return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
             $shouldExclude = false;
             foreach ($name_blocks as $block) {
-                if (($value['type'] ?? null) == $block) {
+                if (($value['type'] ?? null) === $block) {
                     $shouldExclude = true;
                     break;
                 }
@@ -697,8 +635,6 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
             return ! $shouldExclude;
         })->values()->toArray();
-
-        return $filtered;
     }
 
     /**
@@ -722,10 +658,8 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * Scope a query to only include show on homepage articles.
-     *
-     * @param EloquentBuilder $query
      */
-    public function scopeShowHomepage($query): EloquentBuilder
+    public function scopeShowHomepage(EloquentBuilder $query): EloquentBuilder
     {
         return $query->where('show_on_homepage', 1);
     }
@@ -741,7 +675,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles with a specified category.
      *
-     * @param $id -> The id of the category
+     * @param  $id  -> The id of the category
      */
     public function scopeCategory(EloquentBuilder $query, string $id): EloquentBuilder
     {
@@ -753,11 +687,9 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles that belongs to an author.
      *
-     * @param $profile_id -> The id of the author
-     *
-     * @return EloquentBuilder
+     * @param  $profile_id  -> The id of the author
      */
-    public function scopeAuthor(EloquentBuilder $query, string $profile_id)
+    public function scopeAuthor(EloquentBuilder $query, string $profile_id): EloquentBuilder
     {
         return $query->whereHas('author', static function ($q) use ($profile_id): void {
             $q->where('id', $profile_id);
@@ -767,11 +699,9 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles with a specified tag.
      *
-     * @param $id -> The id of the tag
-     *
-     * @return EloquentBuilder
+     * @param  $id  -> The id of the tag
      */
-    public function scopeTag(EloquentBuilder $query, string $id)
+    public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
     {
         return $query->whereHas('tags', static function ($q) use ($id): void {
             $q->where('id', $id);
@@ -781,7 +711,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles which contains searching words.
      *
-     * @param $searching -> The searching words
+     * @param  $searching  -> The searching words
      */
     public function scopeSearch(EloquentBuilder $query, string $searching): EloquentBuilder
     {
@@ -810,13 +740,64 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * Converti l'attributo 'closed_at' in un oggetto Carbon.
-     *
-     * @param string $value
-     *
-     * @return Carbon
      */
-    public function getClosedAtAttribute($value)
+    public function getClosedAtAttribute(string $value): Carbon
     {
         return Carbon::parse($value);
+    }
+
+    /**
+     * Attributi assegnabili in massa (mass assignment).
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'id' => 'string',
+            'uuid' => 'string',
+            'published_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'main_image_upload' => 'string',
+            'main_image_url' => 'string',
+        ];
+    }
+
+    // /**
+    //  * Get the tags of the article
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Collection
+    //  */
+    // public function tags()
+    // {
+    //    return $this->belongsToMany(Tag::class);
+    // }
+
+    /*
+     * Get the comments of the article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Get the article's main image.
+     */
+    protected function mainImage(): Attribute
+    {
+        return new Attribute(
+            get: static function ($value, $attributes): string {
+                /** @var array<string, mixed> $attributes */
+                $imageUpload = $attributes['main_image_upload'] ?? null;
+                $imageUrl = $attributes['main_image_url'] ?? null;
+                $result = $imageUpload ?? $imageUrl ?? '#';
+
+                return is_string($result) ? $result : (string) $result;
+            }
+        );
     }
 }

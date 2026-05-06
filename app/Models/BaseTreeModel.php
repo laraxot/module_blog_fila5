@@ -15,7 +15,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
  * @property string|null $parent_id
- * @property string      $name
+ * @property string $name
  */
 abstract class BaseTreeModel extends BaseModel
 {
@@ -40,7 +40,6 @@ abstract class BaseTreeModel extends BaseModel
         // }
 
         // Save the previous parent to be used when finishing.
-        $this->parent()->associate($parent); // @phpstan-ignore argument.type
 
         $this->save();
 

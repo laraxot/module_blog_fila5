@@ -13,9 +13,18 @@ class GetTreeOptions
 {
     use QueueableAction;
 
+    private static function optionArrayKey(bool|float|int|string $scalar): int|string
+    {
+        return match (true) {
+            is_int($scalar) => $scalar,
+            is_string($scalar) => $scalar,
+            is_float($scalar) => (string) $scalar,
+            default => $scalar ? 1 : 0,
+        };
+    }
+
     /**
-     * @param Model $model - Model that uses HasRecursiveRelationships
-     *
+     * @param  Model  $model  - Model that uses HasRecursiveRelationships
      * @return array<int|string, string>
      */
     public function execute(Model $model): array
@@ -58,8 +67,7 @@ class GetTreeOptions
                 Assert::scalar($id, 'ID must be scalar');
                 Assert::string($title, 'Title must be string');
 
-                /* @phpstan-ignore-next-line offsetAccess.invalidOffset */
-                $results[$id] = $title;
+                $results[self::optionArrayKey($id)] = $title;
 
                 // Handle children if they exist
                 if (property_exists($mod, 'children') && is_iterable($mod->children)) {
@@ -73,8 +81,7 @@ class GetTreeOptions
                             Assert::scalar($childId, 'Child ID must be scalar');
                             Assert::string($childTitle, 'Child title must be string');
 
-                            /* @phpstan-ignore-next-line offsetAccess.invalidOffset */
-                            $results[$childId] = '--------->'.$childTitle;
+                            $results[self::optionArrayKey($childId)] = '--------->'.$childTitle;
 
                             if (property_exists($child, 'children') && is_iterable($child->children)) {
                                 foreach ($child->children as $cld) {
@@ -87,8 +94,7 @@ class GetTreeOptions
                                         Assert::scalar($cldId, 'Grandchild ID must be scalar');
                                         Assert::string($cldTitle, 'Grandchild title must be string');
 
-                                        /* @phpstan-ignore-next-line offsetAccess.invalidOffset */
-                                        $results[$cldId] = '----------------->'.$cldTitle;
+                                        $results[self::optionArrayKey($cldId)] = '----------------->'.$cldTitle;
 
                                         if (property_exists($cld, 'children') && is_iterable($cld->children)) {
                                             foreach ($cld->children as $c) {
@@ -101,8 +107,7 @@ class GetTreeOptions
                                                     Assert::scalar($cId, 'Great-grandchild ID must be scalar');
                                                     Assert::string($cTitle, 'Great-grandchild title must be string');
 
-                                                    /* @phpstan-ignore-next-line offsetAccess.invalidOffset */
-                                                    $results[$cId] = '------------------------->'.$cTitle;
+                                                    $results[self::optionArrayKey($cId)] = '------------------------->'.$cTitle;
                                                 }
                                             }
                                         }

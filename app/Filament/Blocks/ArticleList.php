@@ -54,6 +54,6 @@ class ArticleList
                     ->required(),
             ])
             ->label('Lista Articoli')
-            ->columns('form' === $context ? 3 : 1);
+            ->columns($context === 'form' ? 3 : 1);
     }
 }

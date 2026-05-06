@@ -74,7 +74,6 @@
         $_profile_transanctions = $_profile->transanctions;
     @endphp
     <div>
-        <h6 class="mb-2 text-xs text-gray-400">TRANSACTIONS <span class="text-blue-400">({{ $_profile_transanctions->count()/** @phpstan-ignore method.nonObject */}})</span></h6>
         <div class="py-2 overflow-x-auto">
             <table class="w-full" cellpadding="12">
                 <thead>
