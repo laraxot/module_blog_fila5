@@ -24,7 +24,8 @@ class GetTreeOptions
     }
 
     /**
-     * @param  Model  $model  - Model that uses HasRecursiveRelationships
+     * @param Model $model - Model that uses HasRecursiveRelationships
+     *
      * @return array<int|string, string>
      */
     public function execute(Model $model): array
