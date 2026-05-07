@@ -18,7 +18,11 @@ class Menu extends Component
 {
     public function __construct(
         public string $name,
+<<<<<<< Updated upstream
         public string $tpl = 'v1',
+=======
+        public string $tpl = 'v1'
+>>>>>>> Stashed changes
     ) {
     }
 
