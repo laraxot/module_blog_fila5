@@ -41,6 +41,5 @@ class TextWidgetForm extends XotBaseResourceForm
             Toggle::make('active')
                 ->required(),
         ];
-
     }
 }

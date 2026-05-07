@@ -172,6 +172,5 @@ class ArticleForm extends XotBaseResourceForm
             // ->preserveFilenames()
             ,
         ];
-
     }
 }

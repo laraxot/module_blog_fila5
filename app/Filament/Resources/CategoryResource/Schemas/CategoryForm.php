@@ -60,6 +60,5 @@ class CategoryForm extends XotBaseResourceForm
             // ->layout(\Guava\FilamentIconPicker\Layout::ON_TOP)
             ,
         ];
-
     }
 }
