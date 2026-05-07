@@ -23,7 +23,6 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListBanners extends XotBaseListRecords
 {
-
     /**
      * Definisce le colonne della tabella di elenco banner.
      *
