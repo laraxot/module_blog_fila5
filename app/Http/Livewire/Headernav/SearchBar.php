@@ -24,7 +24,7 @@ class SearchBar extends Component
 
         $results = [];
 
-        if ($this->search !== '' && $this->search !== '0') {
+        if ('' !== $this->search && '0' !== $this->search) {
             $results = Article::where('title', 'like', '%'.$this->search.'%')->get();
         }
 

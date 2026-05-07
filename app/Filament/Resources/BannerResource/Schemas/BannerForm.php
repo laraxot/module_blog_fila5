@@ -69,6 +69,5 @@ class BannerForm extends XotBaseResourceForm
                 // 'open_markets_count', // : 119,
             ]),
         ];
-
     }
 }
