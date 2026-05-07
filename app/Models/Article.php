@@ -316,10 +316,16 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Ottiene la traduzione di un attributo in una specifica lingua.
      *
+<<<<<<< Updated upstream
      * @param string $key               Il nome dell'attributo da tradurre
      * @param string $locale            Il codice della lingua richiesta
      * @param bool   $useFallbackLocale Se utilizzare o meno la lingua di fallback
      *
+=======
+     * @param  string  $key  Il nome dell'attributo da tradurre
+     * @param  string  $locale  Il codice della lingua richiesta
+     * @param  bool  $useFallbackLocale  Se utilizzare o meno la lingua di fallback
+>>>>>>> Stashed changes
      * @return array|string|int|null Il valore tradotto dell'attributo
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
@@ -327,14 +333,22 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         if (! $this->isTranslatableAttribute($key)) {
             $value = $this->getAttribute($key);
 
+<<<<<<< Updated upstream
             return null !== $value ? (string) $value : null;
+=======
+            return $value !== null ? (string) $value : null;
+>>>>>>> Stashed changes
         }
 
         $translations = $this->getTranslations($key);
 
         $translation = $translations[$locale] ?? '';
 
+<<<<<<< Updated upstream
         if ('' !== $translation || ! $useFallbackLocale) {
+=======
+        if ($translation !== '' || ! $useFallbackLocale) {
+>>>>>>> Stashed changes
             $value = $translation;
         } else {
             $fallbackLocale = config('app.fallback_locale');
@@ -624,7 +638,11 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         /** @var array<int, array<string, mixed>> */
         $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
 
+<<<<<<< Updated upstream
         /* @var array<string, mixed> */
+=======
+        /** @var array<string, mixed> */
+>>>>>>> Stashed changes
         return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
             $shouldExclude = false;
             foreach ($name_blocks as $block) {
@@ -688,7 +706,11 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles that belongs to an author.
      *
+<<<<<<< Updated upstream
      * @param $profile_id -> The id of the author
+=======
+     * @param  $profile_id  -> The id of the author
+>>>>>>> Stashed changes
      */
     public function scopeAuthor(EloquentBuilder $query, string $profile_id): EloquentBuilder
     {
@@ -700,7 +722,11 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles with a specified tag.
      *
+<<<<<<< Updated upstream
      * @param $id -> The id of the tag
+=======
+     * @param  $id  -> The id of the tag
+>>>>>>> Stashed changes
      */
     public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
     {

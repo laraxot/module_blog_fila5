@@ -52,6 +52,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Category withTrashed()
  * @method static Builder|Category withoutTrashed()
  *
+<<<<<<< Updated upstream
  * @property array|null                                                            $description
  * @property Carbon|null                                                           $deleted_at
  * @property string|null                                                           $deleted_by
@@ -80,6 +81,36 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property int|null                                                              $siblings_count
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $siblingsAndSelf            All the parent's children.
  * @property int|null                                                              $siblings_and_self_count
+=======
+ * @property array|null $description
+ * @property Carbon|null $deleted_at
+ * @property string|null $deleted_by
+ * @property string|null $parent_id
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $children
+ * @property int|null $children_count
+ * @property Category|null $parent
+ * @property mixed $post_counter
+ * @property mixed $translations
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $ancestors The model's recursive parents.
+ * @property int|null $ancestors_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $ancestorsAndSelf The model's recursive parents and itself.
+ * @property int|null $ancestors_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $bloodline The model's ancestors, descendants and itself.
+ * @property int|null $bloodline_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $childrenAndSelf The model's direct children and itself.
+ * @property int|null $children_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $descendants The model's recursive children.
+ * @property int|null $descendants_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $descendantsAndSelf The model's recursive children and itself.
+ * @property int|null $descendants_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $parentAndSelf The model's direct parent and itself.
+ * @property int|null $parent_and_self_count
+ * @property Category|null $rootAncestor The model's topmost parent.
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $siblings The parent's other children.
+ * @property int|null $siblings_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $siblingsAndSelf All the parent's children.
+ * @property int|null $siblings_and_self_count
+>>>>>>> Stashed changes
  *
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category breadthFirst()
