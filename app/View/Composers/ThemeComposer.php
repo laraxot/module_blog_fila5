@@ -6,8 +6,8 @@ namespace Modules\Blog\View\Composers;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -67,7 +67,7 @@ class ThemeComposer
             ->take($number)
             ->orderBy('published_at', 'desc')
             ->get();
-        if (0 === $rows->count()/* @phpstan-ignore method.nonObject */) {
+        if ($rows->count() === 0) {
             $rows = Article::get();
             Article::whereRaw('1=1')->update(['show_on_homepage' => true]);
         }
@@ -343,7 +343,7 @@ class ThemeComposer
                 $lang = app()->getLocale();
                 $content['title'] = $content['title'][$lang] ?? last($content['title']);
             }
-            /** @var array $content */
+            /* @var array $content */
             $tmp[] = ArticleData::from($content);
         }
 
@@ -362,11 +362,12 @@ class ThemeComposer
     }
 
     /**
-     * @return list<array<string, mixed>>
+     * @return array<int, array<string, mixed>>
      */
     public function getHotTopics(): array
     {
-        return Category::with([
+        /** @var array<int, array<string, mixed>> $categories */
+        $categories = Category::with([
             'categoryArticles' => static function (Builder $query): Builder {
                 return $query->withCount('ratings');
             },
@@ -382,5 +383,8 @@ class ThemeComposer
             ->take(3)
             ->values()
             ->all();
+
+        /** @var array<int, array<string, mixed>> $categories */
+        return $categories;
     }
 }
