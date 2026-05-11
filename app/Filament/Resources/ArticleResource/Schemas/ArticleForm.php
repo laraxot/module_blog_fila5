@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use Modules\Blog\Filament\Fields\ArticleContent;
 use Modules\Blog\Filament\Fields\ArticleFooter;
 use Modules\Blog\Filament\Fields\ArticleSidebar;
+use Modules\Blog\Filament\Resources\CategoryResource;
 use Modules\Blog\Models\Category;
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 use Webmozart\Assert\Assert;
