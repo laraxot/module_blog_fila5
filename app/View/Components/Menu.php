@@ -19,7 +19,8 @@ class Menu extends Component
     public function __construct(
         public string $name,
         public string $tpl = 'v1',
-    ) {}
+    ) {
+    }
 
     public function render(): Renderable
     {
@@ -32,7 +33,7 @@ class Menu extends Component
         $view_params = [
             'menu' => $menu,
         ];
-        if ($menu->items === null) {
+        if (null === $menu->items) {
             $menu->items = [];
             $menu->save();
         }
