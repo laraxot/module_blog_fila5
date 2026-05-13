@@ -14,7 +14,7 @@ use Filament\Schemas\Schema;
 // use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 // use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
 use Modules\Blog\Filament\Resources\ArticleResource;
-use Modules\Rating\Filament\Resources\HasRatingResource\Widgets as RatingWidgets;
+use Modules\Rating\Filament\Widgets\StatsOverview;
 // use Modules\Rating\Filament\Actions\Header\BetHeaderAction;
 // use Modules\Rating\Filament\Actions\Header\WinHeaderAction;
 use Webmozart\Assert\Assert;
@@ -85,7 +85,7 @@ class ViewArticle extends ViewRecord
     protected function getHeaderWidgets(): array
     {
         return [
-            RatingWidgets\StatsOverview::class,
+            StatsOverview::class,
         ];
     }
 }
