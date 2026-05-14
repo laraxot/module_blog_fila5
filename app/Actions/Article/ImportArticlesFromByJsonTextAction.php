@@ -8,12 +8,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
-
-use function Safe\json_decode;
-
 use Spatie\MediaLibrary\MediaCollections\FileAdder;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
+
+use function Safe\json_decode;
 
 class ImportArticlesFromByJsonTextAction
 {
@@ -73,7 +72,7 @@ class ImportArticlesFromByJsonTextAction
                 'title' => $j['title'],
                 'slug' => $j['slug'],
                 'status' => $j['status'],
-                'status_display' => 'open' === $j['status_display'],
+                'status_display' => $j['status_display'] === 'open',
                 'bet_end_date' => $bet_end_date,
                 'event_start_date' => $event_start_date,
                 'event_end_date' => $event_end_date,
