@@ -42,12 +42,13 @@ class ArticleData extends Data
         /** @var array<mixed> */
         public readonly array $outcomes = [],
         public readonly ?string $thumbnail_2x = null,
-    ) {}
+    ) {
+    }
 
     /**
      * Create from array with type casting.
      *
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     public static function fromArray(array $data): self
     {
