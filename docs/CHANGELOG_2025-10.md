@@ -9,12 +9,10 @@ Il modello `Transaction` è stato completamente rimosso dal modulo Blog in quant
 
 **File Rimossi:**
 - `Modules/Blog/app/Models/Transaction.php`
-- `Modules/Blog/database/migrations/2024_05_02_185212_create_transactions_table.php`
-- `Modules/Blog/database/Migrations/2024_05_02_185212_create_transactions_table.php`
-- `Modules/Blog/database/Factories/TransactionFactory.php`
-- `Modules/Blog/database/factories/TransactionFactory.php`
+- `Modules/Blog/database/factories/TransactionFactory.php` (entrambe le copie)
 
-#### 2. **Aggiornato Profile Model**
+**Nota**: I file erano presenti in entrambe le convenzioni (maiuscole e minuscole) per retrocompatibilità. Entrambi sono stati rimossi.
+
 Rimossi i riferimenti al modello Transaction da `Profile.php`:
 
 **Modifiche in `Modules/Blog/app/Models/Profile.php`:**
