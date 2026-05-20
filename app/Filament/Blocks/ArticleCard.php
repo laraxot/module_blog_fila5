@@ -26,6 +26,6 @@ class ArticleCard
                     ->label('Link text (optional)'),
             ])
             ->label('Link to article')
-            ->columns($context === 'form' ? 2 : 1);
+            ->columns('form' === $context ? 2 : 1);
     }
 }
