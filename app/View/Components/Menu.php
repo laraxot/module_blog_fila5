@@ -33,7 +33,7 @@ class Menu extends Component
         $view_params = [
             'menu' => $menu,
         ];
-        if (null === $menu->items) {
+        if ($menu->items === null) {
             $menu->items = [];
             $menu->save();
         }
