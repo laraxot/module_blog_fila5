@@ -90,6 +90,6 @@ class ArticleSeeder extends Seeder
             return $result;
         }
 
-        return new Collection;
+        return new Collection();
     }
 }
