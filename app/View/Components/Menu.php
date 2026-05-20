@@ -20,8 +20,11 @@ class Menu extends Component
         public string $name,
 <<<<<<< Updated upstream
         public string $tpl = 'v1',
+<<<<<<< Updated upstream
 =======
         public string $tpl = 'v1'
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     ) {
     }
@@ -37,7 +40,7 @@ class Menu extends Component
         $view_params = [
             'menu' => $menu,
         ];
-        if ($menu->items === null) {
+        if (null === $menu->items) {
             $menu->items = [];
             $menu->save();
         }

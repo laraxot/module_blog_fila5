@@ -20,8 +20,11 @@ class Meta extends Component
         public Article $article,
 <<<<<<< Updated upstream
         public string $tpl = 'v1',
+<<<<<<< Updated upstream
 =======
         public string $tpl = 'v1'
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     ) {
     }

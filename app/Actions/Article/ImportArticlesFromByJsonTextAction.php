@@ -9,11 +9,17 @@ use Illuminate\Support\Str;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 use function Safe\json_decode;
 
 use Spatie\MediaLibrary\MediaCollections\FileAdder;
 =======
+=======
+
+use function Safe\json_decode;
+
+>>>>>>> Stashed changes
 use Spatie\MediaLibrary\MediaCollections\FileAdder;
 use function Safe\json_decode;
 >>>>>>> Stashed changes
@@ -78,7 +84,7 @@ class ImportArticlesFromByJsonTextAction
                 'title' => $j['title'],
                 'slug' => $j['slug'],
                 'status' => $j['status'],
-                'status_display' => $j['status_display'] === 'open',
+                'status_display' => 'open' === $j['status_display'],
                 'bet_end_date' => $bet_end_date,
                 'event_start_date' => $event_start_date,
                 'event_end_date' => $event_end_date,

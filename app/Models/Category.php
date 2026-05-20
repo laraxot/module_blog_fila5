@@ -52,6 +52,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Category withTrashed()
  * @method static Builder|Category withoutTrashed()
  *
+<<<<<<< Updated upstream
  * <<<<<<< Updated upstream
  *
  * @property array|null                                                            $description
@@ -83,6 +84,8 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $siblingsAndSelf            All the parent's children.
  * @property int|null                                                              $siblings_and_self_count
  *                                                                                                             =======
+=======
+>>>>>>> Stashed changes
  * @property array|null                                                            $description
  * @property Carbon|null                                                           $deleted_at
  * @property string|null                                                           $deleted_by
@@ -111,7 +114,10 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property int|null                                                              $siblings_count
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|array<Category> $siblingsAndSelf            All the parent's children.
  * @property int|null                                                              $siblings_and_self_count
+<<<<<<< Updated upstream
  *                                                                                                             >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
  *
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        breadthFirst()
