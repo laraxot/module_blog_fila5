@@ -23,7 +23,6 @@ use Spatie\Tags\Tag as BaseTag;
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static EloquentBuilder|Tag                       containing(string $name, $locale = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
@@ -41,11 +40,9 @@ use Spatie\Tags\Tag as BaseTag;
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedBy($value)
  * @method static EloquentBuilder|Tag                       withType(?string $type = null)
- *
  * @property mixed       $translations
  * @property string|null $deleted_at
  * @property string|null $deleted_by
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Tag         whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag         whereDeletedBy($value)
  * @method static EloquentBuilder|Tag                               whereJsonContainsLocale(string $column, string $locale, ?mixed $value)
@@ -57,7 +54,6 @@ use Spatie\Tags\Tag as BaseTag;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereNotNull((string|Expression) $columns)
  * @method static int                                               count(string $columns = '*')
- *
  * @mixin \Eloquent
  */
 class Tag extends BaseTag
