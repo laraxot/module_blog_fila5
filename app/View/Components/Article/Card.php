@@ -21,8 +21,11 @@ class Card extends Component
         public bool $showAuthor = false,
 <<<<<<< Updated upstream
         public string $tpl = 'v1',
+<<<<<<< Updated upstream
 =======
         public string $tpl = 'v1'
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     ) {
     }

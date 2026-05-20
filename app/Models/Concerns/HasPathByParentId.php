@@ -22,14 +22,18 @@ trait HasPathByParentId
      */
     public function getPathAttribute(?string $value): string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
         $pathValue = $this->getPath();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         if (null !== $this->getKey()) {
 =======
         if ($this->getKey() !== null) {
+>>>>>>> Stashed changes
+=======
+        if (null !== $this->getKey()) {
 >>>>>>> Stashed changes
             $this->update(['path' => $pathValue]);
         }
@@ -45,7 +49,7 @@ trait HasPathByParentId
     public function getBreads(): string
     {
         $delim = ' > ';
-        if ($this->parent === null) {
+        if (null === $this->parent) {
             return '';
         }
 
@@ -60,11 +64,11 @@ trait HasPathByParentId
 
     public function getRootIdAttribute(?string $value): ?string
     {
-        if ($value !== null || $this->getKey() === null) {
+        if (null !== $value || null === $this->getKey()) {
             return $value;
         }
         $root = $this->rootAncestor()->first();
-        if ($root === null) {
+        if (null === $root) {
             $this->update(['root_id' => null]);
 
             return null;
@@ -88,11 +92,11 @@ trait HasPathByParentId
 
     public function getRootNameAttribute(?string $value): ?string
     {
-        if ($value !== null || $this->getKey() === null) {
+        if (null !== $value || null === $this->getKey()) {
             return $value;
         }
         $root = $this->rootAncestor()->first();
-        if ($root === null) {
+        if (null === $root) {
             $this->update(['root_name' => null]);
 
             return null;
@@ -106,10 +110,10 @@ trait HasPathByParentId
 
     public function getIsLeafAttribute(?bool $value): ?bool
     {
-        if ($value !== null || $this->getKey() === null) {
+        if (null !== $value || null === $this->getKey()) {
             return $value;
         }
-        $value = ($this->children()->count() === 0);
+        $value = (0 === $this->children()->count());
         $this->update(['is_leaf' => $value]);
 
         return $value;
@@ -117,7 +121,7 @@ trait HasPathByParentId
 
     public function getFullBreadsAttribute(?string $value): ?string
     {
-        if ($this->root_name !== null) {
+        if (null !== $this->root_name) {
             return $this->root_name.' > '.$this->breads;
         }
 
@@ -126,7 +130,7 @@ trait HasPathByParentId
 
     public function getBreadsAttribute(?string $value): ?string
     {
-        if ($value !== null || $this->getKey() === null) {
+        if (null !== $value || null === $this->getKey()) {
             return $value;
         }
 
