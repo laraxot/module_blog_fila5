@@ -34,6 +34,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
 /**
  * Modules\Blog\Models\Profile.
  *
+<<<<<<< Updated upstream
  * @property float                                                      $credits
  * @property int                                                        $id
  * @property string|null                                                $user_id
@@ -66,6 +67,40 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property int|null                                                   $notifications_count
  * @property \Illuminate\Database\Eloquent\Collection<int, Permission>  $permissions
  * @property int|null                                                   $permissions_count
+=======
+ * @property float $credits
+ * @property int $id
+ * @property string|null $user_id
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $email
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $deleted_at
+ * @property string|null $deleted_by
+ * @property string|null $slug
+ * @property SchemalessAttributes|null $extra
+ * @property \Illuminate\Database\Eloquent\Collection<int, Article> $articles
+ * @property int|null $articles_count
+ * @property string $avatar
+ * @property \Illuminate\Database\Eloquent\Collection<int, DeviceUser> $deviceUsers
+ * @property int|null $device_users_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, Device> $devices
+ * @property int|null $devices_count
+ * @property string|null $full_name
+ * @property MediaCollection<int, Media> $media
+ * @property int|null $media_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, DeviceUser> $mobileDeviceUsers
+ * @property int|null $mobile_device_users_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, Device> $mobileDevices
+ * @property int|null $mobile_devices_count
+ * @property DatabaseNotificationCollection<int, DatabaseNotification> $notifications
+ * @property int|null $notifications_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, Permission> $permissions
+ * @property int|null $permissions_count
+>>>>>>> Stashed changes
  * @property \Illuminate\Database\Eloquent\Collection<int, RatingMorph> $ratingMorphs
  * @property int|null $rating_morphs_count
  * @property \Illuminate\Database\Eloquent\Collection<int, Rating> $ratings
@@ -167,7 +202,11 @@ class Profile extends BaseProfile
     public function getAvatarUrl(): string
     {
         $url = $this->getFirstMediaUrl('photo_profile');
+<<<<<<< Updated upstream
         if ('' === $url) {
+=======
+        if ($url === '') {
+>>>>>>> Stashed changes
             return asset('modules/blog/img/no_user.webp');
         }
 
