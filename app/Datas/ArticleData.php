@@ -106,7 +106,7 @@ class ArticleData extends Data implements \Stringable
     public function url(string $type): string
     {
         $lang = app()->getLocale();
-        if ('show' === $type) {
+        if ($type === 'show') {
             return '/'.$lang.'/article/'.$this->slug;
         }
 

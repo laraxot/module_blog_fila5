@@ -12,6 +12,8 @@ use function Safe\json_encode;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
+use function Safe\json_encode;
+
 class TranslateContentAction
 {
     use QueueableAction;
@@ -19,9 +21,9 @@ class TranslateContentAction
     /**
      * Esegue la traduzione dei contenuti di un articolo.
      *
-     * @param list<string>        $locales
-     * @param array<string,mixed> $data
-     * @param class-string        $class
+     * @param  list<string>  $locales
+     * @param  array<string,mixed>  $data
+     * @param  class-string  $class
      */
     public function execute(string $model_class, string $article_id, array $locales, array $data, string $class): void
     {

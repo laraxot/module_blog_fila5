@@ -21,9 +21,9 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 /**
  * Modules\Blog\Models\Menu.
  *
- * @property int         $id
- * @property string      $name
- * @property array|null  $items
+ * @property int $id
+ * @property string $name
+ * @property array|null $items
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
@@ -31,7 +31,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
  *
- * @method static MenuFactory  factory($count = null, $state = [])
+ * @method static MenuFactory factory($count = null, $state = [])
  * @method static Builder|Menu newModelQuery()
  * @method static Builder|Menu newQuery()
  * @method static Builder|Menu onlyTrashed()
@@ -75,11 +75,11 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property Collection|array<Menu>      $siblingsAndSelf            All the parent's children.
  * @property int|null                    $siblings_and_self_count
  *
- * @method static Collection<int, static>                                 all($columns = ['*'])
+ * @method static Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu breadthFirst()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu depthFirst()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu doesntHaveChildren()
- * @method static Collection<int, static>                                 get($columns = ['*'])
+ * @method static Collection<int, static> get($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu getExpressionGrammar()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu hasChildren()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu hasParent()
@@ -106,13 +106,13 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property-read int $depth
  * @property-read string $path
  *
- * @method static Menu|null                                           first()
+ * @method static Menu|null first()
  * @method static \Illuminate\Database\Eloquent\Collection<int, Menu> get()
- * @method static Menu                                                create(array $attributes = [])
- * @method static Menu                                                firstOrCreate(array $attributes = [], array $values = [])
- * @method static Builder<static>|Menu                                where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|Menu                                whereNotNull((string|Expression) $columns)
- * @method static int                                                 count(string $columns = '*')
+ * @method static Menu create(array $attributes = [])
+ * @method static Menu firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Builder<static>|Menu where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|Menu whereNotNull((string|Expression) $columns)
+ * @method static int count(string $columns = '*')
  *
  * @property \Modules\Fixcity\Models\Profile|null $deleter
  *
@@ -132,7 +132,7 @@ class Menu extends BaseModel implements HasMedia
 
     public static function getTreeMenuOptions(): array
     {
-        $instance = new self();
+        $instance = new self;
 
         return app(GetTreeOptions::class)->execute($instance);
 
