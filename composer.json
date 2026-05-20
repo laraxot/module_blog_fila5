@@ -43,7 +43,6 @@
         }
     ],
     "require": {
-        "kalnoy/nestedset": "^6.0",
         "staudenmeir/laravel-adjacency-list": "*",
         "spatie/laravel-feed": "*",
         "staudenmeir/eloquent-has-many-deep": "*",
