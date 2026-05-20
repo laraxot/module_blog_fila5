@@ -48,7 +48,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
  *
-<<<<<<< Updated upstream
+ * <<<<<<< Updated upstream
  * <<<<<<< Updated upstream
  *
  * @property string                      $title
@@ -78,8 +78,8 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property Collection|array<Menu>      $siblingsAndSelf            All the parent's children.
  * @property int|null                    $siblings_and_self_count
  *                                                                   =======
-=======
->>>>>>> Stashed changes
+ *                                                                   =======
+ *                                                                   >>>>>>> Stashed changes
  * @property string                      $title
  * @property int|null                    $parent_id
  * @property Collection|array<Menu>      $children
@@ -106,10 +106,10 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property int|null                    $siblings_count
  * @property Collection|array<Menu>      $siblingsAndSelf            All the parent's children.
  * @property int|null                    $siblings_and_self_count
-<<<<<<< Updated upstream
+ *                                                                   <<<<<<< Updated upstream
  *                                                                   >>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+ *                                                                   =======
+ *                                                                   >>>>>>> Stashed changes
  *
  * @method static Collection<int, static>                                 all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu breadthFirst()
