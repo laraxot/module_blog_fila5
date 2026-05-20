@@ -25,6 +25,6 @@ class PageCard
                     ->label('Link text (optional)'),
             ])
             ->label('Link to page')
-            ->columns($context === 'form' ? 2 : 1);
+            ->columns('form' === $context ? 2 : 1);
     }
 }
