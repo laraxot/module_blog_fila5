@@ -18,7 +18,11 @@ class Meta extends Component
 {
     public function __construct(
         public Article $article,
+<<<<<<< Updated upstream
         public string $tpl = 'v1',
+=======
+        public string $tpl = 'v1'
+>>>>>>> Stashed changes
     ) {
     }
 

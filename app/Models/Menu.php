@@ -48,6 +48,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
  *
+<<<<<<< Updated upstream
  * @property string                      $title
  * @property int|null                    $parent_id
  * @property Collection|array<Menu>      $children
@@ -74,6 +75,34 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property int|null                    $siblings_count
  * @property Collection|array<Menu>      $siblingsAndSelf            All the parent's children.
  * @property int|null                    $siblings_and_self_count
+=======
+ * @property string $title
+ * @property int|null $parent_id
+ * @property Collection|array<Menu> $children
+ * @property int|null $children_count
+ * @property MediaCollection<int, Media> $media
+ * @property int|null $media_count
+ * @property Menu|null $parent
+ * @property Collection|array<Menu> $ancestors The model's recursive parents.
+ * @property int|null $ancestors_count
+ * @property Collection|array<Menu> $ancestorsAndSelf The model's recursive parents and itself.
+ * @property int|null $ancestors_and_self_count
+ * @property Collection|array<Menu> $bloodline The model's ancestors, descendants and itself.
+ * @property int|null $bloodline_count
+ * @property Collection|array<Menu> $childrenAndSelf The model's direct children and itself.
+ * @property int|null $children_and_self_count
+ * @property Collection|array<Menu> $descendants The model's recursive children.
+ * @property int|null $descendants_count
+ * @property Collection|array<Menu> $descendantsAndSelf The model's recursive children and itself.
+ * @property int|null $descendants_and_self_count
+ * @property Collection|array<Menu> $parentAndSelf The model's direct parent and itself.
+ * @property int|null $parent_and_self_count
+ * @property Menu|null $rootAncestor The model's topmost parent.
+ * @property Collection|array<Menu> $siblings The parent's other children.
+ * @property int|null $siblings_count
+ * @property Collection|array<Menu> $siblingsAndSelf All the parent's children.
+ * @property int|null $siblings_and_self_count
+>>>>>>> Stashed changes
  *
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu breadthFirst()
