@@ -26,15 +26,7 @@ trait HasPathByParentId
             return $value;
         }
         $pathValue = $this->getPath();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         if (null !== $this->getKey()) {
-=======
-        if ($this->getKey() !== null) {
->>>>>>> Stashed changes
-=======
-        if (null !== $this->getKey()) {
->>>>>>> Stashed changes
             $this->update(['path' => $pathValue]);
         }
 

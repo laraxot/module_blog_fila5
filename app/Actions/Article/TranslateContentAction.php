@@ -6,17 +6,6 @@ namespace Modules\Blog\Actions\Article;
 
 use Modules\Blog\Models\Article;
 use Modules\Xot\Actions\GetModelByModelTypeAction;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-use function Safe\json_encode;
-
-=======
->>>>>>> Stashed changes
-use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
-=======
->>>>>>> Stashed changes
 
 use function Safe\json_encode;
 
