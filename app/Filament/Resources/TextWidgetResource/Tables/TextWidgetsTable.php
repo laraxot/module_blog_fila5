@@ -25,7 +25,7 @@ class TextWidgetsTable extends XotBaseResourceTable
     /**
      * @return array<string, Column>
      */
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'key' => TextColumn::make('key'),
@@ -37,7 +37,7 @@ class TextWidgetsTable extends XotBaseResourceTable
     /**
      * @return array<string, Action|ActionGroup>
      */
-    public static function getTableActions(): array
+    public function getTableActions(): array
     {
         return [
             'view' => ViewAction::make(),
@@ -49,7 +49,7 @@ class TextWidgetsTable extends XotBaseResourceTable
     /**
      * @return array<string, BulkAction|BulkActionGroup>
      */
-    public static function getTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             'delete' => DeleteBulkAction::make(),

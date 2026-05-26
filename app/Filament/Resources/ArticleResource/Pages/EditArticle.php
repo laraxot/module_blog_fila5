@@ -16,7 +16,7 @@ use Modules\Xot\Actions\Cast\SafeArrayCastAction;
 
 class EditArticle extends LangBaseEditRecord
 {
-    protected static string $resource = ArticleResource::class;
+    public static string $resource = ArticleResource::class;
 
     protected function getHeaderActions(): array
     {
