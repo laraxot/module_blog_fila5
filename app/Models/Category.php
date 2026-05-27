@@ -52,7 +52,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Category withTrashed()
  * @method static Builder|Category withoutTrashed()
  *
- *
  * @property array|null                                                            $description
  * @property Carbon|null                                                           $deleted_at
  * @property string|null                                                           $deleted_by
