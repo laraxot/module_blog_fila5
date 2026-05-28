@@ -4,22 +4,24 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Enums;
 
-enum ArticleStatus: string
+use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasLabel;
+use Modules\Xot\Traits\EnumTrait;
+
+/**
+ * Enum for article statuses.
+ *
+ * Uses EnumTrait for getLabel(), getColor().
+ * Configure values in: Modules/Blog/lang/{locale}/enums.php
+ */
+enum ArticleStatus: string implements HasColor, HasLabel
 {
+    use EnumTrait;
+
     case DRAFT = 'draft';
     case PUBLISHED = 'published';
     case ARCHIVED = 'archived';
     case PENDING = 'pending';
-
-    public function label(): string
-    {
-        return match ($this) {
-            self::DRAFT => 'Bozza',
-            self::PUBLISHED => 'Pubblicato',
-            self::ARCHIVED => 'Archiviato',
-            self::PENDING => 'In attesa',
-        };
-    }
 
     public static function fromString(string $value): self
     {
