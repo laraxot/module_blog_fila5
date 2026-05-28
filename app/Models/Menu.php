@@ -48,7 +48,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
  *
- *
  * @property string                      $title
  * @property int|null                    $parent_id
  * @property Collection|array<Menu>      $children
