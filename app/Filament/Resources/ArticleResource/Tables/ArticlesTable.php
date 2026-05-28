@@ -11,7 +11,7 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class ArticlesTable extends XotBaseResourceTable
 {
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'title' => TextColumn::make('title')
@@ -45,7 +45,7 @@ class ArticlesTable extends XotBaseResourceTable
     /**
      * @return array<int|string, BaseFilter>
      */
-    public static function getTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             'category' => SelectFilter::make('category')

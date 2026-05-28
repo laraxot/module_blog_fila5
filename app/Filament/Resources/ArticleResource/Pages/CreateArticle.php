@@ -10,7 +10,7 @@ use Modules\Lang\Filament\Resources\Pages\LangBaseCreateRecord;
 
 class CreateArticle extends LangBaseCreateRecord
 {
-    protected static string $resource = ArticleResource::class;
+    public static string $resource = ArticleResource::class;
 
     protected function getHeaderActions(): array
     {
