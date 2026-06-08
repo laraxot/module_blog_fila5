@@ -24,7 +24,6 @@ return new class extends XotBaseMigration {
                 $table->string('name');
                 $table->text('reason')->nullable();
                 $table->morphs('model');
-                $table->timestamps();
             }
         );
         // -- UPDATE --
