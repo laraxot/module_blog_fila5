@@ -28,7 +28,7 @@ use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
-use Spatie\Comments\Models\Concerns\HasComments;
+use Modules\Comment\Models\Concerns\HasComments;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
