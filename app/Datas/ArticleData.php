@@ -27,7 +27,7 @@ class ArticleData extends Data implements \Stringable
      * @param array<int|string, mixed>|null          $footer_blocks
      * @param EloquentCollection<int, Category>|null $categories
      * @param array<int|string, mixed>|null          $ratings
-     * @param Collection<int, string>|null            $tags
+     * @param Collection<int, string>|null           $tags
      */
     public function __construct(
         public string $id,

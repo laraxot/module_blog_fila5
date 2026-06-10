@@ -14,15 +14,15 @@ use Spatie\Tags\Tag as BaseTag;
 /**
  * Modules\Blog\Models\Tag.
  *
- * @property int         $id
+ * @property int                  $id
  * @property array<string, mixed> $name
  * @property array<string, mixed> $slug
- * @property string|null $type
- * @property int|null    $order_column
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
+ * @property string|null          $type
+ * @property int|null             $order_column
+ * @property Carbon|null          $created_at
+ * @property Carbon|null          $updated_at
+ * @property string|null          $updated_by
+ * @property string|null          $created_by
  *
  * @method static EloquentBuilder|Tag                       containing(string $name, $locale = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()

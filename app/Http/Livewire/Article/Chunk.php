@@ -37,7 +37,7 @@ class Chunk extends Component
     }
 
     /**
-     * @param  array<string, mixed>  $params
+     * @param array<string, mixed> $params
      */
     /** @param array<mixed> $params */
     /** @param array<string, mixed> $params */

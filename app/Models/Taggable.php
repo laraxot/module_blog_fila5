@@ -15,14 +15,14 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Modules\Blog\Models\Taggable.
  *
- * @property int         $id
- * @property int         $tag_id
- * @property string      $taggable_type
- * @property int         $taggable_id
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
+ * @property int                  $id
+ * @property int                  $tag_id
+ * @property string               $taggable_type
+ * @property int                  $taggable_id
+ * @property Carbon|null          $created_at
+ * @property Carbon|null          $updated_at
+ * @property string|null          $updated_by
+ * @property string|null          $created_by
  * @property array<string, mixed> $custom_properties
  *
  * @method static Builder|Taggable newModelQuery()
@@ -137,7 +137,8 @@ class Taggable extends BaseMorphPivot
     }
 
     /**
-     * @param  array<mixed, mixed>  $properties
+     * @param array<mixed, mixed> $properties
+     *
      * @return array<string, mixed>
      */
     private static function normalizeCustomProperties(array $properties): array
