@@ -56,8 +56,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  *
  * @method static UpvoteDownvote|null             first()
  * @method static Collection<int, UpvoteDownvote> get()
- * @method static UpvoteDownvote                  create(array $attributes = [])
- * @method static UpvoteDownvote                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static UpvoteDownvote                  create(array<string, mixed> $attributes = [])
+ * @method static UpvoteDownvote                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|UpvoteDownvote  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|UpvoteDownvote  whereNotNull((string|Expression) $columns)
  * @method static int                             count(string $columns = '*')

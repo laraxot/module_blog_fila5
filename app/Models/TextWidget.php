@@ -67,8 +67,8 @@ use Webmozart\Assert\Assert;
  *
  * @method static TextWidget|null             first()
  * @method static Collection<int, TextWidget> get()
- * @method static TextWidget                  create(array $attributes = [])
- * @method static TextWidget                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static TextWidget                  create(array<string, mixed> $attributes = [])
+ * @method static TextWidget                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|TextWidget  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|TextWidget  whereNotNull((string|Expression) $columns)
  * @method static int                         count(string $columns = '*')

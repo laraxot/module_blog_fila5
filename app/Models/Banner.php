@@ -24,7 +24,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  *
  * @property int         $id
  * @property string      $name
- * @property array|null  $items
+ * @property array<string, mixed>|null $items
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
@@ -87,8 +87,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  *
  * @method static Banner|null             first()
  * @method static Collection<int, Banner> get()
- * @method static Banner                  create(array $attributes = [])
- * @method static Banner                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Banner                  create(array<string, mixed> $attributes = [])
+ * @method static Banner                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Banner  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Banner  whereNotNull((string|Expression) $columns)
  * @method static int                     count(string $columns = '*')
@@ -186,6 +186,7 @@ class Banner extends BaseModel implements HasMedia
         return $this->getFirstMediaUrl('banner');
     }
 
+    /** @return BelongsTo<Category, $this> */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

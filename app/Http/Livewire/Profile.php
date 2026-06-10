@@ -13,7 +13,7 @@ use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
 // use Modules\Blog\Models\Profile;
 use Modules\Blog\Models\Profile as BlogProfile;
-use Modules\Xot\Actions\Cast\SafeArrayCastAction;
+use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
 
@@ -28,6 +28,7 @@ class Profile extends Page implements HasForms
     public string $tpl = 'v1';
 
     // public string $user_id;
+    /** @var array<string, mixed> */
     public array $data = [];
 
     public BlogProfile $model;
@@ -42,29 +43,13 @@ class Profile extends Page implements HasForms
     ): void {
         $this->model = $model;
         $this->tpl = $tpl;
-        $this->data = $this->model->toArray();
-        unset(
-            $this->data['id'],
-            $this->data['user_id'],
-            $this->data['created_at'],
-            $this->data['updated_at'],
-            $this->data['updated_by'],
-            $this->data['created_by'],
-            $this->data['deleted_at'],
-            $this->data['deleted_by'],
-
-            $this->data['slug'],
-            $this->data['extra']
-        );
+        $this->data = self::buildFormData($this->model);
 
         // $this->data['photo_profile'] = $this->model->getFirstMedia('photo_profile');
 
         // dddx($this->data);
 
-        /** @var array<string, mixed> $formData */
-        $formData = SafeArrayCastAction::cast($this->data);
-
-        $this->form->fill($formData);
+        $this->form->fill($this->data);
     }
 
     public function render(): View
@@ -81,6 +66,9 @@ class Profile extends Page implements HasForms
         return view((string) $view, $view_params);
     }
 
+    /**
+     * @param array<string, mixed> $params
+     */
     public function url(string $name, array $params): string
     {
         return '#';
@@ -130,6 +118,38 @@ class Profile extends Page implements HasForms
         // }
     }
 
+    /**
+     * @return array<string, mixed>
+     */
+    private static function buildFormData(BlogProfile $model): array
+    {
+        $excluded = [
+            'id',
+            'user_id',
+            'created_at',
+            'updated_at',
+            'updated_by',
+            'created_by',
+            'deleted_at',
+            'deleted_by',
+            'slug',
+            'extra',
+        ];
+        $attributes = app(SafeArrayByModelCastAction::class)->execute($model);
+        $data = [];
+        foreach ($attributes as $key => $value) {
+            if (! is_string($key) || in_array($key, $excluded, true)) {
+                continue;
+            }
+            $data[$key] = $value;
+        }
+
+        return $data;
+    }
+
+    /**
+     * @return array<int, Action>
+     */
     protected function getFormActions(): array
     {
         return [
