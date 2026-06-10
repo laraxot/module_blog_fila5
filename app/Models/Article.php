@@ -20,15 +20,15 @@ use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
 use Modules\Media\Models\Media;
-use Modules\Rating\Models\Contracts\HasRatingContract;
 use Modules\Rating\Models\Rating;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
-use Spatie\Comments\Models\Concerns\HasComments;
+use Modules\Comment\Models\Concerns\HasComments;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -62,7 +62,7 @@ use Webmozart\Assert\Assert;
  * @property string                      $description
  * @property string                      $main_image_upload
  * @property string                      $main_image_url
- * @property array|string                $content_blocks
+ * @property array<string, mixed>|string $content_blocks
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article article(string $id)
  * @method static \Illuminate\Database\Eloquent\Builder|Article author(string $profile_id)
@@ -80,12 +80,12 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|Article search(string $searching)
  * @method static \Illuminate\Database\Eloquent\Builder|Article showHomepage()
  * @method static \Illuminate\Database\Eloquent\Builder|Article tag(string $id)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTags((ArrayAccess|Tag|array|string) $tags, ?string $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTagsOfAnyType($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTags((ArrayAccess|Tag|array|string) $tags, ?string $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTagsOfAnyType($tags)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTags((ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTagsOfAnyType(array<int|string, Tag>|string $tags)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTags((ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTagsOfAnyType(array<int|string, Tag>|string $tags)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTags((ArrayAccess|Tag|array|string) $tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTags((ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTrashed()
  *
  * @property string                          $id
@@ -103,8 +103,8 @@ use Webmozart\Assert\Assert;
  * @property string|null                     $updated_by
  * @property string|null                     $created_by
  * @property string|null                     $deleted_by
- * @property array|null                      $footer_blocks
- * @property array|null                      $sidebar_blocks
+ * @property array<string, mixed>|null       $footer_blocks
+ * @property array<string, mixed>|null       $sidebar_blocks
  * @property int                             $is_featured
  * @property string|null                     $closed_at
  * @property Category|null                   $category
@@ -129,7 +129,7 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereIsFeatured($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereLocale(string $column, string $locale)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereLocales(string $column, array $locales)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereLocales(string $column, array<string, mixed> $locales)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereMainImageUpload($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereMainImageUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article wherePicture($value)
@@ -179,7 +179,7 @@ use Webmozart\Assert\Assert;
  * @property RatingMorph $pivot
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereJsonContainsLocale(string $column, string $locale, ?mixed $value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereJsonContainsLocales(string $column, array $locales, ?mixed $value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereJsonContainsLocales(string $column, array<string, mixed> $locales, ?mixed $value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereRewardedAt($value)
  *
  * @property ProfileContract|null $creator
@@ -210,23 +210,23 @@ use Webmozart\Assert\Assert;
  * @method static EloquentBuilder<static>|Article                       whereSumCreditNo($value)
  * @method static EloquentBuilder<static>|Article                       whereSumCreditYes($value)
  * @method static EloquentBuilder<static>|Article                       whereType($value)
- * @method static EloquentBuilder<static>|Article                       withAnyTagsOfType(array|string $type)
+ * @method static EloquentBuilder<static>|Article                       withAnyTagsOfType(array<string, mixed>|string $type)
  * @method static Article|null                                          first()
  * @method static Collection<int, Article>                              get()
- * @method static Article                                               create(array $attributes = [])
- * @method static Article                                               firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Article                                               create(array<string, mixed> $attributes = [])
+ * @method static Article                                               firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereNotNull((string|Expression) $columns)
  * @method static int                                                   count(string $columns = '*')
  *
  * @property \Modules\Fixcity\Models\Profile|null $deleter
  *
- * @method static EloquentBuilder<static>|Article childrenWith(array $relations)
- * @method static EloquentBuilder<static>|Article childrenWithCount(array $relations)
+ * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
+ * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
  *
  * @mixin \Eloquent
  */
-class Article extends BaseModel implements Feedable, HasRatingContract, HasTranslationsContract
+class Article extends BaseModel implements Feedable, HasTranslationsContract
 {
     use HasChildren;
     use HasComments;
@@ -320,14 +320,14 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
      * @param string $locale            Il codice della lingua richiesta
      * @param bool   $useFallbackLocale Se utilizzare o meno la lingua di fallback
      *
-     * @return array|string|int|null Il valore tradotto dell'attributo
+     * @return array<int|string, mixed>|string|int|null Il valore tradotto dell'attributo
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
         if (! $this->isTranslatableAttribute($key)) {
             $value = $this->getAttribute($key);
 
-            return null !== $value ? (string) $value : null;
+            return null !== $value ? SafeStringCastAction::cast($value) : null;
         }
 
         $translations = $this->getTranslations($key);
@@ -365,12 +365,14 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * Wrapper statico per latest() richiesto da PHPStan.
+     *
+     * @return EloquentBuilder<Article>
      */
     public static function latest(?string $column = null): EloquentBuilder
     {
         $column = $column ?? self::CREATED_AT;
 
-        /** @var EloquentBuilder $query */
+        /** @var EloquentBuilder<Article> $query */
         $query = static::query()->latest($column);
 
         return $query;
@@ -388,6 +390,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         ];
     }
 
+    /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
         $user_class = XotData::make()->getUserClass();
@@ -395,6 +398,7 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         return $this->belongsTo($user_class);
     }
 
+    /** @return BelongsTo<Category, $this> */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -440,21 +444,25 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         // return '/storage/'.$this->thumbnail;
     }
 
+    /** @return Attribute<string, never> */
     public function humanReadTime(): Attribute
     {
-        return new Attribute(
-            get: static function ($value, array $attributes): string {
-                $words = Str::wordCount(strip_tags((string) $attributes['body']));
+        return Attribute::make(
+            get: static function (mixed $value, array $attributes): string {
+                $words = Str::wordCount(strip_tags(SafeStringCastAction::cast($attributes['body'] ?? '')));
                 $minutes = ceil($words / 200);
 
                 return $minutes.' '.str('min')->plural((int) $minutes).', '
                     .$words.' '.str('word')->plural($words);
-            }
+            },
         );
     }
 
     /**
      * Scope a query to only include articles different from current article.
+     *
+     * @param  EloquentBuilder<Article>  $query
+     * @return EloquentBuilder<Article>
      */
     public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $current_article): EloquentBuilder
     {
@@ -463,6 +471,8 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * The author that belong to the article.
+     *
+     * @return BelongsTo<Profile, $this>
      */
     public function author(): BelongsTo
     {
@@ -596,9 +606,10 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         return 'slug';
     }
 
-    /* ----
     /**
-     * @return array<string, mixed>
+     * @param array<int, string> $name_blocks
+     *
+     * @return array<int, array<string, mixed>>
      */
     public function getOnlyContentBlocks(array $name_blocks): array
     {
@@ -613,10 +624,12 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
             }
 
             return false;
-        })->toArray();
+        })->values()->all();
     }
 
     /**
+     * @param array<int, string> $name_blocks
+     *
      * @return array<int, array<string, mixed>>
      */
     public function getExceptContentBlocks(array $name_blocks): array
@@ -624,7 +637,6 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
         /** @var array<int, array<string, mixed>> */
         $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
 
-        /* @phpstan-ignore-next-line */
         return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
             $shouldExclude = false;
             foreach ($name_blocks as $block) {
@@ -635,11 +647,15 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
             }
 
             return ! $shouldExclude;
-        })->values()->toArray();
+        })->values()->all();
     }
 
     /**
      * Scope a query to only include articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopeArticle(EloquentBuilder $query, string $id): EloquentBuilder
     {
@@ -648,6 +664,10 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * Scope a query to only include published articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopePublished(EloquentBuilder $query): EloquentBuilder|QueryBuilder
     {
@@ -659,6 +679,10 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * Scope a query to only include show on homepage articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopeShowHomepage(EloquentBuilder $query): EloquentBuilder
     {
@@ -667,6 +691,10 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
 
     /**
      * Scope a query to only include posted articles until today.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder|QueryBuilder
     {
@@ -676,31 +704,36 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles with a specified category.
      *
-     * @param $id -> The id of the category
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the category
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopeCategory(EloquentBuilder $query, string $id): EloquentBuilder
     {
-        return $query->whereHas('category', static function ($q) use ($id): void {
-            $q->where('id', $id);
-        });
+        return $query->where('category_id', $id);
     }
 
     /**
      * Scope a query to only include articles that belongs to an author.
      *
-     * @param $profile_id -> The id of the author
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $profile_id The id of the author
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopeAuthor(EloquentBuilder $query, string $profile_id): EloquentBuilder
     {
-        return $query->whereHas('author', static function ($q) use ($profile_id): void {
-            $q->where('id', $profile_id);
-        });
+        return $query->where('author_id', $profile_id);
     }
 
     /**
      * Scope a query to only include articles with a specified tag.
      *
-     * @param $id -> The id of the tag
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the tag
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
     {
@@ -712,7 +745,10 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     /**
      * Scope a query to only include articles which contains searching words.
      *
-     * @param $searching -> The searching words
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $searching The searching words
+     *
+     * @return EloquentBuilder<Article>
      */
     public function scopeSearch(EloquentBuilder $query, string $searching): EloquentBuilder
     {
@@ -775,30 +811,17 @@ class Article extends BaseModel implements Feedable, HasRatingContract, HasTrans
     //    return $this->belongsToMany(Tag::class);
     // }
 
-    /*
-     * Get the comments of the article.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Comment>
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    /**
-     * Get the article's main image.
-     */
+    /** @return Attribute<string, never> */
     protected function mainImage(): Attribute
     {
-        return new Attribute(
-            get: static function ($value, $attributes): string {
-                /** @var array<string, mixed> $attributes */
+        return Attribute::make(
+            get: static function (mixed $value, array $attributes): string {
                 $imageUpload = $attributes['main_image_upload'] ?? null;
                 $imageUrl = $attributes['main_image_url'] ?? null;
                 $result = $imageUpload ?? $imageUrl ?? '#';
 
-                return is_string($result) ? $result : (string) $result;
-            }
+                return SafeStringCastAction::cast($result);
+            },
         );
     }
 }

@@ -21,11 +21,10 @@ class ImportArticlesFromByJsonTextAction
 
     public function execute(string $json_text): void
     {
-        /** @var array $json */
+        /** @var array<mixed> $json */
         $json = json_decode($json_text, true);
         Assert::isArray($json, '['.__LINE__.']['.__FILE__.']');
 
-        /** @var array $j */
         foreach ($json as $j) {
             Assert::isArray($j, 'Each element must be an array');
 
@@ -43,11 +42,10 @@ class ImportArticlesFromByJsonTextAction
             }
 
             $parent_category_id = null;
-            /** @var array $categories */
+            /** @var array<mixed> $categories */
             $categories = $j['category'] ?? [];
             Assert::isArray($categories, 'Category must be an array');
 
-            /** @var array $cat */
             foreach ($categories as $cat) {
                 // dddx($category);
                 Assert::isArray($cat, 'Category item must be an array');
@@ -96,16 +94,18 @@ class ImportArticlesFromByJsonTextAction
 
             $article = Article::firstOrCreate($article_where, $article_data);
 
-            /** @var array $outcomes */
+            /** @var array<int, array<string, mixed>> $outcomes */
             $outcomes = $j['outcomes'];
-            /** @var array $rating */
             foreach ($outcomes as $rating) {
+                if (! is_array($rating)) {
+                    continue;
+                }
                 $rating_where = [
-                    'title' => $rating['title'] ?? '',
+                    'title' => is_string($rating['title'] ?? null) ? $rating['title'] : '',
                 ];
                 $rating_data = [
-                    'title' => $rating['title'] ?? '',
-                    'is_disabled' => $rating['disabled'] ?? false,
+                    'title' => is_string($rating['title'] ?? null) ? $rating['title'] : '',
+                    'is_disabled' => (bool) ($rating['disabled'] ?? false),
                 ];
 
                 $ratingModel = $article->ratings()->firstOrCreate($rating_where, $rating_data);

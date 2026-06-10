@@ -47,8 +47,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @method static ArticleCategory|null             first()
  * @method static Collection<int, ArticleCategory> get()
- * @method static ArticleCategory                  create(array $attributes = [])
- * @method static ArticleCategory                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static ArticleCategory                  create(array<string, mixed> $attributes = [])
+ * @method static ArticleCategory                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|ArticleCategory  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|ArticleCategory  whereNotNull((string|Expression) $columns)
  * @method static int                              count(string $columns = '*')

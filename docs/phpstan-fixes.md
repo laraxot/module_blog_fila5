@@ -1,8 +1,10 @@
 # Blog Module - PHPStan Level 7 Fixes - Gennaio 2025
 
-## ✅ **Stato Completato**
+## ✅ Stato: 0 errori (level max)
 
-Il modulo Blog è stato completamente risolto per PHPStan Level 7 con 0 errori rimanenti.
+Verificato 2026-06-09: `phpstan analyse Modules/Blog` → OK.
+
+Baseline STORY-286: 152 errori (`missingType.generics`, `missingType.iterableValue`, `assign.propertyType`).
 
 ## 🔧 **Correzioni Implementate**
 
@@ -67,13 +69,8 @@ protected function getHeaderActions(): array
 *Ultimo aggiornamento: Gennaio 2025*
 *Stato: ✅ Completato - 0 errori PHPStan*
 
-## Nuove segnalazioni PHPStan 2026-03-02
+## STORY-286 (2026-06-09)
 
-- **Livewire `Profile/Setting`**: accesso a proprietà `email` e `email_verified_at` su `UserContract` e chiamate a `update()` non definite.  
-  **Piano di fix**: usare un DTO `UserProfileData` tipizzato, delegare gli update a un'Action (`UpdateUserProfileAction`) che lavora sull'implementazione concreta di `UserContract`, ed evitare accessi diretti a proprietà non dichiarate nel contratto.
-- **`Article::toFeedItem()` / `FeedItem::authorName()`**: PHPStan segnala `mixed` passato a `authorName(string)`.  
-  **Piano di fix**: normalizzare il nome autore in una variabile `string` (cast sicuro o `Assert::stringNotEmpty`) prima di passarlo a `FeedItem`.
-- **`Transaction::factory()` PHPDoc**: riferimento a `Modules\Blog\Database\Factories\TransactionFactory` inesistente.  
-  **Piano di fix**: creare la factory nel namespace corretto oppure rimuovere/aggiornare il tag `@method` per riflettere la realtà del codice.
-- **`Blog\View\Composers\ThemeComposer` / componente `Blocks`**: costruttore chiamato senza parametro `view` e con `blocks` potenzialmente `null`.  
-  **Piano di fix**: passare sempre una view esplicita (`ui::components.render.blocks.v1`) e garantire che `$blocks` sia `array<int|string,mixed>` (fallback `[]` se `null`), in linea con l'uso già documentato nei moduli Cms/UI.
+Pattern aggiuntivi: `EloquentBuilder<Model>`, `BelongsTo<Related, $this>`, `EloquentCollection<int, Category>`, `array<string, mixed>` su pivot/factory, `SafeStringCastAction` in `Article`.
+
+Piani 2026-03-02 risolti o assorbiti in STORY-286 — vedi `docs/stories/STORY-286-phpstan-blog-zero-errors.dev.md`.

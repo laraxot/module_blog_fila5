@@ -30,6 +30,11 @@ class CategoryResource extends XotBaseResource
 
     // protected static ?string $navigationGroup = 'Content';
 
+    /**
+     * @return array<int, string>
+     */
+    /** @return array<int, string> */
+    /** @return array<int, string> */
     public static function getTranslatableLocales(): array
     {
         return ['it', 'en'];

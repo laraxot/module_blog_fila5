@@ -5,16 +5,30 @@ declare(strict_types=1);
 namespace Modules\Blog\Datas;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
 use Modules\Blog\Actions\Category\GetBloodline;
 use Modules\Blog\Models\Article;
+use Modules\Blog\Models\Category;
 use Spatie\LaravelData\Data;
 use Webmozart\Assert\Assert;
 
+/**
+ * @phpstan-consistent-constructor
+ */
 class ArticleData extends Data implements \Stringable
 {
     public string $title;
 
+    /**
+     * @param array<string, string>|string           $title
+     * @param array<int|string, mixed>|null          $content_blocks
+     * @param array<int|string, mixed>|null          $sidebar_blocks
+     * @param array<int|string, mixed>|null          $footer_blocks
+     * @param EloquentCollection<int, Category>|null $categories
+     * @param array<int|string, mixed>|null          $ratings
+     * @param Collection<int, string>|null            $tags
+     */
     public function __construct(
         public string $id,
         public string $uuid,
@@ -27,19 +41,13 @@ class ArticleData extends Data implements \Stringable
         public ?array $content_blocks,
         public ?array $sidebar_blocks,
         public ?array $footer_blocks,
-        public ?Collection $categories,
+        public ?EloquentCollection $categories,
         public ?string $url,
         public ?array $ratings,
         public ?string $closed_at,
         public ?string $closed_at_date,
-        // public ?int $betting_users,
         public ?string $time_left_for_humans,
-        // public ?float $volume_credit,
         public ?Collection $tags,
-        // public string $class,
-        // public string $articleId;
-        // public string $ratingId;
-        // public int $credit;
     ) {
         $resolved = $title;
         if (is_array($title)) {
@@ -49,59 +57,28 @@ class ArticleData extends Data implements \Stringable
         $this->title = is_string($resolved)
             ? $resolved
             : (is_scalar($resolved) ? (string) $resolved : '');
-        // $this->url = $this->getUrl();
         $this->categories = $this->getCategories();
 
         $this->closed_at_date = Carbon::parse($this->closed_at)->format('Y-m-d');
 
         Assert::notNull($article = Article::where('uuid', $this->uuid)->first(), '['.__LINE__.']['.__FILE__.']');
-        // $this->betting_users = $article->getBettingUsers();
         $this->ratings = $article->getArrayRatingsWithImage();
         $this->time_left_for_humans = $article->getTimeLeftForHumans();
-        // $this->volume_credit = $article->getVolumeCredit();
-        $this->tags = $article->tags->map(fn ($tag) => $tag->name ?? '');
+        $this->tags = $article->tags->map(static fn ($tag): string => is_string($tag->name ?? null) ? $tag->name : (string) ($tag->name ?? ''));
     }
 
-    // public function getClosedAt(): string
-    // {
-    //     return $carbonDate = Carbon::parse($this->closed_at)->format('Y-m-d');
-    // }
-
-    // public function getTimeLeftForHumans(): string
-    // {
-    //     dddx('a');
-    //     return $this->getArticle()->getTimeLeftForHumans();
-    // }
     public function __toString(): string
     {
         return '['.__LINE__.']['.__FILE__.']';
     }
 
-    public function getCategories(): Collection
+    /**
+     * @return EloquentCollection<int, Category>
+     */
+    public function getCategories(): EloquentCollection
     {
         return app(GetBloodline::class)->execute($this->category_id);
-
-        // Assert::notNull($category = Category::find($this->category_id),'['.__LINE__.']['.__FILE__.']');
-
-        // return $category->bloodline()->get()->reverse();
     }
-
-    // public function getArticle(): Article
-    // {
-    //     Assert::notNull($article = Article::where('uuid', $this->uuid)->first(),'['.__LINE__.']['.__FILE__.']');
-
-    //     return $article;
-    // }
-
-    // public function getRatings(): array
-    // {
-    //     return $this->getArticle()->getArrayRatingsWithImage();
-    // }
-
-    // public function getBettingUsers(): int
-    // {
-    //     return $this->getArticle()->getBettingUsers();
-    // }
 
     public function url(string $type): string
     {
@@ -109,10 +86,6 @@ class ArticleData extends Data implements \Stringable
         if ('show' === $type) {
             return '/'.$lang.'/article/'.$this->slug;
         }
-
-        // if ('edit' == $type) { // NON ESISTE EDIT NEL FRONTEND !!!
-        //    return '/'.$lang.'/article/'.$this->slug.'/edit';
-        // }
 
         return '#';
     }
