@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Comment\Models\CommentNotificationSubscription;
+use Modules\Comment\Models\Concerns\HasComments;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
 use Modules\Media\Models\Media;
 use Modules\Rating\Models\Rating;
@@ -28,7 +29,6 @@ use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
-use Modules\Comment\Models\Concerns\HasComments;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -461,7 +461,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract
     /**
      * Scope a query to only include articles different from current article.
      *
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $current_article): EloquentBuilder

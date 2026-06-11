@@ -56,7 +56,8 @@ class ArticleSeeder extends Seeder
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
+     *
      * @return Collection<int, Article>
      */
     private function createArticle(array $data = []): Collection

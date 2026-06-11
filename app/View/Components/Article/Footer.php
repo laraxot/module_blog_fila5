@@ -20,7 +20,7 @@ class Footer extends Component
     public array $blocks = [];
 
     /**
-     * @param  array<int, array<string, mixed>>|string|null  $blocks
+     * @param array<int, array<string, mixed>>|string|null $blocks
      */
     public function __construct(
         array|string|null $blocks,
