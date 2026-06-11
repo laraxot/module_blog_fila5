@@ -112,8 +112,8 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile          whereOauthEnable($value)
  * @method static Profile|null                                           first()
  * @method static \Illuminate\Database\Eloquent\Collection<int, Profile> get()
- * @method static Profile                                                create(array $attributes = [])
- * @method static Profile                                                firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Profile                                                create(array<string, mixed> $attributes = [])
+ * @method static Profile                                                firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Profile  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Profile  whereNotNull((string|Expression) $columns)
  * @method static int                                                    count(string $columns = '*')
@@ -122,8 +122,8 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @property \Modules\Fixcity\Models\Profile|null $deleter
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static> byUuid(string $uuid)
- * @method static \Illuminate\Database\Eloquent\Builder<static> childrenWith(array $relations)
- * @method static \Illuminate\Database\Eloquent\Builder<static> childrenWithCount(array $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static> childrenWith(array<string, mixed> $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static> childrenWithCount(array<string, mixed> $relations)
  *
  * @mixin \Eloquent
  */
@@ -144,6 +144,7 @@ class Profile extends BaseProfile
         'extra',
     ];
 
+    /** @var list<string> */
     protected array $schemalessAttributes = [
         'extra',
     ];
@@ -191,14 +192,17 @@ class Profile extends BaseProfile
         return $this->hasMany(RatingMorph::class, 'user_id', 'user_id');
     }
     */
-    // : int
+    /** @return Collection<int, int|string> */
     public function getArticleTraded(): Collection
     {
-        // ->get()
-        // ->count()
-
-        return RatingMorph::where('user_id', $this->user_id)
+        /** @var Collection<int, int|string> $ids */
+        $ids = RatingMorph::where('user_id', $this->user_id)
             ->groupBy('model_id')
-            ->pluck('model_id');
+            ->pluck('model_id')
+            ->filter(static fn (mixed $id): bool => is_int($id) || is_string($id))
+            ->map(static fn (mixed $id): int|string => is_int($id) ? $id : (string) $id)
+            ->values();
+
+        return $ids;
     }
 }

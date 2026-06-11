@@ -8,6 +8,7 @@ use Closure;
 use Illuminate\Contracts\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
@@ -89,8 +90,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  *
  * @method static Comment|null             first()
  * @method static Collection<int, Comment> get()
- * @method static Comment                  create(array $attributes = [])
- * @method static Comment                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Comment                  create(array<string, mixed> $attributes = [])
+ * @method static Comment                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Comment  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Comment  whereNotNull((string|Expression) $columns)
  * @method static int                      count(string $columns = '*')
@@ -110,6 +111,7 @@ class Comment extends BaseModel
         'article_id',
     ];
 
+    /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
         $user_class = XotData::make()->getUserClass();
@@ -119,6 +121,8 @@ class Comment extends BaseModel
 
     /**
      * The comment that belong to the author.
+     *
+     * @return BelongsTo<Profile, $this>
      */
     public function author(): BelongsTo
     {
@@ -127,12 +131,15 @@ class Comment extends BaseModel
 
     /**
      * The comment that belong to the article.
+     *
+     * @return BelongsTo<Article, $this>
      */
     public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class);
     }
 
+    /** @return BelongsTo<Comment, $this> */
     public function parentComment(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id');
@@ -140,6 +147,8 @@ class Comment extends BaseModel
 
     /**
      * The childrens of a comment(reply).
+     *
+     * @return HasMany<Comment, $this>
      */
     public function childrens(): HasMany
     {

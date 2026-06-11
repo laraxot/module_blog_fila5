@@ -18,7 +18,7 @@ class Lists extends Component
 
     // All categories
     /**
-     * @var Collection<Category>
+     * @var Collection<int, Category>
      */
     public Collection $categories;
 
@@ -92,7 +92,7 @@ class Lists extends Component
     // }
 
     /**
-     * Summary of getArticleQuery.
+     * @return EloquentBuilder<Article>
      */
     private function getArticleQuery(): EloquentBuilder
     {

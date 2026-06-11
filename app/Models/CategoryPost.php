@@ -48,8 +48,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @method static CategoryPost|null             first()
  * @method static Collection<int, CategoryPost> get()
- * @method static CategoryPost                  create(array $attributes = [])
- * @method static CategoryPost                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static CategoryPost                  create(array<string, mixed> $attributes = [])
+ * @method static CategoryPost                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|CategoryPost  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|CategoryPost  whereNotNull((string|Expression) $columns)
  * @method static int                           count(string $columns = '*')

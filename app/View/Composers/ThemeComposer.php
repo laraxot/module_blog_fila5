@@ -44,12 +44,18 @@ class ThemeComposer
         return $this->categories();
     }
 
+    /**
+     * @return EloquentCollection<int, Article>
+     */
     public function getArticles(): EloquentCollection
     {
         return Article::all()
             ->sortBy(['created_at', 'desc']);
     }
 
+    /**
+     * @return Collection<int, mixed>
+     */
     public function getArticlesType(string $type, int $number = 6): Collection
     {
         $fun = 'get'.Str::studly($type).'Articles';
@@ -59,6 +65,9 @@ class ThemeComposer
         return $result instanceof Collection ? $result : collect();
     }
 
+    /**
+     * @return Collection<int, Article>
+     */
     public function getFeaturedArticles(int $number = 6): Collection
     {
         $rows = Article::published()
@@ -75,6 +84,9 @@ class ThemeComposer
         return $rows;
     }
 
+    /**
+     * @return Collection<int, Article>
+     */
     public function getLatestArticles(int $number = 6): Collection
     {
         return Article::published()
@@ -97,6 +109,9 @@ class ThemeComposer
         return $this->getArticleDataArray($rows);
     }
 
+    /**
+     * @return Paginator<int, Article>
+     */
     public function paginateArticlesByCategory(string $category_id, int $limit = 6): Paginator
     {
         return Article::where('category_id', $category_id)
@@ -115,6 +130,9 @@ class ThemeComposer
     }
     */
 
+    /**
+     * @return Collection<int, Category>
+     */
     public function getNavCategories(): Collection
     {
         return Category::has('articles', '>', 0)
@@ -122,6 +140,9 @@ class ThemeComposer
             ->get();
     }
 
+    /**
+     * @return Collection<int, Category>
+     */
     public function getFooterCategories(): Collection
     {
         return Category::has('articles', '>', 0)
@@ -129,7 +150,9 @@ class ThemeComposer
             ->get();
     }
 
-    // --- da fare con parental
+    /**
+     * @return Collection<int, Profile>
+     */
     public function getFooterAuthors(): Collection
     {
         // $footerAuthors = Profile::profileIsAuthor()
@@ -139,11 +162,17 @@ class ThemeComposer
             ->get();
     }
 
+    /**
+     * @return Collection<int, Tag>
+     */
     public function getTags(): Collection
     {
         return Tag::all();
     }
 
+    /**
+     * @return Collection<int, Tag>
+     */
     public function getFooterTags(): Collection
     {
         return Tag::take(15)->get();
@@ -158,7 +187,7 @@ class ThemeComposer
     }
 
     /**
-     * @return LengthAwarePaginator<Article>
+     * @return LengthAwarePaginator<int, Article>
      */
     public function getPaginatedArticles(int $num = 15): LengthAwarePaginator
     {
@@ -180,6 +209,9 @@ class ThemeComposer
         return $blockComponent->render();
     }
 
+    /**
+     * @return Paginator<int, Article>|array<int|string, mixed>
+     */
     public function getMethodData(string $method, int $number = 6): Paginator|array
     {
         $result = $this->{$method}($number);
@@ -211,6 +243,9 @@ class ThemeComposer
         return SliderData::from($banner->toArray());
     }
 
+    /**
+     * @return Collection<int, Article>
+     */
     public function getArticlesFeatured(int $number = 6): Collection
     {
         dddx('wip con article data');
@@ -228,6 +263,9 @@ class ThemeComposer
         return $this->getArticleDataArray($results);
     }
 
+    /**
+     * @return Paginator<int, Article>
+     */
     public function paginatedArticlesLatest(int $limit = 6): Paginator
     {
         return Article::published()
@@ -236,6 +274,9 @@ class ThemeComposer
             ->simplePaginate($limit);
     }
 
+    /**
+     * @return Paginator<int, Article>
+     */
     public function paginatedArticlesComingSoon(int $limit = 6): Paginator
     {
         return Article::published()
@@ -244,6 +285,9 @@ class ThemeComposer
             ->simplePaginate($limit);
     }
 
+    /**
+     * @return Paginator<int, Article>
+     */
     public function paginatedArticlesOrderByNumberOfBets(int $limit = 6): Paginator
     {
         return Article::published()
@@ -252,6 +296,9 @@ class ThemeComposer
             ->simplePaginate($limit);
     }
 
+    /**
+     * @return Paginator<int, Article>
+     */
     public function paginatedArticlesOrderByVolumes(int $limit = 6): Paginator
     {
         return Article::published()
@@ -332,18 +379,19 @@ class ThemeComposer
     }
 
     /**
+     * @param  Collection<int, Article> $rows
      * @return list<ArticleData>
      */
     public function getArticleDataArray(Collection $rows): array
     {
         $tmp = [];
         foreach ($rows->toArray() as $content) {
-            /** @var array $content */
+            /** @var array<mixed> $content */
             if (isset($content['title']) && is_array($content['title'])) {
                 $lang = app()->getLocale();
                 $content['title'] = $content['title'][$lang] ?? last($content['title']);
             }
-            /* @var array $content */
+            /* @var array<mixed> $content */
             $tmp[] = ArticleData::from($content);
         }
 
@@ -369,6 +417,7 @@ class ThemeComposer
         /** @var array<int, array<string, mixed>> $categories */
         $categories = Category::with([
             'categoryArticles' => static function (Builder $query): Builder {
+                /** @var Builder<Article> $query */
                 return $query->withCount('ratings');
             },
         ])

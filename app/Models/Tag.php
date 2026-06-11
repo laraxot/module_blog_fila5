@@ -15,8 +15,8 @@ use Spatie\Tags\Tag as BaseTag;
  * Modules\Blog\Models\Tag.
  *
  * @property int         $id
- * @property array       $name
- * @property array       $slug
+ * @property array<string, mixed> $name
+ * @property array<string, mixed> $slug
  * @property string|null $type
  * @property int|null    $order_column
  * @property Carbon|null $created_at
@@ -33,7 +33,7 @@ use Spatie\Tags\Tag as BaseTag;
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
  * @method static EloquentBuilder|Tag                       whereLocale(string $column, string $locale)
- * @method static EloquentBuilder|Tag                       whereLocales(string $column, array $locales)
+ * @method static EloquentBuilder|Tag                       whereLocales(string $column, array<string, mixed> $locales)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereOrderColumn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereSlug($value)
@@ -49,11 +49,11 @@ use Spatie\Tags\Tag as BaseTag;
  * @method static \Illuminate\Database\Eloquent\Builder|Tag         whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag         whereDeletedBy($value)
  * @method static EloquentBuilder|Tag                               whereJsonContainsLocale(string $column, string $locale, ?mixed $value)
- * @method static EloquentBuilder|Tag                               whereJsonContainsLocales(string $column, array $locales, ?mixed $value)
+ * @method static EloquentBuilder|Tag                               whereJsonContainsLocales(string $column, array<string, mixed> $locales, ?mixed $value)
  * @method static Tag|null                                          first()
  * @method static Collection<int, Tag>                              get()
- * @method static Tag                                               create(array $attributes = [])
- * @method static Tag                                               firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Tag                                               create(array<string, mixed> $attributes = [])
+ * @method static Tag                                               firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereNotNull((string|Expression) $columns)
  * @method static int                                               count(string $columns = '*')
