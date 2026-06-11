@@ -16,8 +16,12 @@ use Modules\Xot\Actions\GetViewAction;
  */
 class Footer extends Component
 {
+    /** @var array<int, array<string, mixed>> */
     public array $blocks = [];
 
+    /**
+     * @param  array<int, array<string, mixed>>|string|null  $blocks
+     */
     public function __construct(
         array|string|null $blocks,
         public Model $article,

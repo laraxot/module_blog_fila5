@@ -7,6 +7,10 @@ namespace Modules\Blog\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\Models\ArticleCategory;
 
+/**
+ * @extends Factory<ArticleCategory>
+ */
+/** @extends Factory<ArticleCategory> */
 class ArticleCategoryFactory extends Factory
 {
     /**
@@ -16,6 +20,8 @@ class ArticleCategoryFactory extends Factory
 
     /**
      * Define the model's default state.
+     *
+     * @return array<string, mixed>
      */
     public function definition(): array
     {

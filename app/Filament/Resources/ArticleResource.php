@@ -32,6 +32,9 @@ class ArticleResource extends XotBaseResource
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
     // protected static \BackedEnum|string|null $navigationIcon = 'icon-article';
 
+    /**
+     * @return array<int, string>
+     */
     public static function getTranslatableLocales(): array
     {
         return ['it', 'en'];

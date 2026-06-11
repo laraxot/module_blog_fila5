@@ -73,6 +73,7 @@ trait HasPathByParentId
         return $value;
     }
 
+    /** @return BelongsTo<static, $this> */
     public function root(): BelongsTo
     {
         return $this->belongsTo(
