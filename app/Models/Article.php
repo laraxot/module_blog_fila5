@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
+use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
 use Modules\Media\Models\Media;
 use Modules\Rating\Models\Rating;
@@ -226,7 +227,7 @@ use Webmozart\Assert\Assert;
  *
  * @mixin \Eloquent
  */
-class Article extends BaseModel implements Feedable, HasTranslationsContract
+class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
 {
     use HasChildren;
     use HasComments;
