@@ -379,7 +379,8 @@ class ThemeComposer
     }
 
     /**
-     * @param  Collection<int, Article> $rows
+     * @param Collection<int, Article> $rows
+     *
      * @return list<ArticleData>
      */
     public function getArticleDataArray(Collection $rows): array
@@ -417,7 +418,7 @@ class ThemeComposer
         /** @var array<int, array<string, mixed>> $categories */
         $categories = Category::with([
             'categoryArticles' => static function (Builder $query): Builder {
-                /** @var Builder<Article> $query */
+                /* @var Builder<Article> $query */
                 return $query->withCount('ratings');
             },
         ])

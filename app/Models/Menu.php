@@ -21,15 +21,15 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 /**
  * Modules\Blog\Models\Menu.
  *
- * @property int         $id
- * @property string      $name
+ * @property int                       $id
+ * @property string                    $name
  * @property array<string, mixed>|null $items
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property Carbon|null $deleted_at
- * @property string|null $deleted_by
+ * @property Carbon|null               $created_at
+ * @property Carbon|null               $updated_at
+ * @property string|null               $updated_by
+ * @property string|null               $created_by
+ * @property Carbon|null               $deleted_at
+ * @property string|null               $deleted_by
  *
  * @method static MenuFactory  factory($count = null, $state = [])
  * @method static Builder|Menu newModelQuery()
