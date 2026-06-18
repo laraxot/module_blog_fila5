@@ -36,7 +36,11 @@ class ShowArticleCommand extends Command
             ->where('user_id', null)
             ->get();
 
-        $title = is_scalar($article->title) ? (string) $article->title : '[Titolo non valido]';
+        if (! is_scalar($article->title)) {
+            $title = '[Titolo non valido]';
+        } else {
+            $title = (string) $article->title;
+        }
         $this->info($title);
         $header = ['id', 'title', 'is_winner', 'count', 'sum', 'avg', 'tot'];
         $rows = [];

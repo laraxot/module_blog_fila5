@@ -6,6 +6,7 @@ namespace Modules\Blog\Enums;
 
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
+use InvalidArgumentException;
 use Modules\Xot\Traits\EnumTrait;
 
 /**
@@ -30,7 +31,7 @@ enum ArticleStatus: string implements HasColor, HasLabel
             'published' => self::PUBLISHED,
             'archived' => self::ARCHIVED,
             'pending' => self::PENDING,
-            default => throw new \InvalidArgumentException("Invalid status: {$value}"),
+            default => throw new InvalidArgumentException("Invalid status: {$value}"),
         };
     }
 }

@@ -336,12 +336,17 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         $translation = $translations[$locale] ?? '';
 
         if ('' !== $translation || ! $useFallbackLocale) {
-            $value = $translation;
-        } else {
-            $fallbackLocale = config('app.fallback_locale');
-            $fallbackKey = is_string($fallbackLocale) ? $fallbackLocale : 'en';
-            $value = $translations[$fallbackKey] ?? '';
+            return match (true) {
+                is_string($translation) => $translation,
+                is_array($translation) => $translation,
+                is_int($translation) => $translation,
+                default => null,
+            };
         }
+
+        $fallbackLocale = config('app.fallback_locale');
+        $fallbackKey = is_string($fallbackLocale) ? $fallbackLocale : 'en';
+        $value = $translations[$fallbackKey] ?? '';
 
         return match (true) {
             is_string($value) => $value,
@@ -394,9 +399,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
-        $user_class = XotData::make()->getUserClass();
+        $userClass = XotData::make()->getUserClass();
 
-        return $this->belongsTo($user_class);
+        return $this->belongsTo($userClass);
     }
 
     /** @return BelongsTo<Category, $this> */
@@ -449,7 +454,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function humanReadTime(): Attribute
     {
         return Attribute::make(
-            get: static function (mixed $value, array $attributes): string {
+            get: static function (mixed $value, array $attributes): string { // $value is unused but part of callback signature
                 $words = Str::wordCount(strip_tags(SafeStringCastAction::cast($attributes['body'] ?? '')));
                 $minutes = ceil($words / 200);
 
@@ -466,9 +471,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      *
      * @return EloquentBuilder<Article>
      */
-    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $current_article): EloquentBuilder
+    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $currentArticle): EloquentBuilder
     {
-        return $query->where('id', '!=', $current_article);
+        return $query->where('id', '!=', $currentArticle);
     }
 
     /**
@@ -609,17 +614,17 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     /**
-     * @param array<int, string> $name_blocks
+     * @param array<int, string> $nameBlocks
      *
      * @return array<int, array<string, mixed>>
      */
-    public function getOnlyContentBlocks(array $name_blocks): array
+    public function getOnlyContentBlocks(array $nameBlocks): array
     {
         /** @var array<int, array<string, mixed>> */
         $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
 
-        return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
-            foreach ($name_blocks as $block) {
+        return collect($contentBlocks)->filter(function (array $value) use ($nameBlocks): bool {
+            foreach ($nameBlocks as $block) {
                 if (($value['type'] ?? null) === $block) {
                     return true;
                 }
@@ -630,18 +635,18 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     /**
-     * @param array<int, string> $name_blocks
+     * @param array<int, string> $nameBlocks
      *
      * @return array<int, array<string, mixed>>
      */
-    public function getExceptContentBlocks(array $name_blocks): array
+    public function getExceptContentBlocks(array $nameBlocks): array
     {
         /** @var array<int, array<string, mixed>> */
         $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
 
-        return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
+        return collect($contentBlocks)->filter(function (array $value) use ($nameBlocks): bool {
             $shouldExclude = false;
-            foreach ($name_blocks as $block) {
+            foreach ($nameBlocks as $block) {
                 if (($value['type'] ?? null) === $block) {
                     $shouldExclude = true;
                     break;
@@ -720,13 +725,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      * Scope a query to only include articles that belongs to an author.
      *
      * @param EloquentBuilder<Article> $query
-     * @param string                   $profile_id The id of the author
+     * @param string                   $profileId The id of the author
      *
      * @return EloquentBuilder<Article>
      */
-    public function scopeAuthor(EloquentBuilder $query, string $profile_id): EloquentBuilder
+    public function scopeAuthor(EloquentBuilder $query, string $profileId): EloquentBuilder
     {
-        return $query->where('author_id', $profile_id);
+        return $query->where('author_id', $profileId);
     }
 
     /**
@@ -817,7 +822,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     protected function mainImage(): Attribute
     {
         return Attribute::make(
-            get: static function (mixed $value, array $attributes): string {
+            get: static function (mixed $value, array $attributes): string { // $value is unused but part of callback signature
                 $imageUpload = $attributes['main_image_upload'] ?? null;
                 $imageUrl = $attributes['main_image_url'] ?? null;
                 $result = $imageUpload ?? $imageUrl ?? '#';

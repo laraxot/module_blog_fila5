@@ -99,9 +99,9 @@ class ThemeComposer
     /**
      * @return list<ArticleData>
      */
-    public function getArticlesByCategory(string $category_id, int $number = 6): array
+    public function getArticlesByCategory(string $categoryId, int $number = 6): array
     {
-        $rows = Article::where('category_id', $category_id)
+        $rows = Article::where('category_id', $categoryId)
             ->orderBy('published_at', 'desc')
             ->take($number)
             ->get();
@@ -112,9 +112,9 @@ class ThemeComposer
     /**
      * @return Paginator<int, Article>
      */
-    public function paginateArticlesByCategory(string $category_id, int $limit = 6): Paginator
+    public function paginateArticlesByCategory(string $categoryId, int $limit = 6): Paginator
     {
-        return Article::where('category_id', $category_id)
+        return Article::where('category_id', $categoryId)
             ->orderBy('published_at', 'desc')
             ->simplePaginate($limit);
     }
@@ -230,9 +230,9 @@ class ThemeComposer
         $results = Banner::all()->sortBy('pos');
         $tmp = [];
         foreach ($results as $content) {
-            $slider_data = $content->toArray();
-            $slider_data['link'] = $content->getUrlCategoryPage();
-            $tmp[] = SliderData::from($slider_data);
+            $sliderData = $content->toArray();
+            $sliderData['link'] = $content->getUrlCategoryPage();
+            $tmp[] = SliderData::from($sliderData);
         }
 
         return $tmp;

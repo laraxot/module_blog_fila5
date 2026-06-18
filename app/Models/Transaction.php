@@ -91,8 +91,8 @@ class Transaction extends BaseModel
 
     public function getRatingMorph(): RatingMorph
     {
-        Assert::notNull($rating_morph = RatingMorph::where('rating_id', $this->model_id)->first());
+        Assert::notNull($ratingMorph = RatingMorph::where('rating_id', $this->model_id)->first());
 
-        return $rating_morph;
+        return $ratingMorph;
     }
 }

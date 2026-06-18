@@ -30,16 +30,18 @@ class ShowArticleListCommand extends Command
 
         $rows = Article::all(['id', 'title'])->map($map);
 
-        if (\count($rows) > 0) {
-            $headers = array_keys($rows[0] ?? []);
-
-            $this->newLine();
-            $this->table($headers, $rows);
-            $this->newLine();
-        } else {
+        if (\count($rows) === 0) {
             $this->newLine();
             $this->warn('⚡ No products in the stock');
             $this->newLine();
+
+            return;
         }
+
+        $headers = array_keys($rows[0] ?? []);
+
+        $this->newLine();
+        $this->table($headers, $rows);
+        $this->newLine();
     }
 }
