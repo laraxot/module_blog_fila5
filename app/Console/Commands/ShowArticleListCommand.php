@@ -30,7 +30,7 @@ class ShowArticleListCommand extends Command
 
         $rows = Article::all(['id', 'title'])->map($map);
 
-        if (\count($rows) === 0) {
+        if (0 === \count($rows)) {
             $this->newLine();
             $this->warn('⚡ No products in the stock');
             $this->newLine();
