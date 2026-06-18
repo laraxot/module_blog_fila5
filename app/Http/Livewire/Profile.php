@@ -59,17 +59,14 @@ class Profile extends Page implements HasForms
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [
+        $viewParams = [
             'view' => $view,
         ];
 
-        return view((string) $view, $view_params);
+        return view((string) $view, $viewParams);
     }
 
-    /**
-     * @param array<string, mixed> $params
-     */
-    public function url(string $name, array $params): string
+    public function url(): string
     {
         return '#';
     }

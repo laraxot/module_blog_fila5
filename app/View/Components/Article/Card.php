@@ -30,8 +30,8 @@ class Card extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [];
+        $viewParams = [];
 
-        return view($view, $view_params);
+        return view($view, $viewParams);
     }
 }

@@ -22,9 +22,9 @@ class ArticleData extends Data implements \Stringable
 
     /**
      * @param array<string, string>|string           $title
-     * @param array<int|string, mixed>|null          $content_blocks
-     * @param array<int|string, mixed>|null          $sidebar_blocks
-     * @param array<int|string, mixed>|null          $footer_blocks
+     * @param array<int|string, mixed>|null          $contentBlocks
+     * @param array<int|string, mixed>|null          $sidebarBlocks
+     * @param array<int|string, mixed>|null          $footerBlocks
      * @param EloquentCollection<int, Category>|null $categories
      * @param array<int|string, mixed>|null          $ratings
      * @param Collection<int, string>|null           $tags
@@ -34,19 +34,19 @@ class ArticleData extends Data implements \Stringable
         public string $uuid,
         array|string $title,
         public string $slug,
-        public ?int $category_id,
+        public ?int $categoryId,
         public ?string $status,
-        public bool $show_on_homepage,
-        public ?string $published_at,
-        public ?array $content_blocks,
-        public ?array $sidebar_blocks,
-        public ?array $footer_blocks,
+        public bool $showOnHomepage,
+        public ?string $publishedAt,
+        public ?array $contentBlocks,
+        public ?array $sidebarBlocks,
+        public ?array $footerBlocks,
         public ?EloquentCollection $categories,
         public ?string $url,
         public ?array $ratings,
-        public ?string $closed_at,
-        public ?string $closed_at_date,
-        public ?string $time_left_for_humans,
+        public ?string $closedAt,
+        public ?string $closedAtDate,
+        public ?string $timeLeftForHumans,
         public ?Collection $tags,
     ) {
         $resolved = $title;
@@ -59,11 +59,11 @@ class ArticleData extends Data implements \Stringable
             : (is_scalar($resolved) ? (string) $resolved : '');
         $this->categories = $this->getCategories();
 
-        $this->closed_at_date = Carbon::parse($this->closed_at)->format('Y-m-d');
+        $this->closedAtDate = Carbon::parse($this->closedAt)->format('Y-m-d');
 
         Assert::notNull($article = Article::where('uuid', $this->uuid)->first(), '['.__LINE__.']['.__FILE__.']');
         $this->ratings = $article->getArrayRatingsWithImage();
-        $this->time_left_for_humans = $article->getTimeLeftForHumans();
+        $this->timeLeftForHumans = $article->getTimeLeftForHumans();
         $this->tags = $article->tags->map(static fn ($tag): string => is_string($tag->name ?? null) ? $tag->name : (string) ($tag->name ?? ''));
     }
 
@@ -77,7 +77,7 @@ class ArticleData extends Data implements \Stringable
      */
     public function getCategories(): EloquentCollection
     {
-        return app(GetBloodline::class)->execute($this->category_id);
+        return app(GetBloodline::class)->execute($this->categoryId);
     }
 
     public function url(string $type): string

@@ -65,10 +65,10 @@ class ArticleSeeder extends Seeder
         $date = $this->date->subDay();
 
         /* @phpstan-ignore-next-line argument.type */
-        $category_key = array_rand($this->categories);
-        Assert::keyExists($this->categories, $category_key, 'Category key must exist');
+        $categoryKey = array_rand($this->categories);
+        Assert::keyExists($this->categories, $categoryKey, 'Category key must exist');
 
-        $category = $this->categories[$category_key];
+        $category = $this->categories[$categoryKey];
         Assert::isArray($category, 'Category must be an array');
         Assert::keyExists($category, 'image', 'Category must have image key');
 

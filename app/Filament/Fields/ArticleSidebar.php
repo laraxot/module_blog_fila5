@@ -16,7 +16,6 @@ class ArticleSidebar
 {
     public static function make(
         string $name,
-        string $context = 'form',
     ): Builder {
         return Builder::make($name)
             ->blocks([

@@ -157,7 +157,7 @@ class Banner extends BaseModel implements HasMedia
     /**
      * https://dev.to/npesado/convert-images-to-webp-4i06.
      */
-    public function registerMediaConversions(?Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void // $media is unused but part of interface
     {
         $this->addMediaConversion('cover')
             // ->format(Manipulations::FORMAT_WEBP)

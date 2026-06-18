@@ -28,10 +28,10 @@ class SearchBar extends Component
             $results = Article::where('title', 'like', '%'.$this->search.'%')->get();
         }
 
-        $view_params = [
+        $viewParams = [
             'results' => $results,
         ];
 
-        return view((string) $view, $view_params);
+        return view((string) $view, $viewParams);
     }
 }

@@ -31,11 +31,17 @@ class GetTreeOptions
     public function execute(Model $model): array
     {
         // Use tree() method for models with HasRecursiveRelationships
-        if (method_exists($model, 'tree')) {
+        if (! method_exists($model, 'tree')) {
+            // Fallback for models without tree functionality
+            $models = $model::all();
+        } else {
             $tree = $model->tree();
             Assert::object($tree, 'tree() must return an object');
 
-            if (method_exists($tree, 'get')) {
+            if (! method_exists($tree, 'get')) {
+                // Fallback if get doesn't exist
+                $models = $tree;
+            } else {
                 $collection = $tree->get();
                 Assert::object($collection, 'get() must return an object');
 
@@ -46,13 +52,7 @@ class GetTreeOptions
                     // Fallback if toTree doesn't exist
                     $models = $collection;
                 }
-            } else {
-                // Fallback if get doesn't exist
-                $models = $tree;
             }
-        } else {
-            // Fallback for models without tree functionality
-            $models = $model::all();
         }
 
         Assert::isIterable($models, 'Models must be iterable');

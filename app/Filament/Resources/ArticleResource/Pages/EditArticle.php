@@ -34,8 +34,8 @@ class EditArticle extends LangBaseEditRecord
                     Checkbox::make('sidebar_blocks')->inline(),
                     Checkbox::make('footer_blocks')->inline(),
                 ])
-                ->action(function (Article $record, ArticleResource $article_resource, array $data): void {
-                    $locales = $article_resource->getTranslatableLocales();
+                ->action(function (Article $record, ArticleResource $articleResource, array $data): void {
+                    $locales = $articleResource->getTranslatableLocales();
 
                     /** @var array<string, mixed> $safeData */
                     $safeData = SafeArrayCastAction::cast($data);

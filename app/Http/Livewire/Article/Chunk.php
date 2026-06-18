@@ -29,19 +29,14 @@ class Chunk extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [
+        $viewParams = [
             'articles' => $orderedPosts,
         ];
 
-        return view((string) $view, $view_params);
+        return view((string) $view, $viewParams);
     }
 
-    /**
-     * @param array<string, mixed> $params
-     */
-    /** @param array<mixed> $params */
-    /** @param array<string, mixed> $params */
-    public function url(string $name, array $params): string
+    public function url(): string
     {
         return '#';
     }
