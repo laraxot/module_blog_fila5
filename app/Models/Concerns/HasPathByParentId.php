@@ -113,10 +113,9 @@ trait HasPathByParentId
     }
 
     public function getFullBreadsAttribute(?string $value): ?string // $value is unused but part of attribute getter
-    {
-        if (null !== $this->root_name) {
-            return $this->root_name.' > '.$this->breads;
-        }
+    {if (null !== $this->root_name) {
+        return $this->root_name.' > '.$this->breads;
+    }
 
         return $this->name;
     }
