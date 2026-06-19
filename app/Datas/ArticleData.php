@@ -5,13 +5,38 @@ declare(strict_types=1);
 namespace Modules\Blog\Datas;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Support\Collection;
 use Modules\Blog\Actions\Category\GetBloodline;
-use Modules\Blog\Models\Article;
-use Modules\Blog\Models\Category;
+use RuntimeException;
 use Spatie\LaravelData\Data;
-use Webmozart\Assert\Assert;
+
+class ArticleDataCore extends Data
+{
+    public function __construct(
+        public string $id,
+        public string $uuid,
+        public string $slug,
+        public ?int $categoryId,
+        public ?string $status,
+        public bool $showOnHomepage,
+        public ?string $publishedAt,
+        public ?string $url,
+        public ?string $closedAt,
+    ) {}
+}
+
+class ArticleDataBlocks extends Data
+{
+    /**
+     * @param  array<int|string, mixed>|null  $contentBlocks
+     * @param  array<int|string, mixed>|null  $sidebarBlocks
+     * @param  array<int|string, mixed>|null  $footerBlocks
+     */
+    public function __construct(
+        public ?array $contentBlocks,
+        public ?array $sidebarBlocks,
+        public ?array $footerBlocks,
+    ) {}
+}
 
 /**
  * @phpstan-consistent-constructor
@@ -20,51 +45,83 @@ class ArticleData extends Data implements \Stringable
 {
     public string $title;
 
+    public string $id;
+
+    public string $uuid;
+
+    public string $slug;
+
+    public ?int $categoryId;
+
+    public ?string $status;
+
+    public bool $showOnHomepage;
+
+    public ?string $publishedAt;
+
+    /** @var array<int|string, mixed>|null */
+    public ?array $contentBlocks;
+
+    /** @var array<int|string, mixed>|null */
+    public ?array $sidebarBlocks;
+
+    /** @var array<int|string, mixed>|null */
+    public ?array $footerBlocks;
+
+    public ?string $url;
+
+    public ?string $closedAt;
+
+    public ArticleDataHydrated $hydrated;
+
     /**
-     * @param array<string, string>|string           $title
-     * @param array<int|string, mixed>|null          $contentBlocks
-     * @param array<int|string, mixed>|null          $sidebarBlocks
-     * @param array<int|string, mixed>|null          $footerBlocks
-     * @param EloquentCollection<int, Category>|null $categories
-     * @param array<int|string, mixed>|null          $ratings
-     * @param Collection<int, string>|null           $tags
+     * @param  array<int|string, mixed>|string  $title
      */
     public function __construct(
-        public string $id,
-        public string $uuid,
+        ArticleDataCore $core,
         array|string $title,
-        public string $slug,
-        public ?int $categoryId,
-        public ?string $status,
-        public bool $showOnHomepage,
-        public ?string $publishedAt,
-        public ?array $contentBlocks,
-        public ?array $sidebarBlocks,
-        public ?array $footerBlocks,
-        public ?EloquentCollection $categories,
-        public ?string $url,
-        public ?array $ratings,
-        public ?string $closedAt,
-        public ?string $closedAtDate,
-        public ?string $timeLeftForHumans,
-        public ?Collection $tags,
+        ArticleDataBlocks $blocks,
     ) {
-        $resolved = $title;
-        if (is_array($title)) {
-            $lang = app()->getLocale();
-            $resolved = $title[$lang] ?? last($title);
+        $this->id = $core->id;
+        $this->uuid = $core->uuid;
+        $this->slug = $core->slug;
+        $this->categoryId = $core->categoryId;
+        $this->status = $core->status;
+        $this->showOnHomepage = $core->showOnHomepage;
+        $this->publishedAt = $core->publishedAt;
+        $this->url = $core->url;
+        $this->closedAt = $core->closedAt;
+        $this->contentBlocks = $blocks->contentBlocks;
+        $this->sidebarBlocks = $blocks->sidebarBlocks;
+        $this->footerBlocks = $blocks->footerBlocks;
+
+        $this->title = self::resolveTitle($title);
+        $this->hydrated = $this->buildHydratedData();
+    }
+
+    /**
+     * @param  array<string, mixed>  $payload
+     */
+    public static function fromPayload(array $payload): self
+    {
+        return new self(
+            core: ArticleDataPayloadMapper::coreFromPayload($payload),
+            title: ArticleDataPayloadMapper::titleFromPayload($payload),
+            blocks: ArticleDataPayloadMapper::blocksFromPayload($payload),
+        );
+    }
+
+    public static function from(mixed ...$payloads): static
+    {
+        if (count($payloads) === 1 && is_array($payloads[0])) {
+            /** @var array<string, mixed> $singlePayload */
+            $singlePayload = $payloads[0];
+
+            /** @var static */
+            return self::fromPayload($singlePayload);
         }
-        $this->title = is_string($resolved)
-            ? $resolved
-            : (is_scalar($resolved) ? (string) $resolved : '');
-        $this->categories = $this->getCategories();
 
-        $this->closedAtDate = Carbon::parse($this->closedAt)->format('Y-m-d');
-
-        Assert::notNull($article = Article::where('uuid', $this->uuid)->first(), '['.__LINE__.']['.__FILE__.']');
-        $this->ratings = $article->getArrayRatingsWithImage();
-        $this->timeLeftForHumans = $article->getTimeLeftForHumans();
-        $this->tags = $article->tags->map(static fn ($tag): string => is_string($tag->name ?? null) ? $tag->name : (string) ($tag->name ?? ''));
+        return parent::from(...$payloads);
     }
 
     public function __toString(): string
@@ -72,21 +129,69 @@ class ArticleData extends Data implements \Stringable
         return '['.__LINE__.']['.__FILE__.']';
     }
 
-    /**
-     * @return EloquentCollection<int, Category>
-     */
-    public function getCategories(): EloquentCollection
-    {
-        return app(GetBloodline::class)->execute($this->categoryId);
-    }
-
     public function url(string $type): string
     {
         $lang = app()->getLocale();
-        if ('show' === $type) {
+        if ($type === 'show') {
             return '/'.$lang.'/article/'.$this->slug;
         }
 
         return '#';
+    }
+
+    public function __get(string $name): mixed
+    {
+        if (property_exists($this->hydrated, $name)) {
+            return $this->hydrated->{$name};
+        }
+
+        throw new RuntimeException(sprintf('Undefined property [%s] on ArticleData.', $name));
+    }
+
+    public function __isset(string $name): bool
+    {
+        return property_exists($this->hydrated, $name);
+    }
+
+    private function buildHydratedData(): ArticleDataHydrated
+    {
+        $categories = app(GetBloodline::class)->execute($this->categoryId);
+        $closedAtDate = $this->closedAt !== null ? Carbon::parse($this->closedAt)->format('Y-m-d') : null;
+
+        $article = ArticleDataHydrator::findByUuid($this->uuid);
+
+        return new ArticleDataHydrated(
+            categories: $categories,
+            ratings: $article->getArrayRatingsWithImage(),
+            closedAtDate: $closedAtDate,
+            timeLeftForHumans: $article->getTimeLeftForHumans(),
+            tags: $article->tags->map(
+                static function (mixed $tag): string {
+                    if (! is_object($tag)) {
+                        return '';
+                    }
+
+                    $name = $tag->name ?? null;
+
+                    return is_string($name) ? $name : (is_scalar($name) ? (string) $name : '');
+                },
+            ),
+        );
+    }
+
+    /**
+     * @param  array<int|string, mixed>|string  $title
+     */
+    private static function resolveTitle(array|string $title): string
+    {
+        $resolved = $title;
+        if (is_array($title)) {
+            $lang = app()->getLocale();
+            $resolved = $title[$lang] ?? last($title);
+        }
+
+        return is_string($resolved)
+            ? $resolved
+            : (is_scalar($resolved) ? (string) $resolved : '');
     }
 }

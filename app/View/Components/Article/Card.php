@@ -9,18 +9,16 @@ use Illuminate\View\Component;
 use Modules\Blog\Models\Article;
 use Modules\Xot\Actions\GetViewAction;
 
-// use Modules\Xot\View\Components\XotBaseComponent;
-
-/**
- * .
- */
 class Card extends Component
 {
+    public bool $showAuthor;
+
     public function __construct(
         public Article $article,
-        public bool $showAuthor = false,
+        string $authorDisplay = 'hidden',
         public string $tpl = 'v1',
     ) {
+        $this->showAuthor = $authorDisplay === 'visible';
     }
 
     public function render(): Renderable
