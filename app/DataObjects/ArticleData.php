@@ -10,7 +10,7 @@ use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 
-class ArticleData extends Data
+class ArticleImportSchedule extends Data
 {
     public function __construct(
         #[WithCast(DateTimeInterfaceCast::class)]
@@ -19,60 +19,129 @@ class ArticleData extends Data
         public readonly ?Carbon $eventStartDate = null,
         #[WithCast(DateTimeInterfaceCast::class)]
         public readonly ?Carbon $eventEndDate = null,
+    ) {}
+}
 
-        /** @var array<mixed> */
-        public readonly array $category = [],
+class ArticleImportIdentity extends Data
+{
+    public function __construct(
         public readonly string $title = '',
         public readonly string $slug = '',
         public readonly ArticleStatus $status = ArticleStatus::DRAFT,
         public readonly string $statusDisplay = '',
-        public readonly bool $isWagerable = false,
-        public readonly float $brierScore = 0.0,
-        public readonly float $brierScorePlayMoney = 0.0,
-        public readonly float $brierScoreRealMoney = 0.0,
-        public readonly int $wagersCount = 0,
-        public readonly int $wagersCountCanonical = 0,
-        public readonly int $wagersCountTotal = 0,
+    ) {}
+}
+
+class ArticleData extends Data
+{
+    public function __construct(
+        public readonly ArticleImportSchedule $schedule,
+        public readonly ArticleImportMetrics $metrics,
+        public readonly ArticleImportIdentity $identity,
 
         /** @var array<mixed> */
-        public readonly array $wagers = [],
-        public readonly float $volumePlayMoney = 0.0,
-        public readonly float $volumeRealMoney = 0.0,
+        public readonly array $category = [],
 
         /** @var array<mixed> */
         public readonly array $outcomes = [],
         public readonly ?string $thumbnail2x = null,
-    ) {
-    }
+    ) {}
 
     /**
-     * Create from array with type casting.
-     *
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            betEndDate: isset($data['bet_end_date']) && (is_string($data['bet_end_date']) || $data['bet_end_date'] instanceof \DateTimeInterface) ? Carbon::parse($data['bet_end_date']) : null,
-            eventStartDate: isset($data['event_start_date']) && (is_string($data['event_start_date']) || $data['event_start_date'] instanceof \DateTimeInterface) ? Carbon::parse($data['event_start_date']) : null,
-            eventEndDate: isset($data['event_end_date']) && (is_string($data['event_end_date']) || $data['event_end_date'] instanceof \DateTimeInterface) ? Carbon::parse($data['event_end_date']) : null,
+            schedule: self::scheduleFromArray($data),
+            metrics: self::metricsFromArray($data),
+            identity: self::identityFromArray($data),
             category: is_array($data['category'] ?? null) ? (array) $data['category'] : [],
-            title: is_string($data['title'] ?? null) ? $data['title'] : '',
-            slug: is_string($data['slug'] ?? null) ? $data['slug'] : '',
-            status: ArticleStatus::fromString(is_string($data['status'] ?? null) ? $data['status'] : 'draft'),
-            statusDisplay: is_string($data['status_display'] ?? null) ? $data['status_display'] : '',
-            isWagerable: (bool) ($data['is_wagerable'] ?? false),
-            brierScore: is_numeric($data['brier_score'] ?? null) ? (float) $data['brier_score'] : 0.0,
-            brierScorePlayMoney: is_numeric($data['brier_score_play_money'] ?? null) ? (float) $data['brier_score_play_money'] : 0.0,
-            brierScoreRealMoney: is_numeric($data['brier_score_real_money'] ?? null) ? (float) $data['brier_score_real_money'] : 0.0,
-            wagersCount: is_numeric($data['wagers_count'] ?? null) ? (int) $data['wagers_count'] : 0,
-            wagersCountCanonical: is_numeric($data['wagers_count_canonical'] ?? null) ? (int) $data['wagers_count_canonical'] : 0,
-            wagersCountTotal: is_numeric($data['wagers_count_total'] ?? null) ? (int) $data['wagers_count_total'] : 0,
-            wagers: is_array($data['wagers'] ?? null) ? (array) $data['wagers'] : [],
-            volumePlayMoney: is_numeric($data['volume_play_money'] ?? null) ? (float) $data['volume_play_money'] : 0.0,
-            volumeRealMoney: is_numeric($data['volume_real_money'] ?? null) ? (float) $data['volume_real_money'] : 0.0,
             outcomes: is_array($data['outcomes'] ?? null) ? (array) $data['outcomes'] : [],
             thumbnail2x: is_string($data['thumbnail_2x'] ?? null) ? $data['thumbnail_2x'] : null,
         );
+    }
+
+    /**
+     * @param  array<string,mixed>  $data
+     */
+    private static function scheduleFromArray(array $data): ArticleImportSchedule
+    {
+        return new ArticleImportSchedule(
+            betEndDate: self::optionalDate($data, 'bet_end_date'),
+            eventStartDate: self::optionalDate($data, 'event_start_date'),
+            eventEndDate: self::optionalDate($data, 'event_end_date'),
+        );
+    }
+
+    /**
+     * @param  array<string,mixed>  $data
+     */
+    private static function identityFromArray(array $data): ArticleImportIdentity
+    {
+        return new ArticleImportIdentity(
+            title: self::stringValue($data, 'title'),
+            slug: self::stringValue($data, 'slug'),
+            status: ArticleStatus::fromString(self::stringValue($data, 'status', 'draft')),
+            statusDisplay: self::stringValue($data, 'status_display'),
+        );
+    }
+
+    /**
+     * @param  array<string,mixed>  $data
+     */
+    private static function metricsFromArray(array $data): ArticleImportMetrics
+    {
+        return new ArticleImportMetrics(
+            wagerableFlag: (int) (bool) ($data['is_wagerable'] ?? false),
+            scores: new ArticleImportScores(
+                brierScore: self::floatValue($data, 'brier_score'),
+                brierScorePlayMoney: self::floatValue($data, 'brier_score_play_money'),
+                brierScoreRealMoney: self::floatValue($data, 'brier_score_real_money'),
+            ),
+            wagersCount: self::intValue($data, 'wagers_count'),
+            wagersCountCanonical: self::intValue($data, 'wagers_count_canonical'),
+            wagersCountTotal: self::intValue($data, 'wagers_count_total'),
+            wagers: is_array($data['wagers'] ?? null) ? (array) $data['wagers'] : [],
+            volumePlayMoney: self::floatValue($data, 'volume_play_money'),
+            volumeRealMoney: self::floatValue($data, 'volume_real_money'),
+        );
+    }
+
+    /**
+     * @param  array<string,mixed>  $data
+     */
+    private static function optionalDate(array $data, string $key): ?Carbon
+    {
+        $value = $data[$key] ?? null;
+        if (! isset($data[$key]) || (! is_string($value) && ! $value instanceof \DateTimeInterface)) {
+            return null;
+        }
+
+        return Carbon::parse($value);
+    }
+
+    /**
+     * @param  array<string,mixed>  $data
+     */
+    private static function stringValue(array $data, string $key, string $default = ''): string
+    {
+        return is_string($data[$key] ?? null) ? $data[$key] : $default;
+    }
+
+    /**
+     * @param  array<string,mixed>  $data
+     */
+    private static function floatValue(array $data, string $key): float
+    {
+        return is_numeric($data[$key] ?? null) ? (float) $data[$key] : 0.0;
+    }
+
+    /**
+     * @param  array<string,mixed>  $data
+     */
+    private static function intValue(array $data, string $key): int
+    {
+        return is_numeric($data[$key] ?? null) ? (int) $data[$key] : 0;
     }
 }
