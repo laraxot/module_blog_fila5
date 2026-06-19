@@ -10,8 +10,9 @@ use Modules\Blog\Models\Category;
 final class ThemeCategorySupport
 {
     public function __construct(
-        private readonly ThemeCategoryQueries $categoryQueries = new ThemeCategoryQueries,
-    ) {}
+        private readonly ThemeCategoryQueries $categoryQueries = new ThemeCategoryQueries(),
+    ) {
+    }
 
     /**
      * @return Collection<int, Category>
