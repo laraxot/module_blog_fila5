@@ -37,7 +37,7 @@ final class ThemeCategoryQueries
         /** @var array<int, array<string, mixed>> $categories */
         $categories = Category::with([
             'categoryArticles' => static function (Builder $query): Builder {
-                /** @var Builder<Article> $query */
+                /* @var Builder<Article> $query */
                 return $query->withCount('ratings');
             },
         ])
