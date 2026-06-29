@@ -14,9 +14,10 @@ use Modules\Blog\Models\Article;
 final class ThemeArticleSupport
 {
     public function __construct(
-        private readonly ThemeArticleQueries $articleQueries = new ThemeArticleQueries,
-        private readonly ThemeArticleDataMapper $articleDataMapper = new ThemeArticleDataMapper,
-    ) {}
+        private readonly ThemeArticleQueries $articleQueries = new ThemeArticleQueries(),
+        private readonly ThemeArticleDataMapper $articleDataMapper = new ThemeArticleDataMapper(),
+    ) {
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Collection<int, Article>
@@ -146,7 +147,8 @@ final class ThemeArticleSupport
     }
 
     /**
-     * @param  Collection<int, Article>  $rows
+     * @param Collection<int, Article> $rows
+     *
      * @return list<ArticleData>
      */
     public function dataArray(Collection $rows): array
