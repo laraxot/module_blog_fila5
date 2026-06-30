@@ -9,7 +9,8 @@ use Modules\Blog\Models\Article;
 final class ArticleContentBlockFilter
 {
     /**
-     * @param  array<int, string>  $nameBlocks
+     * @param array<int, string> $nameBlocks
+     *
      * @return array<int, array<string, mixed>>
      */
     public function only(Article $article, array $nameBlocks): array
@@ -24,7 +25,8 @@ final class ArticleContentBlockFilter
     }
 
     /**
-     * @param  array<int, string>  $nameBlocks
+     * @param array<int, string> $nameBlocks
+     *
      * @return array<int, array<string, mixed>>
      */
     public function except(Article $article, array $nameBlocks): array
@@ -39,8 +41,8 @@ final class ArticleContentBlockFilter
     }
 
     /**
-     * @param  array<string, mixed>  $value
-     * @param  array<int, string>  $nameBlocks
+     * @param array<string, mixed> $value
+     * @param array<int, string>   $nameBlocks
      */
     private function matchesAnyType(array $value, array $nameBlocks): bool
     {
