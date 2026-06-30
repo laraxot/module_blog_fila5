@@ -23,31 +23,6 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListBanners extends XotBaseListRecords
 {
-    // protected static string $resource = BannerResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            'create' => CreateAction::make(),
-            'import' => Action::make('import')
-                ->schema([
-                    FileUpload::make('file')
-                        ->label('')
-                        // ->acceptedFileTypes(['application/json', 'json'])
-                        ->imagePreviewHeight('250')
-                        ->reactive()
-                        ->afterStateUpdated(static function (callable $set, TemporaryUploadedFile $state): void {
-                            $set('fileContent', File::get($state->getRealPath()));
-                        }),
-                    Textarea::make('fileContent'),
-                ])
-                ->label('')
-                ->tooltip('Import')
-                ->icon('heroicon-o-folder-open')
-                ->action(static fn (array $data) => app(ImportBannerFromByJsonTextAction::class)->execute(SafeStringCastAction::cast($data['fileContent']))),
-        ];
-    }
-
     /**
      * Definisce le colonne della tabella di elenco banner.
      *
@@ -71,6 +46,30 @@ class ListBanners extends XotBaseListRecords
             'image' => SpatieMediaLibraryImageColumn::make('image')
                 ->label(static::trans('fields.image'))
                 ->collection('banner'),
+        ];
+    }
+    // protected static string $resource = BannerResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            'create' => CreateAction::make(),
+            'import' => Action::make('import')
+                ->schema([
+                    FileUpload::make('file')
+                        ->label('')
+                        // ->acceptedFileTypes(['application/json', 'json'])
+                        ->imagePreviewHeight('250')
+                        ->reactive()
+                        ->afterStateUpdated(static function (callable $set, TemporaryUploadedFile $state): void {
+                            $set('fileContent', File::get($state->getRealPath()));
+                        }),
+                    Textarea::make('fileContent'),
+                ])
+                ->label('')
+                ->tooltip('Import')
+                ->icon('heroicon-o-folder-open')
+                ->action(static fn (array $data) => app(ImportBannerFromByJsonTextAction::class)->execute(SafeStringCastAction::cast($data['fileContent']))),
         ];
     }
 }

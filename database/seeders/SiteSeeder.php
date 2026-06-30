@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Database\Seeders;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Seeder;
 use Modules\Cms\Models\Menu;
 use Modules\Cms\Models\Page;
@@ -13,7 +14,7 @@ class SiteSeeder extends Seeder
 {
     public function run(): void
     {
-        /** @var \Illuminate\Database\Eloquent\Factories\Factory<Page> $pageFactory */
+        /** @var Factory<Page> $pageFactory */
         $pageFactory = Page::factory();
         Assert::object($pageFactory, 'Page factory must be an object');
         Assert::methodExists($pageFactory, 'create', 'Page factory must have create method');

@@ -35,6 +35,7 @@ class Setting extends Component implements HasActions, HasForms
 
     public Profile $model;
 
+    /** @var array<string, mixed> */
     public array $data = [];
 
     protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-document-text';
@@ -61,12 +62,12 @@ class Setting extends Component implements HasActions, HasForms
          */
         $view = app(GetViewAction::class)->execute($this->version);
 
-        $view_params = [
+        $viewParams = [
             'view' => $view,
             '_profile' => $this->model,
         ];
 
-        return view((string) $view, $view_params);
+        return view((string) $view, $viewParams);
     }
 
     public function editProfile(): void
@@ -88,7 +89,7 @@ class Setting extends Component implements HasActions, HasForms
     {
         return Action::make('editEmail')
             ->record($this->model)
-            ->fillForm(fn ($record, $arguments): array => [
+            ->fillForm(fn (): array => [
                 'email' => $this->model->user?->email,
             ])
             ->schema([
@@ -104,7 +105,6 @@ class Setting extends Component implements HasActions, HasForms
             ->modalSubmitActionLabel('Update email')
             ->modalCancelActionLabel('Cancel')
             ->action(function (array $data): void {
-                /** @phpstan-ignore property.notFound */
                 $verified = $this->model->email === $data['email'] ? ($this->model->user ? $this->model->user->email_verified_at : null) : null;
 
                 $this->model->update([
@@ -157,7 +157,7 @@ class Setting extends Component implements HasActions, HasForms
     {
         return Action::make('edit')
             ->record($this->model)
-            ->fillForm(fn ($record, $arguments): array => [
+            ->fillForm(fn (): array => [
                 'user_name' => $this->model->user_name,
                 'first_name' => $this->model->first_name,
                 'last_name' => $this->model->last_name,
@@ -188,7 +188,7 @@ class Setting extends Component implements HasActions, HasForms
             // ->modalIcon('heroicon-o-banknotes')
             ->stickyModalHeader()
             ->stickyModalFooter()
-            ->action(function (array $data, $arguments, Component $livewire): void {
+            ->action(function (array $data): void {
                 $this->model->update([
                     'first_name' => $data['first_name'],
                     'last_name' => $data['last_name'],

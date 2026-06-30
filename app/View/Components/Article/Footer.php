@@ -16,13 +16,17 @@ use Modules\Xot\Actions\GetViewAction;
  */
 class Footer extends Component
 {
+    /** @var array<int, array<string, mixed>> */
     public array $blocks = [];
 
+    /**
+     * @param array<int, array<string, mixed>>|string|null $blocks
+     */
     public function __construct(
         array|string|null $blocks,
         public Model $article,
-        public string $tpl = 'v1')
-    {
+        public string $tpl = 'v1',
+    ) {
         if (! \is_array($blocks)) {
             $blocks = [];
         }
@@ -36,8 +40,8 @@ class Footer extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [];
+        $viewParams = [];
 
-        return view($view, $view_params);
+        return view($view, $viewParams);
     }
 }

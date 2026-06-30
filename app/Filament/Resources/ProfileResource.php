@@ -6,7 +6,6 @@ namespace Modules\Blog\Filament\Resources;
 
 use Filament\Resources\Pages\PageRegistration;
 // use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
-use Modules\Blog\Filament\Resources\ProfileResource\Pages;
 use Modules\Blog\Filament\Resources\ProfileResource\Pages\CreateProfile;
 use Modules\Blog\Filament\Resources\ProfileResource\Pages\EditProfile;
 use Modules\Blog\Filament\Resources\ProfileResource\Pages\ListProfiles;

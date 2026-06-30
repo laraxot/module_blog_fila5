@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\PostViewFactory;
+use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -57,13 +58,13 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  *
  * @method static PostView|null             first()
  * @method static Collection<int, PostView> get()
- * @method static PostView                  create(array $attributes = [])
- * @method static PostView                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static PostView                  create(array<string, mixed> $attributes = [])
+ * @method static PostView                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|PostView  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|PostView  whereNotNull((string|Expression) $columns)
  * @method static int                       count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property Profile|null $deleter
  *
  * @mixin \Eloquent
  */

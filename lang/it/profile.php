@@ -10,8 +10,8 @@ return [
             'name' => 'Content',
         ],
         'sort' => 56,
-        'icon' => 'profile.navigation',
-        'label' => 'profile.navigation',
+        'icon' => 'heroicon-o-user',
+        'label' => 'Profilo',
     ],
     'fields' => [
         'type' => 'Tipo',

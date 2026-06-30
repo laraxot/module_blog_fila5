@@ -4,24 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Actions\ViewAction;
-use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\CreateTextWidget;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\EditTextWidget;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\ListTextWidgets;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\ViewTextWidget;
-use Modules\Blog\Models\TextWidget;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class TextWidgetResource extends XotBaseResource
@@ -70,28 +61,6 @@ class TextWidgetResource extends XotBaseResource
             Toggle::make('active')
                 ->required(),
         ];
-    }
-
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                TextColumn::make('key'),
-                IconColumn::make('active')
-                    ->boolean(),
-                TextColumn::make('updated_at')
-                    ->dateTime(),
-            ])
-            ->filters([
-            ])
-            ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
-                DeleteAction::make(),
-            ])
-            ->toolbarActions([
-                DeleteBulkAction::make(),
-            ]);
     }
 
     public static function getRelations(): array

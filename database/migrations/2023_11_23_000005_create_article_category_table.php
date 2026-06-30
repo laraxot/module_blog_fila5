@@ -20,7 +20,6 @@ return new class extends XotBaseMigration {
                 $table->id();
                 $table->foreignId('category_id'); // ->references('id')->on('categories')->onDelete('cascade');
                 $table->foreignId('article_id'); // ->references('id')->on('posts')->onDelete('cascade');
-                $table->timestamps();
             }
         );
         // -- UPDATE --

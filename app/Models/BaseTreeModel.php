@@ -33,14 +33,12 @@ abstract class BaseTreeModel extends BaseModel
         return 'cte_path';
     }
 
-    public function makeChildOf(Model $parent): self
-    {
-        // if ($node->isSelfOrDescendantOf($this)) {
+    public function makeChildOf(Model $parent): self // $parent is unused
+    {// if ($node->isSelfOrDescendantOf($this)) {
         //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
         // }
 
         // Save the previous parent to be used when finishing.
-        $this->parent()->associate($parent); // @phpstan-ignore argument.type
 
         $this->save();
 

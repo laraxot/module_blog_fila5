@@ -18,7 +18,7 @@ class Lists extends Component
 
     // All categories
     /**
-     * @var Collection<Category>
+     * @var Collection<int, Category>
      */
     public Collection $categories;
 
@@ -26,7 +26,7 @@ class Lists extends Component
     public int $postCount = 0;
 
     /**
-     * @var \Illuminate\Support\Collection<int,\Illuminate\Support\Collection>
+     * @var \Illuminate\Support\Collection<int, \Illuminate\Support\Collection<int|string, mixed>>
      */
     public \Illuminate\Support\Collection $postChunks;
 
@@ -42,10 +42,8 @@ class Lists extends Component
 
     public string $tpl;
 
-    /**
-     * @var array
-     */
-    protected $queryString = [
+    /** @var array<string, array<string, mixed>> */
+    protected array $queryString = [
         'category' => ['except' => ''],
         'order' => ['except' => 'date_desc'],
     ];
@@ -65,11 +63,11 @@ class Lists extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [
+        $viewParams = [
             'activeCategory' => $this->category,
         ];
 
-        return view((string) $view, $view_params);
+        return view((string) $view, $viewParams);
     }
 
     public function updatedCategory(): void
@@ -94,12 +92,13 @@ class Lists extends Component
     // }
 
     /**
-     * Summary of getArticleQuery.
+     * @return EloquentBuilder<Article>
      */
     private function getArticleQuery(): EloquentBuilder
     {
         $query = Article::published();
-        if (($activeCategory = $this->category) instanceof Category) {
+        $activeCategory = $this->category;
+        if ($activeCategory instanceof Category) {
             $query = $query->whereCategoryId($activeCategory->id);
         }
 
@@ -117,7 +116,7 @@ class Lists extends Component
         $this->currentChunk = 0;
 
         $postIds = $this->getArticleQuery()->pluck('id');
-        $this->postCount = $postIds->count(); /* @phpstan-ignore method.nonObject */
+        $this->postCount = $postIds->count();
         $this->postChunks = $postIds->chunk(self::ITEMS_PER_PAGE);
     }
 }

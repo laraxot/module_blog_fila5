@@ -57,6 +57,5 @@ use Spatie\ModelStatus\Status as BaseStatus;
  */
 class Status extends BaseStatus
 {
-    /** @var string */
     protected $connection = 'blog';
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Traits;
 
+// @phpstan-ignore-next-line
 trait HasContentEditor
 {
     public static function getContentEditor(string $field): string

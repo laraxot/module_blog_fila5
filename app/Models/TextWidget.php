@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Modules\Blog\Database\Factories\TextWidgetFactory;
+use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\HasMedia;
@@ -66,13 +67,13 @@ use Webmozart\Assert\Assert;
  *
  * @method static TextWidget|null             first()
  * @method static Collection<int, TextWidget> get()
- * @method static TextWidget                  create(array $attributes = [])
- * @method static TextWidget                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static TextWidget                  create(array<string, mixed> $attributes = [])
+ * @method static TextWidget                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|TextWidget  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|TextWidget  whereNotNull((string|Expression) $columns)
  * @method static int                         count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property Profile|null $deleter
  *
  * @mixin \Eloquent
  */

@@ -11,6 +11,9 @@ use Modules\Xot\Actions\GetViewAction;
 
 class Chunk extends Component
 {
+    /** @var array<int, string> */
+    /** @var array<int, mixed> */
+    /** @var array<int, mixed> */
     public array $postIds;
 
     public string $tpl = 'v1';
@@ -26,14 +29,14 @@ class Chunk extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [
+        $viewParams = [
             'articles' => $orderedPosts,
         ];
 
-        return view((string) $view, $view_params);
+        return view((string) $view, $viewParams);
     }
 
-    public function url(string $name, array $params): string
+    public function url(): string
     {
         return '#';
     }

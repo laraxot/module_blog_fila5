@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources\CategoryResource\Pages;
 
-use Filament\Actions;
 use Filament\Actions\CreateAction;
-use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 // use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 // use LaraZeus\SpatieTranslatable\Resources\Pages\ListRecords\Concerns\Translatable;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;

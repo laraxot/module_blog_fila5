@@ -6,7 +6,6 @@ namespace Modules\Blog\Filament\Blocks;
 
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 
 class Filter
 {

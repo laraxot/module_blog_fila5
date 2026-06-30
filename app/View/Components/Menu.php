@@ -18,8 +18,8 @@ class Menu extends Component
 {
     public function __construct(
         public string $name,
-        public string $tpl = 'v1')
-    {
+        public string $tpl = 'v1',
+    ) {
     }
 
     public function render(): Renderable
@@ -30,7 +30,7 @@ class Menu extends Component
         $view = app(GetViewAction::class)->execute($this->tpl);
         $menu = MenuModel::firstOrCreate(['name' => $this->name]);
 
-        $view_params = [
+        $viewParams = [
             'menu' => $menu,
         ];
         if (null === $menu->items) {
@@ -38,6 +38,6 @@ class Menu extends Component
             $menu->save();
         }
 
-        return view($view, $view_params);
+        return view($view, $viewParams);
     }
 }

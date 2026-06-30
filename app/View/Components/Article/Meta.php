@@ -18,8 +18,8 @@ class Meta extends Component
 {
     public function __construct(
         public Article $article,
-        public string $tpl = 'v1')
-    {
+        public string $tpl = 'v1',
+    ) {
     }
 
     public function render(): Renderable
@@ -29,8 +29,8 @@ class Meta extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [];
+        $viewParams = [];
 
-        return view($view, $view_params);
+        return view($view, $viewParams);
     }
 }

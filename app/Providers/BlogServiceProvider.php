@@ -6,6 +6,9 @@ namespace Modules\Blog\Providers;
 
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
+/**
+ * @SuppressWarnings("PHPMD.CamelCasePropertyName")
+ */
 class BlogServiceProvider extends XotBaseServiceProvider
 {
     public string $name = 'Blog';

@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Blog\Actions;
 
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
-use Modules\Blog\Models\Post;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -20,10 +18,11 @@ class ImportFromNewsApi
     public function execute(): void
     {
         // $url = 'https://newsapi.org/v2/top-headlines?country=it&apiKey='.config('services.newsapi.app_key');
-        Assert::string($app_key = config('services.newsapi.app_key'));
-        $url = 'https://newsapi.org/v2/everything?q=cripto&sortBy=popularity&apiKey='.$app_key;
+        Assert::string($appKey = config('services.newsapi.app_key'));
+        $url = 'https://newsapi.org/v2/everything?q=cripto&sortBy=popularity&apiKey='.$appKey;
         $response = Http::get($url);
-        Assert::isArray($res = $response->json(), '['.__LINE__.']['.__FILE__.']');
+        Assert::isArray($responseData = $response->json(), '['.__LINE__.']['.__FILE__.']');
+        unset($responseData);
         /* --- from POST to ARTICLE
         foreach ($posts as $post) {
             $res = Post::create([

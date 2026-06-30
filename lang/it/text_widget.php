@@ -10,8 +10,8 @@ return [
             'name' => 'Content',
         ],
         'sort' => 97,
-        'icon' => 'text widget.navigation',
-        'label' => 'text widget.navigation',
+        'icon' => 'heroicon-o-document-text',
+        'label' => 'Widget Testo',
     ],
     'actions' => [
         'create' => [
