@@ -1,127 +1,56 @@
-# Module Blog Fila3 📚 Create, Manage, and Engage with Powerful Blog Features! 🚀
+# 📰 Blog
 
-[![Latest Release](https://img.shields.io/github/v/release/laraxot/module_blog_fila5)](https://github.com/laraxot/module_blog_fila5/releases)
-[![Build Status](https://img.shields.io/travis/laraxot/module_blog_fila5/master)](https://travis-ci.org/laraxot/module_blog_fila5)
-[![Total Downloads](https://img.shields.io/packagist/dt/laraxot/module_blog_fila5)](https://packagist.org/packages/laraxot/module_blog_fila5)
-[![License](https://img.shields.io/github/license/laraxot/module_blog_fila5)](LICENSE)
+[![Domain-Blog](https://img.shields.io/badge/Domain-Editorial-6D4C41.svg)](#)
+[![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
+[![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
+[![PHP 8.4+](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://php.net/)
+[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
+[![PSR-12](https://img.shields.io/badge/Code-PSR--12-blue.svg)](https://www.php-fig.org/psr/psr-12/)
+[![Strict Types](https://img.shields.io/badge/PHP-strict__types-1-informational.svg)](#)
+[![Laraxot Modules](https://img.shields.io/badge/Architecture-Modular-purple.svg)](#)
+[![FixCity Platform](https://img.shields.io/badge/Platform-FixCity-008758.svg)](#)
 
-**Module Blog Fila3** is the ultimate blogging module for Laravel, allowing you to easily create, manage, and publish engaging blog content with robust functionality and seamless integration! ✨
-
----
-
-### Key Features 🌟
-
-- **Create and Manage Articles**: Write, edit, and publish engaging content effortlessly.
-- **Category Management**: Organize your articles into clear, structured categories.
-- **Banner Support**: Showcase featured articles with rotating banners.
-- **User Profiles**: Manage author profiles to attribute and showcase contributors.
-- **Frontend Flexibility**: Easily integrate the blog into your frontend with customizable templates.
+> **Notizie e comunicati del comune.** Articoli, categorie, SEO-friendly — contenuto editoriale vivo.
 
 ---
 
-### Installation Guide 💻
+## Perché esiste
 
-1. **Install the module:**
-    ```bash
-    git submodule add https://github.com/laraxot/module_blog_fila5.git Blog
-    ```
+Canale istituzionale per informare i cittadini.
 
-2. **Run Migrations:**
-    ```bash
-    php artisan module:migrate Blog
-    ```
+## Superpoteri
 
-3. **Enable the module:**
-    ```bash
-    php artisan module:enable Blog
-    ```
+- Articoli e categorie
+- Filament CRUD
+- Integrazione Cms/Seo
+- Blade components tema
 
-4. **Check Active Modules:**
-    ```bash
-    php artisan module:list
-    ```
+## Certificazioni
 
----
+| Certificazione | Stato |
+|----------------|-------|
+| PHPStan livello 10 | Target progetto |
+| `declare(strict_types=1)` | Su nuovo codice PHP |
+| Filament 5 + XotBase | Admin enterprise |
+| Test PHPUnit / Pest | Suite modulo |
+| Documentazione wiki | Cartella `docs/` |
 
-### Models and Their Purpose 🛠️
+## Vuoi entrare nel team?
 
-- **Article**: Represents blog posts with rich content, including text, images, and custom blocks.
-- **Category**: Groups articles under specific themes, such as Sports, Politics, or Science.
-- **Banner**: Displays highlighted content as a carousel on the homepage for more visibility.
-- **Profile**: Manages user profiles, allowing for author details and bio presentation on posts.
+Racconta il **servizio pubblico** con chiarezza.
+
+Stack frontoffice: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filament v5** — vedi [STORY-133](../../../docs/stories/STORY-133-frontend-stack-religion-tailwind-alpine-lit.md).
 
 ---
 
-### Supercharged Console Commands 🚀
+## Documentazione
 
-- **List Articles:**
-    ```bash
-    php artisan blog:articles
-    ```
-    _View all published blog articles._
-
-- **Create a New Article:**
-    ```bash
-    php artisan blog:create <title>
-    ```
-    _Easily draft a new blog post._
-
-- **Manage Categories:**
-    ```bash
-    php artisan blog:categories
-    ```
-    _View and manage the article categories._
+| Lingua | Link |
+|--------|------|
+| 🇮🇹 Presentazione | Questo file (`README.md`) |
+| 🇬🇧 Business card | [docs/readme-en.md](./docs/readme-en.md) |
+| 📚 Wiki tecnica | [./docs/wiki/](./docs/) |
 
 ---
 
-### FAQ ❓
-
-- **Q: How do I display the blog on my site?**
-  A: The module integrates seamlessly with your frontend, providing customizable templates for listing articles, categories, and more.
-
-- **Q: Can I schedule posts for future publication?**
-  A: Yes! You can set publish dates for articles, allowing you to plan content ahead.
-
----
-
-### Code Quality 🏆
-
-**PHPStan Level 10 Compliance**
-
-[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](docs/phpstan-compliance.md)  
-**Status:** ✅ 0 Errors (13 errori corretti il 10 Ottobre 2025)
-
-```bash
-# Verifica qualità codice
-./vendor/bin/phpstan analyse Modules/Blog
-```
-
-**Best Practices & Documentation:**
-- 📊 [PHPStan Compliance Status](docs/phpstan-compliance.md)
-- 🎓 [Best Practices PHPStan](docs/phpstan/best-practices.md)
-- 📝 [Correzioni 2025-10-10](docs/phpstan/correzioni-2025-10-10.md)
-- 🎯 [Pattern Comuni Progetto](../../../docs/phpstan/pattern-comuni.md)
-
-**Key Learnings:**
-- ✅ Return types specifici: `list<ArticleData>` invece di `array<string, mixed>`
-- ✅ Type-safe callbacks: sempre ritornare tipo corretto (es. `bool` per `filter()`)
-- ✅ Array associativi per Filament: chiavi stringa richieste
-- ✅ Null safety: usare `??` e `?->` per property dinamiche
-- ✅ MAI escludere test da PHPStan
-
----
-
-### Author 👨‍💻
-
-Developed and maintained by [Marco Sottana](https://github.com/marco76tv)  
-📧 Email: marco.sottana@gmail.com
-
----
-
-### License 📄
-
-This package is open-sourced under the [MIT license](LICENSE).
-
----
-
-Take your content creation to the next level with **Module Blog Fila3**! 💥
+**Modulo** `blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5

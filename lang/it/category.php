@@ -10,8 +10,8 @@ return [
             'name' => 'Content',
         ],
         'sort' => 21,
-        'icon' => 'category.navigation',
-        'label' => 'category.navigation',
+        'icon' => 'heroicon-o-tag',
+        'label' => 'Categoria',
     ],
     'show' => [
         'title' => 'Articoli della categoria ',

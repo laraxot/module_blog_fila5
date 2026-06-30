@@ -10,7 +10,6 @@
             <div class="space-y-4" {{-- x-show="filteredMarkets.length>0" --}} x-cloak>
                 <div class="flex items-center justify-between px-2">
                     <span class="text-sm text-gray-400">Markets</span>
-                    <a href="#" class="text-sm text-blue-500">{{ $results->count()/** @phpstan-ignore method.nonObject */ }}</a>
                 </div>
                 <ul class="space-y-1">
                     @foreach ($results as $article)

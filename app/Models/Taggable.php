@@ -15,15 +15,15 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Modules\Blog\Models\Taggable.
  *
- * @property int         $id
- * @property int         $tag_id
- * @property string      $taggable_type
- * @property int         $taggable_id
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property array       $custom_properties
+ * @property int                  $id
+ * @property int                  $tag_id
+ * @property string               $taggable_type
+ * @property int                  $taggable_id
+ * @property Carbon|null          $created_at
+ * @property Carbon|null          $updated_at
+ * @property string|null          $updated_by
+ * @property string|null          $created_by
+ * @property array<string, mixed> $custom_properties
  *
  * @method static Builder|Taggable newModelQuery()
  * @method static Builder|Taggable newQuery()
@@ -51,8 +51,8 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @method static Taggable|null             first()
  * @method static Collection<int, Taggable> get()
- * @method static Taggable                  create(array $attributes = [])
- * @method static Taggable                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Taggable                  create(array<string, mixed> $attributes = [])
+ * @method static Taggable                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Taggable  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Taggable  whereNotNull((string|Expression) $columns)
  * @method static int                       count(string $columns = '*')
@@ -63,12 +63,9 @@ class Taggable extends BaseMorphPivot
 {
     /**
      * Undocumented variable.
-     *
-     * @var string
      */
     protected $table = 'taggables';  // spatie vuol cosi'
 
-    /** @var string */
     protected $connection = 'blog';
 
     /** @var list<string> */
@@ -88,6 +85,9 @@ class Taggable extends BaseMorphPivot
         'custom_properties' => [],
     ];
 
+    /**
+     * @param array<string, mixed> $customProperties
+     */
     public function withCustomProperties(array $customProperties): self
     {
         // $this->customProperties = $customProperties;
@@ -103,26 +103,24 @@ class Taggable extends BaseMorphPivot
 
     /**
      * Get the value of custom property with the given name.
-     *
-     * @param mixed|null $default
      */
-    public function getCustomProperty(string $propertyName, $default = null): mixed
+    public function getCustomProperty(string $propertyName, mixed $default = null): mixed
     {
         return Arr::get($this->custom_properties, $propertyName, $default);
     }
 
     /**
-     * @param int|string|float|array|null $value
+     * @param array<string, mixed>|int|string|float|null $value
      *
      * @return $this
      */
-    public function setCustomProperty(string $name, $value): self
+    public function setCustomProperty(string $name, int|string|float|array|null $value): self
     {
         $customProperties = $this->custom_properties;
 
         Arr::set($customProperties, $name, $value);
 
-        $this->custom_properties = $customProperties;
+        $this->custom_properties = self::normalizeCustomProperties($customProperties);
 
         return $this;
     }
@@ -133,9 +131,26 @@ class Taggable extends BaseMorphPivot
 
         Arr::forget($customProperties, $name);
 
-        $this->custom_properties = $customProperties;
+        $this->custom_properties = self::normalizeCustomProperties($customProperties);
 
         return $this;
+    }
+
+    /**
+     * @param array<mixed, mixed> $properties
+     *
+     * @return array<string, mixed>
+     */
+    private static function normalizeCustomProperties(array $properties): array
+    {
+        $normalized = [];
+        foreach ($properties as $key => $value) {
+            if (is_string($key)) {
+                $normalized[$key] = $value;
+            }
+        }
+
+        return $normalized;
     }
 
     /** @return array<string, string> */

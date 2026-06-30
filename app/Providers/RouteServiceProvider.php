@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Providers;
 
-use BezhanSalleh\FilamentLanguageSwitch\Http\Middleware\SwitchLanguageLocale;
-use Illuminate\Routing\Router;
 use Modules\Xot\Providers\XotBaseRouteServiceProvider;
 
+/**
+ * @SuppressWarnings("PHPMD.CamelCasePropertyName")
+ */
 class RouteServiceProvider extends XotBaseRouteServiceProvider
 {
+    public string $name = 'Blog';
+
     /**
      * The module namespace to assume when generating URLs to actions.
      */
@@ -18,8 +21,6 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
-
-    public string $name = 'Blog';
 
     public function boot(): void
     {

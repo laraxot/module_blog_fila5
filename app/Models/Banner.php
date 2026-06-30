@@ -12,26 +12,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\MenuFactory;
+use Modules\Fixcity\Models\Profile;
 use Modules\Xot\Contracts\ProfileContract;
-use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\Translatable\HasTranslations;
 
 /**
  * Modules\Cms\Models\Menu.
  *
- * @property int         $id
- * @property string      $name
- * @property array|null  $items
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property Carbon|null $deleted_at
- * @property string|null $deleted_by
+ * @property int                       $id
+ * @property string                    $name
+ * @property array<string, mixed>|null $items
+ * @property Carbon|null               $created_at
+ * @property Carbon|null               $updated_at
+ * @property string|null               $updated_by
+ * @property string|null               $created_by
+ * @property Carbon|null               $deleted_at
+ * @property string|null               $deleted_by
  *
  * @method static MenuFactory  factory($count = null, $state = [])
  * @method static Builder|Menu newModelQuery()
@@ -88,13 +87,13 @@ use Spatie\Translatable\HasTranslations;
  *
  * @method static Banner|null             first()
  * @method static Collection<int, Banner> get()
- * @method static Banner                  create(array $attributes = [])
- * @method static Banner                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Banner                  create(array<string, mixed> $attributes = [])
+ * @method static Banner                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Banner  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Banner  whereNotNull((string|Expression) $columns)
  * @method static int                     count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property Profile|null $deleter
  *
  * @mixin \Eloquent
  */
@@ -158,12 +157,11 @@ class Banner extends BaseModel implements HasMedia
     /**
      * https://dev.to/npesado/convert-images-to-webp-4i06.
      */
-    public function registerMediaConversions(?Media $media = null): void
-    {
-        $this->addMediaConversion('cover')
-            // ->format(Manipulations::FORMAT_WEBP)
-            ->width(320)
-            ->height(200);
+    public function registerMediaConversions(?Media $media = null): void // $media is unused but part of interface
+    {$this->addMediaConversion('cover')
+                // ->format(Manipulations::FORMAT_WEBP)
+                ->width(320)
+                ->height(200);
     }
 
     public function getDesktopThumbnailAttribute(): string
@@ -187,6 +185,7 @@ class Banner extends BaseModel implements HasMedia
         return $this->getFirstMediaUrl('banner');
     }
 
+    /** @return BelongsTo<Category, $this> */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

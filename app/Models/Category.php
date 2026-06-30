@@ -12,9 +12,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Actions\ParentChilds\GetTreeOptions;
 use Modules\Blog\Database\Factories\CategoryFactory;
+use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -51,34 +53,62 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Category withTrashed()
  * @method static Builder|Category withoutTrashed()
  *
- * @property array|null                                                       $description
- * @property Carbon|null                                                      $deleted_at
- * @property string|null                                                      $deleted_by
- * @property string|null                                                      $parent_id
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $children
- * @property int|null                                                         $children_count
- * @property Category|null                                                    $parent
- * @property mixed                                                            $post_counter
- * @property mixed                                                            $translations
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $ancestors                  The model's recursive parents.
- * @property int|null                                                         $ancestors_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $ancestorsAndSelf           The model's recursive parents and itself.
- * @property int|null                                                         $ancestors_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $bloodline                  The model's ancestors, descendants and itself.
- * @property int|null                                                         $bloodline_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $childrenAndSelf            The model's direct children and itself.
- * @property int|null                                                         $children_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $descendants                The model's recursive children.
- * @property int|null                                                         $descendants_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $descendantsAndSelf         The model's recursive children and itself.
- * @property int|null                                                         $descendants_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $parentAndSelf              The model's direct parent and itself.
- * @property int|null                                                         $parent_and_self_count
- * @property Category|null                                                    $rootAncestor               The model's topmost parent.
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $siblings                   The parent's other children.
- * @property int|null                                                         $siblings_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection|Category[] $siblingsAndSelf            All the parent's children.
- * @property int|null                                                         $siblings_and_self_count
+ * @property array<string, mixed>|null                                            $description
+ * @property Carbon|null                                                          $deleted_at
+ * @property string|null                                                          $deleted_by
+ * @property string|null                                                          $parent_id
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $children
+ * @property int|null                                                             $children_count
+ * @property Category|null                                                        $parent
+ * @property mixed                                                                $post_counter
+ * @property mixed                                                                $translations
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestors                  The model's recursive parents.
+ * @property int|null                                                             $ancestors_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestorsAndSelf           The model's recursive parents and itself.
+ * @property int|null                                                             $ancestors_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $bloodline                  The model's ancestors, descendants and itself.
+ * @property int|null                                                             $bloodline_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $childrenAndSelf            The model's direct children and itself.
+ * @property int|null                                                             $children_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendants                The model's recursive children.
+ * @property int|null                                                             $descendants_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendantsAndSelf         The model's recursive children and itself.
+ * @property int|null                                                             $descendants_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $parentAndSelf              The model's direct parent and itself.
+ * @property int|null                                                             $parent_and_self_count
+ * @property Category|null                                                        $rootAncestor               The model's topmost parent.
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblings                   The parent's other children.
+ * @property int|null                                                             $siblings_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblingsAndSelf            All the parent's children.
+ * @property int|null                                                             $siblings_and_self_count
+ * @property array<string, mixed>|null                                            $description
+ * @property Carbon|null                                                          $deleted_at
+ * @property string|null                                                          $deleted_by
+ * @property string|null                                                          $parent_id
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $children
+ * @property int|null                                                             $children_count
+ * @property Category|null                                                        $parent
+ * @property mixed                                                                $post_counter
+ * @property mixed                                                                $translations
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestors                  The model's recursive parents.
+ * @property int|null                                                             $ancestors_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestorsAndSelf           The model's recursive parents and itself.
+ * @property int|null                                                             $ancestors_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $bloodline                  The model's ancestors, descendants and itself.
+ * @property int|null                                                             $bloodline_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $childrenAndSelf            The model's direct children and itself.
+ * @property int|null                                                             $children_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendants                The model's recursive children.
+ * @property int|null                                                             $descendants_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendantsAndSelf         The model's recursive children and itself.
+ * @property int|null                                                             $descendants_and_self_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $parentAndSelf              The model's direct parent and itself.
+ * @property int|null                                                             $parent_and_self_count
+ * @property Category|null                                                        $rootAncestor               The model's topmost parent.
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblings                   The parent's other children.
+ * @property int|null                                                             $siblings_count
+ * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblingsAndSelf            All the parent's children.
+ * @property int|null                                                             $siblings_and_self_count
  *
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        breadthFirst()
@@ -97,9 +127,9 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereDepth($operator, $value = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereDescription($value)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereLocale(string $column, string $locale)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereLocales(string $column, array $locales)
+ * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereLocales(string $column, array<string, mixed> $locales)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereParentId($value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        withGlobalScopes(array $scopes)
+ * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        withGlobalScopes(array<string, mixed> $scopes)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
@@ -115,7 +145,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereJsonContainsLocale(string $column, string $locale, ?mixed $value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereJsonContainsLocales(string $column, array $locales, ?mixed $value)
+ * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereJsonContainsLocales(string $column, array<string, mixed> $locales, ?mixed $value)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
@@ -170,8 +200,8 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @method static Category|null             first()
  * @method static Collection<int, Category> get()
- * @method static Category                  create(array $attributes = [])
- * @method static Category                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Category                  create(array<string, mixed> $attributes = [])
+ * @method static Category                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Category  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Category  whereNotNull((string|Expression) $columns)
  * @method static int                       count(string $columns = '*')
@@ -182,7 +212,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Category whereIsActive($value)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder<static>|Category whereSortOrder($value)
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property Profile|null $deleter
  *
  * @mixin \Eloquent
  */
@@ -192,7 +222,7 @@ class Category extends BaseModel
     use HasTranslations;
 
     /** @var array<int, string> */
-    public $translatable = [
+    public array $translatable = [
         'title',
         'description',
     ];
@@ -213,6 +243,48 @@ class Category extends BaseModel
         'icon',
     ];
 
+    /**
+     * @return array<int|string, string>
+     */
+    public static function getTreeCategoryOptions(): array
+    {
+        $instance = new self();
+
+        return app(GetTreeOptions::class)->execute($instance);
+    }
+
+    /**
+     * Get the path key to the item for the frontend only.
+     */
+    public function getFrontRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
+     * @return BelongsToMany<Article, $this, Pivot, 'pivot'>
+     */
+    public function articles(): BelongsToMany
+    {
+        return $this->belongsToMany(Article::class);
+    }
+
+    /**
+     * @return HasMany<Article, $this>
+     */
+    public function categoryArticles(): HasMany
+    {
+        return $this->hasMany(Article::class, 'category_id');
+    }
+
+    /**
+     * @return HasOne<Banner, $this>
+     */
+    public function banner(): HasOne
+    {
+        return $this->hasOne(Banner::class);
+    }
+
     /** @return array<string, string> */
     protected function casts(): array
     {
@@ -231,35 +303,5 @@ class Category extends BaseModel
             'updated_at' => 'datetime',
             'icon' => 'string',
         ];
-    }
-
-    public static function getTreeCategoryOptions(): array
-    {
-        $instance = new self();
-
-        return app(GetTreeOptions::class)->execute($instance);
-    }
-
-    /**
-     * Get the path key to the item for the frontend only.
-     */
-    public function getFrontRouteKeyName(): string
-    {
-        return 'slug';
-    }
-
-    public function articles(): BelongsToMany
-    {
-        return $this->belongsToMany(Article::class);
-    }
-
-    public function categoryArticles(): HasMany
-    {
-        return $this->hasMany(Article::class, 'category_id');
-    }
-
-    public function banner(): HasOne
-    {
-        return $this->hasOne(Banner::class);
     }
 }

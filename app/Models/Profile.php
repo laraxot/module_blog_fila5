@@ -10,7 +10,6 @@ use Closure;
 use Illuminate\Contracts\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Support\Carbon;
@@ -30,7 +29,7 @@ use Modules\User\Models\Team;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
-use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Spatie\SchemalessAttributes\SchemalessAttributes;
 
 /**
  * Modules\Blog\Models\Profile.
@@ -48,7 +47,7 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @property string|null                                                $deleted_at
  * @property string|null                                                $deleted_by
  * @property string|null                                                $slug
- * @property \Spatie\SchemalessAttributes\SchemalessAttributes|null     $extra
+ * @property SchemalessAttributes|null                                  $extra
  * @property \Illuminate\Database\Eloquent\Collection<int, Article>     $articles
  * @property int|null                                                   $articles_count
  * @property string                                                     $avatar
@@ -113,8 +112,8 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @method static \Illuminate\Database\Eloquent\Builder|Profile          whereOauthEnable($value)
  * @method static Profile|null                                           first()
  * @method static \Illuminate\Database\Eloquent\Collection<int, Profile> get()
- * @method static Profile                                                create(array $attributes = [])
- * @method static Profile                                                firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Profile                                                create(array<string, mixed> $attributes = [])
+ * @method static Profile                                                firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Profile  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Profile  whereNotNull((string|Expression) $columns)
  * @method static int                                                    count(string $columns = '*')
@@ -122,9 +121,9 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
  * @property string                               $display_name
  * @property \Modules\Fixcity\Models\Profile|null $deleter
  *
- * @method static Builder<static>|Profile byUuid(string $uuid)
- * @method static Builder<static>|Profile childrenWith(array $relations)
- * @method static Builder<static>|Profile childrenWithCount(array $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static> byUuid(string $uuid)
+ * @method static \Illuminate\Database\Eloquent\Builder<static> childrenWith(array<string, mixed> $relations)
+ * @method static \Illuminate\Database\Eloquent\Builder<static> childrenWithCount(array<string, mixed> $relations)
  *
  * @mixin \Eloquent
  */
@@ -132,12 +131,6 @@ class Profile extends BaseProfile
 {
     use HasRating;
 
-    /** @var array<string, string> */
-    public $casts = [
-        'extra' => SchemalessAttributes::class,
-    ];
-
-    /** @var string */
     protected $connection = 'blog';
 
     /** @var list<string> */
@@ -151,8 +144,8 @@ class Profile extends BaseProfile
         'extra',
     ];
 
-    /** @var array */
-    protected $schemalessAttributes = [
+    /** @var list<string> */
+    protected array $schemalessAttributes = [
         'extra',
     ];
 
@@ -174,11 +167,12 @@ class Profile extends BaseProfile
 
     public function getAvatarUrl(): string
     {
-        if (null == $this->getFirstMediaUrl('photo_profile')) {
+        $url = $this->getFirstMediaUrl('photo_profile');
+        if ('' === $url) {
             return asset('modules/blog/img/no_user.webp');
         }
 
-        return $this->getFirstMediaUrl('photo_profile');
+        return $url;
     }
 
     /*
@@ -198,14 +192,17 @@ class Profile extends BaseProfile
         return $this->hasMany(RatingMorph::class, 'user_id', 'user_id');
     }
     */
-    // : int
+    /** @return Collection<int, int|string> */
     public function getArticleTraded(): Collection
     {
-        // ->get()
-        // ->count()
-
-        return RatingMorph::where('user_id', $this->user_id)
+        /** @var Collection<int, int|string> $ids */
+        $ids = RatingMorph::where('user_id', $this->user_id)
             ->groupBy('model_id')
-            ->pluck('model_id');
+            ->pluck('model_id')
+            ->filter(static fn (mixed $id): bool => is_int($id) || is_string($id))
+            ->map(static fn (mixed $id): int|string => is_int($id) ? $id : (string) $id)
+            ->values();
+
+        return $ids;
     }
 }

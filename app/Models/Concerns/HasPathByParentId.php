@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models\Concerns;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Webmozart\Assert\Assert;
@@ -26,16 +25,12 @@ trait HasPathByParentId
         if (null !== $value) {
             return $value;
         }
-        $value = $this->getPath();
-        if (null != $this->getKey()) {
-            $this->update(
-                [
-                    'path' => $value,
-                ]
-            );
+        $pathValue = $this->getPath();
+        if (null !== $this->getKey()) {
+            $this->update(['path' => $pathValue]);
         }
 
-        return $value;
+        return $pathValue;
     }
 
     public function getPath(): string
@@ -78,6 +73,7 @@ trait HasPathByParentId
         return $value;
     }
 
+    /** @return BelongsTo<static, $this> */
     public function root(): BelongsTo
     {
         return $this->belongsTo(
@@ -116,11 +112,10 @@ trait HasPathByParentId
         return $value;
     }
 
-    public function getFullBreadsAttribute(?string $value): ?string
-    {
-        if (null !== $this->root_name) {
-            return $this->root_name.' > '.$this->breads;
-        }
+    public function getFullBreadsAttribute(?string $value): ?string // $value is unused but part of attribute getter
+    {if (null !== $this->root_name) {
+        return $this->root_name.' > '.$this->breads;
+    }
 
         return $this->name;
     }
@@ -131,15 +126,10 @@ trait HasPathByParentId
             return $value;
         }
 
-        $value = $this->getBreads();
-        if (null != $this->getKey()) {
-            if (null == $value) {
-                $value = $this->name;
-            }
-            $this->update(['breads' => $value]);
-        }
+        $computed = $this->getBreads();
+        $this->update(['breads' => $computed]);
 
-        return $value;
+        return $computed;
     }
 
     public function setParentIdAttribute(?string $value): void

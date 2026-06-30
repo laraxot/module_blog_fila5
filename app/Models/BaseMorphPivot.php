@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Xot\Models\XotBaseMorphPivot;
 use Modules\Xot\Traits\Updater;
 
 /**
  * Class BaseMorphPivot.
  */
-abstract class BaseMorphPivot extends \Modules\Xot\Models\XotBaseMorphPivot
+abstract class BaseMorphPivot extends XotBaseMorphPivot
 {
     use SoftDeletes;
     use Updater;
@@ -19,30 +20,22 @@ abstract class BaseMorphPivot extends \Modules\Xot\Models\XotBaseMorphPivot
      * Indicates whether attributes are snake cased on arrays.
      *
      * @see  https://laravel-news.com/6-eloquent-secrets
-     *
-     * @var bool
      */
     public static $snakeAttributes = true;
 
-    /** @var bool */
     public $incrementing = true;
 
-    /** @var bool */
     public $timestamps = true;
 
-    /** @var int */
     protected $perPage = 30;
 
-    /** @var string */
     protected $connection = 'blog';
 
     /** @var list<string> */
     protected $appends = [];
 
-    /** @var string */
     protected $primaryKey = 'id';
 
-    /** @var string */
     protected $keyType = 'string';
 
     /** @var list<string> */

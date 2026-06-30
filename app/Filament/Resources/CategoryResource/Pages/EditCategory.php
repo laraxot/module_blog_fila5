@@ -11,7 +11,7 @@ use Modules\Lang\Filament\Resources\Pages\LangBaseEditRecord;
 
 class EditCategory extends LangBaseEditRecord
 {
-    protected static string $resource = CategoryResource::class;
+    public static string $resource = CategoryResource::class;
 
     protected function getHeaderActions(): array
     {

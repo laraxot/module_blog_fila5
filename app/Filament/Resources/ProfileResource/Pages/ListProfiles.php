@@ -25,9 +25,7 @@ class ListProfiles extends UserListProfiles
      */
     public function getTableColumns(): array
     {
-        $res = parent::getTableColumns();
-
-        return $res;
+        return parent::getTableColumns();
     }
 
     /**
@@ -35,8 +33,6 @@ class ListProfiles extends UserListProfiles
      */
     public function getTableActions(): array
     {
-        $res = parent::getTableActions();
-
-        return $res;
+        return parent::getTableActions();
     }
 }

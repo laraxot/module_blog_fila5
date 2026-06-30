@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
-use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Table;
 use Modules\Blog\Filament\Resources\BannerResource\Pages\CreateBanner;
 use Modules\Blog\Filament\Resources\BannerResource\Pages\EditBanner;
 use Modules\Blog\Filament\Resources\BannerResource\Pages\ListBanners;
@@ -63,11 +58,8 @@ class BannerResource extends XotBaseResource
                 //     ->required(),
                 Select::make('category_id')
                     ->required()
-                    ->options(function () {
-                        /** @var array<array<string>|string> $options */
-                        $options = SafeArrayCastAction::cast(Category::getTreeCategoryOptions());
-
-                        return $options;
+                    ->options(static function (): array {
+                        return SafeArrayCastAction::cast(Category::getTreeCategoryOptions());
                     }),
                 // Forms\Components\TextInput::make('link')
                 //     ->columnSpan(1)

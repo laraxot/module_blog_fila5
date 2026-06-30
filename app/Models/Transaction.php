@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\TransactionFactory;
+use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Xot\Contracts\ProfileContract;
@@ -63,19 +64,18 @@ use Webmozart\Assert\Assert;
  * @method static Builder<static>|Transaction  whereStocksValue($value)
  * @method static Transaction|null             first()
  * @method static Collection<int, Transaction> get()
- * @method static Transaction                  create(array $attributes = [])
- * @method static Transaction                  firstOrCreate(array $attributes = [], array $values = [])
+ * @method static Transaction                  create(array<string, mixed> $attributes = [])
+ * @method static Transaction                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static Builder<static>|Transaction  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|Transaction  whereNotNull((string|Expression) $columns)
  * @method static int                          count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property Profile|null $deleter
  *
  * @mixin \Eloquent
  */
 class Transaction extends BaseModel
 {
-    /** @var string */
     protected $connection = 'blog';
 
     protected $fillable = [
@@ -91,8 +91,8 @@ class Transaction extends BaseModel
 
     public function getRatingMorph(): RatingMorph
     {
-        Assert::notNull($rating_morph = RatingMorph::where('rating_id', $this->model_id)->first());
+        Assert::notNull($ratingMorph = RatingMorph::where('rating_id', $this->model_id)->first());
 
-        return $rating_morph;
+        return $ratingMorph;
     }
 }

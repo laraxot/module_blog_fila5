@@ -25,8 +25,6 @@ return new class extends XotBaseMigration {
                 $table->json('slug');
                 $table->string('type')->nullable();
                 $table->integer('order_column')->nullable();
-
-                $table->timestamps();
             }
         );
         // -- UPDATE --
