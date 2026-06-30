@@ -68,7 +68,8 @@ class ShowArticleCommand extends Command
     }
 
     /**
-     * @param  Collection<int, Rating>  $ratings
+     * @param Collection<int, Rating> $ratings
+     *
      * @return list<array<int|float|bool|string|null>>
      */
     private function buildRatingRows(Article $article, Collection $ratings): array
@@ -86,7 +87,8 @@ class ShowArticleCommand extends Command
     }
 
     /**
-     * @param  Collection<int, Rating>  $ratings
+     * @param Collection<int, Rating> $ratings
+     *
      * @return array<int|float|bool|string|null>
      */
     private function buildRatingRow(
@@ -147,7 +149,7 @@ class ShowArticleCommand extends Command
     }
 
     /**
-     * @param  Collection<int, Rating>  $ratings
+     * @param Collection<int, Rating> $ratings
      */
     private function loadRatingAggregates(
         Article $article,
