@@ -22,9 +22,8 @@ use Modules\UI\Datas\SliderData;
 class ThemeComposer
 {
     public function __construct(
-        private readonly ThemeComposerSupport $support = new ThemeComposerSupport(),
-    ) {
-    }
+        private readonly ThemeComposerSupport $support = new ThemeComposerSupport,
+    ) {}
 
     /**
      * @return Collection<int, Category>
@@ -268,8 +267,7 @@ class ThemeComposer
     }
 
     /**
-     * @param Collection<int, Article> $rows
-     *
+     * @param  Collection<int, Article>  $rows
      * @return list<ArticleData>
      */
     public function getArticleDataArray(Collection $rows): array

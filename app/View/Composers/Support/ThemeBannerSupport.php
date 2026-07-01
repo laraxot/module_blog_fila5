@@ -11,9 +11,8 @@ use Webmozart\Assert\Assert;
 final class ThemeBannerSupport
 {
     public function __construct(
-        private readonly ThemeBannerMapper $bannerMapper = new ThemeBannerMapper(),
-    ) {
-    }
+        private readonly ThemeBannerMapper $bannerMapper = new ThemeBannerMapper,
+    ) {}
 
     /**
      * @return list<SliderData>

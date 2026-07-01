@@ -20,7 +20,7 @@ final class ArticleDelegates
     }
 
     /**
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $attributes
      */
     public static function humanReadTime(array $attributes): string
     {
@@ -33,8 +33,7 @@ final class ArticleDelegates
     }
 
     /**
-     * @param array<int, string> $nameBlocks
-     *
+     * @param  array<int, string>  $nameBlocks
      * @return array<int, array<string, mixed>>
      */
     public static function onlyContentBlocks(Article $article, array $nameBlocks): array
@@ -43,8 +42,7 @@ final class ArticleDelegates
     }
 
     /**
-     * @param array<int, string> $nameBlocks
-     *
+     * @param  array<int, string>  $nameBlocks
      * @return array<int, array<string, mixed>>
      */
     public static function exceptContentBlocks(Article $article, array $nameBlocks): array
@@ -53,7 +51,7 @@ final class ArticleDelegates
     }
 
     /**
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $attributes
      */
     public static function mainImage(array $attributes): string
     {
@@ -81,7 +79,7 @@ final class ArticleDelegates
 
     public static function thumbnail(Article $article): string
     {
-        if (null !== $article->getMedia()->first()) {
+        if ($article->getMedia()->first() !== null) {
             return $article->getMedia()->first()->getUrl();
         }
 
@@ -98,7 +96,7 @@ final class ArticleDelegates
             return Storage::url($article->main_image_upload);
         }
 
-        if (null !== $article->main_image_url) {
+        if ($article->main_image_url !== null) {
             return $article->main_image_url;
         }
 

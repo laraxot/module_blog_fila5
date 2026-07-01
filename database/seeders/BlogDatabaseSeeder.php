@@ -13,8 +13,10 @@ class BlogDatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        if (null !== $this->command) {
+        if ($this->command !== null) {
+
             $this->command->info('BlogDatabaseSeeder: entity seeders…');
+
         }
 
         $this->call([
@@ -35,8 +37,10 @@ class BlogDatabaseSeeder extends Seeder
             UpvoteDownvoteSeeder::class,
         ]);
 
-        if (null !== $this->command) {
+        if ($this->command !== null) {
+
             $this->command->info('BlogDatabaseSeeder: completato.');
+
         }
     }
 }
