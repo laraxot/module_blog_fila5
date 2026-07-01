@@ -5,11 +5,30 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Blog\Models\Article;
+use Modules\Blog\Models\Status;
 
-/** Stub parità entità — regola 1 modello = 1 seeder. Dati da factory/test/runtime. */
+/**
+ * Status Spatie demo su primo articolo — schema blog_statuses (name, reason, morph).
+ */
 class StatusSeeder extends Seeder
 {
     public function run(): void
     {
+        $article = Article::query()->first();
+        if ($article === null) {
+            return;
+        }
+
+        Status::query()->firstOrCreate(
+            [
+                'name' => 'published',
+                'model_type' => $article->getMorphClass(),
+                'model_id' => $article->getKey(),
+            ],
+            [
+                'reason' => 'Seeder demo Blog',
+            ],
+        );
     }
 }

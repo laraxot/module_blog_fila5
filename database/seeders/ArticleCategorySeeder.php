@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Blog\Models\ArticleCategory;
 
-/** Stub parità entità — regola 1 modello = 1 seeder. Dati da factory/test/runtime. */
 class ArticleCategorySeeder extends Seeder
 {
     public function run(): void
     {
+        xotSeedModelOnce(ArticleCategory::class);
     }
 }
