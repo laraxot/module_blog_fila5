@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Blog\Models\Taggable;
 
-/** Stub parità entità — regola 1 modello = 1 seeder. Dati da factory/test/runtime. */
 class TaggableSeeder extends Seeder
 {
     public function run(): void
     {
+        xotSeedModelOnce(Taggable::class);
     }
 }
