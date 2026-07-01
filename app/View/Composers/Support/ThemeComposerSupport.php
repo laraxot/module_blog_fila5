@@ -7,12 +7,13 @@ namespace Modules\Blog\View\Composers\Support;
 final class ThemeComposerSupport
 {
     public function __construct(
-        private readonly ThemeArticleSupport $articles = new ThemeArticleSupport,
-        private readonly ThemeCategorySupport $categories = new ThemeCategorySupport,
-        private readonly ThemeCatalogSupport $catalog = new ThemeCatalogSupport,
-        private readonly ThemeBannerSupport $banners = new ThemeBannerSupport,
-        private readonly ThemeSidebarRenderer $sidebar = new ThemeSidebarRenderer,
-    ) {}
+        private readonly ThemeArticleSupport $articles = new ThemeArticleSupport(),
+        private readonly ThemeCategorySupport $categories = new ThemeCategorySupport(),
+        private readonly ThemeCatalogSupport $catalog = new ThemeCatalogSupport(),
+        private readonly ThemeBannerSupport $banners = new ThemeBannerSupport(),
+        private readonly ThemeSidebarRenderer $sidebar = new ThemeSidebarRenderer(),
+    ) {
+    }
 
     public function articles(): ThemeArticleSupport
     {
