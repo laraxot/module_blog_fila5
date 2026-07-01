@@ -17,13 +17,13 @@ final class ArticleTranslationResolver
         if (! $article->isTranslatableAttribute($key)) {
             $value = $article->getAttribute($key);
 
-            return $value !== null ? SafeStringCastAction::cast($value) : null;
+            return null !== $value ? SafeStringCastAction::cast($value) : null;
         }
 
         $translations = $article->getTranslations($key);
         $translation = $translations[$locale] ?? '';
 
-        if ($translation !== '' || ! $useFallbackLocale) {
+        if ('' !== $translation || ! $useFallbackLocale) {
             return $this->castTranslationValue($translation);
         }
 
