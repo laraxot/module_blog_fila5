@@ -18,7 +18,7 @@ class Card extends Component
         string $authorDisplay = 'hidden',
         public string $tpl = 'v1',
     ) {
-        $this->showAuthor = 'visible' === $authorDisplay;
+        $this->showAuthor = $authorDisplay === 'visible';
     }
 
     public function render(): Renderable

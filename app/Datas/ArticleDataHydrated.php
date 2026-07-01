@@ -12,9 +12,9 @@ use Spatie\LaravelData\Data;
 final class ArticleDataHydrated extends Data
 {
     /**
-     * @param EloquentCollection<int, Category>|null $categories
-     * @param array<int, array<string, mixed>>|null  $ratings
-     * @param Collection<int, string>|null           $tags
+     * @param  EloquentCollection<int, Category>|null  $categories
+     * @param  array<int, array<string, mixed>>|null  $ratings
+     * @param  Collection<int, string>|null  $tags
      */
     public function __construct(
         public ?EloquentCollection $categories = null,
@@ -22,6 +22,5 @@ final class ArticleDataHydrated extends Data
         public ?string $closedAtDate = null,
         public ?string $timeLeftForHumans = null,
         public ?Collection $tags = null,
-    ) {
-    }
+    ) {}
 }

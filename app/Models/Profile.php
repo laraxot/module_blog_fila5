@@ -118,7 +118,7 @@ use Spatie\SchemalessAttributes\SchemalessAttributes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Profile  whereNotNull((string|Expression) $columns)
  * @method static int                                                    count(string $columns = '*')
  *
- * @property string               $display_name
+ * @property string                               $display_name
  * @property ProfileContract|null $deleter
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static> byUuid(string $uuid)

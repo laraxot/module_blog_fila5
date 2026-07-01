@@ -31,7 +31,7 @@ final class ThemeArticleQueries
             ->orderBy('published_at', 'desc')
             ->get();
 
-        if (0 !== $rows->count()) {
+        if ($rows->count() !== 0) {
             return $rows;
         }
 

@@ -8,11 +8,10 @@ use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Modules\Blog\Models\Banner;
 use Modules\Blog\Models\Category;
-
-use function Safe\json_decode;
-
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
+
+use function Safe\json_decode;
 
 class ImportBannerFromByJsonTextAction
 {
@@ -32,7 +31,7 @@ class ImportBannerFromByJsonTextAction
     }
 
     /**
-     * @param array<mixed> $item
+     * @param  array<mixed>  $item
      */
     private function importBanner(array $item): void
     {
@@ -42,7 +41,7 @@ class ImportBannerFromByJsonTextAction
     }
 
     /**
-     * @param array<mixed> $item
+     * @param  array<mixed>  $item
      */
     private function upsertCategory(array $item): Category
     {
@@ -62,7 +61,7 @@ class ImportBannerFromByJsonTextAction
     }
 
     /**
-     * @param array<mixed> $item
+     * @param  array<mixed>  $item
      */
     private function upsertBanner(array $item, Category $category): Banner
     {
@@ -90,7 +89,7 @@ class ImportBannerFromByJsonTextAction
     }
 
     /**
-     * @param array<mixed> $item
+     * @param  array<mixed>  $item
      */
     private function attachBannerMedia(Banner $banner, array $item): void
     {
@@ -104,7 +103,7 @@ class ImportBannerFromByJsonTextAction
 
     private function parseOptionalDate(mixed $value): CarbonInterface|string|null
     {
-        if (null === $value) {
+        if ($value === null) {
             return null;
         }
 

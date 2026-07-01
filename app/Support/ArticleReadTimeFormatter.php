@@ -10,7 +10,7 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
 final class ArticleReadTimeFormatter
 {
     /**
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $attributes
      */
     public function fromAttributes(array $attributes): string
     {
