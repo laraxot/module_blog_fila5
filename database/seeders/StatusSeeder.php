@@ -16,7 +16,7 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         $article = Article::query()->first();
-        if ($article === null) {
+        if (null === $article) {
             return;
         }
 
