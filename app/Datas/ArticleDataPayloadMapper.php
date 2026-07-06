@@ -7,7 +7,7 @@ namespace Modules\Blog\Datas;
 final class ArticleDataPayloadMapper
 {
     /**
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
      */
     public static function coreFromPayload(array $payload): ArticleDataCore
     {
@@ -25,7 +25,7 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
      */
     public static function blocksFromPayload(array $payload): ArticleDataBlocks
     {
@@ -37,7 +37,8 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
+     *
      * @return array<int|string, mixed>|string
      */
     public static function titleFromPayload(array $payload): array|string
@@ -48,7 +49,7 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
      */
     private static function nullableInt(array $payload, string $primaryKey, string $fallbackKey): ?int
     {
@@ -64,7 +65,7 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
      */
     private static function nullableString(array $payload, string $primaryKey, ?string $fallbackKey = null): ?string
     {
@@ -72,7 +73,7 @@ final class ArticleDataPayloadMapper
             return $payload[$primaryKey];
         }
 
-        if ($fallbackKey !== null && is_string($payload[$fallbackKey] ?? null)) {
+        if (null !== $fallbackKey && is_string($payload[$fallbackKey] ?? null)) {
             return $payload[$fallbackKey];
         }
 
@@ -80,7 +81,8 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
+     *
      * @return array<int|string, mixed>|null
      */
     private static function nullableArray(array $payload, string $primaryKey, string $fallbackKey): ?array

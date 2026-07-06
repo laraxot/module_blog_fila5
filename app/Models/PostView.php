@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\PostViewFactory;
-use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -64,7 +63,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|PostView  whereNotNull((string|Expression) $columns)
  * @method static int                       count(string $columns = '*')
  *
- * @property Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent
  */

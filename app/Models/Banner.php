@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Modules\Blog\Database\Factories\MenuFactory;
-use Modules\Fixcity\Models\Profile;
+use Modules\Blog\Database\Factories\BannerFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -32,22 +31,22 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property Carbon|null               $deleted_at
  * @property string|null               $deleted_by
  *
- * @method static MenuFactory  factory($count = null, $state = [])
- * @method static Builder|Menu newModelQuery()
- * @method static Builder|Menu newQuery()
- * @method static Builder|Menu onlyTrashed()
- * @method static Builder|Menu query()
- * @method static Builder|Menu whereCreatedAt($value)
- * @method static Builder|Menu whereCreatedBy($value)
- * @method static Builder|Menu whereDeletedAt($value)
- * @method static Builder|Menu whereDeletedBy($value)
- * @method static Builder|Menu whereId($value)
- * @method static Builder|Menu whereItems($value)
- * @method static Builder|Menu whereName($value)
- * @method static Builder|Menu whereUpdatedAt($value)
- * @method static Builder|Menu whereUpdatedBy($value)
- * @method static Builder|Menu withTrashed()
- * @method static Builder|Menu withoutTrashed()
+ * @method static BannerFactory factory($count = null, $state = [])
+ * @method static Builder|Menu  newModelQuery()
+ * @method static Builder|Menu  newQuery()
+ * @method static Builder|Menu  onlyTrashed()
+ * @method static Builder|Menu  query()
+ * @method static Builder|Menu  whereCreatedAt($value)
+ * @method static Builder|Menu  whereCreatedBy($value)
+ * @method static Builder|Menu  whereDeletedAt($value)
+ * @method static Builder|Menu  whereDeletedBy($value)
+ * @method static Builder|Menu  whereId($value)
+ * @method static Builder|Menu  whereItems($value)
+ * @method static Builder|Menu  whereName($value)
+ * @method static Builder|Menu  whereUpdatedAt($value)
+ * @method static Builder|Menu  whereUpdatedBy($value)
+ * @method static Builder|Menu  withTrashed()
+ * @method static Builder|Menu  withoutTrashed()
  *
  * @property string|null                                       $link
  * @property string|null                                       $title
@@ -93,7 +92,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @method static Builder<static>|Banner  whereNotNull((string|Expression) $columns)
  * @method static int                     count(string $columns = '*')
  *
- * @property Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent
  */
@@ -159,7 +158,7 @@ class Banner extends BaseModel implements HasMedia
      */
     public function registerMediaConversions(?Media $media = null): void // $media is unused but part of interface
     {$this->addMediaConversion('cover')
-                // ->format(Manipulations::FORMAT_WEBP)
+                        // ->format(Manipulations::FORMAT_WEBP)
                 ->width(320)
                 ->height(200);
     }
