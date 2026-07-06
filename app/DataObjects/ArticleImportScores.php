@@ -12,5 +12,6 @@ class ArticleImportScores extends Data
         public readonly float $brierScore = 0.0,
         public readonly float $brierScorePlayMoney = 0.0,
         public readonly float $brierScoreRealMoney = 0.0,
-    ) {}
+    ) {
+    }
 }

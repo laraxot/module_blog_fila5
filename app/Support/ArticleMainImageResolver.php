@@ -9,7 +9,7 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
 final class ArticleMainImageResolver
 {
     /**
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     public function fromAttributes(array $attributes): string
     {
