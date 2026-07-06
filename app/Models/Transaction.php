@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\TransactionFactory;
-use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Xot\Contracts\ProfileContract;
@@ -70,7 +69,7 @@ use Webmozart\Assert\Assert;
  * @method static Builder<static>|Transaction  whereNotNull((string|Expression) $columns)
  * @method static int                          count(string $columns = '*')
  *
- * @property Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent
  */

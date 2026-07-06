@@ -54,6 +54,7 @@ use Spatie\Tags\Tag as BaseTag;
  * @method static Collection<int, Tag>                              get()
  * @method static Tag                                               create(array<string, mixed> $attributes = [])
  * @method static Tag                                               firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
+ * @method static Tag                                               findOrCreate(array<string, string>|string $name, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereNotNull((string|Expression) $columns)
  * @method static int                                               count(string $columns = '*')

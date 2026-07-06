@@ -29,7 +29,8 @@ final class ThemeArticleDataMapper
     }
 
     /**
-     * @param  Collection<int, Article>  $rows
+     * @param Collection<int, Article> $rows
+     *
      * @return list<ArticleData>
      */
     public function fromCollection(Collection $rows): array
