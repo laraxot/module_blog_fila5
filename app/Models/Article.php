@@ -4,40 +4,33 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
-use ArrayAccess;
 use Carbon\Carbon;
-use Closure;
-use Illuminate\Contracts\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Query\Builder as QueryBuilder;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Modules\Blog\Database\Factories\ArticleFactory;
+use Modules\Blog\Models\Concerns\ArticleFeedable;
+use Modules\Blog\Support\ArticleDelegates;
+use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
 use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
-use Modules\Media\Models\Media;
 use Modules\Rating\Models\Rating;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
 use Spatie\Feed\Feedable;
-use Spatie\Feed\FeedItem;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
-use Spatie\ModelStatus\Status;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Tags\HasTags;
-use Spatie\Tags\Tag;
 use Spatie\Translatable\HasTranslations;
-use Webmozart\Assert\Assert;
 
 /**
  * Modules\Blog\Models\Article.
@@ -81,12 +74,12 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|Article search(string $searching)
  * @method static \Illuminate\Database\Eloquent\Builder|Article showHomepage()
  * @method static \Illuminate\Database\Eloquent\Builder|Article tag(string $id)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTags((ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTags((\ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTagsOfAnyType(array<int|string, Tag>|string $tags)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTags((ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTags((\ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTagsOfAnyType(array<int|string, Tag>|string $tags)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTags((ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTags((\ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTrashed()
  *
  * @property string                          $id
@@ -216,11 +209,11 @@ use Webmozart\Assert\Assert;
  * @method static Collection<int, Article>                              get()
  * @method static Article                                               create(array<string, mixed> $attributes = [])
  * @method static Article                                               firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Article where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereNotNull((string|Expression) $columns)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article where((string|\Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereNotNull((string|\Illuminate\Contracts\Database\Query\Expression) $columns)
  * @method static int                                                   count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
  * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
@@ -229,6 +222,7 @@ use Webmozart\Assert\Assert;
  */
 class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
 {
+    use ArticleFeedable;
     use HasChildren;
     use HasComments;
     use HasRating;
@@ -322,33 +316,12 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      * @param bool   $useFallbackLocale Se utilizzare o meno la lingua di fallback
      *
      * @return array<int|string, mixed>|string|int|null Il valore tradotto dell'attributo
+     *
+     * @SuppressWarnings("PHPMD.BooleanArgumentFlag")
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
-        if (! $this->isTranslatableAttribute($key)) {
-            $value = $this->getAttribute($key);
-
-            return null !== $value ? SafeStringCastAction::cast($value) : null;
-        }
-
-        $translations = $this->getTranslations($key);
-
-        $translation = $translations[$locale] ?? '';
-
-        if ('' !== $translation || ! $useFallbackLocale) {
-            $value = $translation;
-        } else {
-            $fallbackLocale = config('app.fallback_locale');
-            $fallbackKey = is_string($fallbackLocale) ? $fallbackLocale : 'en';
-            $value = $translations[$fallbackKey] ?? '';
-        }
-
-        return match (true) {
-            is_string($value) => $value,
-            is_array($value) => $value,
-            is_int($value) => $value,
-            default => null,
-        };
+        return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
     }
 
     /**
@@ -394,9 +367,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
-        $user_class = XotData::make()->getUserClass();
+        $userClass = XotData::make()->getUserClass();
 
-        return $this->belongsTo($user_class);
+        return $this->belongsTo($userClass);
     }
 
     /** @return BelongsTo<Category, $this> */
@@ -406,19 +379,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     // ----- Feed ------
-    public function toFeedItem(): FeedItem
-    {
-        Assert::notNull($this->user, '['.__LINE__.']['.__FILE__.']');
-
-        return FeedItem::create()
-            ->id($this->slug)
-            ->title($this->title)
-            ->summary($this->description)
-            ->updated($this->updated_at)
-            // ->link($this->path()) //Call to an undefined method Modules\Blog\Models\Article::path()
-            ->authorName($this->user->name ?? 'Unknown');
-    }
-
     public function shortBody(int $words = 30): string
     {
         return Str::words(strip_tags((string) $this->body), $words);
@@ -426,35 +386,24 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getFormattedDate(): string
     {
-        Assert::notNull($this->published_at, '['.__LINE__.']['.__FILE__.']');
-
-        return $this->published_at->format('F jS Y');
+        return ArticleDelegates::formattedDate($this);
     }
 
     public function getThumbnail(): ?string
     {
-        if (null !== $this->getMedia()->first()) {
-            return $this->getMedia()->first()->getUrl();
-        }
-
-        return '#';
-        // if (str_starts_with((string) $this->thumbnail, 'http')) {
-        //     return $this->thumbnail;
-        // }
-
-        // return '/storage/'.$this->thumbnail;
+        return ArticleDelegates::thumbnail($this);
     }
 
-    /** @return Attribute<string, never> */
+    /**
+     * @return Attribute<string, never>
+     */
     public function humanReadTime(): Attribute
     {
         return Attribute::make(
             get: static function (mixed $value, array $attributes): string {
-                $words = Str::wordCount(strip_tags(SafeStringCastAction::cast($attributes['body'] ?? '')));
-                $minutes = ceil($words / 200);
+                unset($value);
 
-                return $minutes.' '.str('min')->plural((int) $minutes).', '
-                    .$words.' '.str('word')->plural($words);
+                return ArticleDelegates::humanReadTime($attributes);
             },
         );
     }
@@ -466,9 +415,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      *
      * @return EloquentBuilder<Article>
      */
-    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $current_article): EloquentBuilder
+    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $currentArticle): EloquentBuilder
     {
-        return $query->where('id', '!=', $current_article);
+        return $query->where('id', '!=', $currentArticle);
     }
 
     /**
@@ -492,20 +441,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getMainImage(): string
     {
-        if ($this->media) {
-            // https://spatie.be/docs/laravel-medialibrary/v11/basic-usage/retrieving-media
-            return $this->getFirstMediaUrl('main_image_upload');
-        }
-
-        if ($this->main_image_upload) {
-            return Storage::url($this->main_image_upload);
-        }
-
-        if (null !== $this->main_image_url) {
-            return $this->main_image_url;
-        }
-
-        return '#';
+        return ArticleDelegates::mainImageUrl($this);
     }
 
     /*
@@ -547,36 +483,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getTimeLeftForHumans(): ?string
     {
-        $endDate = $this->closed_at;
-        $startDate = Carbon::now();
-
-        if ($startDate > $endDate) {
-            return (string) (__('blog::article.single_expired') ?? '');
-        }
-
-        // Calcola la differenza tra le due date
-        $diff = $startDate->diff($endDate);
-
-        // Ottieni il tempo rimasto in giorni, ore, minuti e secondi
-        $month = $diff->m;
-
-        if ($month > 0) {
-            return $endDate->format('Y-m-d');
-        }
-
-        $days = $diff->d;
-        $hours = $diff->h;
-        $minutes = $diff->i;
-
-        if (0 === $month && 0 === $days && 0 === $hours && 0 === $minutes) {
-            return (string) (__('blog::article.single_expired') ?? '');
-        }
-
-        if ($days > 0) {
-            return (string) (__('blog::article.time_left_days', ['days' => $days]) ?? '');
-        }
-
-        return (string) (__('blog::article.time_left', ['hours' => $hours, 'minutes' => $minutes]) ?? '');
+        return ArticleDelegates::timeLeftForHumans($this);
     }
 
     // /**
@@ -609,47 +516,23 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     /**
-     * @param array<int, string> $name_blocks
+     * @param array<int, string> $nameBlocks
      *
      * @return array<int, array<string, mixed>>
      */
-    public function getOnlyContentBlocks(array $name_blocks): array
+    public function getOnlyContentBlocks(array $nameBlocks): array
     {
-        /** @var array<int, array<string, mixed>> */
-        $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
-
-        return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
-            foreach ($name_blocks as $block) {
-                if (($value['type'] ?? null) === $block) {
-                    return true;
-                }
-            }
-
-            return false;
-        })->values()->all();
+        return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
     }
 
     /**
-     * @param array<int, string> $name_blocks
+     * @param array<int, string> $nameBlocks
      *
      * @return array<int, array<string, mixed>>
      */
-    public function getExceptContentBlocks(array $name_blocks): array
+    public function getExceptContentBlocks(array $nameBlocks): array
     {
-        /** @var array<int, array<string, mixed>> */
-        $contentBlocks = is_array($this->content_blocks) ? $this->content_blocks : [];
-
-        return collect($contentBlocks)->filter(function (array $value) use ($name_blocks): bool {
-            $shouldExclude = false;
-            foreach ($name_blocks as $block) {
-                if (($value['type'] ?? null) === $block) {
-                    $shouldExclude = true;
-                    break;
-                }
-            }
-
-            return ! $shouldExclude;
-        })->values()->all();
+        return ArticleDelegates::exceptContentBlocks($this, $nameBlocks);
     }
 
     /**
@@ -671,7 +554,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      *
      * @return EloquentBuilder<Article>
      */
-    public function scopePublished(EloquentBuilder $query): EloquentBuilder|QueryBuilder
+    public function scopePublished(EloquentBuilder $query): EloquentBuilder
     {
         // return $query->where('status', 'published');
         // return $query->currentStatus('published');
@@ -698,7 +581,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      *
      * @return EloquentBuilder<Article>
      */
-    public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder|QueryBuilder
+    public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder
     {
         return $query->whereDate('published_at', '<=', Carbon::today()->toDateString());
     }
@@ -720,13 +603,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      * Scope a query to only include articles that belongs to an author.
      *
      * @param EloquentBuilder<Article> $query
-     * @param string                   $profile_id The id of the author
+     * @param string                   $profileId The id of the author
      *
      * @return EloquentBuilder<Article>
      */
-    public function scopeAuthor(EloquentBuilder $query, string $profile_id): EloquentBuilder
+    public function scopeAuthor(EloquentBuilder $query, string $profileId): EloquentBuilder
     {
-        return $query->where('author_id', $profile_id);
+        return $query->where('author_id', $profileId);
     }
 
     /**
@@ -813,16 +696,16 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //    return $this->belongsToMany(Tag::class);
     // }
 
-    /** @return Attribute<string, never> */
+    /**
+     * @return Attribute<string, never>
+     */
     protected function mainImage(): Attribute
     {
         return Attribute::make(
             get: static function (mixed $value, array $attributes): string {
-                $imageUpload = $attributes['main_image_upload'] ?? null;
-                $imageUrl = $attributes['main_image_url'] ?? null;
-                $result = $imageUpload ?? $imageUrl ?? '#';
+                unset($value);
 
-                return SafeStringCastAction::cast($result);
+                return ArticleDelegates::mainImage($attributes);
             },
         );
     }

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Modules\Blog\Database\Factories\TextWidgetFactory;
-use Modules\Fixcity\Models\Profile;
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\HasMedia;
@@ -73,7 +72,7 @@ use Webmozart\Assert\Assert;
  * @method static Builder<static>|TextWidget  whereNotNull((string|Expression) $columns)
  * @method static int                         count(string $columns = '*')
  *
- * @property Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent
  */

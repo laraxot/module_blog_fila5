@@ -30,7 +30,7 @@ class Menu extends Component
         $view = app(GetViewAction::class)->execute($this->tpl);
         $menu = MenuModel::firstOrCreate(['name' => $this->name]);
 
-        $view_params = [
+        $viewParams = [
             'menu' => $menu,
         ];
         if (null === $menu->items) {
@@ -38,6 +38,6 @@ class Menu extends Component
             $menu->save();
         }
 
-        return view($view, $view_params);
+        return view($view, $viewParams);
     }
 }
