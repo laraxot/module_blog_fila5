@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Modules\Blog\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
@@ -10,6 +12,7 @@ uses(TestCase::class);
  *
  * @param int|float $a First operand
  * @param int|float $b Second operand
+ *
  * @return int|float Sum of a and b
  */
 function sum(int|float $a, int|float $b): int|float

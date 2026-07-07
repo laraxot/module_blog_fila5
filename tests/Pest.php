@@ -1,3 +1,3 @@
 <?php
 
-use Modules\Blog\Tests\TestCase as BlogTestCase;
+declare(strict_types=1);
