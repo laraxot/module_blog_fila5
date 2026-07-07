@@ -63,11 +63,11 @@ class Lists extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [
+        $viewParams = [
             'activeCategory' => $this->category,
         ];
 
-        return view((string) $view, $view_params);
+        return view((string) $view, $viewParams);
     }
 
     public function updatedCategory(): void
@@ -97,7 +97,8 @@ class Lists extends Component
     private function getArticleQuery(): EloquentBuilder
     {
         $query = Article::published();
-        if (($activeCategory = $this->category) instanceof Category) {
+        $activeCategory = $this->category;
+        if ($activeCategory instanceof Category) {
             $query = $query->whereCategoryId($activeCategory->id);
         }
 

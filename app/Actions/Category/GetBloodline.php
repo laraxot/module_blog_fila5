@@ -16,12 +16,12 @@ class GetBloodline
     /**
      * @return EloquentCollection<int, Category>
      */
-    public function execute(?int $category_id): EloquentCollection
+    public function execute(?int $categoryId): EloquentCollection
     {
-        if (null === $category_id) {
+        if (null === $categoryId) {
             return new EloquentCollection();
         }
-        Assert::notNull($category = Category::find($category_id), '['.__LINE__.']['.__FILE__.']');
+        Assert::notNull($category = Category::find($categoryId), '['.__LINE__.']['.__FILE__.']');
 
         return $category->ancestorsAndSelf()->get()->reverse()->values();
     }
