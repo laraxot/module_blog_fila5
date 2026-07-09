@@ -1,6 +1,6 @@
 {
   "version": "0.2.2",
-  "timestamp": "2026-07-09T17:06:40.469Z",
+  "timestamp": "2026-07-09T19:01:08.281Z",
   "project": {
     "name": "Blog",
     "path": "/var/www/_bases/base_fixcity_fila5/laravel/Modules/Blog",
@@ -9,15 +9,15 @@
       "JSON": 8,
       "YAML": 1,
       "XML": 1,
-      "PHP": 479,
+      "PHP": 545,
       "JavaScript": 4,
       "SCSS": 1
     },
     "frameworks": [
       "TailwindCSS"
     ],
-    "totalFiles": 628,
-    "totalLines": 33525,
+    "totalFiles": 694,
+    "totalLines": 35007,
     "hasTests": true,
     "hasDependencyFile": true,
     "dependencyFile": "package.json",
@@ -99,5 +99,5 @@
   "mediumCount": 0,
   "lowCount": 0,
   "aiPowered": false,
-  "durationMs": 418
+  "durationMs": 215
 }
