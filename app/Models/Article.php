@@ -11,41 +11,34 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
-use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Concerns\ArticleFeedable;
 use Modules\Blog\Models\Concerns\ArticleQueryScopes;
 use Modules\Blog\Support\ArticleDelegates;
 use Modules\Comment\Models\Comment;
-use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
 use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
-use Modules\Rating\Models\Rating;
-use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
-use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
 use Spatie\Feed\Feedable;
-use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 /**
  * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticleDelegates}.
  *
- * @property string|null $title
- * @property string|null $slug
- * @property string|null $body
- * @property string|null $description
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $published_at
- * @property string|null $main_image_upload
- * @property string|null $main_image_url
- * @property Category|null $category
- * @property UserContract|null $user
+ * @property string|null                           $title
+ * @property string|null                           $slug
+ * @property string|null                           $body
+ * @property string|null                           $description
+ * @property \Illuminate\Support\Carbon|null       $updated_at
+ * @property \Illuminate\Support\Carbon|null       $published_at
+ * @property string|null                           $main_image_upload
+ * @property string|null                           $main_image_url
+ * @property Category|null                         $category
+ * @property UserContract|null                     $user
  * @property array<int, array<string, mixed>>|null $content_blocks
  *
  * @mixin \Eloquent
