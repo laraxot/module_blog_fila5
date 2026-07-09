@@ -19,7 +19,36 @@ class ArticleImportSchedule extends Data
         public readonly ?Carbon $eventStartDate = null,
         #[WithCast(DateTimeInterfaceCast::class)]
         public readonly ?Carbon $eventEndDate = null,
-    ) {}
+    ) {
+    }
+}
+
+class ArticleImportScores extends Data
+{
+    public function __construct(
+        public readonly ?string $brierScore = null,
+        public readonly ?string $brierScorePlayMoney = null,
+        public readonly ?string $brierScoreRealMoney = null,
+    ) {
+    }
+}
+
+class ArticleImportMetrics extends Data
+{
+    /**
+     * @param array<string, mixed> $wagers
+     */
+    public function __construct(
+        public readonly int $wagerableFlag = 0,
+        public readonly ArticleImportScores $scores = new ArticleImportScores(),
+        public readonly ?int $wagersCount = null,
+        public readonly ?int $wagersCountCanonical = null,
+        public readonly ?int $wagersCountTotal = null,
+        public readonly array $wagers = [],
+        public readonly ?float $volumePlayMoney = null,
+        public readonly ?float $volumeRealMoney = null,
+    ) {
+    }
 }
 
 class ArticleImportIdentity extends Data
@@ -29,7 +58,8 @@ class ArticleImportIdentity extends Data
         public readonly string $slug = '',
         public readonly ArticleStatus $status = ArticleStatus::DRAFT,
         public readonly string $statusDisplay = '',
-    ) {}
+    ) {
+    }
 }
 
 class ArticleData extends Data
@@ -45,10 +75,11 @@ class ArticleData extends Data
         /** @var array<mixed> */
         public readonly array $outcomes = [],
         public readonly ?string $thumbnail2x = null,
-    ) {}
+    ) {
+    }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     public static function fromArray(array $data): self
     {
@@ -63,7 +94,7 @@ class ArticleData extends Data
     }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     private static function scheduleFromArray(array $data): ArticleImportSchedule
     {
@@ -75,7 +106,7 @@ class ArticleData extends Data
     }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     private static function identityFromArray(array $data): ArticleImportIdentity
     {
@@ -88,7 +119,7 @@ class ArticleData extends Data
     }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     private static function metricsFromArray(array $data): ArticleImportMetrics
     {
@@ -109,7 +140,7 @@ class ArticleData extends Data
     }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     private static function optionalDate(array $data, string $key): ?Carbon
     {
@@ -122,7 +153,7 @@ class ArticleData extends Data
     }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     private static function stringValue(array $data, string $key, string $default = ''): string
     {
@@ -130,7 +161,7 @@ class ArticleData extends Data
     }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     private static function floatValue(array $data, string $key): float
     {
@@ -138,7 +169,7 @@ class ArticleData extends Data
     }
 
     /**
-     * @param  array<string,mixed>  $data
+     * @param array<string,mixed> $data
      */
     private static function intValue(array $data, string $key): int
     {

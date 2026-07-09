@@ -1,3 +1,34 @@
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 {{--
     link: https://flowrift.com/c/blog/cYo4a?view=code
 --}}

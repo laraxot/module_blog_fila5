@@ -9,7 +9,6 @@ use Illuminate\Contracts\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
-use Modules\Fixcity\Models\Profile;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -54,7 +53,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|CategoryPost  whereNotNull((string|Expression) $columns)
  * @method static int                           count(string $columns = '*')
  *
- * @property Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @method static \Modules\Blog\Database\Factories\CategoryPostFactory factory($count = null, $state = [])
  *

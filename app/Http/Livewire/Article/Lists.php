@@ -63,11 +63,11 @@ class Lists extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $viewParams = [
+        $parameters = [
             'activeCategory' => $this->category,
         ];
 
-        return view((string) $view, $viewParams);
+        return view((string) $view, $parameters);
     }
 
     public function updatedCategory(): void

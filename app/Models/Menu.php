@@ -12,6 +12,7 @@ use Illuminate\Support\Carbon;
 use Modules\Blog\Actions\ParentChilds\GetTreeOptions;
 use Modules\Blog\Database\Factories\MenuFactory;
 use Modules\Media\Models\Media;
+use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -140,7 +141,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder<static>|Menu                                whereNotNull((string|Expression) $columns)
  * @method static int                                                 count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent
  */
@@ -164,23 +165,6 @@ class Menu extends BaseModel implements HasMedia
         $instance = new self();
 
         return app(GetTreeOptions::class)->execute($instance);
-
-        // $categories = self::tree()->get()->toTree();
-        // $results = [];
-        // foreach ($categories as $cat) {
-        //     $results[$cat->id] = $cat->title;
-        //     foreach ($cat->children as $child) {
-        //         $results[$child->id] = '--------->'.$child->title;
-        //         foreach ($child->children as $cld) {
-        //             $results[$cld->id] = '----------------->'.$cld->title;
-        //             foreach ($cld->children as $c) {
-        //                 $results[$c->id] = '------------------------->'.$c->title;
-        //             }
-        //         }
-        //     }
-        // }
-
-        // return $results;
     }
 
     /** @return array<string, string> */

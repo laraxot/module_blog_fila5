@@ -96,7 +96,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|Comment  whereNotNull((string|Expression) $columns)
  * @method static int                      count(string $columns = '*')
  *
- * @property \Modules\Fixcity\Models\Profile|null $deleter
+ * @property ProfileContract|null $deleter
  *
  * @mixin \Eloquent
  */
@@ -114,9 +114,9 @@ class Comment extends BaseModel
     /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
-        $userClass = XotData::make()->getUserClass();
+        $userClassModel = XotData::make()->getUserClass();
 
-        return $this->belongsTo($userClass);
+        return $this->belongsTo($userClassModel);
     }
 
     /**

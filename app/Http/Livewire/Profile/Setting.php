@@ -18,6 +18,7 @@ use Livewire\Component;
 use Modules\Blog\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeArrayCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+// Laraxot module file — see docs/wiki for domain contract.
 use Modules\Xot\Actions\GetViewAction;
 use Webmozart\Assert\Assert;
 
@@ -62,12 +63,12 @@ class Setting extends Component implements HasActions, HasForms
          */
         $view = app(GetViewAction::class)->execute($this->version);
 
-        $viewParams = [
+        $parameters = [
             'view' => $view,
             '_profile' => $this->model,
         ];
 
-        return view((string) $view, $viewParams);
+        return view((string) $view, $parameters);
     }
 
     public function editProfile(): void

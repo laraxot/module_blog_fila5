@@ -6,7 +6,6 @@ namespace Modules\Blog\Datas;
 
 use Carbon\Carbon;
 use Modules\Blog\Actions\Category\GetBloodline;
-use RuntimeException;
 use Spatie\LaravelData\Data;
 
 class ArticleDataCore extends Data
@@ -21,21 +20,23 @@ class ArticleDataCore extends Data
         public ?string $publishedAt,
         public ?string $url,
         public ?string $closedAt,
-    ) {}
+    ) {
+    }
 }
 
 class ArticleDataBlocks extends Data
 {
     /**
-     * @param  array<int|string, mixed>|null  $contentBlocks
-     * @param  array<int|string, mixed>|null  $sidebarBlocks
-     * @param  array<int|string, mixed>|null  $footerBlocks
+     * @param array<int|string, mixed>|null $contentBlocks
+     * @param array<int|string, mixed>|null $sidebarBlocks
+     * @param array<int|string, mixed>|null $footerBlocks
      */
     public function __construct(
         public ?array $contentBlocks,
         public ?array $sidebarBlocks,
         public ?array $footerBlocks,
-    ) {}
+    ) {
+    }
 }
 
 /**
@@ -75,7 +76,7 @@ class ArticleData extends Data implements \Stringable
     public ArticleDataHydrated $hydrated;
 
     /**
-     * @param  array<int|string, mixed>|string  $title
+     * @param array<int|string, mixed>|string $title
      */
     public function __construct(
         ArticleDataCore $core,
@@ -100,11 +101,11 @@ class ArticleData extends Data implements \Stringable
     }
 
     /**
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
      */
-    public static function fromPayload(array $payload): self
+    public static function fromPayload(array $payload): static
     {
-        return new self(
+        return new static(
             core: ArticleDataPayloadMapper::coreFromPayload($payload),
             title: ArticleDataPayloadMapper::titleFromPayload($payload),
             blocks: ArticleDataPayloadMapper::blocksFromPayload($payload),
@@ -113,12 +114,11 @@ class ArticleData extends Data implements \Stringable
 
     public static function from(mixed ...$payloads): static
     {
-        if (count($payloads) === 1 && is_array($payloads[0])) {
+        if (1 === count($payloads) && is_array($payloads[0])) {
             /** @var array<string, mixed> $singlePayload */
             $singlePayload = $payloads[0];
 
-            /** @var static */
-            return self::fromPayload($singlePayload);
+            return static::fromPayload($singlePayload);
         }
 
         return parent::from(...$payloads);
@@ -132,7 +132,7 @@ class ArticleData extends Data implements \Stringable
     public function url(string $type): string
     {
         $lang = app()->getLocale();
-        if ($type === 'show') {
+        if ('show' === $type) {
             return '/'.$lang.'/article/'.$this->slug;
         }
 
@@ -145,7 +145,7 @@ class ArticleData extends Data implements \Stringable
             return $this->hydrated->{$name};
         }
 
-        throw new RuntimeException(sprintf('Undefined property [%s] on ArticleData.', $name));
+        throw new \RuntimeException(sprintf('Undefined property [%s] on ArticleData.', $name));
     }
 
     public function __isset(string $name): bool
@@ -156,7 +156,7 @@ class ArticleData extends Data implements \Stringable
     private function buildHydratedData(): ArticleDataHydrated
     {
         $categories = app(GetBloodline::class)->execute($this->categoryId);
-        $closedAtDate = $this->closedAt !== null ? Carbon::parse($this->closedAt)->format('Y-m-d') : null;
+        $closedAtDate = null !== $this->closedAt ? Carbon::parse($this->closedAt)->format('Y-m-d') : null;
 
         $article = ArticleDataHydrator::findByUuid($this->uuid);
 
@@ -180,7 +180,7 @@ class ArticleData extends Data implements \Stringable
     }
 
     /**
-     * @param  array<int|string, mixed>|string  $title
+     * @param array<int|string, mixed>|string $title
      */
     private static function resolveTitle(array|string $title): string
     {

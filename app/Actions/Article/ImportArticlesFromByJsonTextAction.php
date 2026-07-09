@@ -9,11 +9,12 @@ use Carbon\CarbonInterface;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
+
+use function Safe\json_decode;
+
 use Spatie\MediaLibrary\MediaCollections\FileAdder;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
-
-use function Safe\json_decode;
 
 class ImportArticlesFromByJsonTextAction
 {
@@ -32,7 +33,7 @@ class ImportArticlesFromByJsonTextAction
     }
 
     /**
-     * @param  array<mixed>  $item
+     * @param array<mixed> $item
      */
     private function importArticle(array $item): void
     {
@@ -42,7 +43,7 @@ class ImportArticlesFromByJsonTextAction
     }
 
     /**
-     * @param  array<mixed>  $item
+     * @param array<mixed> $item
      */
     private function importCategories(array $item): ?int
     {
@@ -60,7 +61,7 @@ class ImportArticlesFromByJsonTextAction
     }
 
     /**
-     * @param  array<mixed>  $categoryItem
+     * @param array<mixed> $categoryItem
      */
     private function upsertCategory(array $categoryItem, ?int $parentCategoryId): int
     {
@@ -77,7 +78,7 @@ class ImportArticlesFromByJsonTextAction
     }
 
     /**
-     * @param  array<mixed>  $item
+     * @param array<mixed> $item
      */
     private function upsertArticle(array $item, ?int $parentCategoryId): Article
     {
@@ -90,7 +91,7 @@ class ImportArticlesFromByJsonTextAction
             'title' => $item['title'],
             'slug' => $item['slug'],
             'status' => $item['status'],
-            'status_display' => $item['status_display'] === 'open',
+            'status_display' => 'open' === $item['status_display'],
             'bet_end_date' => $this->parseOptionalDate($item['bet_end_date'] ?? ''),
             'event_start_date' => $this->parseOptionalDate($item['event_start_date'] ?? ''),
             'event_end_date' => $this->parseOptionalDate($item['event_end_date'] ?? ''),
@@ -116,7 +117,7 @@ class ImportArticlesFromByJsonTextAction
     }
 
     /**
-     * @param  array<mixed>  $item
+     * @param array<mixed> $item
      */
     private function importRatings(Article $article, array $item): void
     {
@@ -132,7 +133,7 @@ class ImportArticlesFromByJsonTextAction
     }
 
     /**
-     * @param  array<string, mixed>  $rating
+     * @param array<string, mixed> $rating
      */
     private function upsertRating(Article $article, array $rating): void
     {
