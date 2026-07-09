@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
+use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 
 final class ThemeCategoryQueries
 {
     /**
-     * @return Collection<int, Category>
+     * @return AdjacencyCollection<int, Category>
      */
-    public function categories(): Collection
+    public function categories(): AdjacencyCollection
     {
         return Category::tree()->get()->toTree();
     }
@@ -37,7 +38,7 @@ final class ThemeCategoryQueries
         /** @var array<int, array<string, mixed>> $categories */
         $categories = Category::with([
             'categoryArticles' => static function (Builder $query): Builder {
-                /** @var Builder<Article> $query */
+                /* @var Builder<Article> $query */
                 return $query->withCount('ratings');
             },
         ])

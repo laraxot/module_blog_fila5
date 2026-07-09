@@ -29,7 +29,7 @@ final class ArticleTimeLeftFormatter
         $hours = $diff->h;
         $minutes = $diff->i;
 
-        if ($month === 0 && $days === 0 && $hours === 0 && $minutes === 0) {
+        if (0 === $month && 0 === $days && 0 === $hours && 0 === $minutes) {
             return (string) (__('blog::article.single_expired') ?? '');
         }
 
