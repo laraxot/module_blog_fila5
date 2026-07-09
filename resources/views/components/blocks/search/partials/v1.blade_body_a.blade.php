@@ -12,6 +12,22 @@
 
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
 // Blog Blade view — see Modules/Blog/docs/wiki.
 @endphp
 
