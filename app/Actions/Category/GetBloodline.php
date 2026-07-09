@@ -17,13 +17,13 @@ class GetBloodline
      */
     public function execute(?int $categoryId): AdjacencyCollection
     {
-        if ($categoryId === null) {
-            return new AdjacencyCollection;
+        if (null === $categoryId) {
+            return new AdjacencyCollection();
         }
 
         $category = Category::query()->find($categoryId);
-        if ($category === null) {
-            return new AdjacencyCollection;
+        if (null === $category) {
+            return new AdjacencyCollection();
         }
 
         $relation = $category->ancestorsAndSelf();
