@@ -2,34 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\Support;
+namespace Modules\Blog\Actions\Article;
 
 use Modules\Blog\Models\Article;
+use Spatie\QueueableAction\QueueableAction;
 
-final class ArticleContentBlockFilter
+final class FilterArticleContentBlocksExceptAction
 {
-    /**
-     * @param array<int, string> $nameBlocks
-     *
-     * @return array<int, array<string, mixed>>
-     */
-    public function only(Article $article, array $nameBlocks): array
-    {
-        /** @var array<int, array<string, mixed>> $contentBlocks */
-        $contentBlocks = is_array($article->content_blocks) ? $article->content_blocks : [];
-
-        return collect($contentBlocks)
-            ->filter(fn (array $value): bool => $this->matchesAnyType($value, $nameBlocks))
-            ->values()
-            ->all();
-    }
+    use QueueableAction;
 
     /**
      * @param array<int, string> $nameBlocks
      *
      * @return array<int, array<string, mixed>>
      */
-    public function except(Article $article, array $nameBlocks): array
+    public function execute(Article $article, array $nameBlocks): array
     {
         /** @var array<int, array<string, mixed>> $contentBlocks */
         $contentBlocks = is_array($article->content_blocks) ? $article->content_blocks : [];

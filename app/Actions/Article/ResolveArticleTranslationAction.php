@@ -2,17 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\Support;
+namespace Modules\Blog\Actions\Article;
 
 use Modules\Blog\Models\Article;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
-final class ArticleTranslationResolver
+final class ResolveArticleTranslationAction
 {
+    use QueueableAction;
+
     /**
      * @return array<int|string, mixed>|string|int|null
      */
-    public function resolve(Article $article, string $key, string $locale, bool $useFallbackLocale): array|string|int|null
+    public function execute(Article $article, string $key, string $locale, bool $useFallbackLocale): array|string|int|null
     {
         if (! $article->isTranslatableAttribute($key)) {
             $value = $article->getAttribute($key);
