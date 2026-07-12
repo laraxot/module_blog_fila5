@@ -11,3 +11,9 @@
 - Layer wiki: `docs/wiki/` — LLM-maintained, sintesi ad alto riuso.
 - Schema: `docs/.schema/WIKI_SCHEMA.md`
 - Adozione moduli: `docs/project/llm-wiki-module-adoption.md`
+
+## [2026-07-12] phpstan | Article presentation Support -> QueueableAction
+
+- `Article` non passa piu da `Modules\Blog\Support\ArticleDelegates`: ogni use case usa direttamente la sua `Modules\Blog\Actions\Article\*Action` con `execute()`.
+- Il vecchio delegatore statico e stato ritirato come `app/Support/ArticleDelegates.php.old` senza cancellazione e senza cartelle archive.
+- Regola: nuova logica Blog di presentazione/trasformazione articolo = Action queueable, non Support statico.

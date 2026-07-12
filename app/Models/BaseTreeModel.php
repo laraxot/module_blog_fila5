@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Blog\Models\Concerns\HasPathByParentId;
 use Spatie\EloquentSortable\SortableTrait;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
@@ -31,18 +30,6 @@ abstract class BaseTreeModel extends BaseModel
     public function getPathName(): string
     {
         return 'cte_path';
-    }
-
-    public function makeChildOf(Model $parent): self // $parent is unused
-    {// if ($node->isSelfOrDescendantOf($this)) {
-        //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
-                            // }
-
-                            // Save the previous parent to be used when finishing.
-
-                            $this->save();
-
-        return $this;
     }
 
     /**
