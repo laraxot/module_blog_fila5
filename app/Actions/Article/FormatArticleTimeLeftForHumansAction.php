@@ -2,14 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\Support;
+namespace Modules\Blog\Actions\Article;
 
 use Carbon\Carbon;
 use Modules\Blog\Models\Article;
+use Spatie\QueueableAction\QueueableAction;
 
-final class ArticleTimeLeftFormatter
+final class FormatArticleTimeLeftForHumansAction
 {
-    public function forHumans(Article $article): string
+    use QueueableAction;
+
+    public function execute(Article $article): string
     {
         $endDate = $article->closed_at;
         $startDate = Carbon::now();

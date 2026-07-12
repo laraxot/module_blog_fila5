@@ -2,17 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\Support;
+namespace Modules\Blog\Actions\Article;
 
 use Illuminate\Support\Str;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
-final class ArticleReadTimeFormatter
+final class FormatArticleHumanReadTimeAction
 {
+    use QueueableAction;
+
     /**
      * @param array<string, mixed> $attributes
      */
-    public function fromAttributes(array $attributes): string
+    public function execute(array $attributes): string
     {
         $words = Str::wordCount(strip_tags(SafeStringCastAction::cast($attributes['body'] ?? '')));
         $minutes = ceil($words / 200);
