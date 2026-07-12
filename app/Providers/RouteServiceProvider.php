@@ -25,26 +25,10 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
     public function boot(): void
     {
         parent::boot();
-        // 36     Cannot access offset 'router' on Illuminate\Contracts\Foundation\Application
-        // $router = $this->app['router'];
-        // $router = app('router');
-        // dddx([$router, $router1]);
-
-        // $this->registerLang();
-        // $this->registerRoutePattern($router);
-        // $this->registerMyMiddleware($router);
     }
 
     public function register(): void
     {
         parent::register();
-        // dddx('b');
     }
-
-    // public function registerMyMiddleware(Router $router): void
-    // {
-    // $router->pushMiddlewareToGroup('web', SetDefaultLocaleForUrlsMiddleware::class);
-    // $router->appendMiddlewareToGroup('web', SwitchLanguageLocale::class);
-    // $router->appendMiddlewareToGroup('api', SwitchLanguageLocale::class);
-    // }
 }

@@ -11,10 +11,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use Modules\Blog\Adapters\ArticlePresentationAdapter;
 use Modules\Blog\Models\Concerns\ArticleFeedable;
 use Modules\Blog\Models\Concerns\ArticleQueryScopes;
-use Modules\Blog\Support\ArticleDelegates;
-use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\Concerns\HasComments;
 use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
@@ -27,18 +26,18 @@ use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 /**
- * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticleDelegates}.
+ * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticlePresentationAdapter}.
  *
- * @property string|null                           $title
- * @property string|null                           $slug
- * @property string|null                           $body
- * @property string|null                           $description
- * @property \Illuminate\Support\Carbon|null       $updated_at
- * @property \Illuminate\Support\Carbon|null       $published_at
- * @property string|null                           $main_image_upload
- * @property string|null                           $main_image_url
- * @property Category|null                         $category
- * @property UserContract|null                     $user
+ * @property string|null $title
+ * @property string|null $slug
+ * @property string|null $body
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $published_at
+ * @property string|null $main_image_upload
+ * @property string|null $main_image_url
+ * @property Category|null $category
+ * @property UserContract|null $user
  * @property array<int, array<string, mixed>>|null $content_blocks
  *
  * @mixin \Eloquent
@@ -109,17 +108,16 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /**
      * Ottiene la traduzione di un attributo in una specifica lingua.
      *
-     * @param string $key               Il nome dell'attributo da tradurre
-     * @param string $locale            Il codice della lingua richiesta
-     * @param bool   $useFallbackLocale Se utilizzare o meno la lingua di fallback
-     *
+     * @param  string  $key  Il nome dell'attributo da tradurre
+     * @param  string  $locale  Il codice della lingua richiesta
+     * @param  bool  $useFallbackLocale  Se utilizzare o meno la lingua di fallback
      * @return array<int|string, mixed>|string|int|null Il valore tradotto dell'attributo
      *
      * @SuppressWarnings("PHPMD.BooleanArgumentFlag")
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
-        return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
+        return app(ArticlePresentationAdapter::class)->translation($this, $key, $locale, $useFallbackLocale);
     }
 
     /**
@@ -184,12 +182,12 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getFormattedDate(): string
     {
-        return ArticleDelegates::formattedDate($this);
+        return app(ArticlePresentationAdapter::class)->formattedDate($this);
     }
 
     public function getThumbnail(): ?string
     {
-        return ArticleDelegates::thumbnail($this);
+        return app(ArticlePresentationAdapter::class)->thumbnail($this);
     }
 
     /**
@@ -201,7 +199,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-                return ArticleDelegates::humanReadTime($attributes);
+                return app(ArticlePresentationAdapter::class)->humanReadTime($attributes);
             },
         );
     }
@@ -227,12 +225,12 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getMainImage(): string
     {
-        return ArticleDelegates::mainImageUrl($this);
+        return app(ArticlePresentationAdapter::class)->mainImageUrl($this);
     }
 
     public function getUuidAttribute(?string $value): string
     {
-        if (null !== $value && '' !== $value) {
+        if ($value !== null && $value !== '') {
             return $value;
         }
         // dddx($value);
@@ -247,7 +245,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getTimeLeftForHumans(): ?string
     {
-        return ArticleDelegates::timeLeftForHumans($this);
+        return app(ArticlePresentationAdapter::class)->timeLeftForHumans($this);
     }
 
     /**
@@ -259,23 +257,21 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     /**
-     * @param array<int, string> $nameBlocks
-     *
+     * @param  array<int, string>  $nameBlocks
      * @return array<int, array<string, mixed>>
      */
     public function getOnlyContentBlocks(array $nameBlocks): array
     {
-        return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
+        return app(ArticlePresentationAdapter::class)->onlyContentBlocks($this, $nameBlocks);
     }
 
     /**
-     * @param array<int, string> $nameBlocks
-     *
+     * @param  array<int, string>  $nameBlocks
      * @return array<int, array<string, mixed>>
      */
     public function getExceptContentBlocks(array $nameBlocks): array
     {
-        return ArticleDelegates::exceptContentBlocks($this, $nameBlocks);
+        return app(ArticlePresentationAdapter::class)->exceptContentBlocks($this, $nameBlocks);
     }
 
     /**
@@ -330,7 +326,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-                return ArticleDelegates::mainImage($attributes);
+                return app(ArticlePresentationAdapter::class)->mainImage($attributes);
             },
         );
     }
