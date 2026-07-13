@@ -28,16 +28,16 @@ use Spatie\Translatable\HasTranslations;
 /**
  * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticlePresentationAdapter}.
  *
- * @property string|null $title
- * @property string|null $slug
- * @property string|null $body
- * @property string|null $description
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $published_at
- * @property string|null $main_image_upload
- * @property string|null $main_image_url
- * @property Category|null $category
- * @property UserContract|null $user
+ * @property string|null                           $title
+ * @property string|null                           $slug
+ * @property string|null                           $body
+ * @property string|null                           $description
+ * @property \Illuminate\Support\Carbon|null       $updated_at
+ * @property \Illuminate\Support\Carbon|null       $published_at
+ * @property string|null                           $main_image_upload
+ * @property string|null                           $main_image_url
+ * @property Category|null                         $category
+ * @property UserContract|null                     $user
  * @property array<int, array<string, mixed>>|null $content_blocks
  *
  * @mixin \Eloquent
@@ -108,9 +108,10 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /**
      * Ottiene la traduzione di un attributo in una specifica lingua.
      *
-     * @param  string  $key  Il nome dell'attributo da tradurre
-     * @param  string  $locale  Il codice della lingua richiesta
-     * @param  bool  $useFallbackLocale  Se utilizzare o meno la lingua di fallback
+     * @param string $key               Il nome dell'attributo da tradurre
+     * @param string $locale            Il codice della lingua richiesta
+     * @param bool   $useFallbackLocale Se utilizzare o meno la lingua di fallback
+     *
      * @return array<int|string, mixed>|string|int|null Il valore tradotto dell'attributo
      *
      * @SuppressWarnings("PHPMD.BooleanArgumentFlag")
@@ -230,7 +231,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getUuidAttribute(?string $value): string
     {
-        if ($value !== null && $value !== '') {
+        if (null !== $value && '' !== $value) {
             return $value;
         }
         // dddx($value);
@@ -257,7 +258,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     /**
-     * @param  array<int, string>  $nameBlocks
+     * @param array<int, string> $nameBlocks
+     *
      * @return array<int, array<string, mixed>>
      */
     public function getOnlyContentBlocks(array $nameBlocks): array
@@ -266,7 +268,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     /**
-     * @param  array<int, string>  $nameBlocks
+     * @param array<int, string> $nameBlocks
+     *
      * @return array<int, array<string, mixed>>
      */
     public function getExceptContentBlocks(array $nameBlocks): array
