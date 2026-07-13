@@ -13,7 +13,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Concerns\ArticleFeedable;
-use Modules\Blog\Support\ArticleDelegates;
+use Modules\Blog\Actions\Article\ConvertArticleToFeedItemAction;
+use Modules\Blog\Actions\Article\FilterArticleContentBlocksExceptAction;
+use Modules\Blog\Actions\Article\FilterArticleContentBlocksOnlyAction;
+use Modules\Blog\Actions\Article\FormatArticleHumanReadTimeAction;
+use Modules\Blog\Actions\Article\FormatArticlePublishedDateAction;
+use Modules\Blog\Actions\Article\FormatArticleTimeLeftForHumansAction;
+use Modules\Blog\Actions\Article\ResolveArticleMainImageFromAttributesAction;
+use Modules\Blog\Actions\Article\ResolveArticleMainImageUrlAction;
+use Modules\Blog\Actions\Article\ResolveArticleThumbnailAction;
+use Modules\Blog\Actions\Article\ResolveArticleTranslationAction;
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
@@ -321,7 +330,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
-        return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
+        return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
     }
 
     /**
@@ -386,12 +395,12 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getFormattedDate(): string
     {
-        return ArticleDelegates::formattedDate($this);
+        return app(FormatArticlePublishedDateAction::class)->execute($this);
     }
 
     public function getThumbnail(): ?string
     {
-        return ArticleDelegates::thumbnail($this);
+        return app(ResolveArticleThumbnailAction::class)->execute($this);
     }
 
     /**
@@ -403,7 +412,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-                return ArticleDelegates::humanReadTime($attributes);
+                return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
             },
         );
     }
@@ -441,7 +450,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getMainImage(): string
     {
-        return ArticleDelegates::mainImageUrl($this);
+        return app(ResolveArticleMainImageUrlAction::class)->execute($this);
     }
 
     /*
@@ -483,7 +492,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getTimeLeftForHumans(): ?string
     {
-        return ArticleDelegates::timeLeftForHumans($this);
+        return app(FormatArticleTimeLeftForHumansAction::class)->execute($this);
     }
 
     // /**
@@ -522,7 +531,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getOnlyContentBlocks(array $nameBlocks): array
     {
-        return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
+        return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
     }
 
     /**
@@ -532,7 +541,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getExceptContentBlocks(array $nameBlocks): array
     {
-        return ArticleDelegates::exceptContentBlocks($this, $nameBlocks);
+        return app(FilterArticleContentBlocksExceptAction::class)->execute($this, $nameBlocks);
     }
 
     /**
@@ -705,7 +714,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-                return ArticleDelegates::mainImage($attributes);
+                return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
             },
         );
     }
