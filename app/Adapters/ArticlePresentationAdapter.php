@@ -35,7 +35,7 @@ final class ArticlePresentationAdapter
     }
 
     /**
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     public function humanReadTime(array $attributes): string
     {
@@ -48,7 +48,8 @@ final class ArticlePresentationAdapter
     }
 
     /**
-     * @param  array<int, string>  $nameBlocks
+     * @param array<int, string> $nameBlocks
+     *
      * @return array<int, array<string, mixed>>
      */
     public function onlyContentBlocks(Article $article, array $nameBlocks): array
@@ -57,7 +58,8 @@ final class ArticlePresentationAdapter
     }
 
     /**
-     * @param  array<int, string>  $nameBlocks
+     * @param array<int, string> $nameBlocks
+     *
      * @return array<int, array<string, mixed>>
      */
     public function exceptContentBlocks(Article $article, array $nameBlocks): array
@@ -66,7 +68,7 @@ final class ArticlePresentationAdapter
     }
 
     /**
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     public function mainImage(array $attributes): string
     {
