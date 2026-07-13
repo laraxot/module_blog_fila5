@@ -103,9 +103,9 @@ class ArticleData extends Data implements \Stringable
     /**
      * @param array<string, mixed> $payload
      */
-    public static function fromPayload(array $payload): self
+    public static function fromPayload(array $payload): static
     {
-        return new self(
+        return new static(
             core: ArticleDataPayloadMapper::coreFromPayload($payload),
             title: ArticleDataPayloadMapper::titleFromPayload($payload),
             blocks: ArticleDataPayloadMapper::blocksFromPayload($payload),
@@ -118,8 +118,7 @@ class ArticleData extends Data implements \Stringable
             /** @var array<string, mixed> $singlePayload */
             $singlePayload = $payloads[0];
 
-            /* @var static */
-            return self::fromPayload($singlePayload);
+            return static::fromPayload($singlePayload);
         }
 
         return parent::from(...$payloads);
