@@ -75,3 +75,7 @@ docs/archive/
 
 agentdb.rvf
 audit-coverage/
+.cursor/
+.vscode/
+.windsurf/
+.devcontainer/
