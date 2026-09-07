@@ -8,19 +8,19 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
-// use Modules\Blog\Models\Profile;
 use Modules\Blog\Models\Profile as BlogProfile;
+// use Modules\Blog\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
+use Modules\Xot\Filament\Pages\XotBasePage;
 
 /**
  * @property Schema $form
  */
-class Profile extends Page implements HasForms
+class Profile extends XotBasePage implements HasForms
 {
     use InteractsWithForms;
     // public Article $article;
@@ -31,7 +31,7 @@ class Profile extends Page implements HasForms
     /** @var array<string, mixed> */
     public array $data = [];
 
-    public BlogProfile $model;
+    public BlogProfile $profile;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
@@ -41,9 +41,9 @@ class Profile extends Page implements HasForms
         BlogProfile $model,
         string $tpl = 'v1',
     ): void {
-        $this->model = $model;
+        $this->profile = $model;
         $this->tpl = $tpl;
-        $this->data = self::buildFormData($this->model);
+        $this->data = self::buildFormData($this->profile);
 
         // $this->data['photo_profile'] = $this->model->getFirstMedia('photo_profile');
 
@@ -96,7 +96,7 @@ class Profile extends Page implements HasForms
     {
         $data = $this->form->getState();
 
-        $this->model->update($data);
+        $this->profile->update($data);
 
         // $article_aggregate = ArticleAggregate::retrieve($this->article->id);
         // Assert::isArray($ratings_add = $data['ratings_add']);
