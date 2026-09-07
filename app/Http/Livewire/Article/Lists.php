@@ -14,7 +14,7 @@ use Modules\Xot\Actions\GetViewAction;
 
 class Lists extends Component
 {
-    public const ITEMS_PER_PAGE = 10;
+    public const int ITEMS_PER_PAGE = 10;
 
     // All categories
     /**
