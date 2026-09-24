@@ -24,8 +24,13 @@ return new class extends XotBaseMigration {
                 $table->id();
                 $table->string('uuid', 36)->nullable()->index();
 <<<<<<< HEAD
+<<<<<<< .merge_file_TJZNtl
                 // Laraxot — see module docs/wiki for domain contract.
 =======
+=======
+=======
+                // Laraxot — see module docs/wiki for domain contract.
+>>>>>>> .merge_file_kiaXUK
 >>>>>>> laraxot/dev
                 $table->string('user_id', 36)->nullable()->index();
                 $table->string('first_name')->nullable();

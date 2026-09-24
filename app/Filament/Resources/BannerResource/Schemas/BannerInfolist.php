@@ -15,9 +15,15 @@ class BannerInfolist extends XotBaseResourceInfolist
      * @return array<string, Component>
      */
 <<<<<<< HEAD
+<<<<<<< .merge_file_q9XHsN
     public static function getInfolistSchema(): array
 =======
     public function getInfolistSchema(): array
+=======
+    public function getInfolistSchema(): array
+=======
+    public static function getInfolistSchema(): array
+>>>>>>> .merge_file_aNNpDh
 >>>>>>> laraxot/dev
     {
         return [

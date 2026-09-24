@@ -13,6 +13,7 @@ final class ArticleDataPayloadMapper
     {
         return new ArticleDataCore(
 <<<<<<< HEAD
+<<<<<<< .merge_file_S2tDh4
             id: (string) ($payload['id'] ?? ''),
             uuid: (string) ($payload['uuid'] ?? ''),
             slug: (string) ($payload['slug'] ?? ''),
@@ -20,6 +21,15 @@ final class ArticleDataPayloadMapper
             id: self::nullableString($payload, 'id') ?? '',
             uuid: self::nullableString($payload, 'uuid') ?? '',
             slug: self::nullableString($payload, 'slug') ?? '',
+=======
+            id: self::nullableString($payload, 'id') ?? '',
+            uuid: self::nullableString($payload, 'uuid') ?? '',
+            slug: self::nullableString($payload, 'slug') ?? '',
+=======
+            id: (string) ($payload['id'] ?? ''),
+            uuid: (string) ($payload['uuid'] ?? ''),
+            slug: (string) ($payload['slug'] ?? ''),
+>>>>>>> .merge_file_oyeAxZ
 >>>>>>> laraxot/dev
             categoryId: self::nullableInt($payload, 'categoryId', 'category_id'),
             status: self::nullableString($payload, 'status'),
@@ -60,12 +70,7 @@ final class ArticleDataPayloadMapper
     private static function nullableInt(array $payload, string $primaryKey, string $fallbackKey): ?int
     {
 <<<<<<< HEAD
-        if (isset($payload[$primaryKey])) {
-            return (int) $payload[$primaryKey];
-        }
-
-        if (isset($payload[$fallbackKey])) {
-            return (int) $payload[$fallbackKey];
+<<<<<<< .merge_file_S2tDh4
 =======
         if (is_int($payload[$primaryKey] ?? null)) {
             return $payload[$primaryKey];
@@ -73,6 +78,24 @@ final class ArticleDataPayloadMapper
 
         if (is_int($payload[$fallbackKey] ?? null)) {
             return $payload[$fallbackKey];
+=======
+>>>>>>> .merge_file_oyeAxZ
+        if (isset($payload[$primaryKey])) {
+            return (int) $payload[$primaryKey];
+        }
+
+        if (isset($payload[$fallbackKey])) {
+            return (int) $payload[$fallbackKey];
+<<<<<<< .merge_file_S2tDh4
+=======
+        if (is_int($payload[$primaryKey] ?? null)) {
+            return $payload[$primaryKey];
+        }
+
+        if (is_int($payload[$fallbackKey] ?? null)) {
+            return $payload[$fallbackKey];
+=======
+>>>>>>> .merge_file_oyeAxZ
 >>>>>>> laraxot/dev
         }
 

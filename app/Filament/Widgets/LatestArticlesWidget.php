@@ -6,6 +6,7 @@ namespace Modules\Blog\Filament\Widgets;
 
 use Filament\Tables\Table;
 <<<<<<< HEAD
+<<<<<<< .merge_file_DTxYTz
 use Filament\Widgets\TableWidget as BaseWidget;
 
 class LatestArticlesWidget extends BaseWidget
@@ -13,6 +14,15 @@ class LatestArticlesWidget extends BaseWidget
 use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
 
 class LatestArticlesWidget extends XotBaseTableWidget
+=======
+use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
+
+class LatestArticlesWidget extends XotBaseTableWidget
+=======
+use Filament\Widgets\TableWidget as BaseWidget;
+
+class LatestArticlesWidget extends BaseWidget
+>>>>>>> .merge_file_y5QZtb
 >>>>>>> laraxot/dev
 {
     public function table(Table $table): Table

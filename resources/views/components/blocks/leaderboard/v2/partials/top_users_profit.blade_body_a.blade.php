@@ -28,6 +28,17 @@
 
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
+<<<<<<< HEAD
+=======
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+>>>>>>> laraxot/dev
 // Blog Blade view — see Modules/Blog/docs/wiki.
 // Blog Blade view — see Modules/Blog/docs/wiki.
 @endphp
