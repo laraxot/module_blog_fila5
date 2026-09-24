@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Agent instructions"
 type: reference
@@ -11,6 +12,8 @@ related:
   - ./coding-agent-manifests.md
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Blog {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Blog

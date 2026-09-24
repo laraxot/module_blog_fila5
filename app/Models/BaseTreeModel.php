@@ -8,6 +8,10 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> laraxot/dev
 use Modules\Blog\Models\Concerns\HasPathByParentId;
 use Spatie\EloquentSortable\SortableTrait;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
@@ -32,6 +36,21 @@ abstract class BaseTreeModel extends BaseModel
         return 'cte_path';
     }
 
+<<<<<<< HEAD
+=======
+    public function makeChildOf(Model $parent): self // $parent is unused
+    {// if ($node->isSelfOrDescendantOf($this)) {
+        //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
+                        // }
+
+                        // Save the previous parent to be used when finishing.
+
+                        $this->save();
+
+        return $this;
+    }
+
+>>>>>>> laraxot/dev
     /**
      * Get the attributes that should be cast.
      *

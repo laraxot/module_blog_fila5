@@ -11,9 +11,12 @@
 - Layer wiki: `docs/wiki/` — LLM-maintained, sintesi ad alto riuso.
 - Schema: `docs/.schema/WIKI_SCHEMA.md`
 - Adozione moduli: `docs/project/llm-wiki-module-adoption.md`
+<<<<<<< HEAD
 
 ## [2026-07-12] phpstan | Article presentation Support -> QueueableAction
 
 - `Article` usa `ArticlePresentationAdapter` → `Actions/Article/*Action`.
 - **Eliminato** `app/Support/ArticleDelegates.php` (0 consumer).
 - Regola: presentazione articolo = QueueableAction, non Support statico.
+=======
+>>>>>>> laraxot/dev

@@ -8,14 +8,23 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
+<<<<<<< HEAD
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
+=======
+>>>>>>> laraxot/dev
 
 final class ThemeCategoryQueries
 {
     /**
+<<<<<<< HEAD
      * @return AdjacencyCollection<int, Category>
      */
     public function categories(): AdjacencyCollection
+=======
+     * @return Collection<int, Category>
+     */
+    public function categories(): Collection
+>>>>>>> laraxot/dev
     {
         return Category::tree()->get()->toTree();
     }
@@ -43,12 +52,25 @@ final class ThemeCategoryQueries
             },
         ])
             ->get()
+<<<<<<< HEAD
             ->map(fn (Category $category): array => [
                 'image' => $category->getFirstMediaUrl('category'),
                 'slug' => $category->slug,
                 'title' => $category->title,
                 'ratings_sum' => (int) $category->categoryArticles->sum('ratings_count'),
             ])
+=======
+            ->map(function (Category $category): array {
+                $ratingsCount = $category->categoryArticles->sum('ratings_count');
+
+                return [
+                    'image' => $category->getFirstMediaUrl('category'),
+                    'slug' => $category->slug,
+                    'title' => $category->title,
+                    'ratings_sum' => is_numeric($ratingsCount) ? (int) $ratingsCount : 0,
+                ];
+            })
+>>>>>>> laraxot/dev
             ->sortByDesc('ratings_sum')
             ->take(3)
             ->values()

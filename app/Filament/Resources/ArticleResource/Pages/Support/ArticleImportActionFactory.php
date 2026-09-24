@@ -29,6 +29,12 @@ final class ArticleImportActionFactory
             ->label('')
             ->tooltip('Import')
             ->icon('heroicon-o-folder-open')
+<<<<<<< HEAD
             ->action(static fn (array $data) => app(ImportArticlesFromByJsonTextAction::class)->execute((string) $data['fileContent']));
+=======
+            ->action(static fn (array $data) => app(ImportArticlesFromByJsonTextAction::class)->execute(
+                is_string($data['fileContent'] ?? null) ? $data['fileContent'] : ''
+            ));
+>>>>>>> laraxot/dev
     }
 }

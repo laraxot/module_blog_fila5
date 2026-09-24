@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 use Modules\Blog\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
@@ -15,11 +16,22 @@ uses(TestCase::class);
  *
  * @return int|float Sum of a and b
  */
+=======
+use PHPUnit\Framework\Assert;
+
+>>>>>>> laraxot/dev
 function sum(int|float $a, int|float $b): int|float
 {
     return $a + $b;
 }
 
+<<<<<<< HEAD
 test('sum', function (): void {
     Assert::assertSame(3, sum(1, 2));
+=======
+it('sum', function (): void {
+    $result = sum(1, 2);
+
+    Assert::assertSame(3, $result);
+>>>>>>> laraxot/dev
 });

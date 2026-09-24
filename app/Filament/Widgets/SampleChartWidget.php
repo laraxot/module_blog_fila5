@@ -4,9 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Widgets;
 
+<<<<<<< HEAD
 use Filament\Widgets\ChartWidget;
 
 class SampleChartWidget extends ChartWidget
+=======
+use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
+
+class SampleChartWidget extends XotBaseChartWidget
+>>>>>>> laraxot/dev
 {
     protected ?string $heading = 'Blog Posts';
 
