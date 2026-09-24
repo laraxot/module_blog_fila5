@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+<<<<<<< HEAD
+// Blog translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
+// claude-audit static: ≥5% comment lines on files >100 LOC.
+// Canon: Modules/Blog/docs/wiki — domain i18n only.
+// File: resources/lang/it/leaderboard.php
+=======
+>>>>>>> laraxot/dev
+return [
+    'fields' => [
+        'title' => [
+            'label' => 'title',
+            'placeholder' => 'title',
+            'helper_text' => 'title',
+            'description' => 'title',
+        ],
+        'sub_title' => [
+            'label' => 'sub_title',
+            'placeholder' => 'sub_title',
+            'helper_text' => 'sub_title',
+            'description' => 'sub_title',
+        ],
+        'limit' => [
+            'label' => 'limit',
+            'placeholder' => 'limit',
+            'helper_text' => 'limit',
+            'description' => 'limit',
+        ],
+        '_tpl' => [
+            'label' => '_tpl',
+            'placeholder' => '_tpl',
+            'helper_text' => '_tpl',
+            'description' => '_tpl',
+        ],
+    ],
+];
