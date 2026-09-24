@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+@php
+// Blog leaderboard block — Modules/Blog/docs/wiki.
+@endphp
+
+>>>>>>> laraxot/dev
 @props([
     'tpl',
     'version' => 'v1',
@@ -5,9 +12,12 @@
 ])
 
 <!-- Leader Board Starts -->
+<<<<<<< HEAD
 {{-- <div class="row">
     <h2 class="text-center leader-title mb40 wow fadeInDown" style="font-size: 40px;">{{ $title }}</h2>
 </div> --}}
+=======
+>>>>>>> laraxot/dev
 <div class="row gape">
     <div class="col-xl-12">
         <div class="userpart wow fadeInUp">
@@ -24,12 +34,15 @@
                 <li class="nav-item">
                     <a class="nav-link f18" data-bs-toggle="tab" href="#menu1">Articoli con più scommesse</a>
                 </li>
+<<<<<<< HEAD
                 {{-- <li class="nav-item">
                     <a class="nav-link f18" data-bs-toggle="tab" href="#menu2">Month</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link f18" data-bs-toggle="tab" href="#menu3">All</a>
                 </li> --}}
+=======
+>>>>>>> laraxot/dev
             </ul>
             <!-- Tab panes -->
             <div class="tab-content" 
@@ -40,6 +53,7 @@
                 </div>
                 <div id="menu1" class="container tab-pane fade"><br>
                     @include('blog::components.blocks.leaderboard.bootstrap_version.top_bet_articles')
+<<<<<<< HEAD
                     {{-- <a href="leaderboard_details.html" class="userpart__userlist">
                         <ul>
                             <li class="d-flex align-items-center justify-content-between mb-1">
@@ -455,9 +469,19 @@
                             </li>
                         </ul>
                     </a> --}}
+=======
+                </div>
+                <div id="menu2" class="container tab-pane fade"><br>
+                </div>
+                <div id="menu3" class="container tab-pane fade"><br>
+>>>>>>> laraxot/dev
                 </div>
             </div>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <!-- Leader Board Ends -->
+=======
+<!-- Leader Board Ends -->
+>>>>>>> laraxot/dev

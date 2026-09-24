@@ -13,7 +13,11 @@ class ProfileForm extends XotBaseResourceForm
     /**
      * @return array<int|string, SchemaComponent>
      */
+<<<<<<< HEAD
+    public function getFormSchema(): array
+=======
     public static function getFormSchema(): array
+>>>>>>> laraxot/dev
     {
         return [
             'id' => TextInput::make('id'),

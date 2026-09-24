@@ -8,6 +8,16 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+<<<<<<< HEAD
+use Filament\Schemas\Schema;
+use Illuminate\Contracts\View\View;
+use Modules\Blog\Models\Profile as BlogProfile;
+// use Modules\Blog\Models\Profile;
+use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Modules\Xot\Actions\GetViewAction;
+use Modules\Xot\Filament\Pages\XotBasePage;
+=======
 use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
@@ -16,11 +26,16 @@ use Modules\Blog\Models\Profile as BlogProfile;
 use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
+>>>>>>> laraxot/dev
 
 /**
  * @property Schema $form
  */
+<<<<<<< HEAD
+class Profile extends XotBasePage implements HasForms
+=======
 class Profile extends Page implements HasForms
+>>>>>>> laraxot/dev
 {
     use InteractsWithForms;
     // public Article $article;
@@ -31,7 +46,11 @@ class Profile extends Page implements HasForms
     /** @var array<string, mixed> */
     public array $data = [];
 
+<<<<<<< HEAD
+    public BlogProfile $profile;
+=======
     public BlogProfile $model;
+>>>>>>> laraxot/dev
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
@@ -41,9 +60,15 @@ class Profile extends Page implements HasForms
         BlogProfile $model,
         string $tpl = 'v1',
     ): void {
+<<<<<<< HEAD
+        $this->profile = $model;
+        $this->tpl = $tpl;
+        $this->data = self::buildFormData($this->profile);
+=======
         $this->model = $model;
         $this->tpl = $tpl;
         $this->data = self::buildFormData($this->model);
+>>>>>>> laraxot/dev
 
         // $this->data['photo_profile'] = $this->model->getFirstMedia('photo_profile');
 
@@ -59,11 +84,19 @@ class Profile extends Page implements HasForms
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
+<<<<<<< HEAD
         $viewParams = [
             'view' => $view,
         ];
 
         return view((string) $view, $viewParams);
+=======
+        $parameters = [
+            'view' => $view,
+        ];
+
+        return view((string) $view, $parameters);
+>>>>>>> laraxot/dev
     }
 
     public function url(): string
@@ -96,7 +129,11 @@ class Profile extends Page implements HasForms
     {
         $data = $this->form->getState();
 
+<<<<<<< HEAD
+        $this->profile->update($data);
+=======
         $this->model->update($data);
+>>>>>>> laraxot/dev
 
         // $article_aggregate = ArticleAggregate::retrieve($this->article->id);
         // Assert::isArray($ratings_add = $data['ratings_add']);

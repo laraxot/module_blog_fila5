@@ -16,7 +16,11 @@ class TextWidgetForm extends XotBaseResourceForm
     /**
      * @return array<int|string, SchemaComponent>
      */
+<<<<<<< HEAD
+    public function getFormSchema(): array
+=======
     public static function getFormSchema(): array
+>>>>>>> laraxot/dev
     {
         return [
             TextInput::make('key')
@@ -28,8 +32,13 @@ class TextWidgetForm extends XotBaseResourceForm
                 // ->maxSize(5000)
                 // ->multiple()
                 // ->enableReordering()
+<<<<<<< HEAD
+                ->openable()
+                ->downloadable()
+=======
                 ->enableOpen()
                 ->enableDownload()
+>>>>>>> laraxot/dev
                 ->columnSpanFull()
                 // ->collection('avatars')
                 // ->conversion('thumbnail')

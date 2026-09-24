@@ -114,9 +114,15 @@ class Comment extends BaseModel
     /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
+<<<<<<< HEAD
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);
+=======
+        $userClassModel = XotData::make()->getUserClass();
+
+        return $this->belongsTo($userClassModel);
+>>>>>>> laraxot/dev
     }
 
     /**

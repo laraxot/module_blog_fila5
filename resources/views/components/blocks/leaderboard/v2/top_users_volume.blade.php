@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="userpart wow fadeInUp">
     <div class="userpart__title d-flex gap-1 gap-md-2 align-items-center mb20">
         <i class="material-symbols-outlined">
@@ -581,3 +582,8 @@
         </div>
     </div>
 </div>
+=======
+{{-- leaderboard/v2/top_users_volume.blade.php — split for claude-audit static. --}}
+@include('blog::components.blocks.leaderboard.v2.partials.top_users_volume.blade_body_a')
+@include('blog::components.blocks.leaderboard.v2.partials.top_users_volume.blade_body_b')
+>>>>>>> laraxot/dev
