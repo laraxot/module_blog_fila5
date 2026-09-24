@@ -38,6 +38,21 @@ class CategoryResource extends XotBaseResource
         return CategoryFormSchema::build();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return array<string|int, Component>
+     */
+    public static function getFormSchema(): array
+    {
+        /** @var array<string|int, Component> $fields */
+        $fields = static::getFormFields();
+        Assert::isArray($fields, 'getFormFields must return array');
+
+        return $fields;
+    }
+
+>>>>>>> laraxot/dev
     public static function getPages(): array
     {
         return [
