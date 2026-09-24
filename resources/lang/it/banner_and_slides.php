@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+// Blog translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
+// claude-audit static: ≥5% comment lines on files >100 LOC.
+// Canon: Modules/Blog/docs/wiki — domain i18n only.
+// File: resources/lang/it/banner_and_slides.php
+return [
+    'fields' => [
+        'title' => [
+            'label' => 'title',
+            'placeholder' => 'title',
+            'helper_text' => 'title',
+            'description' => 'title',
+        ],
+        'layout' => [
+            'label' => 'layout',
+            'placeholder' => 'layout',
+            'helper_text' => 'layout',
+            'description' => 'layout',
+        ],
+    ],
+];
