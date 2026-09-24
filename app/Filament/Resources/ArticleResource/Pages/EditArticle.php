@@ -42,7 +42,11 @@ class EditArticle extends LangBaseEditRecord
 
                     app(TranslateContentAction::class)->execute(
                         'article',
+<<<<<<< HEAD
                         (string) $record->id,
+=======
+                        $record->id,
+>>>>>>> laraxot/dev
                         array_values(array_map(fn ($locale) => (string) $locale, $locales)),
                         $safeData,
                         Article::class
