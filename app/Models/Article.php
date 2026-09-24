@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+<<<<<<< HEAD
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksExceptAction;
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksOnlyAction;
 use Modules\Blog\Actions\Article\FormatArticleHumanReadTimeAction;
@@ -32,16 +33,30 @@ use Modules\Rating\Models\Rating;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
 use Modules\Xot\Contracts\ProfileContract;
+=======
+use Modules\Blog\Models\Concerns\ArticleFeedable;
+use Modules\Blog\Models\Concerns\ArticleQueryScopes;
+use Modules\Blog\Support\ArticleDelegates;
+use Modules\Comment\Models\Comment;
+use Modules\Comment\Models\Concerns\HasComments;
+use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
+use Modules\Lang\Models\Contracts\HasTranslationsContract;
+use Modules\Rating\Models\Traits\HasRating;
+>>>>>>> laraxot/dev
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
 use Spatie\Feed\Feedable;
+<<<<<<< HEAD
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+=======
+>>>>>>> laraxot/dev
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 /**
+<<<<<<< HEAD
  * Modules\Blog\Models\Article.
  *
  * @property Profile|null                $author
@@ -226,6 +241,21 @@ use Spatie\Translatable\HasTranslations;
  *
  * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
  * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
+=======
+ * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticleDelegates}.
+ *
+ * @property string|null                           $title
+ * @property string|null                           $slug
+ * @property string|null                           $body
+ * @property string|null                           $description
+ * @property \Illuminate\Support\Carbon|null       $updated_at
+ * @property \Illuminate\Support\Carbon|null       $published_at
+ * @property string|null                           $main_image_upload
+ * @property string|null                           $main_image_url
+ * @property Category|null                         $category
+ * @property UserContract|null                     $user
+ * @property array<int, array<string, mixed>>|null $content_blocks
+>>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */
@@ -273,6 +303,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'closed_at',
         'category_id',
         'type',
+<<<<<<< HEAD
         // 'is_closed', => closet_at
 
         /*
@@ -299,6 +330,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'read_time',
         'excerpt',
         */
+=======
+>>>>>>> laraxot/dev
         'status',
         'status_display',
         'bet_end_date',
@@ -331,7 +364,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
+<<<<<<< HEAD
         return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
+=======
+        return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -377,9 +414,15 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
+<<<<<<< HEAD
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);
+=======
+        $userClassModel = XotData::make()->getUserClass();
+
+        return $this->belongsTo($userClassModel);
+>>>>>>> laraxot/dev
     }
 
     /** @return BelongsTo<Category, $this> */
@@ -396,12 +439,20 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getFormattedDate(): string
     {
+<<<<<<< HEAD
         return app(FormatArticlePublishedDateAction::class)->execute($this);
+=======
+        return ArticleDelegates::formattedDate($this);
+>>>>>>> laraxot/dev
     }
 
     public function getThumbnail(): ?string
     {
+<<<<<<< HEAD
         return app(ResolveArticleThumbnailAction::class)->execute($this);
+=======
+        return ArticleDelegates::thumbnail($this);
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -413,7 +464,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
+<<<<<<< HEAD
                 return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
+=======
+                return ArticleDelegates::humanReadTime($attributes);
+>>>>>>> laraxot/dev
             },
         );
     }
@@ -439,6 +494,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getMainImage(): string
     {
+<<<<<<< HEAD
         return app(ResolveArticleMainImageUrlAction::class)->execute($this);
     }
 
@@ -454,6 +510,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
     */
 
+=======
+        return ArticleDelegates::mainImageUrl($this);
+    }
+
+>>>>>>> laraxot/dev
     public function getUuidAttribute(?string $value): string
     {
         if (null !== $value && '' !== $value) {
@@ -469,6 +530,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         return '##';
     }
 
+<<<<<<< HEAD
     // public function getTimeLeft(): string
     // {
     //     $time = $this->closed_at;
@@ -505,6 +567,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //     }
     //     return 'slug';
     // }
+=======
+    public function getTimeLeftForHumans(): ?string
+    {
+        return ArticleDelegates::timeLeftForHumans($this);
+    }
+
+>>>>>>> laraxot/dev
     /**
      * Get the path key to the item for the frontend only.
      */
@@ -520,7 +589,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getOnlyContentBlocks(array $nameBlocks): array
     {
+<<<<<<< HEAD
         return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
+=======
+        return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -530,12 +603,20 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getExceptContentBlocks(array $nameBlocks): array
     {
+<<<<<<< HEAD
         return app(FilterArticleContentBlocksExceptAction::class)->execute($this, $nameBlocks);
     }
 
     /**
      * This string will be used in notifications on what a new comment
      * was made.
+=======
+        return ArticleDelegates::exceptContentBlocks($this, $nameBlocks);
+    }
+
+    /**
+     * This string will be used in notifications on what a new comment was made.
+>>>>>>> laraxot/dev
      */
     public function commentableName(): string
     {
@@ -577,6 +658,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         ];
     }
 
+<<<<<<< HEAD
     // /**
     //  * Get the tags of the article
     //  *
@@ -587,6 +669,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //    return $this->belongsToMany(Tag::class);
     // }
 
+=======
+>>>>>>> laraxot/dev
     /**
      * @return Attribute<string, never>
      */
@@ -596,7 +680,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
+<<<<<<< HEAD
                 return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
+=======
+                return ArticleDelegates::mainImage($attributes);
+>>>>>>> laraxot/dev
             },
         );
     }

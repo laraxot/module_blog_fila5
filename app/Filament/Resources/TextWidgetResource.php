@@ -22,6 +22,18 @@ class TextWidgetResource extends XotBaseResource
     // protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static string|\BackedEnum|null $navigationIcon = 'ui-widgets';
 
+<<<<<<< HEAD
+=======
+    // protected static ?string $navigationGroup = 'Content';
+    /**
+     * @return array<string|int, Component>
+     */
+    public static function getFormSchema(): array
+    {
+        return static::getFormFields();
+    }
+
+>>>>>>> laraxot/dev
     /**
      * Ritorna i campi del form (compatibilità con XotBaseResource).
      *
@@ -39,8 +51,13 @@ class TextWidgetResource extends XotBaseResource
                 // ->maxSize(5000)
                 // ->multiple()
                 // ->enableReordering()
+<<<<<<< HEAD
                 ->openable()
                 ->downloadable()
+=======
+                ->enableOpen()
+                ->enableDownload()
+>>>>>>> laraxot/dev
                 ->columnSpanFull()
                 // ->collection('avatars')
                 // ->conversion('thumbnail')
