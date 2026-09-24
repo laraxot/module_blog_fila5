@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📚 BLOG Module - Documentation Index
 
 **Path**: `laravel/Modules/Blog/docs/`  
@@ -28,3 +29,12 @@
 ---
 
 **Ultimo Aggiornamento**: 2026-03-24
+=======
+# Documentation Index
+
+Modulo: Blog
+
+## File disponibili
+
+<!-- auto-generato: elencare i file .md presenti -->
+>>>>>>> laraxot/dev

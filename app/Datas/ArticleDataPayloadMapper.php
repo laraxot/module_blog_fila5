@@ -12,9 +12,15 @@ final class ArticleDataPayloadMapper
     public static function coreFromPayload(array $payload): ArticleDataCore
     {
         return new ArticleDataCore(
+<<<<<<< HEAD
             id: (string) ($payload['id'] ?? ''),
             uuid: (string) ($payload['uuid'] ?? ''),
             slug: (string) ($payload['slug'] ?? ''),
+=======
+            id: self::nullableString($payload, 'id') ?? '',
+            uuid: self::nullableString($payload, 'uuid') ?? '',
+            slug: self::nullableString($payload, 'slug') ?? '',
+>>>>>>> laraxot/dev
             categoryId: self::nullableInt($payload, 'categoryId', 'category_id'),
             status: self::nullableString($payload, 'status'),
             showOnHomepage: (bool) ($payload['showOnHomepage'] ?? $payload['show_on_homepage'] ?? false),
@@ -53,12 +59,21 @@ final class ArticleDataPayloadMapper
      */
     private static function nullableInt(array $payload, string $primaryKey, string $fallbackKey): ?int
     {
+<<<<<<< HEAD
         if (isset($payload[$primaryKey])) {
             return (int) $payload[$primaryKey];
         }
 
         if (isset($payload[$fallbackKey])) {
             return (int) $payload[$fallbackKey];
+=======
+        if (is_int($payload[$primaryKey] ?? null)) {
+            return $payload[$primaryKey];
+        }
+
+        if (is_int($payload[$fallbackKey] ?? null)) {
+            return $payload[$fallbackKey];
+>>>>>>> laraxot/dev
         }
 
         return null;

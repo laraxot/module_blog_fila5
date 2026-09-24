@@ -23,6 +23,7 @@ class ArticleImportSchedule extends Data
     }
 }
 
+<<<<<<< HEAD
 class ArticleImportScores extends Data
 {
     public function __construct(
@@ -51,6 +52,8 @@ class ArticleImportMetrics extends Data
     }
 }
 
+=======
+>>>>>>> laraxot/dev
 class ArticleImportIdentity extends Data
 {
     public function __construct(

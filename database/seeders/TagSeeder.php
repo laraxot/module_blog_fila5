@@ -13,7 +13,11 @@ use Modules\Blog\Models\Tag;
 class TagSeeder extends Seeder
 {
     /** @var list<array{name: array{it: string, en: string}, type: string}> */
+<<<<<<< HEAD
     private const TAGS = [
+=======
+    private const array TAGS = [
+>>>>>>> laraxot/dev
         [
             'name' => ['it' => 'Mercati', 'en' => 'Markets'],
             'type' => 'predict',

@@ -19,6 +19,13 @@ related:
 
 Nel modulo Blog **non** esiste più `app/Support/`. Presentazione articolo e feed RSS sono **Spatie QueueableAction** sotto `app/Actions/Article/`.
 
+<<<<<<< HEAD
+=======
+## Stato (2026-07-13)
+
+Tutti i 6 file `app/Support/*.php` rinominati a `.bak` (consumatori già su Action).
+
+>>>>>>> laraxot/dev
 ## Migrazione (2026-07-12)
 
 | Legacy `app/Support/` | Action |
