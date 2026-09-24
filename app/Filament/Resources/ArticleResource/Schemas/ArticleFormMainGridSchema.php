@@ -31,9 +31,15 @@ final class ArticleFormMainGridSchema
                         return;
                     }
 <<<<<<< HEAD
+<<<<<<< .merge_file_eS7HTc
                     $set('slug', Str::slug((string) $state));
 =======
                     $set('slug', Str::slug(is_string($state) ? $state : ''));
+=======
+                    $set('slug', Str::slug(is_string($state) ? $state : ''));
+=======
+                    $set('slug', Str::slug((string) $state));
+>>>>>>> .merge_file_uJzzYu
 >>>>>>> laraxot/dev
                 }),
 

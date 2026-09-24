@@ -16,14 +16,24 @@
         "postcss": "^8.4.33",
         "postcss-nesting": "^12.0.2",
 <<<<<<< HEAD
-        "sass": "^1.69.5",
-        "tailwindcss": "^3.4.1",
-        "tippy.js": "^6.3.7",
-        "vite": "^6.4.3"
+<<<<<<< .merge_file_JyPc7v
 =======
         "tailwindcss": "^3.4.1",
         "tippy.js": "^6.3.7",
         "vite": "^6.4.2"
+=======
+>>>>>>> .merge_file_Nt0VlD
+        "sass": "^1.69.5",
+        "tailwindcss": "^3.4.1",
+        "tippy.js": "^6.3.7",
+        "vite": "^6.4.3"
+<<<<<<< .merge_file_JyPc7v
+=======
+        "tailwindcss": "^3.4.1",
+        "tippy.js": "^6.3.7",
+        "vite": "^6.4.2"
+=======
+>>>>>>> .merge_file_Nt0VlD
 >>>>>>> laraxot/dev
     }
 }

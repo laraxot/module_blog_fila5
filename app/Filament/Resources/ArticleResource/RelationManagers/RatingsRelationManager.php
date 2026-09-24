@@ -11,6 +11,25 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 <<<<<<< HEAD
+<<<<<<< .merge_file_jjhRvg
+=======
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Modules\Xot\Filament\Resources\RelationManagers\XotBaseRelationManager;
+
+class RatingsRelationManager extends XotBaseRelationManager
+{
+    protected static string $relationship = 'ratings';
+
+    public function getFormSchema(): array
+    {
+        return [
+            'title' => TextInput::make('title')
+                ->required()
+                ->maxLength(255),
+        ];
+=======
+>>>>>>> .merge_file_72mqP8
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -28,6 +47,7 @@ class RatingsRelationManager extends RelationManager
                     ->required()
                     ->maxLength(255),
             ]);
+<<<<<<< .merge_file_jjhRvg
 =======
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -44,6 +64,8 @@ class RatingsRelationManager extends XotBaseRelationManager
                 ->required()
                 ->maxLength(255),
         ];
+=======
+>>>>>>> .merge_file_72mqP8
 >>>>>>> laraxot/dev
     }
 

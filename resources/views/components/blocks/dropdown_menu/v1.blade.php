@@ -1,81 +1,96 @@
 <<<<<<< HEAD
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+<<<<<<< .merge_file_HDk9Bw
 =======
+=======
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+>>>>>>> .merge_file_Bka1RN
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+@php
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+// Blog Blade view — see Modules/Blog/docs/wiki.
+@endphp
+
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+<<<<<<< .merge_file_HDk9Bw
+=======
+=======
+>>>>>>> .merge_file_Bka1RN
 >>>>>>> laraxot/dev
 <div class="volume-area mb20">
     <div class="liclick">
@@ -445,7 +460,13 @@
     </div>
   </div>
 <<<<<<< HEAD
+<<<<<<< .merge_file_HDk9Bw
   <hr class="left-side-border">
 =======
   <hr class="left-side-border">
+=======
+  <hr class="left-side-border">
+=======
+  <hr class="left-side-border">
+>>>>>>> .merge_file_Bka1RN
 >>>>>>> laraxot/dev

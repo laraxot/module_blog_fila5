@@ -30,17 +30,29 @@ class Chunk extends Component
         $view = app(GetViewAction::class)->execute($this->tpl);
 
 <<<<<<< HEAD
-        $parameters = [
-            'articles' => $orderedPosts,
-        ];
-
-        return view((string) $view, $parameters);
+<<<<<<< .merge_file_OpLBY8
 =======
         $viewParams = [
             'articles' => $orderedPosts,
         ];
 
         return view((string) $view, $viewParams);
+=======
+>>>>>>> .merge_file_vFXEWe
+        $parameters = [
+            'articles' => $orderedPosts,
+        ];
+
+        return view((string) $view, $parameters);
+<<<<<<< .merge_file_OpLBY8
+=======
+        $viewParams = [
+            'articles' => $orderedPosts,
+        ];
+
+        return view((string) $view, $viewParams);
+=======
+>>>>>>> .merge_file_vFXEWe
 >>>>>>> laraxot/dev
     }
 

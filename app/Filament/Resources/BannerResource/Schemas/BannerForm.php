@@ -21,9 +21,15 @@ class BannerForm extends XotBaseResourceForm
      * @return array<int|string, SchemaComponent>
      */
 <<<<<<< HEAD
+<<<<<<< .merge_file_frag3h
     public static function getFormSchema(): array
 =======
     public function getFormSchema(): array
+=======
+    public function getFormSchema(): array
+=======
+    public static function getFormSchema(): array
+>>>>>>> .merge_file_tkPHpA
 >>>>>>> laraxot/dev
     {
         return [
