@@ -21,9 +21,15 @@ class CategoryForm extends XotBaseResourceForm
      * @return array<int|string, SchemaComponent>
      */
 <<<<<<< HEAD
+<<<<<<< .merge_file_d1rRfd
     public static function getFormSchema(): array
 =======
     public function getFormSchema(): array
+=======
+    public function getFormSchema(): array
+=======
+    public static function getFormSchema(): array
+>>>>>>> .merge_file_rIuqUs
 >>>>>>> laraxot/dev
     {
         return [
@@ -34,9 +40,15 @@ class CategoryForm extends XotBaseResourceForm
                 ->unique()
                 ->afterStateUpdated(function (Set $set, $state): void {
 <<<<<<< HEAD
+<<<<<<< .merge_file_d1rRfd
                     $set('slug', Str::slug((string) $state));
 =======
                     $set('slug', Str::slug(is_string($state) ? $state : ''));
+=======
+                    $set('slug', Str::slug(is_string($state) ? $state : ''));
+=======
+                    $set('slug', Str::slug((string) $state));
+>>>>>>> .merge_file_rIuqUs
 >>>>>>> laraxot/dev
                 }),
             TextInput::make('slug')
@@ -56,11 +68,19 @@ class CategoryForm extends XotBaseResourceForm
                 // ->multiple()
                 // ->enableReordering()
 <<<<<<< HEAD
+<<<<<<< .merge_file_d1rRfd
                 ->enableOpen()
                 ->enableDownload()
 =======
                 ->openable()
                 ->downloadable()
+=======
+                ->openable()
+                ->downloadable()
+=======
+                ->enableOpen()
+                ->enableDownload()
+>>>>>>> .merge_file_rIuqUs
 >>>>>>> laraxot/dev
                 ->columnSpanFull()
                 ->collection('category')

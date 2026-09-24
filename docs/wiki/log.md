@@ -11,6 +11,7 @@
 - Layer wiki: `docs/wiki/` — LLM-maintained, sintesi ad alto riuso.
 - Schema: `docs/.schema/WIKI_SCHEMA.md`
 - Adozione moduli: `docs/project/llm-wiki-module-adoption.md`
+<<<<<<< .merge_file_pKAXBh
 <<<<<<< HEAD
 
 ## [2026-07-12] phpstan | Article presentation Support -> QueueableAction
@@ -20,3 +21,5 @@
 - Regola: presentazione articolo = QueueableAction, non Support statico.
 =======
 >>>>>>> laraxot/dev
+=======
+>>>>>>> .merge_file_gQsUOO

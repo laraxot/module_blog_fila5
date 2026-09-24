@@ -29,17 +29,29 @@ class SearchBar extends Component
         }
 
 <<<<<<< HEAD
-        $parameters = [
-            'results' => $results,
-        ];
-
-        return view((string) $view, $parameters);
+<<<<<<< .merge_file_Zornlt
 =======
         $viewParams = [
             'results' => $results,
         ];
 
         return view((string) $view, $viewParams);
+=======
+>>>>>>> .merge_file_T8Xhrt
+        $parameters = [
+            'results' => $results,
+        ];
+
+        return view((string) $view, $parameters);
+<<<<<<< .merge_file_Zornlt
+=======
+        $viewParams = [
+            'results' => $results,
+        ];
+
+        return view((string) $view, $viewParams);
+=======
+>>>>>>> .merge_file_T8Xhrt
 >>>>>>> laraxot/dev
     }
 }

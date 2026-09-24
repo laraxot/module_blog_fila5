@@ -4,15 +4,26 @@
 
         @php
 <<<<<<< HEAD
-            if($this->model->avatar = ''){
-              $url = $_theme->asset('pub_theme::assets/images/bio_profile.png');
-            }else{
-              $url = $this->model->avatar;
+<<<<<<< .merge_file_VxmNEk
 =======
             if($this->profile->avatar === ''){
               $url = $_theme->asset('pub_theme::assets/images/bio_profile.png');
             }else{
               $url = $this->profile->avatar;
+=======
+>>>>>>> .merge_file_YSCmsE
+            if($this->model->avatar = ''){
+              $url = $_theme->asset('pub_theme::assets/images/bio_profile.png');
+            }else{
+              $url = $this->model->avatar;
+<<<<<<< .merge_file_VxmNEk
+=======
+            if($this->profile->avatar === ''){
+              $url = $_theme->asset('pub_theme::assets/images/bio_profile.png');
+            }else{
+              $url = $this->profile->avatar;
+=======
+>>>>>>> .merge_file_YSCmsE
 >>>>>>> laraxot/dev
             }
         @endphp
@@ -20,9 +31,15 @@
 
         <img src="
 <<<<<<< HEAD
+<<<<<<< .merge_file_VxmNEk
           {{-- {{ $this->model->getFirstMediaUrl('photo_profile') }} --}}
 =======
           {{-- {{ $this->profile->getFirstMediaUrl('photo_profile') }} --}}
+=======
+          {{-- {{ $this->profile->getFirstMediaUrl('photo_profile') }} --}}
+=======
+          {{-- {{ $this->model->getFirstMediaUrl('photo_profile') }} --}}
+>>>>>>> .merge_file_YSCmsE
 >>>>>>> laraxot/dev
           {{-- {{ $_theme->asset('pub_theme::assets/images/bio_profile.png') }} --}}
           {{ $url }}
@@ -32,9 +49,15 @@
       </div>
       <div class="boardprofile__profile-text bio__dotted text-center">
 <<<<<<< HEAD
+<<<<<<< .merge_file_VxmNEk
         <span class="bio__name mb10 block">{{ $this->model->full_name }}</span>
 =======
         <span class="bio__name mb10 block">{{ $this->profile->full_name }}</span>
+=======
+        <span class="bio__name mb10 block">{{ $this->profile->full_name }}</span>
+=======
+        <span class="bio__name mb10 block">{{ $this->model->full_name }}</span>
+>>>>>>> .merge_file_YSCmsE
 >>>>>>> laraxot/dev
         {{-- <div class="parent justify-center">
           <span class="tlt"></span>
@@ -55,17 +78,29 @@
       </div>
       <div class="bio__location bio__dotted mt20 pb-2 lg:pb-4">
 <<<<<<< HEAD
-        <span class="mb-1 sm:mb-2 block">{{ $this->model->email }}</span>
-        <span>LONDON, United Kingdom</span>
-      </div>
-      <div class="bio__member-date mt20">
-        <span>Iscritto dal {{ $this->model->created_at->format('d/m/y') }}</span>
+<<<<<<< .merge_file_VxmNEk
 =======
         <span class="mb-1 sm:mb-2 block">{{ $this->profile->email }}</span>
         <span>LONDON, United Kingdom</span>
       </div>
       <div class="bio__member-date mt20">
         <span>Iscritto dal {{ $this->profile->created_at->format('d/m/y') }}</span>
+=======
+>>>>>>> .merge_file_YSCmsE
+        <span class="mb-1 sm:mb-2 block">{{ $this->model->email }}</span>
+        <span>LONDON, United Kingdom</span>
+      </div>
+      <div class="bio__member-date mt20">
+        <span>Iscritto dal {{ $this->model->created_at->format('d/m/y') }}</span>
+<<<<<<< .merge_file_VxmNEk
+=======
+        <span class="mb-1 sm:mb-2 block">{{ $this->profile->email }}</span>
+        <span>LONDON, United Kingdom</span>
+      </div>
+      <div class="bio__member-date mt20">
+        <span>Iscritto dal {{ $this->profile->created_at->format('d/m/y') }}</span>
+=======
+>>>>>>> .merge_file_YSCmsE
 >>>>>>> laraxot/dev
       </div>
     </div>

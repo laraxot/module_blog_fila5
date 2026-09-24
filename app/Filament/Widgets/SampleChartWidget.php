@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Widgets;
 
 <<<<<<< HEAD
+<<<<<<< .merge_file_RI6zZr
 use Filament\Widgets\ChartWidget;
 
 class SampleChartWidget extends ChartWidget
@@ -12,6 +13,15 @@ class SampleChartWidget extends ChartWidget
 use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
 
 class SampleChartWidget extends XotBaseChartWidget
+=======
+use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
+
+class SampleChartWidget extends XotBaseChartWidget
+=======
+use Filament\Widgets\ChartWidget;
+
+class SampleChartWidget extends ChartWidget
+>>>>>>> .merge_file_BUYx7g
 >>>>>>> laraxot/dev
 {
     protected ?string $heading = 'Blog Posts';

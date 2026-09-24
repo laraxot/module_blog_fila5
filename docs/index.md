@@ -1,4 +1,15 @@
 <<<<<<< HEAD
+<<<<<<< .merge_file_89KhY4
+=======
+# Documentation Index
+
+Modulo: Blog
+
+## File disponibili
+
+<!-- auto-generato: elencare i file .md presenti -->
+=======
+>>>>>>> .merge_file_HX8Whw
 # 📚 BLOG Module - Documentation Index
 
 **Path**: `laravel/Modules/Blog/docs/`  
@@ -29,6 +40,7 @@
 ---
 
 **Ultimo Aggiornamento**: 2026-03-24
+<<<<<<< .merge_file_89KhY4
 =======
 # Documentation Index
 
@@ -37,4 +49,6 @@ Modulo: Blog
 ## File disponibili
 
 <!-- auto-generato: elencare i file .md presenti -->
+=======
+>>>>>>> .merge_file_HX8Whw
 >>>>>>> laraxot/dev

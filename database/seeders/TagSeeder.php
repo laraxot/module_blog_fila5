@@ -14,9 +14,15 @@ class TagSeeder extends Seeder
 {
     /** @var list<array{name: array{it: string, en: string}, type: string}> */
 <<<<<<< HEAD
+<<<<<<< .merge_file_GWAQQk
     private const TAGS = [
 =======
     private const array TAGS = [
+=======
+    private const array TAGS = [
+=======
+    private const TAGS = [
+>>>>>>> .merge_file_TSDyYE
 >>>>>>> laraxot/dev
         [
             'name' => ['it' => 'Mercati', 'en' => 'Markets'],

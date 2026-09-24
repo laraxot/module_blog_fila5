@@ -19,8 +19,13 @@ use Modules\Blog\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeArrayCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 <<<<<<< HEAD
+<<<<<<< .merge_file_6YPJM0
 // Laraxot module file — see docs/wiki for domain contract.
 =======
+=======
+=======
+// Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> .merge_file_iBUgIW
 >>>>>>> laraxot/dev
 use Modules\Xot\Actions\GetViewAction;
 use Webmozart\Assert\Assert;
@@ -67,18 +72,30 @@ class Setting extends Component implements HasActions, HasForms
         $view = app(GetViewAction::class)->execute($this->version);
 
 <<<<<<< HEAD
+<<<<<<< .merge_file_6YPJM0
         $parameters = [
 =======
         $viewParams = [
+=======
+        $viewParams = [
+=======
+        $parameters = [
+>>>>>>> .merge_file_iBUgIW
 >>>>>>> laraxot/dev
             'view' => $view,
             '_profile' => $this->model,
         ];
 
 <<<<<<< HEAD
+<<<<<<< .merge_file_6YPJM0
         return view((string) $view, $parameters);
 =======
         return view((string) $view, $viewParams);
+=======
+        return view((string) $view, $viewParams);
+=======
+        return view((string) $view, $parameters);
+>>>>>>> .merge_file_iBUgIW
 >>>>>>> laraxot/dev
     }
 

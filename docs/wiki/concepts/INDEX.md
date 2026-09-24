@@ -10,9 +10,16 @@ updated: 2026-05-11
 
 Concetti specifici del modulo Blog. Carica on-demand via `qmd search` o consulta il [trigger map root](/docs/wiki/rules/00-TRIGGER_MAP.md).
 <<<<<<< HEAD
+<<<<<<< .merge_file_1dBuWB
+=======
+=======
+>>>>>>> .merge_file_JJmDOC
 
 ## Quality
 
 - [claude-audit-static](claude-audit-static.md) — `--static` 80/0, split blade + Article concerns
+<<<<<<< .merge_file_1dBuWB
 =======
+=======
+>>>>>>> .merge_file_JJmDOC
 >>>>>>> laraxot/dev

@@ -5,15 +5,26 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
 <<<<<<< HEAD
-use Filament\Resources\Pages\CreateRecord;
-use Modules\Blog\Filament\Resources\TextWidgetResource;
-
-class CreateTextWidget extends CreateRecord
+<<<<<<< .merge_file_XhojV5
 =======
 use Modules\Blog\Filament\Resources\TextWidgetResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
 class CreateTextWidget extends XotBaseCreateRecord
+=======
+>>>>>>> .merge_file_mrCOp8
+use Filament\Resources\Pages\CreateRecord;
+use Modules\Blog\Filament\Resources\TextWidgetResource;
+
+class CreateTextWidget extends CreateRecord
+<<<<<<< .merge_file_XhojV5
+=======
+use Modules\Blog\Filament\Resources\TextWidgetResource;
+use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
+
+class CreateTextWidget extends XotBaseCreateRecord
+=======
+>>>>>>> .merge_file_mrCOp8
 >>>>>>> laraxot/dev
 {
     protected static string $resource = TextWidgetResource::class;
@@ -21,11 +32,19 @@ class CreateTextWidget extends XotBaseCreateRecord
     protected function getRedirectUrl(): string
     {
 <<<<<<< HEAD
+<<<<<<< .merge_file_XhojV5
         return (string) static::getResource()::getUrl('index');
 =======
         $url = static::getResource()::getUrl('index');
 
         return is_string($url) ? $url : '';
+=======
+        $url = static::getResource()::getUrl('index');
+
+        return is_string($url) ? $url : '';
+=======
+        return (string) static::getResource()::getUrl('index');
+>>>>>>> .merge_file_mrCOp8
 >>>>>>> laraxot/dev
     }
 }

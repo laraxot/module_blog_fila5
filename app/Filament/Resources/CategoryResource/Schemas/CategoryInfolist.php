@@ -14,9 +14,15 @@ class CategoryInfolist extends XotBaseResourceInfolist
      * @return array<string, Component>
      */
 <<<<<<< HEAD
+<<<<<<< .merge_file_LMl0Ts
     public static function getInfolistSchema(): array
 =======
     public function getInfolistSchema(): array
+=======
+    public function getInfolistSchema(): array
+=======
+    public static function getInfolistSchema(): array
+>>>>>>> .merge_file_Uw9Ono
 >>>>>>> laraxot/dev
     {
         return [

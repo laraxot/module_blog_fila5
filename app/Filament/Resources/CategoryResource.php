@@ -39,6 +39,10 @@ class CategoryResource extends XotBaseResource
     }
 
 <<<<<<< HEAD
+<<<<<<< .merge_file_R8fvBu
+=======
+=======
+>>>>>>> .merge_file_InX8bu
     /**
      * @return array<string|int, Component>
      */
@@ -51,7 +55,10 @@ class CategoryResource extends XotBaseResource
         return $fields;
     }
 
+<<<<<<< .merge_file_R8fvBu
 =======
+=======
+>>>>>>> .merge_file_InX8bu
 >>>>>>> laraxot/dev
     public static function getPages(): array
     {

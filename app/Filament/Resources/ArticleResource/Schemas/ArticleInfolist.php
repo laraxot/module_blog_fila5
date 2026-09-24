@@ -15,9 +15,15 @@ class ArticleInfolist extends XotBaseResourceInfolist
      * @return array<string, Component>
      */
 <<<<<<< HEAD
+<<<<<<< .merge_file_hxzpAM
     public static function getInfolistSchema(): array
 =======
     public function getInfolistSchema(): array
+=======
+    public function getInfolistSchema(): array
+=======
+    public static function getInfolistSchema(): array
+>>>>>>> .merge_file_fr51It
 >>>>>>> laraxot/dev
     {
         return [

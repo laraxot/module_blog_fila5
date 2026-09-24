@@ -166,7 +166,10 @@ class Menu extends BaseModel implements HasMedia
 
         return app(GetTreeOptions::class)->execute($instance);
 <<<<<<< HEAD
+<<<<<<< .merge_file_fZT976
 =======
+=======
+>>>>>>> .merge_file_3HSd9c
 
         // $categories = self::tree()->get()->toTree();
         // $results = [];
@@ -184,6 +187,10 @@ class Menu extends BaseModel implements HasMedia
         // }
 
         // return $results;
+<<<<<<< .merge_file_fZT976
+=======
+=======
+>>>>>>> .merge_file_3HSd9c
 >>>>>>> laraxot/dev
     }
 

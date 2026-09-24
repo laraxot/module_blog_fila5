@@ -9,14 +9,20 @@ use Illuminate\Support\Collection;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
 <<<<<<< HEAD
+<<<<<<< .merge_file_FOEjJc
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 =======
+=======
+=======
+use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
+>>>>>>> .merge_file_VNIkZP
 >>>>>>> laraxot/dev
 
 final class ThemeCategoryQueries
 {
     /**
 <<<<<<< HEAD
+<<<<<<< .merge_file_FOEjJc
      * @return AdjacencyCollection<int, Category>
      */
     public function categories(): AdjacencyCollection
@@ -24,6 +30,15 @@ final class ThemeCategoryQueries
      * @return Collection<int, Category>
      */
     public function categories(): Collection
+=======
+     * @return Collection<int, Category>
+     */
+    public function categories(): Collection
+=======
+     * @return AdjacencyCollection<int, Category>
+     */
+    public function categories(): AdjacencyCollection
+>>>>>>> .merge_file_VNIkZP
 >>>>>>> laraxot/dev
     {
         return Category::tree()->get()->toTree();
@@ -53,12 +68,7 @@ final class ThemeCategoryQueries
         ])
             ->get()
 <<<<<<< HEAD
-            ->map(fn (Category $category): array => [
-                'image' => $category->getFirstMediaUrl('category'),
-                'slug' => $category->slug,
-                'title' => $category->title,
-                'ratings_sum' => (int) $category->categoryArticles->sum('ratings_count'),
-            ])
+<<<<<<< .merge_file_FOEjJc
 =======
             ->map(function (Category $category): array {
                 $ratingsCount = $category->categoryArticles->sum('ratings_count');
@@ -70,6 +80,28 @@ final class ThemeCategoryQueries
                     'ratings_sum' => is_numeric($ratingsCount) ? (int) $ratingsCount : 0,
                 ];
             })
+=======
+>>>>>>> .merge_file_VNIkZP
+            ->map(fn (Category $category): array => [
+                'image' => $category->getFirstMediaUrl('category'),
+                'slug' => $category->slug,
+                'title' => $category->title,
+                'ratings_sum' => (int) $category->categoryArticles->sum('ratings_count'),
+            ])
+<<<<<<< .merge_file_FOEjJc
+=======
+            ->map(function (Category $category): array {
+                $ratingsCount = $category->categoryArticles->sum('ratings_count');
+
+                return [
+                    'image' => $category->getFirstMediaUrl('category'),
+                    'slug' => $category->slug,
+                    'title' => $category->title,
+                    'ratings_sum' => is_numeric($ratingsCount) ? (int) $ratingsCount : 0,
+                ];
+            })
+=======
+>>>>>>> .merge_file_VNIkZP
 >>>>>>> laraxot/dev
             ->sortByDesc('ratings_sum')
             ->take(3)

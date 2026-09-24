@@ -14,9 +14,15 @@ class ProfileForm extends XotBaseResourceForm
      * @return array<int|string, SchemaComponent>
      */
 <<<<<<< HEAD
+<<<<<<< .merge_file_5MWDda
     public static function getFormSchema(): array
 =======
     public function getFormSchema(): array
+=======
+    public function getFormSchema(): array
+=======
+    public static function getFormSchema(): array
+>>>>>>> .merge_file_TlvMa7
 >>>>>>> laraxot/dev
     {
         return [

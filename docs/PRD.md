@@ -323,9 +323,15 @@ graph TD
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
 <<<<<<< HEAD
+<<<<<<< .merge_file_nIme9f
 - Laravel 12+ required
 =======
 - Laravel 13+ required
+=======
+- Laravel 13+ required
+=======
+- Laravel 12+ required
+>>>>>>> .merge_file_2yEMAO
 >>>>>>> laraxot/dev
 - Filament v5 compatibility
 - Database: MySQL 8.0+

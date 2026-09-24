@@ -9,8 +9,13 @@ use Modules\Blog\Filament\Resources\ArticleResource\Schemas\ArticleFormSchema;
 use Modules\Blog\Models\Article;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 <<<<<<< HEAD
+<<<<<<< .merge_file_zqbYmI
 use Webmozart\Assert\Assert;
 =======
+=======
+=======
+use Webmozart\Assert\Assert;
+>>>>>>> .merge_file_zyamWu
 >>>>>>> laraxot/dev
 
 class ArticleResource extends XotBaseResource
@@ -38,6 +43,10 @@ class ArticleResource extends XotBaseResource
         return ArticleFormSchema::build();
     }
 <<<<<<< HEAD
+<<<<<<< .merge_file_zqbYmI
+=======
+=======
+>>>>>>> .merge_file_zyamWu
 
     /**
      * @return array<int|string, Component>
@@ -50,6 +59,9 @@ class ArticleResource extends XotBaseResource
 
         return $fields;
     }
+<<<<<<< .merge_file_zqbYmI
 =======
+=======
+>>>>>>> .merge_file_zyamWu
 >>>>>>> laraxot/dev
 }

@@ -19,13 +19,19 @@ related:
 
 Nel modulo Blog **non** esiste più `app/Support/`. Presentazione articolo e feed RSS sono **Spatie QueueableAction** sotto `app/Actions/Article/`.
 
+<<<<<<< .merge_file_FxOYgs
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> .merge_file_H65d3D
 ## Stato (2026-07-13)
 
 Tutti i 6 file `app/Support/*.php` rinominati a `.bak` (consumatori già su Action).
 
+<<<<<<< .merge_file_FxOYgs
 >>>>>>> laraxot/dev
+=======
+>>>>>>> .merge_file_H65d3D
 ## Migrazione (2026-07-12)
 
 | Legacy `app/Support/` | Action |

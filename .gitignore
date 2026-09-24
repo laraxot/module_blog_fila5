@@ -75,6 +75,7 @@ docs/archive/
 
 agentdb.rvf
 <<<<<<< HEAD
+<<<<<<< .merge_file_paKRi5
 tests/AuditCoverage
 =======
 audit-coverage/
@@ -83,4 +84,14 @@ audit-coverage/
 .windsurf/
 .devcontainer/
 graphify-out
+=======
+audit-coverage/
+.cursor/
+.vscode/
+.windsurf/
+.devcontainer/
+graphify-out
+=======
+tests/AuditCoverage
+>>>>>>> .merge_file_ukG4QP
 >>>>>>> laraxot/dev

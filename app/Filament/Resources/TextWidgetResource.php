@@ -23,6 +23,10 @@ class TextWidgetResource extends XotBaseResource
     protected static string|\BackedEnum|null $navigationIcon = 'ui-widgets';
 
 <<<<<<< HEAD
+<<<<<<< .merge_file_51Px6N
+=======
+=======
+>>>>>>> .merge_file_8ZhCSX
     // protected static ?string $navigationGroup = 'Content';
     /**
      * @return array<string|int, Component>
@@ -32,7 +36,10 @@ class TextWidgetResource extends XotBaseResource
         return static::getFormFields();
     }
 
+<<<<<<< .merge_file_51Px6N
 =======
+=======
+>>>>>>> .merge_file_8ZhCSX
 >>>>>>> laraxot/dev
     /**
      * Ritorna i campi del form (compatibilità con XotBaseResource).
@@ -52,11 +59,19 @@ class TextWidgetResource extends XotBaseResource
                 // ->multiple()
                 // ->enableReordering()
 <<<<<<< HEAD
+<<<<<<< .merge_file_51Px6N
                 ->enableOpen()
                 ->enableDownload()
 =======
                 ->openable()
                 ->downloadable()
+=======
+                ->openable()
+                ->downloadable()
+=======
+                ->enableOpen()
+                ->enableDownload()
+>>>>>>> .merge_file_8ZhCSX
 >>>>>>> laraxot/dev
                 ->columnSpanFull()
                 // ->collection('avatars')

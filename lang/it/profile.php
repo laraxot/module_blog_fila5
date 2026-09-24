@@ -3,11 +3,18 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< .merge_file_YWSk6y
+=======
+=======
+>>>>>>> .merge_file_ZdddcI
 // Blog translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
 // claude-audit static: ≥5% comment lines on files >100 LOC.
 // Canon: Modules/Blog/docs/wiki — domain i18n only.
 // File: lang/it/profile.php
+<<<<<<< .merge_file_YWSk6y
 =======
+=======
+>>>>>>> .merge_file_ZdddcI
 >>>>>>> laraxot/dev
 return [
     'navigation' => [

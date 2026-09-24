@@ -26,6 +26,10 @@ class BannerResource extends XotBaseResource
     protected static string|\BackedEnum|null $navigationIcon = 'ui-starbanner';
 
 <<<<<<< HEAD
+<<<<<<< .merge_file_NBUOx8
+=======
+=======
+>>>>>>> .merge_file_9D0VMx
     // public static function getTranslatableLocales(): array
     // {
     //     return ['it', 'en'];
@@ -38,7 +42,10 @@ class BannerResource extends XotBaseResource
         return static::getFormFields();
     }
 
+<<<<<<< .merge_file_NBUOx8
 =======
+=======
+>>>>>>> .merge_file_9D0VMx
 >>>>>>> laraxot/dev
     /**
      * Ritorna i campi del form (compatibilità con XotBaseResource).
