@@ -8,30 +8,66 @@ use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
+<<<<<<< HEAD
 use Modules\Blog\Filament\Resources\ArticleResource;
 // use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 // use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
 use Modules\Rating\Filament\Widgets\StatsOverview;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
+=======
+use Filament\Infolists\Components\TextEntry;
+use Filament\Resources\Pages\ViewRecord;
+use Filament\Schemas\Schema;
+// use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
+// use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
+use Modules\Blog\Filament\Resources\ArticleResource;
+use Modules\Rating\Filament\Widgets\StatsOverview;
+>>>>>>> laraxot/dev
 // use Modules\Rating\Filament\Actions\Header\BetHeaderAction;
 // use Modules\Rating\Filament\Actions\Header\WinHeaderAction;
 use Webmozart\Assert\Assert;
 
+<<<<<<< HEAD
 class ViewArticle extends XotBaseViewRecord
+=======
+class ViewArticle extends ViewRecord
+>>>>>>> laraxot/dev
 {
     // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     protected static string $resource = ArticleResource::class;
 
+<<<<<<< HEAD
+=======
+    public function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                // ...
+                TextEntry::make('title'),
+                TextEntry::make('closed_at'),
+                TextEntry::make('rewarded_at'),
+            ]);
+    }
+
+>>>>>>> laraxot/dev
     protected function getHeaderActions(): array
     {
         return [
             // LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
+<<<<<<< HEAD
             'edit' => EditAction::make(),
             'delete' => DeleteAction::make(),
             // BetHeaderAction::make(),
             // WinHeaderAction::make(),
             'change_closed_at' => Action::make('change_closed_at')
+=======
+            EditAction::make(),
+            DeleteAction::make(),
+            // BetHeaderAction::make(),
+            // WinHeaderAction::make(),
+            Action::make('change_closed_at')
+>>>>>>> laraxot/dev
                 ->tooltip('cambia data chiusura')
                 ->label('')
                 ->icon('heroicon-o-lock-closed')

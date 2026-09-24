@@ -322,7 +322,11 @@ graph TD
 
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
+<<<<<<< HEAD
 - Laravel 13+ required
+=======
+- Laravel 12+ required
+>>>>>>> laraxot/dev
 - Filament v5 compatibility
 - Database: MySQL 8.0+
 
@@ -528,3 +532,7 @@ CREATE TABLE blog_revisions (
 | Engineering Lead | | | |
 | Design Lead | | | |
 | Stakeholder | | | |
+<<<<<<< HEAD
+=======
+||||||| parent of 43a44cd (.)
+>>>>>>> laraxot/dev

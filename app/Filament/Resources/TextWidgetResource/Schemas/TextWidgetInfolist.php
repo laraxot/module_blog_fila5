@@ -13,7 +13,11 @@ class TextWidgetInfolist extends XotBaseResourceInfolist
     /**
      * @return array<string, Component>
      */
+<<<<<<< HEAD
     public function getInfolistSchema(): array
+=======
+    public static function getInfolistSchema(): array
+>>>>>>> laraxot/dev
     {
         return [
             'key' => TextEntry::make('key'),

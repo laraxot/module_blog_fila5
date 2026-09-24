@@ -36,11 +36,19 @@ abstract class BaseTreeModel extends BaseModel
     public function makeChildOf(Model $parent): self // $parent is unused
     {// if ($node->isSelfOrDescendantOf($this)) {
         //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
+<<<<<<< HEAD
                         // }
 
                         // Save the previous parent to be used when finishing.
 
                         $this->save();
+=======
+                            // }
+
+                            // Save the previous parent to be used when finishing.
+
+                            $this->save();
+>>>>>>> laraxot/dev
 
         return $this;
     }
