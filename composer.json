@@ -28,21 +28,6 @@
             "Modules\\Blog\\Database\\Seeders\\": "database/seeders/"
         }
     },
-<<<<<<< HEAD
-<<<<<<< .merge_file_HL2eS9
-=======
-=======
->>>>>>> .merge_file_coJHk1
-    "autoload-dev": {
-        "psr-4": {
-            "Modules\\Blog\\Tests\\": "tests/"
-        }
-    },
-<<<<<<< .merge_file_HL2eS9
-=======
-=======
->>>>>>> .merge_file_coJHk1
->>>>>>> laraxot/dev
     "repositories": [
         {
             "type": "path",
@@ -61,17 +46,8 @@
         "staudenmeir/laravel-adjacency-list": "*",
         "spatie/laravel-feed": "*",
         "staudenmeir/eloquent-has-many-deep": "*",
-<<<<<<< .merge_file_HL2eS9
-<<<<<<< HEAD
-        "filament/spatie-laravel-tags-plugin": "*"
-=======
         "filament/spatie-laravel-tags-plugin": "*",
         "codewithdennis/filament-select-tree": "*"
->>>>>>> laraxot/dev
-=======
-        "filament/spatie-laravel-tags-plugin": "*",
-        "codewithdennis/filament-select-tree": "*"
->>>>>>> .merge_file_coJHk1
     },
     "config": {
         "allow-plugins": {

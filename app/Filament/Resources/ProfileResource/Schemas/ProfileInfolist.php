@@ -13,17 +13,7 @@ class ProfileInfolist extends XotBaseResourceInfolist
     /**
      * @return array<string, Component>
      */
-<<<<<<< HEAD
-<<<<<<< .merge_file_BrfF5Q
-    public static function getInfolistSchema(): array
-=======
     public function getInfolistSchema(): array
-=======
-    public function getInfolistSchema(): array
-=======
-    public static function getInfolistSchema(): array
->>>>>>> .merge_file_i3meuQ
->>>>>>> laraxot/dev
     {
         return [
             'id' => TextEntry::make('id'),

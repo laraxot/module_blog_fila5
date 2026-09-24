@@ -81,16 +81,3 @@ class YourModel extends BaseModel
 
 Chi estende `BaseModel` (soprattutto `Modules\Predict\Models\Predict` che estende `Modules\Blog\Models\Article`) sfrutta `Parental\HasChildren`. Lo stesso record rimane in `predict_data.articles`, ma il campo `type` decide quale classe PHP lo rappresenta: `Articles` è un tipo di Blog Post condiviso. Modifiche a questa tabella devono sempre rispettare lo schema centralizzato e mantenere la connection `blog`.
 
-<<<<<<< .merge_file_JMJkpg
-<<<<<<< HEAD
-
-## Note di manutenzione
-
-- `BaseTreeModel::makeChildOf()` e' stato rimosso (audit PHPMD/PHPInsights):
-  il metodo accettava un parametro `$parent` mai utilizzato, non riassegnava
-  `parent_id` e non era chiamato da nessun punto del codebase. Se serve
-  spostare un nodo nell'albero, assegnare `parent_id` direttamente e salvare.
-=======
->>>>>>> laraxot/dev
-=======
->>>>>>> .merge_file_4HbtkH

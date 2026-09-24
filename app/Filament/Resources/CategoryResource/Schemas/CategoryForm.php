@@ -20,17 +20,7 @@ class CategoryForm extends XotBaseResourceForm
     /**
      * @return array<int|string, SchemaComponent>
      */
-<<<<<<< HEAD
-<<<<<<< .merge_file_d1rRfd
-    public static function getFormSchema(): array
-=======
     public function getFormSchema(): array
-=======
-    public function getFormSchema(): array
-=======
-    public static function getFormSchema(): array
->>>>>>> .merge_file_rIuqUs
->>>>>>> laraxot/dev
     {
         return [
             TextInput::make('title')
@@ -38,18 +28,11 @@ class CategoryForm extends XotBaseResourceForm
                 ->maxLength(2048)
                 ->reactive()
                 ->unique()
-                ->afterStateUpdated(function (Set $set, $state): void {
-<<<<<<< HEAD
-<<<<<<< .merge_file_d1rRfd
-                    $set('slug', Str::slug((string) $state));
-=======
-                    $set('slug', Str::slug(is_string($state) ? $state : ''));
-=======
-                    $set('slug', Str::slug(is_string($state) ? $state : ''));
-=======
-                    $set('slug', Str::slug((string) $state));
->>>>>>> .merge_file_rIuqUs
->>>>>>> laraxot/dev
+                ->afterStateUpdated(function (Set $set, mixed $state): void {
+                    if (! is_string($state)) {
+                        return;
+                    }
+                    $set('slug', Str::slug($state));
                 }),
             TextInput::make('slug')
                 ->required()
@@ -67,21 +50,8 @@ class CategoryForm extends XotBaseResourceForm
                 // ->maxSize(5000)
                 // ->multiple()
                 // ->enableReordering()
-<<<<<<< HEAD
-<<<<<<< .merge_file_d1rRfd
-                ->enableOpen()
-                ->enableDownload()
-=======
                 ->openable()
                 ->downloadable()
-=======
-                ->openable()
-                ->downloadable()
-=======
-                ->enableOpen()
-                ->enableDownload()
->>>>>>> .merge_file_rIuqUs
->>>>>>> laraxot/dev
                 ->columnSpanFull()
                 ->collection('category')
                 // ->conversion('thumbnail')

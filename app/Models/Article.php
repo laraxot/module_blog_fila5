@@ -11,33 +11,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-use Modules\Blog\Adapters\ArticlePresentationAdapter;
-=======
-use Modules\Blog\Actions\Article\FilterArticleContentBlocksExceptAction;
-use Modules\Blog\Actions\Article\FilterArticleContentBlocksOnlyAction;
-use Modules\Blog\Actions\Article\FormatArticleHumanReadTimeAction;
-use Modules\Blog\Actions\Article\FormatArticlePublishedDateAction;
-use Modules\Blog\Actions\Article\FormatArticleTimeLeftForHumansAction;
-use Modules\Blog\Actions\Article\ResolveArticleMainImageFromAttributesAction;
-use Modules\Blog\Actions\Article\ResolveArticleMainImageUrlAction;
-use Modules\Blog\Actions\Article\ResolveArticleThumbnailAction;
-use Modules\Blog\Actions\Article\ResolveArticleTranslationAction;
-use Modules\Blog\Database\Factories\ArticleFactory;
->>>>>>> .merge_file_rdcQMx
-use Modules\Blog\Models\Concerns\ArticleFeedable;
-use Modules\Blog\Models\Concerns\ArticleQueryScopes;
-use Modules\Comment\Models\Comment;
-use Modules\Comment\Models\CommentNotificationSubscription;
-use Modules\Comment\Models\Concerns\HasComments;
-use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
-use Modules\Lang\Models\Contracts\HasTranslationsContract;
-use Modules\Rating\Models\Rating;
-use Modules\Rating\Models\RatingMorph;
-use Modules\Rating\Models\Traits\HasRating;
-<<<<<<< .merge_file_v013uX
-=======
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksExceptAction;
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksOnlyAction;
 use Modules\Blog\Actions\Article\FormatArticleHumanReadTimeAction;
@@ -49,7 +22,6 @@ use Modules\Blog\Actions\Article\ResolveArticleThumbnailAction;
 use Modules\Blog\Actions\Article\ResolveArticleTranslationAction;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Concerns\ArticleFeedable;
-use Modules\Blog\Models\Concerns\ArticleQueryScopes;
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
@@ -59,42 +31,16 @@ use Modules\Rating\Models\Rating;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
 use Modules\Xot\Contracts\ProfileContract;
-=======
-use Modules\Xot\Contracts\ProfileContract;
-=======
-use Modules\Blog\Models\Concerns\ArticleFeedable;
-use Modules\Blog\Models\Concerns\ArticleQueryScopes;
-use Modules\Blog\Support\ArticleDelegates;
-use Modules\Comment\Models\Comment;
-use Modules\Comment\Models\Concerns\HasComments;
-use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
-use Modules\Lang\Models\Contracts\HasTranslationsContract;
-use Modules\Rating\Models\Traits\HasRating;
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
 use Spatie\Feed\Feedable;
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-=======
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-=======
-use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-=======
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 /**
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
- * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticlePresentationAdapter}.
-=======
  * Modules\Blog\Models\Article.
  *
  * @property Profile|null                $author
@@ -279,217 +225,12 @@ use Spatie\Translatable\HasTranslations;
  *
  * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
  * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
-=======
- * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticleDelegates}.
->>>>>>> .merge_file_rdcQMx
- *
- * @property string|null                           $title
- * @property string|null                           $slug
- * @property string|null                           $body
- * @property string|null                           $description
- * @property \Illuminate\Support\Carbon|null       $updated_at
- * @property \Illuminate\Support\Carbon|null       $published_at
- * @property string|null                           $main_image_upload
- * @property string|null                           $main_image_url
- * @property Category|null                         $category
- * @property UserContract|null                     $user
- * @property array<int, array<string, mixed>>|null $content_blocks
-<<<<<<< .merge_file_v013uX
-=======
- * Modules\Blog\Models\Article.
- *
- * @property Profile|null                $author
- * @property Collection<int, Category>   $categories
- * @property int|null                    $categories_count
- * @property Collection<int, Comment>    $comments
- * @property int|null                    $comments_count
- * @property string                      $human_read_time
- * @property MediaCollection<int, Media> $media
- * @property int|null                    $media_count
- * @property Collection<int, Tag>        $tags
- * @property Collection<int, Status>     $statuses
- * @property int|null                    $statuses_count
- * @property int|null                    $tags_count
- * @property UserContract|null           $user
- * @property string                      $body
- * @property Carbon                      $published_at
- * @property Carbon                      $updated_at
- * @property string                      $slug
- * @property string                      $title
- * @property string                      $description
- * @property string                      $main_image_upload
- * @property string                      $main_image_url
- * @property array<string, mixed>|string $content_blocks
- *
- * @method static \Illuminate\Database\Eloquent\Builder|Article article(string $id)
- * @method static \Illuminate\Database\Eloquent\Builder|Article author(string $profile_id)
- * @method static \Illuminate\Database\Eloquent\Builder|Article category(string $id)
- * @method static \Illuminate\Database\Eloquent\Builder|Article currentStatus(...$names)
- * @method static \Illuminate\Database\Eloquent\Builder|Article differentFromCurrentArticle(string $current_article)
- * @method static ArticleFactory                                factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Article newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Article onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|Article otherCurrentStatus(...$names)
- * @method static \Illuminate\Database\Eloquent\Builder|Article published()
- * @method static \Illuminate\Database\Eloquent\Builder|Article publishedUntilToday()
- * @method static \Illuminate\Database\Eloquent\Builder|Article query()
- * @method static \Illuminate\Database\Eloquent\Builder|Article search(string $searching)
- * @method static \Illuminate\Database\Eloquent\Builder|Article showHomepage()
- * @method static \Illuminate\Database\Eloquent\Builder|Article tag(string $id)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTags((\ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAllTagsOfAnyType(array<int|string, Tag>|string $tags)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTags((\ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withAnyTagsOfAnyType(array<int|string, Tag>|string $tags)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTags((\ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTrashed()
- *
- * @property string                          $id
- * @property string                          $uuid
- * @property string|null                     $content
- * @property string|null                     $picture
- * @property int|null                        $category_id
- * @property int|null                        $author_id
- * @property string|null                     $status
- * @property int                             $show_on_homepage
- * @property int|null                        $read_time
- * @property string|null                     $excerpt
- * @property string                          $created_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string|null                     $updated_by
- * @property string|null                     $created_by
- * @property string|null                     $deleted_by
- * @property array<string, mixed>|null       $footer_blocks
- * @property array<string, mixed>|null       $sidebar_blocks
- * @property int                             $is_featured
- * @property string|null                     $closed_at
- * @property Category|null                   $category
- * @property string                          $main_image
- * @property Collection<int, Rating>         $ratings
- * @property int|null                        $ratings_count
- * @property mixed                           $translations
- * @property string|null                     $rewarded_at
- *
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereAuthorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereClosedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereContentBlocks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereExcerpt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereFooterBlocks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereIsFeatured($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereLocale(string $column, string $locale)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereLocales(string $column, array<string, mixed> $locales)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereMainImageUpload($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereMainImageUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article wherePicture($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereReadTime($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereShowOnHomepage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereUuid($value)
- *
- * @property int         $status_display
- * @property string|null $bet_end_date
- * @property string|null $event_start_date
- * @property string|null $event_end_date
- * @property int         $is_wagerable
- * @property int|null    $wagers_count
- * @property int|null    $wagers_count_canonical
- * @property int|null    $wagers_count_total
- * @property int|null    $wagers
- * @property string|null $brier_score
- * @property string|null $brier_score_play_money
- * @property string|null $brier_score_real_money
- * @property float|null  $volume_play_money
- * @property float|null  $volume_real_money
- * @property int         $is_following
- *
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereBetEndDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereBrierScore($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereBrierScorePlayMoney($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereBrierScoreRealMoney($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereEventEndDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereEventStartDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereIsFollowing($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereIsWagerable($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereSidebarBlocks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereStatusDisplay($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereVolumePlayMoney($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereVolumeRealMoney($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereWagers($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereWagersCount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereWagersCountCanonical($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereWagersCountTotal($value)
- *
- * @property RatingMorph $pivot
- *
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereJsonContainsLocale(string $column, string $locale, ?mixed $value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereJsonContainsLocales(string $column, array<string, mixed> $locales, ?mixed $value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereRewardedAt($value)
- *
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $updater
- *
- * @mixin Model
- *
- * @property string|null                                      $type
- * @property string|null                                      $extra
- * @property string|null                                      $resolved_at
- * @property string|null                                      $liquidity
- * @property float|null                                       $stocks_count
- * @property float|null                                       $stocks_value
- * @property string                                           $sum_credit_yes
- * @property string                                           $sum_credit_no
- * @property int                                              $count_credit_yes
- * @property int                                              $count_credit_no
- * @property Collection<int, CommentNotificationSubscription> $notificationSubscriptions
- * @property int|null                                         $notification_subscriptions_count
- *
- * @method static EloquentBuilder<static>|Article                       whereCountCreditNo($value)
- * @method static EloquentBuilder<static>|Article                       whereCountCreditYes($value)
- * @method static EloquentBuilder<static>|Article                       whereExtra($value)
- * @method static EloquentBuilder<static>|Article                       whereLiquidity($value)
- * @method static EloquentBuilder<static>|Article                       whereResolvedAt($value)
- * @method static EloquentBuilder<static>|Article                       whereStocksCount($value)
- * @method static EloquentBuilder<static>|Article                       whereStocksValue($value)
- * @method static EloquentBuilder<static>|Article                       whereSumCreditNo($value)
- * @method static EloquentBuilder<static>|Article                       whereSumCreditYes($value)
- * @method static EloquentBuilder<static>|Article                       whereType($value)
- * @method static EloquentBuilder<static>|Article                       withAnyTagsOfType(array<string, mixed>|string $type)
- * @method static Article|null                                          first()
- * @method static Collection<int, Article>                              get()
- * @method static Article                                               create(array<string, mixed> $attributes = [])
- * @method static Article                                               firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Article where((string|\Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereNotNull((string|\Illuminate\Contracts\Database\Query\Expression) $columns)
- * @method static int                                                   count(string $columns = '*')
- *
- * @property ProfileContract|null $deleter
- *
- * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
- * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
-=======
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */
 class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
 {
     use ArticleFeedable;
-    use ArticleQueryScopes;
     use HasChildren;
     use HasComments;
     use HasRating;
@@ -530,11 +271,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'closed_at',
         'category_id',
         'type',
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-=======
-=======
->>>>>>> .merge_file_rdcQMx
         // 'is_closed', => closet_at
 
         /*
@@ -561,11 +297,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'read_time',
         'excerpt',
         */
-<<<<<<< .merge_file_v013uX
-=======
-=======
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
         'status',
         'status_display',
         'bet_end_date',
@@ -598,17 +329,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-        return app(ArticlePresentationAdapter::class)->translation($this, $key, $locale, $useFallbackLocale);
-=======
         return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
-=======
-        return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
-=======
-        return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     }
 
     /**
@@ -654,25 +375,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /** @return BelongsTo<Model&UserContract, $this> */
     public function user(): BelongsTo
     {
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-        $userClassModel = XotData::make()->getUserClass();
-
-        return $this->belongsTo($userClassModel);
-=======
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);
-=======
-        $userClass = XotData::make()->getUserClass();
-
-        return $this->belongsTo($userClass);
-=======
-        $userClassModel = XotData::make()->getUserClass();
-
-        return $this->belongsTo($userClassModel);
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     }
 
     /** @return BelongsTo<Category, $this> */
@@ -689,32 +394,12 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getFormattedDate(): string
     {
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-        return app(ArticlePresentationAdapter::class)->formattedDate($this);
-=======
         return app(FormatArticlePublishedDateAction::class)->execute($this);
-=======
-        return app(FormatArticlePublishedDateAction::class)->execute($this);
-=======
-        return ArticleDelegates::formattedDate($this);
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     }
 
     public function getThumbnail(): ?string
     {
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-        return app(ArticlePresentationAdapter::class)->thumbnail($this);
-=======
         return app(ResolveArticleThumbnailAction::class)->execute($this);
-=======
-        return app(ResolveArticleThumbnailAction::class)->execute($this);
-=======
-        return ArticleDelegates::thumbnail($this);
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     }
 
     /**
@@ -726,19 +411,21 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-                return app(ArticlePresentationAdapter::class)->humanReadTime($attributes);
-=======
                 return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
-=======
-                return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
-=======
-                return ArticleDelegates::humanReadTime($attributes);
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
             },
         );
+    }
+
+    /**
+     * Scope a query to only include articles different from current article.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $currentArticle): EloquentBuilder
+    {
+        return $query->where('id', '!=', $currentArticle);
     }
 
     /**
@@ -762,28 +449,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getMainImage(): string
     {
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-        return app(ArticlePresentationAdapter::class)->mainImageUrl($this);
-=======
-        return app(ResolveArticleMainImageUrlAction::class)->execute($this);
-    }
-
-    /*
-     * NO !!
-    protected function createdAt(): Attribute
-    {
-        return new Attribute(
-            get: static function ($value): string {
-                return date_format(new DateTime($value), 'd/m/Y');
-            }
-        );
->>>>>>> .merge_file_rdcQMx
-    }
-    */
-
-=======
-<<<<<<< .merge_file_v013uX
         return app(ResolveArticleMainImageUrlAction::class)->execute($this);
     }
 
@@ -799,12 +464,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
     */
 
-=======
-        return ArticleDelegates::mainImageUrl($this);
-    }
-
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     public function getUuidAttribute(?string $value): string
     {
         if (null !== $value && '' !== $value) {
@@ -820,27 +479,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         return '##';
     }
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-=======
-    // public function getTimeLeft(): string
-    // {
-    //     $time = $this->closed_at;
-
-    //     $days = Carbon::now()->diffInDays($time);
-    //     $hours = Carbon::now()->copy()->addDays($days)->diffInHours($time);
-    //     $minutes = Carbon::now()->copy()->addDays($days)->addHours($hours)->diffInMinutes($time);
-    //     return $days.'d'.$hours.'m'.$minutes.'s';
-    // }
-
->>>>>>> .merge_file_rdcQMx
-    public function getTimeLeftForHumans(): ?string
-    {
-        return app(FormatArticleTimeLeftForHumansAction::class)->execute($this);
-    }
-
-<<<<<<< .merge_file_v013uX
-=======
     // public function getTimeLeft(): string
     // {
     //     $time = $this->closed_at;
@@ -856,8 +494,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         return app(FormatArticleTimeLeftForHumansAction::class)->execute($this);
     }
 
-=======
->>>>>>> .merge_file_rdcQMx
     // /**
     //  * Get the path to the picture
     //  *
@@ -879,16 +515,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //     }
     //     return 'slug';
     // }
-<<<<<<< .merge_file_v013uX
-=======
-=======
-    public function getTimeLeftForHumans(): ?string
-    {
-        return ArticleDelegates::timeLeftForHumans($this);
-    }
-
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     /**
      * Get the path key to the item for the frontend only.
      */
@@ -904,17 +530,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getOnlyContentBlocks(array $nameBlocks): array
     {
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-        return app(ArticlePresentationAdapter::class)->onlyContentBlocks($this, $nameBlocks);
-=======
         return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
-=======
-        return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
-=======
-        return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     }
 
     /**
@@ -924,34 +540,119 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      */
     public function getExceptContentBlocks(array $nameBlocks): array
     {
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-        return app(ArticlePresentationAdapter::class)->exceptContentBlocks($this, $nameBlocks);
-=======
         return app(FilterArticleContentBlocksExceptAction::class)->execute($this, $nameBlocks);
+    }
+
+    /**
+     * Scope a query to only include articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeArticle(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->where('author_id', $id);
+    }
+
+    /**
+     * Scope a query to only include published articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopePublished(EloquentBuilder $query): EloquentBuilder
+    {
+        // return $query->where('status', 'published');
+        // return $query->currentStatus('published');
+        return $query
+            ->whereNotNull('published_at');
+    }
+
+    /**
+     * Scope a query to only include show on homepage articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeShowHomepage(EloquentBuilder $query): EloquentBuilder
+    {
+        return $query->where('show_on_homepage', 1);
+    }
+
+    /**
+     * Scope a query to only include posted articles until today.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder
+    {
+        return $query->whereDate('published_at', '<=', Carbon::today()->toDateString());
+    }
+
+    /**
+     * Scope a query to only include articles with a specified category.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the category
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeCategory(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->where('category_id', $id);
+    }
+
+    /**
+     * Scope a query to only include articles that belongs to an author.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $profileId The id of the author
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeAuthor(EloquentBuilder $query, string $profileId): EloquentBuilder
+    {
+        return $query->where('author_id', $profileId);
+    }
+
+    /**
+     * Scope a query to only include articles with a specified tag.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the tag
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->whereHas('tags', static function (EloquentBuilder $q) use ($id): void {
+            $q->where('id', $id);
+        });
+    }
+
+    /**
+     * Scope a query to only include articles which contains searching words.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $searching The searching words
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeSearch(EloquentBuilder $query, string $searching): EloquentBuilder
+    {
+        return $query->where('title', 'LIKE', "%{$searching}%")
+            ->orWhere('content', 'LIKE', "%{$searching}%")
+            ->orWhere('excerpt', 'LIKE', "%{$searching}%");
     }
 
     /**
      * This string will be used in notifications on what a new comment
      * was made.
-=======
-        return ArticleDelegates::exceptContentBlocks($this, $nameBlocks);
->>>>>>> .merge_file_rdcQMx
-    }
-
-    /**
-     * This string will be used in notifications on what a new comment was made.
-<<<<<<< .merge_file_v013uX
-=======
-        return app(FilterArticleContentBlocksExceptAction::class)->execute($this, $nameBlocks);
-    }
-
-    /**
-     * This string will be used in notifications on what a new comment
-     * was made.
-=======
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
      */
     public function commentableName(): string
     {
@@ -993,11 +694,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         ];
     }
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-=======
-=======
->>>>>>> .merge_file_rdcQMx
     // /**
     //  * Get the tags of the article
     //  *
@@ -1008,11 +704,6 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //    return $this->belongsToMany(Tag::class);
     // }
 
-<<<<<<< .merge_file_v013uX
-=======
-=======
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
     /**
      * @return Attribute<string, never>
      */
@@ -1022,17 +713,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_v013uX
-                return app(ArticlePresentationAdapter::class)->mainImage($attributes);
-=======
                 return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
-=======
-                return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
-=======
-                return ArticleDelegates::mainImage($attributes);
->>>>>>> .merge_file_rdcQMx
->>>>>>> laraxot/dev
             },
         );
     }

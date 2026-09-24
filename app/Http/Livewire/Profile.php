@@ -8,19 +8,6 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-<<<<<<< HEAD
-<<<<<<< .merge_file_xwmDHJ
-=======
-use Filament\Schemas\Schema;
-use Illuminate\Contracts\View\View;
-use Modules\Blog\Models\Profile as BlogProfile;
-// use Modules\Blog\Models\Profile;
-use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Modules\Xot\Actions\GetViewAction;
-use Modules\Xot\Filament\Pages\XotBasePage;
-=======
->>>>>>> .merge_file_oFigfy
 use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
@@ -29,34 +16,11 @@ use Modules\Blog\Models\Profile as BlogProfile;
 use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
-<<<<<<< .merge_file_xwmDHJ
-=======
-use Filament\Schemas\Schema;
-use Illuminate\Contracts\View\View;
-use Modules\Blog\Models\Profile as BlogProfile;
-// use Modules\Blog\Models\Profile;
-use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Modules\Xot\Actions\GetViewAction;
-use Modules\Xot\Filament\Pages\XotBasePage;
-=======
->>>>>>> .merge_file_oFigfy
->>>>>>> laraxot/dev
 
 /**
  * @property Schema $form
  */
-<<<<<<< HEAD
-<<<<<<< .merge_file_xwmDHJ
 class Profile extends Page implements HasForms
-=======
-class Profile extends XotBasePage implements HasForms
-=======
-class Profile extends XotBasePage implements HasForms
-=======
-class Profile extends Page implements HasForms
->>>>>>> .merge_file_oFigfy
->>>>>>> laraxot/dev
 {
     use InteractsWithForms;
     // public Article $article;
@@ -67,17 +31,7 @@ class Profile extends Page implements HasForms
     /** @var array<string, mixed> */
     public array $data = [];
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_xwmDHJ
     public BlogProfile $model;
-=======
-    public BlogProfile $profile;
-=======
-    public BlogProfile $profile;
-=======
-    public BlogProfile $model;
->>>>>>> .merge_file_oFigfy
->>>>>>> laraxot/dev
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
@@ -87,25 +41,9 @@ class Profile extends Page implements HasForms
         BlogProfile $model,
         string $tpl = 'v1',
     ): void {
-<<<<<<< HEAD
-<<<<<<< .merge_file_xwmDHJ
         $this->model = $model;
         $this->tpl = $tpl;
         $this->data = self::buildFormData($this->model);
-=======
-        $this->profile = $model;
-        $this->tpl = $tpl;
-        $this->data = self::buildFormData($this->profile);
-=======
-        $this->profile = $model;
-        $this->tpl = $tpl;
-        $this->data = self::buildFormData($this->profile);
-=======
-        $this->model = $model;
-        $this->tpl = $tpl;
-        $this->data = self::buildFormData($this->model);
->>>>>>> .merge_file_oFigfy
->>>>>>> laraxot/dev
 
         // $this->data['photo_profile'] = $this->model->getFirstMedia('photo_profile');
 
@@ -121,31 +59,11 @@ class Profile extends Page implements HasForms
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_xwmDHJ
-=======
         $viewParams = [
             'view' => $view,
         ];
 
         return view((string) $view, $viewParams);
-=======
->>>>>>> .merge_file_oFigfy
-        $parameters = [
-            'view' => $view,
-        ];
-
-        return view((string) $view, $parameters);
-<<<<<<< .merge_file_xwmDHJ
-=======
-        $viewParams = [
-            'view' => $view,
-        ];
-
-        return view((string) $view, $viewParams);
-=======
->>>>>>> .merge_file_oFigfy
->>>>>>> laraxot/dev
     }
 
     public function url(): string
@@ -178,17 +96,7 @@ class Profile extends Page implements HasForms
     {
         $data = $this->form->getState();
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_xwmDHJ
         $this->model->update($data);
-=======
-        $this->profile->update($data);
-=======
-        $this->profile->update($data);
-=======
-        $this->model->update($data);
->>>>>>> .merge_file_oFigfy
->>>>>>> laraxot/dev
 
         // $article_aggregate = ArticleAggregate::retrieve($this->article->id);
         // Assert::isArray($ratings_add = $data['ratings_add']);

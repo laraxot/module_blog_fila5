@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< .merge_file_Mqxykl
-=======
-=======
->>>>>>> .merge_file_5TBz1D
 ---
 title: "Agent instructions"
 type: reference
@@ -16,11 +11,6 @@ related:
   - ./coding-agent-manifests.md
 ---
 
-<<<<<<< .merge_file_Mqxykl
-=======
-=======
->>>>>>> .merge_file_5TBz1D
->>>>>>> laraxot/dev
 # Blog {{TYPE^}} LLM Wiki Agent Instructions
 
 > **Module/Theme:** Blog
