@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 @php
 // Blog leaderboard block — Modules/Blog/docs/wiki.
 @endphp
 
+=======
+>>>>>>> laraxot/dev
 @props([
     'tpl',
     'version' => 'v1',
@@ -9,6 +12,12 @@
 ])
 
 <!-- Leader Board Starts -->
+<<<<<<< HEAD
+=======
+{{-- <div class="row">
+    <h2 class="text-center leader-title mb40 wow fadeInDown" style="font-size: 40px;">{{ $title }}</h2>
+</div> --}}
+>>>>>>> laraxot/dev
 <div class="row gape">
     <div class="col-xl-12">
         <div class="userpart wow fadeInUp">
@@ -25,6 +34,15 @@
                 <li class="nav-item">
                     <a class="nav-link f18" data-bs-toggle="tab" href="#menu1">Articoli con più scommesse</a>
                 </li>
+<<<<<<< HEAD
+=======
+                {{-- <li class="nav-item">
+                    <a class="nav-link f18" data-bs-toggle="tab" href="#menu2">Month</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link f18" data-bs-toggle="tab" href="#menu3">All</a>
+                </li> --}}
+>>>>>>> laraxot/dev
             </ul>
             <!-- Tab panes -->
             <div class="tab-content" 
@@ -35,13 +53,435 @@
                 </div>
                 <div id="menu1" class="container tab-pane fade"><br>
                     @include('blog::components.blocks.leaderboard.v2.top_bet_articles')
+<<<<<<< HEAD
                 </div>
                 <div id="menu2" class="container tab-pane fade"><br>
                 </div>
                 <div id="menu3" class="container tab-pane fade"><br>
+=======
+                    {{-- <a href="leaderboard_details.html" class="userpart__userlist">
+                        <ul>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">01</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge4.png" alt="Image">
+                                    <span>Annette Blackkkkk</span>
+                                    <img class="userpart__badge ms-3 ms-md-4" src="assets/images/icon/volumebadge1.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$710.68</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">02</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge5.png" alt="Image">
+                                    <span>Darrell Steward</span>
+                                    <img class="userpart__badge-two ms-2 ms-md-3" src="assets/images/icon/volumebadge2.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$351.02</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">03</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge6.png" alt="Image">
+                                    <span>Jane Coopeer</span>
+                                    <img class="userpart__badge ms-3 ms-md-4" src="assets/images/icon/volumebadge3.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">04</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge7.png" alt="Image">
+                                    <span>Albert Flores</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$267.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">05</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge8.png" alt="Image">
+                                    <span>Jerome Bell</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">06</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge9.png" alt="Image">
+                                    <span>Arlene McCoy</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$867.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">07</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge10.png" alt="Image">
+                                    <span>Floyd Miles</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">08</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge11.png" alt="Image">
+                                    <span>Ronald Richards</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">09</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge12.png" alt="Image">
+                                    <span>Theresa Webb</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$167.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">10</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge13.png" alt="Image">
+                                    <span>Cody Fisher</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$275.43</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">11</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge14.png" alt="Image">
+                                    <span>Wade Warren</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$406.27</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">12</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge16.png" alt="Image">
+                                    <span>Savannah Nguyen</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$293.17</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">13</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge17.png" alt="Image">
+                                    <span>Cameron Williamson</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$589.99</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </a> --}}
+                </div>
+                <div id="menu2" class="container tab-pane fade"><br>
+                    {{-- <a href="leaderboard_details.html" class="userpart__userlist">
+                        <ul>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">01</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge4.png" alt="Image">
+                                    <span>Annette Black</span>
+                                    <img class="userpart__badge ms-3 ms-md-4" src="assets/images/icon/volumebadge1.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$710.68</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">02</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge5.png" alt="Image">
+                                    <span>Darrell Steward</span>
+                                    <img class="userpart__badge-two ms-2 ms-md-3" src="assets/images/icon/volumebadge2.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$351.02</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">03</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge6.png" alt="Image">
+                                    <span>Jane Coopeer</span>
+                                    <img class="userpart__badge ms-3 ms-md-4" src="assets/images/icon/volumebadge3.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">04</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge7.png" alt="Image">
+                                    <span>Albert Flores</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$267.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">05</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge8.png" alt="Image">
+                                    <span>Jerome Bell</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">06</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge9.png" alt="Image">
+                                    <span>Arlene McCoy</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$867.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">07</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge10.png" alt="Image">
+                                    <span>Floyd Miles</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">08</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge11.png" alt="Image">
+                                    <span>Ronald Richards</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">09</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge12.png" alt="Image">
+                                    <span>Theresa Webb</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$167.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">10</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge13.png" alt="Image">
+                                    <span>Cody Fisher</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$275.43</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">11</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge14.png" alt="Image">
+                                    <span>Wade Warren</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$406.27</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">12</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge16.png" alt="Image">
+                                    <span>Savannah Nguyen</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$293.17</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">13</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge17.png" alt="Image">
+                                    <span>Cameron Williamson</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$589.99</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </a> --}}
+                </div>
+                <div id="menu3" class="container tab-pane fade"><br>
+                    {{-- <a href="leaderboard_details.html" class="userpart__userlist">
+                        <ul>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">01</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge4.png" alt="Image">
+                                    <span>Annette Black</span>
+                                    <img class="userpart__badge ms-3 ms-md-4" src="assets/images/icon/volumebadge1.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$710.68</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">02</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge5.png" alt="Image">
+                                    <span>Darrell Steward</span>
+                                    <img class="userpart__badge-two ms-2 ms-md-3" src="assets/images/icon/volumebadge2.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$351.02</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">03</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge6.png" alt="Image">
+                                    <span>Jane Coopeer</span>
+                                    <img class="userpart__badge ms-3 ms-md-4" src="assets/images/icon/volumebadge3.png" alt="Image">
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">04</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge7.png" alt="Image">
+                                    <span>Albert Flores</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$267.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">05</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge8.png" alt="Image">
+                                    <span>Jerome Bell</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">06</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge9.png" alt="Image">
+                                    <span>Arlene McCoy</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$867.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">07</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge10.png" alt="Image">
+                                    <span>Floyd Miles</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">08</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge11.png" alt="Image">
+                                    <span>Ronald Richards</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$767.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">09</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge12.png" alt="Image">
+                                    <span>Theresa Webb</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$167.50</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">10</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge13.png" alt="Image">
+                                    <span>Cody Fisher</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$275.43</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">11</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge14.png" alt="Image">
+                                    <span>Wade Warren</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$406.27</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">12</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge16.png" alt="Image">
+                                    <span>Savannah Nguyen</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$293.17</span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center justify-content-between mb-1">
+                                <div class="userpart__rightside d-flex align-items-center gap-2 pb-1">
+                                    <span class="userpart__number">13</span>
+                                    <img class="userpart__pimage" src="assets/images/volumebadge17.png" alt="Image">
+                                    <span>Cameron Williamson</span>
+                                </div>
+                                <div class="userpart__leftside">
+                                    <span>$589.99</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </a> --}}
+>>>>>>> laraxot/dev
                 </div>
             </div>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <!-- Leader Board Ends -->
+=======
+<!-- Leader Board Ends -->
+>>>>>>> laraxot/dev

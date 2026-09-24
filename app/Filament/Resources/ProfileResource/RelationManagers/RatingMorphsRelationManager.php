@@ -10,16 +10,25 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
+<<<<<<< HEAD
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class RatingMorphsRelationManager extends RelationManager
+=======
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Modules\Xot\Filament\Resources\RelationManagers\XotBaseRelationManager;
+
+class RatingMorphsRelationManager extends XotBaseRelationManager
+>>>>>>> laraxot/dev
 {
     // protected static string $relationship = 'ratings';
     protected static string $relationship = 'ratingMorphs';
 
+<<<<<<< HEAD
     public function form(Schema $schema): Schema
     {
         return $schema
@@ -28,6 +37,15 @@ class RatingMorphsRelationManager extends RelationManager
                     ->required()
                     ->maxLength(255),
             ]);
+=======
+    public function getFormSchema(): array
+    {
+        return [
+            'title' => TextInput::make('title')
+                ->required()
+                ->maxLength(255),
+        ];
+>>>>>>> laraxot/dev
     }
 
     public function table(Table $table): Table

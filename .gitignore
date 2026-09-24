@@ -74,4 +74,13 @@ docs/archive/
 *~head
 
 agentdb.rvf
+<<<<<<< HEAD
 tests/AuditCoverage
+=======
+audit-coverage/
+.cursor/
+.vscode/
+.windsurf/
+.devcontainer/
+graphify-out
+>>>>>>> laraxot/dev

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
 @endphp
@@ -40,6 +41,8 @@
 // Blog Blade view — see Modules/Blog/docs/wiki.
 @endphp
 
+=======
+>>>>>>> laraxot/dev
 <div class="right-side-area">
     <div class="hide-list mt30 d-flex gap-3 justify-content-end">
       <button class="none_two slide-toggle trader-list d-center gap-1">

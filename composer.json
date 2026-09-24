@@ -28,11 +28,14 @@
             "Modules\\Blog\\Database\\Seeders\\": "database/seeders/"
         }
     },
+<<<<<<< HEAD
     "autoload-dev": {
         "psr-4": {
             "Modules\\Blog\\Tests\\": "tests/"
         }
     },
+=======
+>>>>>>> laraxot/dev
     "repositories": [
         {
             "type": "path",
@@ -51,7 +54,12 @@
         "staudenmeir/laravel-adjacency-list": "*",
         "spatie/laravel-feed": "*",
         "staudenmeir/eloquent-has-many-deep": "*",
+<<<<<<< HEAD
         "filament/spatie-laravel-tags-plugin": "*"
+=======
+        "filament/spatie-laravel-tags-plugin": "*",
+        "codewithdennis/filament-select-tree": "*"
+>>>>>>> laraxot/dev
     },
     "config": {
         "allow-plugins": {

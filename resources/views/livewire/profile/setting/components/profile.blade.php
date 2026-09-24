@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
 @endphp
@@ -45,6 +46,8 @@
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
+=======
+>>>>>>> laraxot/dev
 <section class="space-y-12">
     <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
         <div class="relative grid w-20 h-20 bg-gray-200 rounded-full place-items-center overflow-clip">
@@ -170,4 +173,8 @@
 
     <x-filament-actions::modals />
 
+<<<<<<< HEAD
 </section>
+=======
+</section>
+>>>>>>> laraxot/dev
