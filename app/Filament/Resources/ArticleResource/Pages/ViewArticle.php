@@ -8,58 +8,23 @@ use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
-<<<<<<< HEAD
-<<<<<<< .merge_file_KfpaL5
-=======
-use Modules\Blog\Filament\Resources\ArticleResource;
-// use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
-// use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
-use Modules\Rating\Filament\Widgets\StatsOverview;
-use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
-=======
->>>>>>> .merge_file_L3wfmn
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Schemas\Schema;
 // use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 // use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
 use Modules\Blog\Filament\Resources\ArticleResource;
+use Modules\Blog\Models\Article;
 use Modules\Rating\Filament\Widgets\StatsOverview;
-<<<<<<< .merge_file_KfpaL5
-=======
-use Modules\Blog\Filament\Resources\ArticleResource;
-// use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
-// use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
-use Modules\Rating\Filament\Widgets\StatsOverview;
-use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
-=======
->>>>>>> .merge_file_L3wfmn
->>>>>>> laraxot/dev
 // use Modules\Rating\Filament\Actions\Header\BetHeaderAction;
 // use Modules\Rating\Filament\Actions\Header\WinHeaderAction;
-use Webmozart\Assert\Assert;
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_KfpaL5
 class ViewArticle extends ViewRecord
-=======
-class ViewArticle extends XotBaseViewRecord
-=======
-class ViewArticle extends XotBaseViewRecord
-=======
-class ViewArticle extends ViewRecord
->>>>>>> .merge_file_L3wfmn
->>>>>>> laraxot/dev
 {
     // use Translatable; // Temporarily disabled until lara-zeus package is working
 
     protected static string $resource = ArticleResource::class;
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_KfpaL5
-=======
-=======
->>>>>>> .merge_file_L3wfmn
     public function infolist(Schema $schema): Schema
     {
         return $schema
@@ -71,40 +36,15 @@ class ViewArticle extends ViewRecord
             ]);
     }
 
-<<<<<<< .merge_file_KfpaL5
-=======
-=======
->>>>>>> .merge_file_L3wfmn
->>>>>>> laraxot/dev
     protected function getHeaderActions(): array
     {
         return [
             // LocaleSwitcher::make(), // Temporarily disabled until lara-zeus package is working
-<<<<<<< HEAD
-<<<<<<< .merge_file_KfpaL5
-=======
-            'edit' => EditAction::make(),
-            'delete' => DeleteAction::make(),
-            // BetHeaderAction::make(),
-            // WinHeaderAction::make(),
-            'change_closed_at' => Action::make('change_closed_at')
-=======
->>>>>>> .merge_file_L3wfmn
             EditAction::make(),
             DeleteAction::make(),
             // BetHeaderAction::make(),
             // WinHeaderAction::make(),
             Action::make('change_closed_at')
-<<<<<<< .merge_file_KfpaL5
-=======
-            'edit' => EditAction::make(),
-            'delete' => DeleteAction::make(),
-            // BetHeaderAction::make(),
-            // WinHeaderAction::make(),
-            'change_closed_at' => Action::make('change_closed_at')
-=======
->>>>>>> .merge_file_L3wfmn
->>>>>>> laraxot/dev
                 ->tooltip('cambia data chiusura')
                 ->label('')
                 ->icon('heroicon-o-lock-closed')
@@ -112,11 +52,14 @@ class ViewArticle extends ViewRecord
                     DateTimePicker::make('closed_at')
                         ->native(false),
                 ])
-                ->action(function (array $data, $record): void {
-                    Assert::notNull($record, 'Record cannot be null');
-                    if (is_object($record) && method_exists($record, 'update')) {
-                        $record->update($data);
+                ->action(function (array $data, Article $record): void {
+                    if (! array_key_exists('closed_at', $data)) {
+                        return;
                     }
+
+                    $record->update([
+                        'closed_at' => $data['closed_at'],
+                    ]);
                 }),
             /*
             Actions\Action::make('translate')

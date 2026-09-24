@@ -2,20 +2,6 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_eYSYt5
-=======
-=======
->>>>>>> .merge_file_dwng7g
-// Blog translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
-// claude-audit static: ≥5% comment lines on files >100 LOC.
-// Canon: Modules/Blog/docs/wiki — domain i18n only.
-// File: resources/lang/it/article_list.php
-<<<<<<< .merge_file_eYSYt5
-=======
-=======
->>>>>>> .merge_file_dwng7g
->>>>>>> laraxot/dev
 return [
     'fields' => [
         'title' => [

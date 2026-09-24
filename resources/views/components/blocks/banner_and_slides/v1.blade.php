@@ -1,66 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< .merge_file_ixnecP
-=======
-=======
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
->>>>>>> .merge_file_9WFwBl
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-@php
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-// Blog Blade view — see Modules/Blog/docs/wiki.
-@endphp
-
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-{-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
-<<<<<<< .merge_file_ixnecP
-=======
-=======
->>>>>>> .merge_file_9WFwBl
->>>>>>> laraxot/dev
 <div class="middle-area">
     <div class="row banner-bg mt30">
       <div class="col-lg-10 col-xl-7">
@@ -163,14 +100,4 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-<<<<<<< .merge_file_ixnecP
   </div>
-=======
-  </div>
-=======
-  </div>
-=======
-  </div>
->>>>>>> .merge_file_9WFwBl
->>>>>>> laraxot/dev

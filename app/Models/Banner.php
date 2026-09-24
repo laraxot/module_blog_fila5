@@ -158,25 +158,9 @@ class Banner extends BaseModel implements HasMedia
      */
     public function registerMediaConversions(?Media $media = null): void // $media is unused but part of interface
     {$this->addMediaConversion('cover')
-<<<<<<< HEAD
-<<<<<<< .merge_file_kem2w6
-                                            // ->format(Manipulations::FORMAT_WEBP)
-                                    ->width(320)
-                                    ->height(200);
-=======
-                                    // ->format(Manipulations::FORMAT_WEBP)
-                            ->width(320)
-                            ->height(200);
-=======
-                                    // ->format(Manipulations::FORMAT_WEBP)
-                            ->width(320)
-                            ->height(200);
-=======
-                                        // ->format(Manipulations::FORMAT_WEBP)
-                                ->width(320)
-                                ->height(200);
->>>>>>> .merge_file_M66vIV
->>>>>>> laraxot/dev
+                                // ->format(Manipulations::FORMAT_WEBP)
+                        ->width(320)
+                        ->height(200);
     }
 
     public function getDesktopThumbnailAttribute(): string
