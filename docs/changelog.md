@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< .merge_file_hDA56z
-=======
-# Changelog
-
-Tutte le modifiche rilevanti di questo pacchetto sono documentate in questo file.
-
-Il file viene aggiornato automaticamente da [semantic-release](https://github.com/semantic-release/semantic-release) (Conventional Commits).
-=======
->>>>>>> .merge_file_gFO4TM
 # Blog Module - Changelog Ottobre 2025
 
 ## 2025-10-15 - Rimozione Transaction Model
@@ -75,13 +65,3 @@ Se in futuro dovesse essere necessaria una gestione di transazioni finanziarie:
 **Data**: 2025-10-15
 **Versione Modulo**: 1.x
 **Laravel**: 12.34.0
-<<<<<<< .merge_file_hDA56z
-=======
-# Changelog
-
-Tutte le modifiche rilevanti di questo pacchetto sono documentate in questo file.
-
-Il file viene aggiornato automaticamente da [semantic-release](https://github.com/semantic-release/semantic-release) (Conventional Commits).
-=======
->>>>>>> .merge_file_gFO4TM
->>>>>>> laraxot/dev

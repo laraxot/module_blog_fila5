@@ -25,11 +25,6 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
     public function boot(): void
     {
         parent::boot();
-<<<<<<< .merge_file_Ev9YbC
-<<<<<<< HEAD
-=======
-=======
->>>>>>> .merge_file_PiiyLz
         // 36     Cannot access offset 'router' on Illuminate\Contracts\Foundation\Application
         // $router = $this->app['router'];
         // $router = app('router');
@@ -38,25 +33,13 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
         // $this->registerLang();
         // $this->registerRoutePattern($router);
         // $this->registerMyMiddleware($router);
-<<<<<<< .merge_file_Ev9YbC
->>>>>>> laraxot/dev
-=======
->>>>>>> .merge_file_PiiyLz
     }
 
     public function register(): void
     {
         parent::register();
-<<<<<<< .merge_file_Ev9YbC
-<<<<<<< HEAD
-    }
-=======
         // dddx('b');
     }
-=======
-        // dddx('b');
-    }
->>>>>>> .merge_file_PiiyLz
 
     // public function registerMyMiddleware(Router $router): void
     // {
@@ -64,8 +47,4 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
     // $router->appendMiddlewareToGroup('web', SwitchLanguageLocale::class);
     // $router->appendMiddlewareToGroup('api', SwitchLanguageLocale::class);
     // }
-<<<<<<< .merge_file_Ev9YbC
->>>>>>> laraxot/dev
-=======
->>>>>>> .merge_file_PiiyLz
 }

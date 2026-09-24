@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
+use Filament\Resources\Pages\PageRegistration;
 use Filament\Schemas\Components\Component;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\ListCategories;
 use Modules\Blog\Filament\Resources\CategoryResource\Schemas\CategoryFormSchema;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Webmozart\Assert\Assert;
 
 class CategoryResource extends XotBaseResource
 {
@@ -38,28 +38,7 @@ class CategoryResource extends XotBaseResource
         return CategoryFormSchema::build();
     }
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_R8fvBu
-=======
-=======
->>>>>>> .merge_file_InX8bu
-    /**
-     * @return array<string|int, Component>
-     */
-    public static function getFormSchema(): array
-    {
-        /** @var array<string|int, Component> $fields */
-        $fields = static::getFormFields();
-        Assert::isArray($fields, 'getFormFields must return array');
-
-        return $fields;
-    }
-
-<<<<<<< .merge_file_R8fvBu
-=======
-=======
->>>>>>> .merge_file_InX8bu
->>>>>>> laraxot/dev
+    /** @return array<string, PageRegistration> */
     public static function getPages(): array
     {
         return [

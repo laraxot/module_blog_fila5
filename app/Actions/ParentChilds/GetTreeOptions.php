@@ -33,7 +33,7 @@ class GetTreeOptions
     }
 
     /**
-     * @return array<int, Category|Menu>
+     * @return list<Category|Menu>
      */
     private function resolveTreeModels(Category|Menu $model): array
     {
@@ -41,18 +41,17 @@ class GetTreeOptions
         Assert::isInstanceOf($collection, Collection::class, 'tree()->get() must return a collection');
 
         if (! method_exists($collection, 'toTree')) {
-            return $collection->all();
+            return array_values($collection->all());
         }
 
         /** @var Collection<int, Category|Menu> $models */
         $models = $collection->toTree();
 
-        return $models->all();
+        return array_values($models->all());
     }
 
     /**
-     * @param array<int, Category|Menu> $models
-     *
+     * @param  list<Category|Menu>  $models
      * @return array<int|string, string>
      */
     private function buildOptionsFromModels(array $models): array
@@ -66,7 +65,7 @@ class GetTreeOptions
     }
 
     /**
-     * @param array<int|string, string> $results
+     * @param  array<int|string, string>  $results
      */
     private function appendModelOptions(array &$results, Category|Menu $mod, string $prefix): void
     {

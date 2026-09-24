@@ -2,20 +2,6 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_novM0u
-=======
-=======
->>>>>>> .merge_file_uP8DLn
-// Blog translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
-// claude-audit static: ≥5% comment lines on files >100 LOC.
-// Canon: Modules/Blog/docs/wiki — domain i18n only.
-// File: resources/lang/it/category.php
-<<<<<<< .merge_file_novM0u
-=======
-=======
->>>>>>> .merge_file_uP8DLn
->>>>>>> laraxot/dev
 return [
     'navigation' => [
         'name' => 'Category',

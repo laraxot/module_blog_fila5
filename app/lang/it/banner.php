@@ -2,20 +2,6 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
-<<<<<<< .merge_file_Qk7Sxq
-=======
-=======
->>>>>>> .merge_file_0YTBH5
-// Blog translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
-// claude-audit static: ≥5% comment lines on files >100 LOC.
-// Canon: Modules/Blog/docs/wiki — domain i18n only.
-// File: app/lang/it/banner.php
-<<<<<<< .merge_file_Qk7Sxq
-=======
-=======
->>>>>>> .merge_file_0YTBH5
->>>>>>> laraxot/dev
 return [
     'navigation' => [
         'name' => 'Banner',
