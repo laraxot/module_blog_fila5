@@ -29,11 +29,19 @@ class Chunk extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
+<<<<<<< HEAD
         $viewParams = [
             'articles' => $orderedPosts,
         ];
 
         return view((string) $view, $viewParams);
+=======
+        $parameters = [
+            'articles' => $orderedPosts,
+        ];
+
+        return view((string) $view, $parameters);
+>>>>>>> laraxot/dev
     }
 
     public function url(): string
