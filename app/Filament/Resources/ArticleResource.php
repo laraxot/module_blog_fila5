@@ -8,7 +8,10 @@ use Filament\Schemas\Components\Component;
 use Modules\Blog\Filament\Resources\ArticleResource\Schemas\ArticleFormSchema;
 use Modules\Blog\Models\Article;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+<<<<<<< HEAD
+=======
 use Webmozart\Assert\Assert;
+>>>>>>> laraxot/dev
 
 class ArticleResource extends XotBaseResource
 {
@@ -34,6 +37,8 @@ class ArticleResource extends XotBaseResource
     {
         return ArticleFormSchema::build();
     }
+<<<<<<< HEAD
+=======
 
     /**
      * @return array<int|string, Component>
@@ -46,4 +51,5 @@ class ArticleResource extends XotBaseResource
 
         return $fields;
     }
+>>>>>>> laraxot/dev
 }

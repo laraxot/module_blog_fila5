@@ -14,7 +14,11 @@ use Modules\Xot\Actions\GetViewAction;
 
 class Lists extends Component
 {
+<<<<<<< HEAD
+    public const int ITEMS_PER_PAGE = 10;
+=======
     public const ITEMS_PER_PAGE = 10;
+>>>>>>> laraxot/dev
 
     // All categories
     /**
@@ -63,11 +67,19 @@ class Lists extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
+<<<<<<< HEAD
         $viewParams = [
             'activeCategory' => $this->category,
         ];
 
         return view((string) $view, $viewParams);
+=======
+        $parameters = [
+            'activeCategory' => $this->category,
+        ];
+
+        return view((string) $view, $parameters);
+>>>>>>> laraxot/dev
     }
 
     public function updatedCategory(): void

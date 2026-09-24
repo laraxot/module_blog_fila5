@@ -30,7 +30,11 @@ final class ArticleFormMainGridSchema
                     if ($get('slug')) {
                         return;
                     }
+<<<<<<< HEAD
+                    $set('slug', Str::slug(is_string($state) ? $state : ''));
+=======
                     $set('slug', Str::slug((string) $state));
+>>>>>>> laraxot/dev
                 }),
 
             TextInput::make('slug')
