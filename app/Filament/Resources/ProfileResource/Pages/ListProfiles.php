@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources\ProfileResource\Pages;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_CjcMqs
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -14,6 +15,8 @@ use Filament\Actions\ActionGroup;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 >>>>>>> .merge_file_VF0FsT
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 use Filament\Tables\Columns\Column;
 use Modules\Blog\Filament\Resources\ProfileResource;
@@ -24,8 +27,11 @@ class ListProfiles extends UserListProfiles
     protected static string $resource = ProfileResource::class;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_CjcMqs
 =======
+=======
+>>>>>>> laraxot/dev
     // protected function getHeaderActions(): array
     // {
     //    return [
@@ -37,6 +43,7 @@ class ListProfiles extends UserListProfiles
      *
      * @return array<string, Column>
      */
+<<<<<<< HEAD
 =======
 >>>>>>> .merge_file_VF0FsT
     /**
@@ -59,12 +66,15 @@ class ListProfiles extends UserListProfiles
 =======
 >>>>>>> .merge_file_VF0FsT
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
     public function getTableColumns(): array
     {
         return parent::getTableColumns();
     }
 
     /**
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_CjcMqs
      * @return array<int|string, Action|ActionGroup>
@@ -81,6 +91,10 @@ class ListProfiles extends UserListProfiles
      */
     #[\Override]
 >>>>>>> .merge_file_VF0FsT
+>>>>>>> laraxot/dev
+=======
+     * Sovrascrive la visibilità per rispettare la signature della classe base.
+     */
 >>>>>>> laraxot/dev
     public function getTableActions(): array
     {

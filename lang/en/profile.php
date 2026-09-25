@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_l4b3ks
 =======
 =======
@@ -15,6 +16,8 @@ declare(strict_types=1);
 =======
 =======
 >>>>>>> .merge_file_JPOAPG
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 return [
     'navigation' => [

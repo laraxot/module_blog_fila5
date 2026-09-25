@@ -29,6 +29,7 @@
         }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_HL2eS9
 =======
 =======
@@ -42,6 +43,8 @@
 =======
 =======
 >>>>>>> .merge_file_coJHk1
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     "repositories": [
         {
@@ -61,6 +64,7 @@
         "staudenmeir/laravel-adjacency-list": "*",
         "spatie/laravel-feed": "*",
         "staudenmeir/eloquent-has-many-deep": "*",
+<<<<<<< HEAD
 <<<<<<< .merge_file_HL2eS9
 <<<<<<< HEAD
         "filament/spatie-laravel-tags-plugin": "*"
@@ -72,6 +76,10 @@
         "filament/spatie-laravel-tags-plugin": "*",
         "codewithdennis/filament-select-tree": "*"
 >>>>>>> .merge_file_coJHk1
+=======
+        "filament/spatie-laravel-tags-plugin": "*",
+        "codewithdennis/filament-select-tree": "*"
+>>>>>>> laraxot/dev
     },
     "config": {
         "allow-plugins": {

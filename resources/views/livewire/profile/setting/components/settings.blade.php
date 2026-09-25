@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_hRm9xi
 =======
 =======
@@ -73,6 +74,8 @@
 =======
 =======
 >>>>>>> .merge_file_PafuSc
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <section class="space-y-12">
 	<div>
@@ -280,6 +283,7 @@
 		</ul>
 	</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_hRm9xi
 </section>
 =======
@@ -289,4 +293,7 @@
 =======
 </section>
 >>>>>>> .merge_file_PafuSc
+>>>>>>> laraxot/dev
+=======
+</section>
 >>>>>>> laraxot/dev

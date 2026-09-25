@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_rdrQUe
 =======
 return [
@@ -25,6 +26,9 @@ return [
 return [
 =======
 >>>>>>> .merge_file_IFXHj5
+>>>>>>> laraxot/dev
+=======
+return [
 >>>>>>> laraxot/dev
     'navigation' => [
         'name' => 'Articolo',

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_7laqyp
 =======
 =======
@@ -15,6 +16,8 @@ declare(strict_types=1);
 =======
 =======
 >>>>>>> .merge_file_6kNG1X
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 return [
     'posts' => 'posts',

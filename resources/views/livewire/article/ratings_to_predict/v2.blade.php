@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_PHGy7n
 =======
 =======
@@ -57,6 +58,8 @@
 =======
 =======
 >>>>>>> .merge_file_NHX8IL
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <div class="right-side-area">
     <div class="hide-list mt30 d-flex gap-3 justify-content-end">

@@ -3,6 +3,10 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Collection;
+>>>>>>> laraxot/dev
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Profile;
@@ -24,6 +28,7 @@ return new class extends XotBaseMigration {
                 $table->id();
                 $table->string('uuid', 36)->nullable()->index();
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_TJZNtl
                 // Laraxot — see module docs/wiki for domain contract.
 =======
@@ -31,6 +36,8 @@ return new class extends XotBaseMigration {
 =======
                 // Laraxot — see module docs/wiki for domain contract.
 >>>>>>> .merge_file_kiaXUK
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
                 $table->string('user_id', 36)->nullable()->index();
                 $table->string('first_name')->nullable();
@@ -107,7 +114,11 @@ return new class extends XotBaseMigration {
             ->table($this->getTable())
             ->whereNull('uuid')
             ->orderBy('id')
+<<<<<<< HEAD
             ->chunkById(100, function ($rows): void {
+=======
+            ->chunkById(100, function (Collection $rows): void {
+>>>>>>> laraxot/dev
                 foreach ($rows as $row) {
                     if (! is_object($row) || ! isset($row->id)) {
                         continue;

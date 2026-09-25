@@ -21,6 +21,7 @@ use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\Translatable\HasTranslations;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_UkxE8X
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 =======
@@ -29,14 +30,19 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 >>>>>>> .merge_file_TgyE61
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
  * Modules\Blog\Models\Category.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_UkxE8X
 =======
+=======
+>>>>>>> laraxot/dev
  * @property int                         $id
  * @property string                      $title
  * @property string                      $slug
@@ -225,6 +231,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @property ProfileContract|null $deleter
  *
+<<<<<<< HEAD
 =======
 >>>>>>> .merge_file_TgyE61
  * @property int                                $id
@@ -519,6 +526,8 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
 =======
 >>>>>>> .merge_file_TgyE61
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
  * @mixin \Eloquent
  */

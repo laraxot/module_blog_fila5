@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_641csf
 =======
 =======
@@ -81,6 +82,8 @@
 =======
 =======
 >>>>>>> .merge_file_lBmeMc
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 {{-- https://flowbite.com/blocks/marketing/team/ --}}
 
@@ -370,6 +373,7 @@
       </div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_641csf
   </div>
 =======
@@ -379,4 +383,7 @@
 =======
   </div>
 >>>>>>> .merge_file_lBmeMc
+>>>>>>> laraxot/dev
+=======
+  </div>
 >>>>>>> laraxot/dev

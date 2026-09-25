@@ -11,6 +11,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_oSkKxe
 =======
 use Filament\Tables\Columns\TextColumn;
@@ -20,12 +21,15 @@ use Modules\Xot\Filament\Resources\RelationManagers\XotBaseRelationManager;
 class RatingMorphsRelationManager extends XotBaseRelationManager
 =======
 >>>>>>> .merge_file_kstn02
+=======
+>>>>>>> laraxot/dev
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class RatingMorphsRelationManager extends RelationManager
+<<<<<<< HEAD
 <<<<<<< .merge_file_oSkKxe
 =======
 use Filament\Tables\Columns\TextColumn;
@@ -36,10 +40,13 @@ class RatingMorphsRelationManager extends XotBaseRelationManager
 =======
 >>>>>>> .merge_file_kstn02
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 {
     // protected static string $relationship = 'ratings';
     protected static string $relationship = 'ratingMorphs';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_oSkKxe
 =======
@@ -52,6 +59,8 @@ class RatingMorphsRelationManager extends XotBaseRelationManager
         ];
 =======
 >>>>>>> .merge_file_kstn02
+=======
+>>>>>>> laraxot/dev
     public function form(Schema $schema): Schema
     {
         return $schema
@@ -60,6 +69,7 @@ class RatingMorphsRelationManager extends XotBaseRelationManager
                     ->required()
                     ->maxLength(255),
             ]);
+<<<<<<< HEAD
 <<<<<<< .merge_file_oSkKxe
 =======
     public function getFormSchema(): array
@@ -71,6 +81,8 @@ class RatingMorphsRelationManager extends XotBaseRelationManager
         ];
 =======
 >>>>>>> .merge_file_kstn02
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     }
 

@@ -43,6 +43,7 @@ class EditArticle extends LangBaseEditRecord
                     app(TranslateContentAction::class)->execute(
                         'article',
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_vNlOZs
                         (string) $record->id,
 =======
@@ -54,6 +55,10 @@ class EditArticle extends LangBaseEditRecord
 >>>>>>> .merge_file_iEYO8q
 >>>>>>> laraxot/dev
                         array_values(array_map(fn ($locale) => (string) $locale, $locales)),
+=======
+                        $record->id,
+                        $locales,
+>>>>>>> laraxot/dev
                         $safeData,
                         Article::class
                     );

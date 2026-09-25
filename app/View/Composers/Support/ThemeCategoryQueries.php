@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_FOEjJc
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 =======
@@ -17,10 +18,13 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 >>>>>>> .merge_file_VNIkZP
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 
 final class ThemeCategoryQueries
 {
     /**
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_FOEjJc
      * @return AdjacencyCollection<int, Category>
@@ -39,6 +43,11 @@ final class ThemeCategoryQueries
      */
     public function categories(): AdjacencyCollection
 >>>>>>> .merge_file_VNIkZP
+>>>>>>> laraxot/dev
+=======
+     * @return Collection<int, Category>
+     */
+    public function categories(): Collection
 >>>>>>> laraxot/dev
     {
         return Category::tree()->get()->toTree();
@@ -68,15 +77,21 @@ final class ThemeCategoryQueries
         ])
             ->get()
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_FOEjJc
 =======
             ->map(function (Category $category): array {
                 $ratingsCount = $category->categoryArticles->sum('ratings_count');
+=======
+            ->map(static function (Category $category): array {
+                $ratingsSum = $category->categoryArticles->sum('ratings_count');
+>>>>>>> laraxot/dev
 
                 return [
                     'image' => $category->getFirstMediaUrl('category'),
                     'slug' => $category->slug,
                     'title' => $category->title,
+<<<<<<< HEAD
                     'ratings_sum' => is_numeric($ratingsCount) ? (int) $ratingsCount : 0,
                 ];
             })
@@ -102,6 +117,11 @@ final class ThemeCategoryQueries
             })
 =======
 >>>>>>> .merge_file_VNIkZP
+>>>>>>> laraxot/dev
+=======
+                    'ratings_sum' => is_numeric($ratingsSum) ? (int) $ratingsSum : 0,
+                ];
+            })
 >>>>>>> laraxot/dev
             ->sortByDesc('ratings_sum')
             ->take(3)

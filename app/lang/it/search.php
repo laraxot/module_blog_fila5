@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_enMRj7
 =======
 =======
@@ -15,6 +16,8 @@ declare(strict_types=1);
 =======
 =======
 >>>>>>> .merge_file_pY4gup
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 return [
     'fields' => [

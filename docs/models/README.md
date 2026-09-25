@@ -1,6 +1,7 @@
 # Modelli del Modulo Blog
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_U6dzM5
 =======
 [![Module](https://img.shields.io/badge/Module-Modelli del Modulo Blog-8B0000.svg)]()
@@ -37,6 +38,8 @@
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_8xcazc
+=======
+>>>>>>> laraxot/dev
 ## Modelli Attivi
 
 ### Article
@@ -212,6 +215,7 @@ class ModelName extends BaseModel
 > **KISS**: Logica semplice, relazioni chiare  
 > **YAGNI**: Disabilitare ciò che non serve
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_U6dzM5
 =======
 [![Module](https://img.shields.io/badge/Module-Modelli del Modulo Blog-8B0000.svg)]()
@@ -248,4 +252,6 @@ class ModelName extends BaseModel
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_8xcazc
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev

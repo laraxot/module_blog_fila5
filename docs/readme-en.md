@@ -2,6 +2,7 @@
 
 [![Domain-Blog](https://img.shields.io/badge/Domain-Editorial-6D4C41.svg)](#)
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_NDB86a
 [![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
 =======
@@ -11,6 +12,9 @@
 =======
 [![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
 >>>>>>> .merge_file_1OW1bf
+>>>>>>> laraxot/dev
+=======
+[![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
 >>>>>>> laraxot/dev
 [![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
 [![PHP 8.4+](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://php.net/)

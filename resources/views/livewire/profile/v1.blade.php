@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_4hHUAl
 =======
 =======
@@ -67,6 +68,8 @@
 =======
 =======
 >>>>>>> .merge_file_3xV9U2
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <section>
     <div class="container mx-auto sm:px-4 mb50 padding-top padding-bottoms">
@@ -307,6 +310,7 @@
       <!-- Profile heading name photo end-->
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_4hHUAl
   </section>
 =======
@@ -316,4 +320,7 @@
 =======
   </section>
 >>>>>>> .merge_file_3xV9U2
+>>>>>>> laraxot/dev
+=======
+  </section>
 >>>>>>> laraxot/dev

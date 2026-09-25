@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 use Modules\Blog\Adapters\ArticlePresentationAdapter;
 =======
@@ -38,6 +39,8 @@ use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
 <<<<<<< .merge_file_v013uX
 =======
+=======
+>>>>>>> laraxot/dev
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksExceptAction;
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksOnlyAction;
 use Modules\Blog\Actions\Article\FormatArticleHumanReadTimeAction;
@@ -49,7 +52,10 @@ use Modules\Blog\Actions\Article\ResolveArticleThumbnailAction;
 use Modules\Blog\Actions\Article\ResolveArticleTranslationAction;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Concerns\ArticleFeedable;
+<<<<<<< HEAD
 use Modules\Blog\Models\Concerns\ArticleQueryScopes;
+=======
+>>>>>>> laraxot/dev
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
@@ -59,6 +65,7 @@ use Modules\Rating\Models\Rating;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
 use Modules\Xot\Contracts\ProfileContract;
+<<<<<<< HEAD
 =======
 use Modules\Xot\Contracts\ProfileContract;
 =======
@@ -72,10 +79,13 @@ use Modules\Lang\Models\Contracts\HasTranslationsContract;
 use Modules\Rating\Models\Traits\HasRating;
 >>>>>>> .merge_file_rdcQMx
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
 use Spatie\Feed\Feedable;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 =======
@@ -87,14 +97,21 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 =======
 >>>>>>> .merge_file_rdcQMx
 >>>>>>> laraxot/dev
+=======
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+>>>>>>> laraxot/dev
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
  * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticlePresentationAdapter}.
 =======
+=======
+>>>>>>> laraxot/dev
  * Modules\Blog\Models\Article.
  *
  * @property Profile|null                $author
@@ -279,6 +296,7 @@ use Spatie\Translatable\HasTranslations;
  *
  * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
  * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
+<<<<<<< HEAD
 =======
  * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticleDelegates}.
 >>>>>>> .merge_file_rdcQMx
@@ -483,13 +501,18 @@ use Spatie\Translatable\HasTranslations;
 =======
 >>>>>>> .merge_file_rdcQMx
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */
 class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
 {
     use ArticleFeedable;
+<<<<<<< HEAD
     use ArticleQueryScopes;
+=======
+>>>>>>> laraxot/dev
     use HasChildren;
     use HasComments;
     use HasRating;
@@ -531,10 +554,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'category_id',
         'type',
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 =======
 =======
 >>>>>>> .merge_file_rdcQMx
+=======
+>>>>>>> laraxot/dev
         // 'is_closed', => closet_at
 
         /*
@@ -561,10 +587,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'read_time',
         'excerpt',
         */
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 =======
 =======
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
         'status',
         'status_display',
@@ -599,6 +628,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
         return app(ArticlePresentationAdapter::class)->translation($this, $key, $locale, $useFallbackLocale);
 =======
@@ -608,6 +638,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 =======
         return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
+        return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
 >>>>>>> laraxot/dev
     }
 
@@ -655,6 +688,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function user(): BelongsTo
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
         $userClassModel = XotData::make()->getUserClass();
 
@@ -672,6 +706,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
         return $this->belongsTo($userClassModel);
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
+        $userClass = XotData::make()->getUserClass();
+
+        return $this->belongsTo($userClass);
 >>>>>>> laraxot/dev
     }
 
@@ -690,6 +729,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getFormattedDate(): string
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
         return app(ArticlePresentationAdapter::class)->formattedDate($this);
 =======
@@ -700,10 +740,14 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         return ArticleDelegates::formattedDate($this);
 >>>>>>> .merge_file_rdcQMx
 >>>>>>> laraxot/dev
+=======
+        return app(FormatArticlePublishedDateAction::class)->execute($this);
+>>>>>>> laraxot/dev
     }
 
     public function getThumbnail(): ?string
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
         return app(ArticlePresentationAdapter::class)->thumbnail($this);
@@ -714,6 +758,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 =======
         return ArticleDelegates::thumbnail($this);
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
+        return app(ResolveArticleThumbnailAction::class)->execute($this);
 >>>>>>> laraxot/dev
     }
 
@@ -727,6 +774,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
                 unset($value);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
                 return app(ArticlePresentationAdapter::class)->humanReadTime($attributes);
 =======
@@ -737,11 +785,29 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
                 return ArticleDelegates::humanReadTime($attributes);
 >>>>>>> .merge_file_rdcQMx
 >>>>>>> laraxot/dev
+=======
+                return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
+>>>>>>> laraxot/dev
             },
         );
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Scope a query to only include articles different from current article.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $currentArticle): EloquentBuilder
+    {
+        return $query->where('id', '!=', $currentArticle);
+    }
+
+    /**
+>>>>>>> laraxot/dev
      * The author that belong to the article.
      *
      * @return BelongsTo<Profile, $this>
@@ -762,6 +828,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getMainImage(): string
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
         return app(ArticlePresentationAdapter::class)->mainImageUrl($this);
@@ -784,6 +851,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
 =======
 <<<<<<< .merge_file_v013uX
+=======
+>>>>>>> laraxot/dev
         return app(ResolveArticleMainImageUrlAction::class)->execute($this);
     }
 
@@ -799,11 +868,14 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
     */
 
+<<<<<<< HEAD
 =======
         return ArticleDelegates::mainImageUrl($this);
     }
 
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     public function getUuidAttribute(?string $value): string
     {
@@ -820,6 +892,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         return '##';
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 =======
@@ -841,6 +914,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
 <<<<<<< .merge_file_v013uX
 =======
+=======
+>>>>>>> laraxot/dev
     // public function getTimeLeft(): string
     // {
     //     $time = $this->closed_at;
@@ -856,8 +931,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         return app(FormatArticleTimeLeftForHumansAction::class)->execute($this);
     }
 
+<<<<<<< HEAD
 =======
 >>>>>>> .merge_file_rdcQMx
+=======
+>>>>>>> laraxot/dev
     // /**
     //  * Get the path to the picture
     //  *
@@ -879,6 +957,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //     }
     //     return 'slug';
     // }
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 =======
 =======
@@ -888,6 +967,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     /**
      * Get the path key to the item for the frontend only.
@@ -905,6 +986,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getOnlyContentBlocks(array $nameBlocks): array
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
         return app(ArticlePresentationAdapter::class)->onlyContentBlocks($this, $nameBlocks);
 =======
@@ -914,6 +996,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 =======
         return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
+        return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
 >>>>>>> laraxot/dev
     }
 
@@ -925,13 +1010,17 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getExceptContentBlocks(array $nameBlocks): array
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
         return app(ArticlePresentationAdapter::class)->exceptContentBlocks($this, $nameBlocks);
 =======
+=======
+>>>>>>> laraxot/dev
         return app(FilterArticleContentBlocksExceptAction::class)->execute($this, $nameBlocks);
     }
 
     /**
+<<<<<<< HEAD
      * This string will be used in notifications on what a new comment
      * was made.
 =======
@@ -951,6 +1040,117 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
      * was made.
 =======
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
+     * Scope a query to only include articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeArticle(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->where('author_id', $id);
+    }
+
+    /**
+     * Scope a query to only include published articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopePublished(EloquentBuilder $query): EloquentBuilder
+    {
+        // return $query->where('status', 'published');
+        // return $query->currentStatus('published');
+        return $query
+            ->whereNotNull('published_at');
+    }
+
+    /**
+     * Scope a query to only include show on homepage articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeShowHomepage(EloquentBuilder $query): EloquentBuilder
+    {
+        return $query->where('show_on_homepage', 1);
+    }
+
+    /**
+     * Scope a query to only include posted articles until today.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder
+    {
+        return $query->whereDate('published_at', '<=', Carbon::today()->toDateString());
+    }
+
+    /**
+     * Scope a query to only include articles with a specified category.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the category
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeCategory(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->where('category_id', $id);
+    }
+
+    /**
+     * Scope a query to only include articles that belongs to an author.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $profileId The id of the author
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeAuthor(EloquentBuilder $query, string $profileId): EloquentBuilder
+    {
+        return $query->where('author_id', $profileId);
+    }
+
+    /**
+     * Scope a query to only include articles with a specified tag.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the tag
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->whereHas('tags', static function (EloquentBuilder $q) use ($id): void {
+            $q->where('id', $id);
+        });
+    }
+
+    /**
+     * Scope a query to only include articles which contains searching words.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $searching The searching words
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeSearch(EloquentBuilder $query, string $searching): EloquentBuilder
+    {
+        return $query->where('title', 'LIKE', "%{$searching}%")
+            ->orWhere('content', 'LIKE', "%{$searching}%")
+            ->orWhere('excerpt', 'LIKE', "%{$searching}%");
+    }
+
+    /**
+     * This string will be used in notifications on what a new comment
+     * was made.
 >>>>>>> laraxot/dev
      */
     public function commentableName(): string
@@ -994,10 +1194,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 =======
 =======
 >>>>>>> .merge_file_rdcQMx
+=======
+>>>>>>> laraxot/dev
     // /**
     //  * Get the tags of the article
     //  *
@@ -1008,10 +1211,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //    return $this->belongsToMany(Tag::class);
     // }
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
 =======
 =======
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     /**
      * @return Attribute<string, never>
@@ -1023,6 +1229,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
                 unset($value);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_v013uX
                 return app(ArticlePresentationAdapter::class)->mainImage($attributes);
 =======
@@ -1032,6 +1239,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 =======
                 return ArticleDelegates::mainImage($attributes);
 >>>>>>> .merge_file_rdcQMx
+>>>>>>> laraxot/dev
+=======
+                return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
 >>>>>>> laraxot/dev
             },
         );

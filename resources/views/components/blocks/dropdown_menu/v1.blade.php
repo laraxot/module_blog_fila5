@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_HDk9Bw
 =======
 =======
@@ -91,6 +92,8 @@
 =======
 =======
 >>>>>>> .merge_file_Bka1RN
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <div class="volume-area mb20">
     <div class="liclick">
@@ -460,6 +463,7 @@
     </div>
   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_HDk9Bw
   <hr class="left-side-border">
 =======
@@ -469,4 +473,7 @@
 =======
   <hr class="left-side-border">
 >>>>>>> .merge_file_Bka1RN
+>>>>>>> laraxot/dev
+=======
+  <hr class="left-side-border">
 >>>>>>> laraxot/dev

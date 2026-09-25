@@ -11,6 +11,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_jjhRvg
 =======
 use Filament\Tables\Columns\TextColumn;
@@ -30,6 +31,8 @@ class RatingsRelationManager extends XotBaseRelationManager
         ];
 =======
 >>>>>>> .merge_file_72mqP8
+=======
+>>>>>>> laraxot/dev
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -47,6 +50,7 @@ class RatingsRelationManager extends RelationManager
                     ->required()
                     ->maxLength(255),
             ]);
+<<<<<<< HEAD
 <<<<<<< .merge_file_jjhRvg
 =======
 use Filament\Tables\Columns\TextColumn;
@@ -66,6 +70,8 @@ class RatingsRelationManager extends XotBaseRelationManager
         ];
 =======
 >>>>>>> .merge_file_72mqP8
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     }
 

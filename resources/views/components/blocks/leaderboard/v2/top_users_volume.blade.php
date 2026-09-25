@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_VRyXYN
 {{-- leaderboard/v2/top_users_volume.blade.php — split for claude-audit static. --}}
 @include('blog::components.blocks.leaderboard.v2.partials.top_users_volume.blade_body_a')
 @include('blog::components.blocks.leaderboard.v2.partials.top_users_volume.blade_body_b')
 =======
+=======
+>>>>>>> laraxot/dev
 <div class="userpart wow fadeInUp">
     <div class="userpart__title d-flex gap-1 gap-md-2 align-items-center mb20">
         <i class="material-symbols-outlined">
@@ -586,6 +589,7 @@
             </a>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
 =======
 <div class="userpart wow fadeInUp">
@@ -1176,4 +1180,7 @@
 @include('blog::components.blocks.leaderboard.v2.partials.top_users_volume.blade_body_a')
 @include('blog::components.blocks.leaderboard.v2.partials.top_users_volume.blade_body_b')
 >>>>>>> .merge_file_2KQgX1
+>>>>>>> laraxot/dev
+=======
+</div>
 >>>>>>> laraxot/dev

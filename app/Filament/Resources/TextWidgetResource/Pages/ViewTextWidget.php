@@ -6,6 +6,7 @@ namespace Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
 use Filament\Actions\EditAction;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_TjCOAB
 =======
 use Modules\Blog\Filament\Resources\TextWidgetResource;
@@ -14,10 +15,13 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 class ViewTextWidget extends XotBaseViewRecord
 =======
 >>>>>>> .merge_file_zDBLJB
+=======
+>>>>>>> laraxot/dev
 use Filament\Resources\Pages\ViewRecord;
 use Modules\Blog\Filament\Resources\TextWidgetResource;
 
 class ViewTextWidget extends ViewRecord
+<<<<<<< HEAD
 <<<<<<< .merge_file_TjCOAB
 =======
 use Modules\Blog\Filament\Resources\TextWidgetResource;
@@ -27,12 +31,15 @@ class ViewTextWidget extends XotBaseViewRecord
 =======
 >>>>>>> .merge_file_zDBLJB
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 {
     protected static string $resource = TextWidgetResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_TjCOAB
             EditAction::make(),
@@ -43,6 +50,9 @@ class ViewTextWidget extends XotBaseViewRecord
 =======
             EditAction::make(),
 >>>>>>> .merge_file_zDBLJB
+>>>>>>> laraxot/dev
+=======
+            EditAction::make(),
 >>>>>>> laraxot/dev
         ];
     }

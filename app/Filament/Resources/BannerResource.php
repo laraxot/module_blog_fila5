@@ -4,18 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
+<<<<<<< HEAD
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
+=======
+use Filament\Resources\Pages\PageRegistration;
+>>>>>>> laraxot/dev
 use Modules\Blog\Filament\Resources\BannerResource\Pages\CreateBanner;
 use Modules\Blog\Filament\Resources\BannerResource\Pages\EditBanner;
 use Modules\Blog\Filament\Resources\BannerResource\Pages\ListBanners;
 use Modules\Blog\Models\Banner;
+<<<<<<< HEAD
 use Modules\Blog\Models\Category;
 use Modules\Xot\Actions\Cast\SafeArrayCastAction;
+=======
+>>>>>>> laraxot/dev
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class BannerResource extends XotBaseResource
@@ -26,14 +33,18 @@ class BannerResource extends XotBaseResource
     protected static string|\BackedEnum|null $navigationIcon = 'ui-starbanner';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_NBUOx8
 =======
 =======
 >>>>>>> .merge_file_9D0VMx
+=======
+>>>>>>> laraxot/dev
     // public static function getTranslatableLocales(): array
     // {
     //     return ['it', 'en'];
     // }
+<<<<<<< HEAD
     /**
      * @return array<string|int, Component>
      */
@@ -145,6 +156,9 @@ class BannerResource extends XotBaseResource
         ];
     }
 
+=======
+    /** @return array<string, PageRegistration> */
+>>>>>>> laraxot/dev
     public static function getPages(): array
     {
         return [

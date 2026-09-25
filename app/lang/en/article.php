@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_dyxQVE
 =======
 =======
@@ -15,6 +16,8 @@ declare(strict_types=1);
 =======
 =======
 >>>>>>> .merge_file_DQWi0r
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 // use Illuminate\Support\Facades\Auth;
 // use Modules\Blog\Models\Profile;

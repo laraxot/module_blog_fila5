@@ -11,6 +11,7 @@
 - Layer wiki: `docs/wiki/` — LLM-maintained, sintesi ad alto riuso.
 - Schema: `docs/.schema/WIKI_SCHEMA.md`
 - Adozione moduli: `docs/project/llm-wiki-module-adoption.md`
+<<<<<<< HEAD
 <<<<<<< .merge_file_pKAXBh
 <<<<<<< HEAD
 
@@ -23,3 +24,5 @@
 >>>>>>> laraxot/dev
 =======
 >>>>>>> .merge_file_gQsUOO
+=======
+>>>>>>> laraxot/dev

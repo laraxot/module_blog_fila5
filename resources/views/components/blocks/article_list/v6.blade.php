@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_fchwBv
 =======
 =======
@@ -63,6 +64,8 @@
 =======
 =======
 >>>>>>> .merge_file_1RYRRm
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <section class="text-gray-600 body-font">
 	<div class="container px-5 py-24 mx-auto">
@@ -205,6 +208,7 @@
 		</div>
 	</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_fchwBv
 </section>
 =======
@@ -214,4 +218,7 @@
 =======
 </section>
 >>>>>>> .merge_file_1RYRRm
+>>>>>>> laraxot/dev
+=======
+</section>
 >>>>>>> laraxot/dev

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_P5MA7y
 =======
 =======
@@ -60,6 +61,8 @@
 =======
 =======
 >>>>>>> .merge_file_YPwb6w
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 {{-- https://flowrift.com/c/blog/iNZ24?view=code --}}
 <div class="bg-white py-6 sm:py-8 lg:py-12">
@@ -164,6 +167,7 @@
       </div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_P5MA7y
   </div>
 =======
@@ -173,4 +177,7 @@
 =======
   </div>
 >>>>>>> .merge_file_YPwb6w
+>>>>>>> laraxot/dev
+=======
+  </div>
 >>>>>>> laraxot/dev

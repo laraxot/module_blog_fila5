@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_ixnecP
 =======
 =======
@@ -60,6 +61,8 @@
 =======
 =======
 >>>>>>> .merge_file_9WFwBl
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <div class="middle-area">
     <div class="row banner-bg mt30">
@@ -164,6 +167,7 @@
       </div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_ixnecP
   </div>
 =======
@@ -173,4 +177,7 @@
 =======
   </div>
 >>>>>>> .merge_file_9WFwBl
+>>>>>>> laraxot/dev
+=======
+  </div>
 >>>>>>> laraxot/dev

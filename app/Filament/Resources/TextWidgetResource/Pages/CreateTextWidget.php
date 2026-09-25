@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_XhojV5
 =======
 use Modules\Blog\Filament\Resources\TextWidgetResource;
@@ -26,11 +27,19 @@ class CreateTextWidget extends XotBaseCreateRecord
 =======
 >>>>>>> .merge_file_mrCOp8
 >>>>>>> laraxot/dev
+=======
+use Filament\Resources\Pages\CreateRecord;
+use Modules\Blog\Filament\Resources\TextWidgetResource;
+use Webmozart\Assert\Assert;
+
+class CreateTextWidget extends CreateRecord
+>>>>>>> laraxot/dev
 {
     protected static string $resource = TextWidgetResource::class;
 
     protected function getRedirectUrl(): string
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_XhojV5
         return (string) static::getResource()::getUrl('index');
@@ -45,6 +54,12 @@ class CreateTextWidget extends XotBaseCreateRecord
 =======
         return (string) static::getResource()::getUrl('index');
 >>>>>>> .merge_file_mrCOp8
+>>>>>>> laraxot/dev
+=======
+        $url = static::getResource()::getUrl('index');
+        Assert::string($url);
+
+        return $url;
 >>>>>>> laraxot/dev
     }
 }

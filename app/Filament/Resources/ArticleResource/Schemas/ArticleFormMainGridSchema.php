@@ -9,10 +9,18 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Grid;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
 use Modules\Blog\Filament\Resources\CategoryResource;
 use Modules\Blog\Models\Category;
 use Webmozart\Assert\Assert;
+=======
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
+use Illuminate\Support\Str;
+use Modules\Blog\Filament\Resources\CategoryResource;
+use Modules\Blog\Models\Category;
+>>>>>>> laraxot/dev
 
 final class ArticleFormMainGridSchema
 {
@@ -23,13 +31,18 @@ final class ArticleFormMainGridSchema
                 ->columnSpan(1)
                 ->required()
                 ->lazy()
+<<<<<<< HEAD
                 ->afterStateUpdated(static function ($set, $get, $state): void {
                     Assert::isCallable($set, 'set must be callable');
                     Assert::isCallable($get, 'get must be callable');
+=======
+                ->afterStateUpdated(static function (Set $set, Get $get, mixed $state): void {
+>>>>>>> laraxot/dev
 
                     if ($get('slug')) {
                         return;
                     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_eS7HTc
                     $set('slug', Str::slug((string) $state));
@@ -40,6 +53,12 @@ final class ArticleFormMainGridSchema
 =======
                     $set('slug', Str::slug((string) $state));
 >>>>>>> .merge_file_uJzzYu
+>>>>>>> laraxot/dev
+=======
+                    if (! is_string($state)) {
+                        return;
+                    }
+                    $set('slug', Str::slug($state));
 >>>>>>> laraxot/dev
                 }),
 
