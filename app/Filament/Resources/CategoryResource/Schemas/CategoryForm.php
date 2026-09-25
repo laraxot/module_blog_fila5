@@ -20,15 +20,7 @@ class CategoryForm extends XotBaseResourceForm
     /**
      * @return array<int|string, SchemaComponent>
      */
-<<<<<<< HEAD
-<<<<<<< HEAD
     public function getFormSchema(): array
-=======
-    public static function getFormSchema(): array
->>>>>>> laraxot/dev
-=======
-    public static function getFormSchema(): array
->>>>>>> b591d4e (Lint)
     {
         return [
             TextInput::make('title')
@@ -37,15 +29,7 @@ class CategoryForm extends XotBaseResourceForm
                 ->reactive()
                 ->unique()
                 ->afterStateUpdated(function (Set $set, $state): void {
-<<<<<<< HEAD
-<<<<<<< HEAD
                     $set('slug', Str::slug(is_string($state) ? $state : ''));
-=======
-                    $set('slug', Str::slug((string) $state));
->>>>>>> laraxot/dev
-=======
-                    $set('slug', Str::slug((string) $state));
->>>>>>> b591d4e (Lint)
                 }),
             TextInput::make('slug')
                 ->required()
@@ -63,18 +47,8 @@ class CategoryForm extends XotBaseResourceForm
                 // ->maxSize(5000)
                 // ->multiple()
                 // ->enableReordering()
-<<<<<<< HEAD
-<<<<<<< HEAD
                 ->openable()
                 ->downloadable()
-=======
-                ->enableOpen()
-                ->enableDownload()
->>>>>>> laraxot/dev
-=======
-                ->enableOpen()
-                ->enableDownload()
->>>>>>> b591d4e (Lint)
                 ->columnSpanFull()
                 ->collection('category')
                 // ->conversion('thumbnail')

@@ -8,14 +8,6 @@ use Filament\Schemas\Components\Component;
 use Modules\Blog\Filament\Resources\ArticleResource\Schemas\ArticleFormSchema;
 use Modules\Blog\Models\Article;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-use Webmozart\Assert\Assert;
->>>>>>> laraxot/dev
-=======
-use Webmozart\Assert\Assert;
->>>>>>> b591d4e (Lint)
 
 class ArticleResource extends XotBaseResource
 {
@@ -41,25 +33,4 @@ class ArticleResource extends XotBaseResource
     {
         return ArticleFormSchema::build();
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b591d4e (Lint)
-
-    /**
-     * @return array<int|string, Component>
-     */
-    public static function getFormSchema(): array
-    {
-        /** @var array<int|string, Component> $fields */
-        $fields = static::getFormFields();
-        Assert::isArray($fields, 'getFormFields must return array');
-
-        return $fields;
-    }
-<<<<<<< HEAD
->>>>>>> laraxot/dev
-=======
->>>>>>> b591d4e (Lint)
 }
