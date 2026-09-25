@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
@@ -75,6 +76,8 @@
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 {{-- https://flowbite.com/blocks/marketing/team/ --}}
 
 
@@ -363,7 +366,11 @@
       </div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
   </div>
 =======
   </div>
 >>>>>>> laraxot/dev
+=======
+  </div>
+>>>>>>> b591d4e (Lint)

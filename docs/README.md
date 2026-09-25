@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Blog
 
 [![Module](https://img.shields.io/badge/Module-Blog-8B0000.svg)]()
@@ -34,6 +35,8 @@ Core module for the FixCity Platform.
 
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
+=======
+>>>>>>> b591d4e (Lint)
 ---
 title: "Blog Module Documentation"
 type: documentation
@@ -180,4 +183,7 @@ Sistema di gestione crediti/transazioni utente. File mantenuti per riferimento s
 - [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
 - [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
 - [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)

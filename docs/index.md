@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Documentation Index
 
 Modulo: Blog
@@ -7,6 +8,8 @@ Modulo: Blog
 
 <!-- auto-generato: elencare i file .md presenti -->
 =======
+=======
+>>>>>>> b591d4e (Lint)
 # 📚 BLOG Module - Documentation Index
 
 **Path**: `laravel/Modules/Blog/docs/`  
@@ -37,4 +40,7 @@ Modulo: Blog
 ---
 
 **Ultimo Aggiornamento**: 2026-03-24
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)

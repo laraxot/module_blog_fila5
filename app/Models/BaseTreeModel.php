@@ -37,11 +37,15 @@ abstract class BaseTreeModel extends BaseModel
     {// if ($node->isSelfOrDescendantOf($this)) {
         //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
                         // }
 
                         // Save the previous parent to be used when finishing.
 
                         $this->save();
+<<<<<<< HEAD
 =======
                             // }
 
@@ -49,6 +53,8 @@ abstract class BaseTreeModel extends BaseModel
 
                             $this->save();
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 
         return $this;
     }

@@ -19,9 +19,12 @@ use Modules\Blog\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeArrayCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // Laraxot module file — see docs/wiki for domain contract.
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 use Modules\Xot\Actions\GetViewAction;
 use Webmozart\Assert\Assert;
 
@@ -67,19 +70,27 @@ class Setting extends Component implements HasActions, HasForms
         $view = app(GetViewAction::class)->execute($this->version);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         $viewParams = [
 =======
         $parameters = [
 >>>>>>> laraxot/dev
+=======
+        $viewParams = [
+>>>>>>> b591d4e (Lint)
             'view' => $view,
             '_profile' => $this->model,
         ];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         return view((string) $view, $viewParams);
 =======
         return view((string) $view, $parameters);
 >>>>>>> laraxot/dev
+=======
+        return view((string) $view, $viewParams);
+>>>>>>> b591d4e (Lint)
     }
 
     public function editProfile(): void

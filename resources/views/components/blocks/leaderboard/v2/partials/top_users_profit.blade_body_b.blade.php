@@ -25,6 +25,7 @@
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 @endphp
 
@@ -35,6 +36,8 @@
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 // Blog Blade view — see Modules/Blog/docs/wiki.
 // Blog Blade view — see Modules/Blog/docs/wiki.
 // Blog Blade view — see Modules/Blog/docs/wiki.

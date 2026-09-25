@@ -29,6 +29,7 @@
         }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "autoload-dev": {
         "psr-4": {
@@ -36,6 +37,8 @@
         }
     },
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     "repositories": [
         {
             "type": "path",
