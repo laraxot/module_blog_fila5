@@ -165,10 +165,6 @@ class Menu extends BaseModel implements HasMedia
         $instance = new self();
 
         return app(GetTreeOptions::class)->execute($instance);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b591d4e (Lint)
 
         // $categories = self::tree()->get()->toTree();
         // $results = [];
@@ -186,11 +182,6 @@ class Menu extends BaseModel implements HasMedia
         // }
 
         // return $results;
-<<<<<<< HEAD
-=======
->>>>>>> laraxot/dev
-=======
->>>>>>> b591d4e (Lint)
     }
 
     /** @return array<string, string> */

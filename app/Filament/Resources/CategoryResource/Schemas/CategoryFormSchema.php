@@ -28,15 +28,7 @@ final class CategoryFormSchema
                 ->reactive()
                 ->unique()
                 ->afterStateUpdated(static function (Set $set, $state): void {
-<<<<<<< HEAD
-<<<<<<< HEAD
                     $set('slug', Str::slug(is_string($state) ? $state : ''));
-=======
-                    $set('slug', Str::slug((string) $state));
->>>>>>> laraxot/dev
-=======
-                    $set('slug', Str::slug((string) $state));
->>>>>>> b591d4e (Lint)
                 }),
             TextInput::make('slug')
                 ->required()
@@ -48,18 +40,8 @@ final class CategoryFormSchema
             TextInput::make('description')
                 ->maxLength(2048),
             SpatieMediaLibraryFileUpload::make('image')
-<<<<<<< HEAD
-<<<<<<< HEAD
                 ->openable()
                 ->downloadable()
-=======
-                ->enableOpen()
-                ->enableDownload()
->>>>>>> laraxot/dev
-=======
-                ->enableOpen()
-                ->enableDownload()
->>>>>>> b591d4e (Lint)
                 ->columnSpanFull()
                 ->collection('category')
                 ->disk('uploads')

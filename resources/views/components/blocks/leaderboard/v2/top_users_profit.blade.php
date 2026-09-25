@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b591d4e (Lint)
 <div class="userpart wow fadeInUp">
     <div class="userpart__title d-flex gap-1 gap-md-2 align-items-center mb20">
         <i class="material-symbols-outlined">
@@ -586,13 +582,4 @@
             </a>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
-=======
-{{-- leaderboard/v2/top_users_profit.blade.php — split for claude-audit static. --}}
-@include('blog::components.blocks.leaderboard.v2.partials.top_users_profit.blade_body_a')
-@include('blog::components.blocks.leaderboard.v2.partials.top_users_profit.blade_body_b')
->>>>>>> laraxot/dev
-=======
-</div>
->>>>>>> b591d4e (Lint)

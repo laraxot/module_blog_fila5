@@ -28,17 +28,6 @@
             "Modules\\Blog\\Database\\Seeders\\": "database/seeders/"
         }
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    "autoload-dev": {
-        "psr-4": {
-            "Modules\\Blog\\Tests\\": "tests/"
-        }
-    },
->>>>>>> laraxot/dev
-=======
->>>>>>> b591d4e (Lint)
     "repositories": [
         {
             "type": "path",
