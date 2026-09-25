@@ -90,11 +90,7 @@ trait ArticleQueryScopes
      */
     public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
     {
-<<<<<<< HEAD
         return $query->whereHas('tags', static function (EloquentBuilder $q) use ($id): void {
-=======
-        return $query->whereHas('tags', static function ($q) use ($id): void {
->>>>>>> laraxot/dev
             $q->where('id', $id);
         });
     }
