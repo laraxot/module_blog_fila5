@@ -23,7 +23,7 @@ class ListCategories extends XotBaseListRecords
     {
         return [
             'icon' => IconColumn::make('icon')
-                ->icon(static fn (mixed $state): mixed => $state),
+                ->icon(fn ($state) => $state),
             'title' => TextColumn::make('title')
                 ->searchable()
                 ->sortable(),

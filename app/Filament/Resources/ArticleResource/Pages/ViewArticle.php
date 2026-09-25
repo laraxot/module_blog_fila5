@@ -8,15 +8,14 @@ use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
-use Illuminate\Support\Carbon;
 use Modules\Blog\Filament\Resources\ArticleResource;
-use Modules\Blog\Models\Article;
 // use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 // use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
 use Modules\Rating\Filament\Widgets\StatsOverview;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 // use Modules\Rating\Filament\Actions\Header\BetHeaderAction;
 // use Modules\Rating\Filament\Actions\Header\WinHeaderAction;
+use Webmozart\Assert\Assert;
 
 class ViewArticle extends XotBaseViewRecord
 {
@@ -40,20 +39,11 @@ class ViewArticle extends XotBaseViewRecord
                     DateTimePicker::make('closed_at')
                         ->native(false),
                 ])
-                ->action(static function (array $data, Article $record): void {
-                    $closedAt = $data['closed_at'] ?? null;
-                    if ($closedAt === null) {
-                        $record->forceFill(['closed_at' => null])->save();
-
-                        return;
+                ->action(function (array $data, $record): void {
+                    Assert::notNull($record, 'Record cannot be null');
+                    if (is_object($record) && method_exists($record, 'update')) {
+                        $record->update($data);
                     }
-
-                    if (! is_string($closedAt) && ! $closedAt instanceof \DateTimeInterface) {
-                        return;
-                    }
-
-                    $record->closed_at = Carbon::parse($closedAt);
-                    $record->save();
                 }),
             /*
             Actions\Action::make('translate')
