@@ -23,51 +23,6 @@ class ArticleImportSchedule extends Data
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< .merge_file_rxpH4m
-=======
-=======
->>>>>>> .merge_file_p3XimN
-=======
->>>>>>> b591d4e (Lint)
-class ArticleImportScores extends Data
-{
-    public function __construct(
-        public readonly ?string $brierScore = null,
-        public readonly ?string $brierScorePlayMoney = null,
-        public readonly ?string $brierScoreRealMoney = null,
-    ) {
-    }
-}
-
-class ArticleImportMetrics extends Data
-{
-    /**
-     * @param array<string, mixed> $wagers
-     */
-    public function __construct(
-        public readonly int $wagerableFlag = 0,
-        public readonly ArticleImportScores $scores = new ArticleImportScores(),
-        public readonly ?int $wagersCount = null,
-        public readonly ?int $wagersCountCanonical = null,
-        public readonly ?int $wagersCountTotal = null,
-        public readonly array $wagers = [],
-        public readonly ?float $volumePlayMoney = null,
-        public readonly ?float $volumeRealMoney = null,
-    ) {
-    }
-}
-
-<<<<<<< HEAD
-<<<<<<< .merge_file_rxpH4m
-=======
-=======
->>>>>>> .merge_file_p3XimN
-=======
-=======
->>>>>>> b591d4e (Lint)
->>>>>>> laraxot/dev
 class ArticleImportIdentity extends Data
 {
     public function __construct(

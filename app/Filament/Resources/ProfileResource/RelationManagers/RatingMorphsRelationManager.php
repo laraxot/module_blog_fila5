@@ -10,32 +10,15 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
-<<<<<<< HEAD
-<<<<<<< HEAD
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\Xot\Filament\Resources\RelationManagers\XotBaseRelationManager;
 
 class RatingMorphsRelationManager extends XotBaseRelationManager
-=======
-=======
->>>>>>> b591d4e (Lint)
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
-
-class RatingMorphsRelationManager extends RelationManager
-<<<<<<< HEAD
->>>>>>> laraxot/dev
-=======
->>>>>>> b591d4e (Lint)
 {
     // protected static string $relationship = 'ratings';
     protected static string $relationship = 'ratingMorphs';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     public function getFormSchema(): array
     {
         return [
@@ -43,21 +26,6 @@ class RatingMorphsRelationManager extends RelationManager
                 ->required()
                 ->maxLength(255),
         ];
-=======
-=======
->>>>>>> b591d4e (Lint)
-    public function form(Schema $schema): Schema
-    {
-        return $schema
-            ->components([
-                TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-            ]);
-<<<<<<< HEAD
->>>>>>> laraxot/dev
-=======
->>>>>>> b591d4e (Lint)
     }
 
     public function table(Table $table): Table
