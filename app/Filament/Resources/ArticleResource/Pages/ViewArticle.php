@@ -8,6 +8,7 @@ use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
+use Illuminate\Support\Carbon;
 use Modules\Blog\Filament\Resources\ArticleResource;
 use Modules\Blog\Models\Article;
 // use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
@@ -40,7 +41,18 @@ class ViewArticle extends XotBaseViewRecord
                         ->native(false),
                 ])
                 ->action(static function (array $data, Article $record): void {
-                    $record->closed_at = $data['closed_at'] ?? null;
+                    $closedAt = $data['closed_at'] ?? null;
+                    if ($closedAt === null) {
+                        $record->forceFill(['closed_at' => null])->save();
+
+                        return;
+                    }
+
+                    if (! is_string($closedAt) && ! $closedAt instanceof \DateTimeInterface) {
+                        return;
+                    }
+
+                    $record->closed_at = Carbon::parse($closedAt);
                     $record->save();
                 }),
             /*
