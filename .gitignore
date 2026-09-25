@@ -1,82 +1,101 @@
-/vendor/
+# Laraxot Blog module ignore rules
+
+# Dependencies and package manager artifacts
+vendor/
 node_modules/
+package-lock.json
+yarn.lock
+composer.lock
+yarn-error.log
 npm-debug.log
+/docs/package-lock.json
+
+# Build output and caches
+build/
+build
+dist/
+build/docs/cache/
+cache/
+docs/cache/
+docs/phpstan/
+docs/archive/
 *.cache
 *.phar
-*.lock
-package-lock.json
-yarn-error.log
 
-# Laravel 4 specific
+# Temporary files, locks and logs
+*.lock
+*.tmp
+*.log
+error_log
+npm-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+# Laravel runtime and local environment
 bootstrap/compiled.php
 app/storage/
-
-# Laravel 5 & Lumen specific
 public/storage
 public/hot
-
-# Laravel 5 & Lumen specific with changed public path
 public_html/storage
 public_html/hot
-
 storage/*.key
 .env
+.env.*
+!.env.example
 Homestead.yaml
 Homestead.json
 /.vagrant
-.phpunit.result.cache
-*.lock
-package-lock.json
-build
-/docs/package-lock.json
-.git-blame-ignore-revs
 
-*.phar
-*.cache
-*.log
-*.lock
-.git-blame-ignore-revs
-package-lock.json
-.php-cs-fixer.cache
-package-lock.json
+# Git and merge artifacts
 .git-rewrite/
-
-node_modules
-
 .git-blame-ignore-revs
-/vendor
-vendor
-vendor/
-build/docs/cache/
-cache/
--e 
-# PHPStan documentation
-docs/phpstan/
-
-# Backup files
-*.old
-*.old1
-*.backup
-*.backup.*
-lang/lang/
-_docs/
-_docs/
-
-# Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
-docs/archive/
-# Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
 *~HEAD
 *~BASE
 *~LOCAL
 *~REMOTE
+*~head
 *.orig
 *.rej
-*~head
-
+*.old
+*.old1
+*.backup
+*.backup.*
 agentdb.rvf
-audit-coverage/
-.cursor/
+
+# Editor and assistant tooling
 .vscode/
 .windsurf/
 .devcontainer/
+
+# Legacy documentation and generated material
+_docs/
+lang/lang/
+
+# Generated test artifacts
+/tests/AuditCoverage/
+
+# Project-specific files
+*.fila2
+laravel
+public_html
 graphify-out
+.rector.php
+.phpinsights.php
+
+# Laraxot — root quality tool configs
+
+# Root agent tooling and PHP quality configuration
+/.agents/
+/.codex/
+/.cursor/
+/.opencode/
+/.qwen/
+/rector.php
+/phpinsights.php
+/.php-cs-fixer.php
+/.php-cs-fixer.dist.php
+
+# Generated Claude audit coverage scaffold (never commit)
+/audit-coverage/
