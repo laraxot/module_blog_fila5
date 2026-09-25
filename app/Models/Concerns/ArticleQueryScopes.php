@@ -10,11 +10,11 @@ use Modules\Blog\Models\Article;
 
 /**
  * Query scopes for Article — extracted for claude-audit file size (SRP).
-<<<<<<< HEAD
-=======
+ * <<<<<<< HEAD
+ * =======.
  *
  * @phpstan-ignore trait.unused
->>>>>>> laraxot/dev
+ * >>>>>>> laraxot/dev
  */
 trait ArticleQueryScopes
 {
