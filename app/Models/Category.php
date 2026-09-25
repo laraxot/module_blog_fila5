@@ -21,15 +21,21 @@ use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\Translatable\HasTranslations;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection as AdjacencyCollection;
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
  * Modules\Blog\Models\Category.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
  * @property int                         $id
  * @property string                      $title
  * @property string                      $slug
@@ -218,6 +224,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @property ProfileContract|null $deleter
  *
+<<<<<<< HEAD
 =======
  * @property int                                $id
  * @property string                             $title
@@ -320,6 +327,8 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @mixin Model
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
  * @mixin \Eloquent
  */
 class Category extends BaseModel

@@ -115,6 +115,7 @@ class Comment extends BaseModel
     public function user(): BelongsTo
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);
@@ -123,6 +124,11 @@ class Comment extends BaseModel
 
         return $this->belongsTo($userClassModel);
 >>>>>>> laraxot/dev
+=======
+        $userClass = XotData::make()->getUserClass();
+
+        return $this->belongsTo($userClass);
+>>>>>>> b591d4e (Lint)
     }
 
     /**

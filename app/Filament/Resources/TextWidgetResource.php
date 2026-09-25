@@ -23,7 +23,10 @@ class TextWidgetResource extends XotBaseResource
     protected static string|\BackedEnum|null $navigationIcon = 'ui-widgets';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b591d4e (Lint)
     // protected static ?string $navigationGroup = 'Content';
     /**
      * @return array<string|int, Component>
@@ -33,7 +36,10 @@ class TextWidgetResource extends XotBaseResource
         return static::getFormFields();
     }
 
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     /**
      * Ritorna i campi del form (compatibilità con XotBaseResource).
      *
@@ -52,12 +58,17 @@ class TextWidgetResource extends XotBaseResource
                 // ->multiple()
                 // ->enableReordering()
 <<<<<<< HEAD
+<<<<<<< HEAD
                 ->openable()
                 ->downloadable()
 =======
                 ->enableOpen()
                 ->enableDownload()
 >>>>>>> laraxot/dev
+=======
+                ->enableOpen()
+                ->enableDownload()
+>>>>>>> b591d4e (Lint)
                 ->columnSpanFull()
                 // ->collection('avatars')
                 // ->conversion('thumbnail')

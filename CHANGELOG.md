@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ## 1.0.0-dev.1 (2026-09-24)
 
@@ -11,6 +12,8 @@
 * phpstan l10 cast.string and cast.int errors ([c7bb03a](https://github.com/laraxot/module_blog_fila5/commit/c7bb03ab4504b2e7995436e13da51c5218da5e7a))
 
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 # Changelog
 
 Tutte le modifiche rilevanti di questo pacchetto sono documentate in questo file.

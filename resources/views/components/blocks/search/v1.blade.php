@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
 {{-- {{ dddx(request()->query()) }} --}}
 
 {{-- @section('sidebar.left')
@@ -657,9 +660,13 @@
       </div>
       <!-- Product area Ends -->
     {{-- </div>
+<<<<<<< HEAD
 </main> --}}
 =======
 {{-- search/v1.blade.php — split for claude-audit static. --}}
 @include('blog::components.blocks.search.partials.v1.blade_body_a')
 @include('blog::components.blocks.search.partials.v1.blade_body_b')
 >>>>>>> laraxot/dev
+=======
+</main> --}}
+>>>>>>> b591d4e (Lint)
