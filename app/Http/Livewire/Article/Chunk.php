@@ -11,7 +11,13 @@ use Modules\Xot\Actions\GetViewAction;
 
 class Chunk extends Component
 {
+<<<<<<< HEAD
     /** @var array<int, int|string> */
+=======
+    /** @var array<int, string> */
+    /** @var array<int, mixed> */
+    /** @var array<int, mixed> */
+>>>>>>> laraxot/dev
     public array $postIds;
 
     public string $tpl = 'v1';
@@ -20,7 +26,11 @@ class Chunk extends Component
     {
         $articles = Article::whereIn('id', $this->postIds)->get()->keyBy('id');
 
+<<<<<<< HEAD
         $orderedPosts = collect($this->postIds)->map(static fn (int|string $id): ?Article => $articles->get($id));
+=======
+        $orderedPosts = collect($this->postIds)->map(static fn ($id) => (is_array($articles) ? $articles[$id] : null));
+>>>>>>> laraxot/dev
 
         /**
          * @phpstan-var view-string
