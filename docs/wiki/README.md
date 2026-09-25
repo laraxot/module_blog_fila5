@@ -1,6 +1,7 @@
 # LLM Wiki (module)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_wkPssu
 =======
 [![Module](https://img.shields.io/badge/Module-LLM Wiki (module)-8B0000.svg)]()
@@ -37,6 +38,8 @@ Core module for the FixCity Platform.
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_Lv38Rw
+=======
+>>>>>>> laraxot/dev
 This folder is the module's LLM wiki (docs/wiki). Use it to store synthesized, curated docs optimized for LLM ingestion.
 
 Structure:
@@ -51,6 +54,7 @@ Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sin
 # LLM Wiki
 
 Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sintesi, convenzioni e pagine curate.
+<<<<<<< HEAD
 <<<<<<< .merge_file_wkPssu
 =======
 [![Module](https://img.shields.io/badge/Module-LLM Wiki (module)-8B0000.svg)]()
@@ -87,4 +91,6 @@ Core module for the FixCity Platform.
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_Lv38Rw
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev

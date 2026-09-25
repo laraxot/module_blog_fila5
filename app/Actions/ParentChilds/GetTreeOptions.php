@@ -33,7 +33,11 @@ class GetTreeOptions
     }
 
     /**
+<<<<<<< HEAD
      * @return array<int, Category|Menu>
+=======
+     * @return list<Category|Menu>
+>>>>>>> laraxot/dev
      */
     private function resolveTreeModels(Category|Menu $model): array
     {
@@ -41,18 +45,30 @@ class GetTreeOptions
         Assert::isInstanceOf($collection, Collection::class, 'tree()->get() must return a collection');
 
         if (! method_exists($collection, 'toTree')) {
+<<<<<<< HEAD
             return $collection->all();
+=======
+            return array_values($collection->all());
+>>>>>>> laraxot/dev
         }
 
         /** @var Collection<int, Category|Menu> $models */
         $models = $collection->toTree();
 
+<<<<<<< HEAD
         return $models->all();
     }
 
     /**
      * @param array<int, Category|Menu> $models
      *
+=======
+        return array_values($models->all());
+    }
+
+    /**
+     * @param  list<Category|Menu>  $models
+>>>>>>> laraxot/dev
      * @return array<int|string, string>
      */
     private function buildOptionsFromModels(array $models): array
@@ -66,7 +82,11 @@ class GetTreeOptions
     }
 
     /**
+<<<<<<< HEAD
      * @param array<int|string, string> $results
+=======
+     * @param  array<int|string, string>  $results
+>>>>>>> laraxot/dev
      */
     private function appendModelOptions(array &$results, Category|Menu $mod, string $prefix): void
     {

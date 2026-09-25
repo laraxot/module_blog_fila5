@@ -4,13 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
+<<<<<<< HEAD
+=======
+use Filament\Resources\Pages\PageRegistration;
+>>>>>>> laraxot/dev
 use Filament\Schemas\Components\Component;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\ListCategories;
 use Modules\Blog\Filament\Resources\CategoryResource\Schemas\CategoryFormSchema;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+<<<<<<< HEAD
 use Webmozart\Assert\Assert;
+=======
+>>>>>>> laraxot/dev
 
 class CategoryResource extends XotBaseResource
 {
@@ -39,6 +46,7 @@ class CategoryResource extends XotBaseResource
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_R8fvBu
 =======
 =======
@@ -59,6 +67,9 @@ class CategoryResource extends XotBaseResource
 =======
 =======
 >>>>>>> .merge_file_InX8bu
+>>>>>>> laraxot/dev
+=======
+    /** @return array<string, PageRegistration> */
 >>>>>>> laraxot/dev
     public static function getPages(): array
     {

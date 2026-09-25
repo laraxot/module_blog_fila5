@@ -81,6 +81,7 @@ class YourModel extends BaseModel
 
 Chi estende `BaseModel` (soprattutto `Modules\Predict\Models\Predict` che estende `Modules\Blog\Models\Article`) sfrutta `Parental\HasChildren`. Lo stesso record rimane in `predict_data.articles`, ma il campo `type` decide quale classe PHP lo rappresenta: `Articles` è un tipo di Blog Post condiviso. Modifiche a questa tabella devono sempre rispettare lo schema centralizzato e mantenere la connection `blog`.
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_JMJkpg
 <<<<<<< HEAD
 
@@ -94,3 +95,5 @@ Chi estende `BaseModel` (soprattutto `Modules\Predict\Models\Predict` che estend
 >>>>>>> laraxot/dev
 =======
 >>>>>>> .merge_file_4HbtkH
+=======
+>>>>>>> laraxot/dev

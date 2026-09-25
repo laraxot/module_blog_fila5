@@ -1,6 +1,7 @@
 # Blog Module Roadmap
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_ja6bYN
 =======
 [![Module](https://img.shields.io/badge/Module-Blog Module Roadmap-8B0000.svg)]()
@@ -37,6 +38,8 @@
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_vaYv5c
+=======
+>>>>>>> laraxot/dev
 > "Blog and content management system for the Laraxot ecosystem with posts, categories, and comments."
 
 ## 🎯 Vision
@@ -95,6 +98,7 @@ Provide a **complete blogging** platform that includes:
 
 ---
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_ja6bYN
 =======
 [![Module](https://img.shields.io/badge/Module-Blog Module Roadmap-8B0000.svg)]()
@@ -131,4 +135,6 @@ Provide a **complete blogging** platform that includes:
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_vaYv5c
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev

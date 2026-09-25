@@ -11,6 +11,7 @@ discussions:
   - "https://github.com/laraxot/base_predict_fila5/discussions/215"
 related:
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_5dUVHP
   - ../../../../Xot/docs/wiki/concepts/composer-root-skeleton-modular.md
 =======
@@ -20,6 +21,9 @@ related:
 =======
   - ../../../../Xot/docs/wiki/concepts/composer-root-skeleton-modular.md
 >>>>>>> .merge_file_sCXmdI
+>>>>>>> laraxot/dev
+=======
+  - ../../../Xot/docs/wiki/concepts/composer-root-skeleton-modular.md
 >>>>>>> laraxot/dev
   - ../../../../../../docs/wiki/concepts/composer-root-minimal-nwidart.md
   - ../../composer.json
@@ -39,6 +43,7 @@ Dipendenze del dominio **Blog** in `Modules/Blog/composer.json`. Il root `larave
 `laravel/composer.json` → merge **solo** `Modules/*/composer.json`. **Vietato** `Themes/*/composer.json` (nwidart owner = modulo; tema = vestito Blade/assets).
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_5dUVHP
 Perché: [composer-merge-plugin-modules-only](../../../../Xot/docs/wiki/concepts/composer-merge-plugin-modules-only.md).
 =======
@@ -48,6 +53,9 @@ Perché: [composer-merge-plugin-modules-only](../../../Xot/docs/wiki/concepts/co
 =======
 Perché: [composer-merge-plugin-modules-only](../../../../Xot/docs/wiki/concepts/composer-merge-plugin-modules-only.md).
 >>>>>>> .merge_file_sCXmdI
+>>>>>>> laraxot/dev
+=======
+Perché: [composer-merge-plugin-modules-only](../../../Xot/docs/wiki/concepts/composer-merge-plugin-modules-only.md).
 >>>>>>> laraxot/dev
 
 ## Riferimento

@@ -14,6 +14,7 @@ class TextWidgetInfolist extends XotBaseResourceInfolist
      * @return array<string, Component>
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_l4aL2H
     public static function getInfolistSchema(): array
 =======
@@ -23,6 +24,9 @@ class TextWidgetInfolist extends XotBaseResourceInfolist
 =======
     public static function getInfolistSchema(): array
 >>>>>>> .merge_file_eHtRPl
+>>>>>>> laraxot/dev
+=======
+    public function getInfolistSchema(): array
 >>>>>>> laraxot/dev
     {
         return [

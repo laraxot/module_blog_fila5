@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_rBKlfH
 =======
 =======
@@ -62,6 +63,8 @@
 =======
 =======
 >>>>>>> .merge_file_hq2QkY
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <section class="space-y-12">
     <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
@@ -189,6 +192,7 @@
     <x-filament-actions::modals />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_rBKlfH
 </section>
 =======
@@ -198,4 +202,7 @@
 =======
 </section>
 >>>>>>> .merge_file_hq2QkY
+>>>>>>> laraxot/dev
+=======
+</section>
 >>>>>>> laraxot/dev

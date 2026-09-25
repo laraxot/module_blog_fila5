@@ -14,6 +14,7 @@ class ProfileInfolist extends XotBaseResourceInfolist
      * @return array<string, Component>
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_BrfF5Q
     public static function getInfolistSchema(): array
 =======
@@ -23,6 +24,9 @@ class ProfileInfolist extends XotBaseResourceInfolist
 =======
     public static function getInfolistSchema(): array
 >>>>>>> .merge_file_i3meuQ
+>>>>>>> laraxot/dev
+=======
+    public function getInfolistSchema(): array
 >>>>>>> laraxot/dev
     {
         return [

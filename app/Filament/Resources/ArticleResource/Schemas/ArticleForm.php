@@ -13,6 +13,7 @@ class ArticleForm extends XotBaseResourceForm
      * @return array<int|string, SchemaComponent>
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_CNHw6W
     public static function getFormSchema(): array
 =======
@@ -22,6 +23,9 @@ class ArticleForm extends XotBaseResourceForm
 =======
     public static function getFormSchema(): array
 >>>>>>> .merge_file_Awz7si
+>>>>>>> laraxot/dev
+=======
+    public function getFormSchema(): array
 >>>>>>> laraxot/dev
     {
         return ArticleFormSchema::build();

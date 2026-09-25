@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_j0cf9O
 =======
 return [
@@ -33,6 +34,9 @@ return [
 return [
 =======
 >>>>>>> .merge_file_rTEFUz
+>>>>>>> laraxot/dev
+=======
+return [
 >>>>>>> laraxot/dev
     'navigation' => [
         'label' => 'Articoli',

@@ -27,6 +27,7 @@ final class CategoryFormSchema
                 ->maxLength(2048)
                 ->reactive()
                 ->unique()
+<<<<<<< HEAD
                 ->afterStateUpdated(static function (Set $set, $state): void {
 <<<<<<< HEAD
 <<<<<<< .merge_file_jbdpiP
@@ -38,6 +39,13 @@ final class CategoryFormSchema
 =======
                     $set('slug', Str::slug((string) $state));
 >>>>>>> .merge_file_d8luKX
+>>>>>>> laraxot/dev
+=======
+                ->afterStateUpdated(static function (Set $set, mixed $state): void {
+                    if (! is_string($state)) {
+                        return;
+                    }
+                    $set('slug', Str::slug($state));
 >>>>>>> laraxot/dev
                 }),
             TextInput::make('slug')
@@ -51,6 +59,7 @@ final class CategoryFormSchema
                 ->maxLength(2048),
             SpatieMediaLibraryFileUpload::make('image')
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_jbdpiP
                 ->enableOpen()
                 ->enableDownload()
@@ -64,6 +73,10 @@ final class CategoryFormSchema
                 ->enableOpen()
                 ->enableDownload()
 >>>>>>> .merge_file_d8luKX
+>>>>>>> laraxot/dev
+=======
+                ->openable()
+                ->downloadable()
 >>>>>>> laraxot/dev
                 ->columnSpanFull()
                 ->collection('category')

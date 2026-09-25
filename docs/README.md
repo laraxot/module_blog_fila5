@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_qLAv1l
 =======
 # Blog
@@ -37,6 +38,8 @@ Core module for the FixCity Platform.
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_JJfJoa
+=======
+>>>>>>> laraxot/dev
 ---
 title: "Blog Module Documentation"
 type: documentation
@@ -183,6 +186,7 @@ Sistema di gestione crediti/transazioni utente. File mantenuti per riferimento s
 - [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
 - [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
 - [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout
+<<<<<<< HEAD
 <<<<<<< .merge_file_qLAv1l
 =======
 # Blog
@@ -221,4 +225,6 @@ Core module for the FixCity Platform.
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_JJfJoa
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev

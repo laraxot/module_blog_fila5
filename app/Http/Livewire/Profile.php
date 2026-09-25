@@ -9,6 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_xwmDHJ
 =======
 use Filament\Schemas\Schema;
@@ -21,6 +22,8 @@ use Modules\Xot\Actions\GetViewAction;
 use Modules\Xot\Filament\Pages\XotBasePage;
 =======
 >>>>>>> .merge_file_oFigfy
+=======
+>>>>>>> laraxot/dev
 use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
@@ -29,6 +32,7 @@ use Modules\Blog\Models\Profile as BlogProfile;
 use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
+<<<<<<< HEAD
 <<<<<<< .merge_file_xwmDHJ
 =======
 use Filament\Schemas\Schema;
@@ -42,10 +46,13 @@ use Modules\Xot\Filament\Pages\XotBasePage;
 =======
 >>>>>>> .merge_file_oFigfy
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 
 /**
  * @property Schema $form
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_xwmDHJ
 class Profile extends Page implements HasForms
@@ -56,6 +63,9 @@ class Profile extends XotBasePage implements HasForms
 =======
 class Profile extends Page implements HasForms
 >>>>>>> .merge_file_oFigfy
+>>>>>>> laraxot/dev
+=======
+class Profile extends Page implements HasForms
 >>>>>>> laraxot/dev
 {
     use InteractsWithForms;
@@ -68,6 +78,7 @@ class Profile extends Page implements HasForms
     public array $data = [];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_xwmDHJ
     public BlogProfile $model;
 =======
@@ -78,6 +89,9 @@ class Profile extends Page implements HasForms
     public BlogProfile $model;
 >>>>>>> .merge_file_oFigfy
 >>>>>>> laraxot/dev
+=======
+    public BlogProfile $model;
+>>>>>>> laraxot/dev
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
@@ -87,6 +101,7 @@ class Profile extends Page implements HasForms
         BlogProfile $model,
         string $tpl = 'v1',
     ): void {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_xwmDHJ
         $this->model = $model;
@@ -105,6 +120,11 @@ class Profile extends Page implements HasForms
         $this->tpl = $tpl;
         $this->data = self::buildFormData($this->model);
 >>>>>>> .merge_file_oFigfy
+>>>>>>> laraxot/dev
+=======
+        $this->model = $model;
+        $this->tpl = $tpl;
+        $this->data = self::buildFormData($this->model);
 >>>>>>> laraxot/dev
 
         // $this->data['photo_profile'] = $this->model->getFirstMedia('photo_profile');
@@ -122,13 +142,17 @@ class Profile extends Page implements HasForms
         $view = app(GetViewAction::class)->execute($this->tpl);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_xwmDHJ
 =======
+=======
+>>>>>>> laraxot/dev
         $viewParams = [
             'view' => $view,
         ];
 
         return view((string) $view, $viewParams);
+<<<<<<< HEAD
 =======
 >>>>>>> .merge_file_oFigfy
         $parameters = [
@@ -145,6 +169,8 @@ class Profile extends Page implements HasForms
         return view((string) $view, $viewParams);
 =======
 >>>>>>> .merge_file_oFigfy
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     }
 
@@ -179,6 +205,7 @@ class Profile extends Page implements HasForms
         $data = $this->form->getState();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_xwmDHJ
         $this->model->update($data);
 =======
@@ -188,6 +215,9 @@ class Profile extends Page implements HasForms
 =======
         $this->model->update($data);
 >>>>>>> .merge_file_oFigfy
+>>>>>>> laraxot/dev
+=======
+        $this->model->update($data);
 >>>>>>> laraxot/dev
 
         // $article_aggregate = ArticleAggregate::retrieve($this->article->id);

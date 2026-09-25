@@ -12,8 +12,11 @@ use Modules\Xot\Actions\GetViewAction;
 class Chunk extends Component
 {
     /** @var array<int, string> */
+<<<<<<< HEAD
     /** @var array<int, mixed> */
     /** @var array<int, mixed> */
+=======
+>>>>>>> laraxot/dev
     public array $postIds;
 
     public string $tpl = 'v1';
@@ -22,7 +25,11 @@ class Chunk extends Component
     {
         $articles = Article::whereIn('id', $this->postIds)->get()->keyBy('id');
 
+<<<<<<< HEAD
         $orderedPosts = collect($this->postIds)->map(static fn ($id) => (is_array($articles) ? $articles[$id] : null));
+=======
+        $orderedPosts = collect($this->postIds)->map(fn (string $id): ?Article => $articles->get($id));
+>>>>>>> laraxot/dev
 
         /**
          * @phpstan-var view-string
@@ -30,13 +37,17 @@ class Chunk extends Component
         $view = app(GetViewAction::class)->execute($this->tpl);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_OpLBY8
 =======
+=======
+>>>>>>> laraxot/dev
         $viewParams = [
             'articles' => $orderedPosts,
         ];
 
         return view((string) $view, $viewParams);
+<<<<<<< HEAD
 =======
 >>>>>>> .merge_file_vFXEWe
         $parameters = [
@@ -53,6 +64,8 @@ class Chunk extends Component
         return view((string) $view, $viewParams);
 =======
 >>>>>>> .merge_file_vFXEWe
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     }
 

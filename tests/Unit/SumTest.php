@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_jfcZ09
 =======
 use PHPUnit\Framework\Assert;
@@ -29,20 +30,28 @@ use PHPUnit\Framework\Assert;
 =======
 >>>>>>> .merge_file_e5WAgq
 >>>>>>> laraxot/dev
+=======
+use PHPUnit\Framework\Assert;
+
+>>>>>>> laraxot/dev
 function sum(int|float $a, int|float $b): int|float
 {
     return $a + $b;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_jfcZ09
 test('sum', function (): void {
     Assert::assertSame(3, sum(1, 2));
 =======
+=======
+>>>>>>> laraxot/dev
 it('sum', function (): void {
     $result = sum(1, 2);
 
     Assert::assertSame(3, $result);
+<<<<<<< HEAD
 =======
 it('sum', function (): void {
     $result = sum(1, 2);
@@ -52,5 +61,7 @@ it('sum', function (): void {
 test('sum', function (): void {
     Assert::assertSame(3, sum(1, 2));
 >>>>>>> .merge_file_e5WAgq
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 });

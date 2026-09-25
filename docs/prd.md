@@ -323,6 +323,7 @@ graph TD
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_FMYaQk
 - Laravel 12+ required
 =======
@@ -332,6 +333,9 @@ graph TD
 =======
 - Laravel 12+ required
 >>>>>>> .merge_file_oufjTY
+>>>>>>> laraxot/dev
+=======
+- Laravel 12+ required
 >>>>>>> laraxot/dev
 - Filament v5 compatibility
 - Database: MySQL 8.0+
@@ -539,6 +543,7 @@ CREATE TABLE blog_revisions (
 | Design Lead | | | |
 | Stakeholder | | | |
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_FMYaQk
 ||||||| parent of 43a44cd (.)
 =======
@@ -546,4 +551,7 @@ CREATE TABLE blog_revisions (
 =======
 ||||||| parent of 43a44cd (.)
 >>>>>>> .merge_file_oufjTY
+>>>>>>> laraxot/dev
+=======
+||||||| parent of 43a44cd (.)
 >>>>>>> laraxot/dev

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_efXeGR
 =======
 =======
@@ -12,6 +13,8 @@
 =======
 >>>>>>> .merge_file_bHPHZD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 @props([
     'tpl',
     'version' => 'v1',
@@ -19,6 +22,7 @@
 ])
 
 <!-- Leader Board Starts -->
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_efXeGR
 =======
@@ -31,6 +35,11 @@
 </div> --}}
 =======
 >>>>>>> .merge_file_bHPHZD
+>>>>>>> laraxot/dev
+=======
+{{-- <div class="row">
+    <h2 class="text-center leader-title mb40 wow fadeInDown" style="font-size: 40px;">{{ $title }}</h2>
+</div> --}}
 >>>>>>> laraxot/dev
 <div class="row gape">
     <div class="col-xl-12">
@@ -49,20 +58,26 @@
                     <a class="nav-link f18" data-bs-toggle="tab" href="#menu1">Articoli con più scommesse</a>
                 </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_efXeGR
 =======
 =======
 >>>>>>> .merge_file_bHPHZD
+=======
+>>>>>>> laraxot/dev
                 {{-- <li class="nav-item">
                     <a class="nav-link f18" data-bs-toggle="tab" href="#menu2">Month</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link f18" data-bs-toggle="tab" href="#menu3">All</a>
                 </li> --}}
+<<<<<<< HEAD
 <<<<<<< .merge_file_efXeGR
 =======
 =======
 >>>>>>> .merge_file_bHPHZD
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
             </ul>
             <!-- Tab panes -->
@@ -75,8 +90,11 @@
                 <div id="menu1" class="container tab-pane fade"><br>
                     @include('blog::components.blocks.leaderboard.bootstrap_version.top_bet_articles')
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_efXeGR
 =======
+=======
+>>>>>>> laraxot/dev
                     {{-- <a href="leaderboard_details.html" class="userpart__userlist">
                         <ul>
                             <li class="d-flex align-items-center justify-content-between mb-1">
@@ -214,6 +232,7 @@
                             </li>
                         </ul>
                     </a> --}}
+<<<<<<< HEAD
 >>>>>>> .merge_file_bHPHZD
                 </div>
                 <div id="menu2" class="container tab-pane fade"><br>
@@ -502,6 +521,8 @@
                         </ul>
                     </a> --}}
 <<<<<<< .merge_file_efXeGR
+=======
+>>>>>>> laraxot/dev
                 </div>
                 <div id="menu2" class="container tab-pane fade"><br>
                     {{-- <a href="leaderboard_details.html" class="userpart__userlist">
@@ -780,6 +801,7 @@
                             </li>
                         </ul>
                     </a> --}}
+<<<<<<< HEAD
 =======
 =======
                 </div>
@@ -788,13 +810,19 @@
                 <div id="menu3" class="container tab-pane fade"><br>
 >>>>>>> .merge_file_bHPHZD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
                 </div>
             </div>
         </div>
     </div>
 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Leader Board Ends -->
+=======
+<!-- Leader Board Ends -->
+>>>>>>> laraxot/dev
 =======
 <!-- Leader Board Ends -->
 >>>>>>> laraxot/dev

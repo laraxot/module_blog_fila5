@@ -9,6 +9,7 @@ use Modules\Blog\Filament\Resources\ArticleResource\Schemas\ArticleFormSchema;
 use Modules\Blog\Models\Article;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_zqbYmI
 use Webmozart\Assert\Assert;
 =======
@@ -16,6 +17,9 @@ use Webmozart\Assert\Assert;
 =======
 use Webmozart\Assert\Assert;
 >>>>>>> .merge_file_zyamWu
+>>>>>>> laraxot/dev
+=======
+use Webmozart\Assert\Assert;
 >>>>>>> laraxot/dev
 
 class ArticleResource extends XotBaseResource
@@ -28,7 +32,11 @@ class ArticleResource extends XotBaseResource
     // protected static \BackedEnum|string|null $navigationIcon = 'icon-article';
 
     /**
+<<<<<<< HEAD
      * @return array<int, string>
+=======
+     * @return list<string>
+>>>>>>> laraxot/dev
      */
     public static function getTranslatableLocales(): array
     {
@@ -43,15 +51,22 @@ class ArticleResource extends XotBaseResource
         return ArticleFormSchema::build();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_zqbYmI
 =======
 =======
 >>>>>>> .merge_file_zyamWu
+=======
+>>>>>>> laraxot/dev
 
     /**
      * @return array<int|string, Component>
      */
+<<<<<<< HEAD
     public static function getFormSchema(): array
+=======
+    public function getFormSchemaOld(): array
+>>>>>>> laraxot/dev
     {
         /** @var array<int|string, Component> $fields */
         $fields = static::getFormFields();
@@ -59,9 +74,12 @@ class ArticleResource extends XotBaseResource
 
         return $fields;
     }
+<<<<<<< HEAD
 <<<<<<< .merge_file_zqbYmI
 =======
 =======
 >>>>>>> .merge_file_zyamWu
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 }

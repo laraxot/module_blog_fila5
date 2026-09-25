@@ -10,6 +10,7 @@ updated: 2026-05-11
 
 Concetti specifici del modulo Blog. Carica on-demand via `qmd search` o consulta il [trigger map root](/docs/wiki/rules/00-TRIGGER_MAP.md).
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_1dBuWB
 =======
 =======
@@ -22,4 +23,6 @@ Concetti specifici del modulo Blog. Carica on-demand via `qmd search` o consulta
 =======
 =======
 >>>>>>> .merge_file_JJmDOC
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev

@@ -10,6 +10,10 @@ use Filament\Forms\Components\Textarea;
 use Illuminate\Support\Facades\File;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Modules\Blog\Actions\Article\ImportArticlesFromByJsonTextAction;
+<<<<<<< HEAD
+=======
+use Webmozart\Assert\Assert;
+>>>>>>> laraxot/dev
 
 final class ArticleImportActionFactory
 {
@@ -30,6 +34,7 @@ final class ArticleImportActionFactory
             ->tooltip('Import')
             ->icon('heroicon-o-folder-open')
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_GCyTbt
             ->action(static fn (array $data) => app(ImportArticlesFromByJsonTextAction::class)->execute((string) $data['fileContent']));
 =======
@@ -43,6 +48,12 @@ final class ArticleImportActionFactory
 =======
             ->action(static fn (array $data) => app(ImportArticlesFromByJsonTextAction::class)->execute((string) $data['fileContent']));
 >>>>>>> .merge_file_4SXwLo
+>>>>>>> laraxot/dev
+=======
+            ->action(static function (array $data): void {
+                Assert::string($fileContent = $data['fileContent'] ?? null, 'File content must be a string');
+                app(ImportArticlesFromByJsonTextAction::class)->execute($fileContent);
+            });
 >>>>>>> laraxot/dev
     }
 }

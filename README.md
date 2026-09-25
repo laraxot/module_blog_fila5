@@ -1,6 +1,7 @@
 # 📰 Blog
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_h9bb4e
 =======
 [![Stars](https://img.shields.io/github/stars/laraxot/module_blog_fila5?style=plastic&color=yellow)]()
@@ -47,6 +48,8 @@ In un mondo dove la complessità è l'avere, abbiamo scritto codice semplice. Qu
 ## 📖 Documentazione
 =======
 >>>>>>> .merge_file_nVYOxb
+=======
+>>>>>>> laraxot/dev
 [![Domain-Blog](https://img.shields.io/badge/Domain-Editorial-6D4C41.svg)](#)
 [![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
 [![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
@@ -91,6 +94,7 @@ Stack frontoffice: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filamen
 ---
 
 ## Documentazione
+<<<<<<< HEAD
 <<<<<<< .merge_file_h9bb4e
 =======
 [![Stars](https://img.shields.io/github/stars/laraxot/module_blog_fila5?style=plastic&color=yellow)]()
@@ -138,12 +142,15 @@ In un mondo dove la complessità è l'avere, abbiamo scritto codice semplice. Qu
 =======
 >>>>>>> .merge_file_nVYOxb
 >>>>>>> laraxot/dev
+=======
+>>>>>>> laraxot/dev
 
 | Lingua | Link |
 |--------|------|
 | 🇮🇹 Presentazione | Questo file (`README.md`) |
 | 🇬🇧 Business card | [docs/readme-en.md](./docs/readme-en.md) |
 | 📚 Wiki tecnica | [./docs/wiki/](./docs/) |
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_h9bb4e
 =======
@@ -164,10 +171,13 @@ Importa, installa, configura. Il resto ci penseremo noi.
 **Modulo** `Blog` · **Laraxot** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_nVYOxb
+=======
+>>>>>>> laraxot/dev
 
 ---
 
 **Modulo** `blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
+<<<<<<< HEAD
 <<<<<<< .merge_file_h9bb4e
 =======
 | 🎯 Esempi | [docs/examples/](./docs/examples/) |
@@ -187,4 +197,6 @@ Importa, installa, configura. Il resto ci penseremo noi.
 **Modulo** `Blog` · **Laraxot** · PHPStan 10 · Filament 5
 =======
 >>>>>>> .merge_file_nVYOxb
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
