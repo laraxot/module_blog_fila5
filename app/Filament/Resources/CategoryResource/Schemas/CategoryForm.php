@@ -28,7 +28,11 @@ class CategoryForm extends XotBaseResourceForm
                 ->maxLength(2048)
                 ->reactive()
                 ->unique()
+<<<<<<< HEAD
                 ->afterStateUpdated(function (Set $set, mixed $state): void {
+=======
+                ->afterStateUpdated(function (Set $set, $state): void {
+>>>>>>> laraxot/dev
                     $set('slug', Str::slug(is_string($state) ? $state : ''));
                 }),
             TextInput::make('slug')

@@ -9,7 +9,10 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
 use Modules\Blog\Filament\Resources\ArticleResource;
+<<<<<<< HEAD
 use Modules\Blog\Models\Article;
+=======
+>>>>>>> laraxot/dev
 // use LaraZeus\SpatieTranslatable\Actions\LocaleSwitcher;
 // use LaraZeus\SpatieTranslatable\Resources\Pages\EditRecord\Concerns\Translatable;
 use Modules\Rating\Filament\Widgets\StatsOverview;
@@ -40,8 +43,16 @@ class ViewArticle extends XotBaseViewRecord
                     DateTimePicker::make('closed_at')
                         ->native(false),
                 ])
+<<<<<<< HEAD
                 ->action(static function (array $data, Article $record): void {
                     $record->update($data);
+=======
+                ->action(function (array $data, $record): void {
+                    Assert::notNull($record, 'Record cannot be null');
+                    if (is_object($record) && method_exists($record, 'update')) {
+                        $record->update($data);
+                    }
+>>>>>>> laraxot/dev
                 }),
             /*
             Actions\Action::make('translate')
