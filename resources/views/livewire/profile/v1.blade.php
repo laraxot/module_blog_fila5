@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
@@ -61,6 +62,8 @@
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 <section>
     <div class="container mx-auto sm:px-4 mb50 padding-top padding-bottoms">
       <!-- Profile heading name photo start-->
@@ -300,7 +303,11 @@
       <!-- Profile heading name photo end-->
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
   </section>
 =======
   </section>
 >>>>>>> laraxot/dev
+=======
+  </section>
+>>>>>>> b591d4e (Lint)

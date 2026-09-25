@@ -1,6 +1,7 @@
 # LLM Wiki (module)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [![Module](https://img.shields.io/badge/Module-LLM Wiki (module)-8B0000.svg)]()
 [![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge)](https://laravel.com/)](https://laravel.com/)
 [![Filament](https://img.shields.io/badge/Filament-5-ffab00?style=for-the-badge)](https://filamentphp.com/)](https://filamentphp.com/)
@@ -34,6 +35,8 @@ Core module for the FixCity Platform.
 
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
+=======
+>>>>>>> b591d4e (Lint)
 This folder is the module's LLM wiki (docs/wiki). Use it to store synthesized, curated docs optimized for LLM ingestion.
 
 Structure:
@@ -48,4 +51,7 @@ Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sin
 # LLM Wiki
 
 Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sintesi, convenzioni e pagine curate.
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)

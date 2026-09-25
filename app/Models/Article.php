@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksExceptAction;
 use Modules\Blog\Actions\Article\FilterArticleContentBlocksOnlyAction;
 use Modules\Blog\Actions\Article\FormatArticleHumanReadTimeAction;
@@ -23,7 +26,10 @@ use Modules\Blog\Actions\Article\ResolveArticleThumbnailAction;
 use Modules\Blog\Actions\Article\ResolveArticleTranslationAction;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Concerns\ArticleFeedable;
+<<<<<<< HEAD
 use Modules\Blog\Models\Concerns\ArticleQueryScopes;
+=======
+>>>>>>> b591d4e (Lint)
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
@@ -33,6 +39,7 @@ use Modules\Rating\Models\Rating;
 use Modules\Rating\Models\RatingMorph;
 use Modules\Rating\Models\Traits\HasRating;
 use Modules\Xot\Contracts\ProfileContract;
+<<<<<<< HEAD
 =======
 use Modules\Blog\Models\Concerns\ArticleFeedable;
 use Modules\Blog\Models\Concerns\ArticleQueryScopes;
@@ -43,20 +50,30 @@ use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
 use Modules\Rating\Models\Traits\HasRating;
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Datas\XotData;
 use Parental\HasChildren;
 use Spatie\Feed\Feedable;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 =======
 >>>>>>> laraxot/dev
+=======
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+>>>>>>> b591d4e (Lint)
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
  * Modules\Blog\Models\Article.
  *
  * @property Profile|null                $author
@@ -241,6 +258,7 @@ use Spatie\Translatable\HasTranslations;
  *
  * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
  * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
+<<<<<<< HEAD
 =======
  * Blog article aggregate — scopes in {@see ArticleQueryScopes}, presentation in {@see ArticleDelegates}.
  *
@@ -256,13 +274,18 @@ use Spatie\Translatable\HasTranslations;
  * @property UserContract|null                     $user
  * @property array<int, array<string, mixed>>|null $content_blocks
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
  *
  * @mixin \Eloquent
  */
 class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
 {
     use ArticleFeedable;
+<<<<<<< HEAD
     use ArticleQueryScopes;
+=======
+>>>>>>> b591d4e (Lint)
     use HasChildren;
     use HasComments;
     use HasRating;
@@ -304,6 +327,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'category_id',
         'type',
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
         // 'is_closed', => closet_at
 
         /*
@@ -330,8 +356,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'read_time',
         'excerpt',
         */
+<<<<<<< HEAD
 =======
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
         'status',
         'status_display',
         'bet_end_date',
@@ -365,10 +394,14 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
 =======
         return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
 >>>>>>> laraxot/dev
+=======
+        return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
+>>>>>>> b591d4e (Lint)
     }
 
     /**
@@ -415,6 +448,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function user(): BelongsTo
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $userClass = XotData::make()->getUserClass();
 
         return $this->belongsTo($userClass);
@@ -423,6 +457,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
         return $this->belongsTo($userClassModel);
 >>>>>>> laraxot/dev
+=======
+        $userClass = XotData::make()->getUserClass();
+
+        return $this->belongsTo($userClass);
+>>>>>>> b591d4e (Lint)
     }
 
     /** @return BelongsTo<Category, $this> */
@@ -440,19 +479,27 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getFormattedDate(): string
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return app(FormatArticlePublishedDateAction::class)->execute($this);
 =======
         return ArticleDelegates::formattedDate($this);
 >>>>>>> laraxot/dev
+=======
+        return app(FormatArticlePublishedDateAction::class)->execute($this);
+>>>>>>> b591d4e (Lint)
     }
 
     public function getThumbnail(): ?string
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return app(ResolveArticleThumbnailAction::class)->execute($this);
 =======
         return ArticleDelegates::thumbnail($this);
 >>>>>>> laraxot/dev
+=======
+        return app(ResolveArticleThumbnailAction::class)->execute($this);
+>>>>>>> b591d4e (Lint)
     }
 
     /**
@@ -465,15 +512,34 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
                 unset($value);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
 =======
                 return ArticleDelegates::humanReadTime($attributes);
 >>>>>>> laraxot/dev
+=======
+                return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
+>>>>>>> b591d4e (Lint)
             },
         );
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Scope a query to only include articles different from current article.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $currentArticle): EloquentBuilder
+    {
+        return $query->where('id', '!=', $currentArticle);
+    }
+
+    /**
+>>>>>>> b591d4e (Lint)
      * The author that belong to the article.
      *
      * @return BelongsTo<Profile, $this>
@@ -495,6 +561,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getMainImage(): string
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
         return app(ResolveArticleMainImageUrlAction::class)->execute($this);
     }
 
@@ -510,11 +579,14 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
     */
 
+<<<<<<< HEAD
 =======
         return ArticleDelegates::mainImageUrl($this);
     }
 
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     public function getUuidAttribute(?string $value): string
     {
         if (null !== $value && '' !== $value) {
@@ -531,6 +603,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
     // public function getTimeLeft(): string
     // {
     //     $time = $this->closed_at;
@@ -567,6 +642,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //     }
     //     return 'slug';
     // }
+<<<<<<< HEAD
 =======
     public function getTimeLeftForHumans(): ?string
     {
@@ -574,6 +650,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     /**
      * Get the path key to the item for the frontend only.
      */
@@ -590,10 +668,14 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getOnlyContentBlocks(array $nameBlocks): array
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
 =======
         return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
 >>>>>>> laraxot/dev
+=======
+        return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
+>>>>>>> b591d4e (Lint)
     }
 
     /**
@@ -604,10 +686,14 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     public function getExceptContentBlocks(array $nameBlocks): array
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
         return app(FilterArticleContentBlocksExceptAction::class)->execute($this, $nameBlocks);
     }
 
     /**
+<<<<<<< HEAD
      * This string will be used in notifications on what a new comment
      * was made.
 =======
@@ -617,6 +703,117 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /**
      * This string will be used in notifications on what a new comment was made.
 >>>>>>> laraxot/dev
+=======
+     * Scope a query to only include articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeArticle(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->where('author_id', $id);
+    }
+
+    /**
+     * Scope a query to only include published articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopePublished(EloquentBuilder $query): EloquentBuilder
+    {
+        // return $query->where('status', 'published');
+        // return $query->currentStatus('published');
+        return $query
+            ->whereNotNull('published_at');
+    }
+
+    /**
+     * Scope a query to only include show on homepage articles.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeShowHomepage(EloquentBuilder $query): EloquentBuilder
+    {
+        return $query->where('show_on_homepage', 1);
+    }
+
+    /**
+     * Scope a query to only include posted articles until today.
+     *
+     * @param EloquentBuilder<Article> $query
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder
+    {
+        return $query->whereDate('published_at', '<=', Carbon::today()->toDateString());
+    }
+
+    /**
+     * Scope a query to only include articles with a specified category.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the category
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeCategory(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->where('category_id', $id);
+    }
+
+    /**
+     * Scope a query to only include articles that belongs to an author.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $profileId The id of the author
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeAuthor(EloquentBuilder $query, string $profileId): EloquentBuilder
+    {
+        return $query->where('author_id', $profileId);
+    }
+
+    /**
+     * Scope a query to only include articles with a specified tag.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $id    The id of the tag
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
+    {
+        return $query->whereHas('tags', static function ($q) use ($id): void {
+            $q->where('id', $id);
+        });
+    }
+
+    /**
+     * Scope a query to only include articles which contains searching words.
+     *
+     * @param EloquentBuilder<Article> $query
+     * @param string                   $searching The searching words
+     *
+     * @return EloquentBuilder<Article>
+     */
+    public function scopeSearch(EloquentBuilder $query, string $searching): EloquentBuilder
+    {
+        return $query->where('title', 'LIKE', "%{$searching}%")
+            ->orWhere('content', 'LIKE', "%{$searching}%")
+            ->orWhere('excerpt', 'LIKE', "%{$searching}%");
+    }
+
+    /**
+     * This string will be used in notifications on what a new comment
+     * was made.
+>>>>>>> b591d4e (Lint)
      */
     public function commentableName(): string
     {
@@ -659,6 +856,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
     // /**
     //  * Get the tags of the article
     //  *
@@ -669,8 +869,11 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     //    return $this->belongsToMany(Tag::class);
     // }
 
+<<<<<<< HEAD
 =======
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     /**
      * @return Attribute<string, never>
      */
@@ -681,10 +884,14 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
                 unset($value);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
 =======
                 return ArticleDelegates::mainImage($attributes);
 >>>>>>> laraxot/dev
+=======
+                return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
+>>>>>>> b591d4e (Lint)
             },
         );
     }

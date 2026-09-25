@@ -1,6 +1,7 @@
 # Modelli del Modulo Blog
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [![Module](https://img.shields.io/badge/Module-Modelli del Modulo Blog-8B0000.svg)]()
 [![Laravel](https://img.shields.io/badge/Laravel-13-red?style=for-the-badge)](https://laravel.com/)](https://laravel.com/)
 [![Filament](https://img.shields.io/badge/Filament-5-ffab00?style=for-the-badge)](https://filamentphp.com/)](https://filamentphp.com/)
@@ -34,6 +35,8 @@
 
 **Modulo** `Blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
 =======
+=======
+>>>>>>> b591d4e (Lint)
 ## Modelli Attivi
 
 ### Article
@@ -209,4 +212,7 @@ class ModelName extends BaseModel
 > **KISS**: Logica semplice, relazioni chiare  
 > **YAGNI**: Disabilitare ciò che non serve
 
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)

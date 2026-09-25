@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 @php
 // Blog Blade view — see Modules/Blog/docs/wiki.
@@ -56,6 +57,8 @@
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 {-- Blog Blade — i18n via LangServiceProvider; see docs/wiki. --}
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 {{--
     link: https://flowrift.com/c/blog/cYo4a?view=code
 --}}

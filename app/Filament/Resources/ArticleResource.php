@@ -9,9 +9,13 @@ use Modules\Blog\Filament\Resources\ArticleResource\Schemas\ArticleFormSchema;
 use Modules\Blog\Models\Article;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 use Webmozart\Assert\Assert;
 >>>>>>> laraxot/dev
+=======
+use Webmozart\Assert\Assert;
+>>>>>>> b591d4e (Lint)
 
 class ArticleResource extends XotBaseResource
 {
@@ -38,7 +42,10 @@ class ArticleResource extends XotBaseResource
         return ArticleFormSchema::build();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b591d4e (Lint)
 
     /**
      * @return array<int|string, Component>
@@ -51,5 +58,8 @@ class ArticleResource extends XotBaseResource
 
         return $fields;
     }
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 }

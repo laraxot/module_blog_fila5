@@ -39,7 +39,10 @@ class CategoryResource extends XotBaseResource
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b591d4e (Lint)
     /**
      * @return array<string|int, Component>
      */
@@ -52,7 +55,10 @@ class CategoryResource extends XotBaseResource
         return $fields;
     }
 
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     public static function getPages(): array
     {
         return [

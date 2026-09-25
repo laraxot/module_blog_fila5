@@ -1,6 +1,7 @@
 # 📰 Blog
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [![Stars](https://img.shields.io/github/stars/laraxot/module_blog_fila5?style=plastic&color=yellow)]()
 [![Forks](https://img.shields.io/github/forks/laraxot/module_blog_fila5?style=plastic&color=green)]()
 [![Issues](https://img.shields.io/github/issues/laraxot/module_blog_fila5?style=plastic&color=red)]()
@@ -44,6 +45,8 @@ In un mondo dove la complessità è l'avere, abbiamo scritto codice semplice. Qu
 
 ## 📖 Documentazione
 =======
+=======
+>>>>>>> b591d4e (Lint)
 [![Domain-Blog](https://img.shields.io/badge/Domain-Editorial-6D4C41.svg)](#)
 [![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
 [![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
@@ -88,13 +91,17 @@ Stack frontoffice: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filamen
 ---
 
 ## Documentazione
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
 
 | Lingua | Link |
 |--------|------|
 | 🇮🇹 Presentazione | Questo file (`README.md`) |
 | 🇬🇧 Business card | [docs/readme-en.md](./docs/readme-en.md) |
 | 📚 Wiki tecnica | [./docs/wiki/](./docs/) |
+<<<<<<< HEAD
 <<<<<<< HEAD
 | 🎯 Esempi | [docs/examples/](./docs/examples/) |
 
@@ -112,8 +119,13 @@ Importa, installa, configura. Il resto ci penseremo noi.
 
 **Modulo** `Blog` · **Laraxot** · PHPStan 10 · Filament 5
 =======
+=======
+>>>>>>> b591d4e (Lint)
 
 ---
 
 **Modulo** `blog` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)

@@ -24,10 +24,13 @@ class ArticleImportSchedule extends Data
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_rxpH4m
 =======
 =======
 >>>>>>> .merge_file_p3XimN
+=======
+>>>>>>> b591d4e (Lint)
 class ArticleImportScores extends Data
 {
     public function __construct(
@@ -56,10 +59,14 @@ class ArticleImportMetrics extends Data
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_rxpH4m
 =======
 =======
 >>>>>>> .merge_file_p3XimN
+=======
+=======
+>>>>>>> b591d4e (Lint)
 >>>>>>> laraxot/dev
 class ArticleImportIdentity extends Data
 {

@@ -11,6 +11,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Modules\Xot\Filament\Resources\RelationManagers\XotBaseRelationManager;
@@ -27,6 +28,8 @@ class RatingsRelationManager extends XotBaseRelationManager
                 ->maxLength(255),
         ];
 =======
+=======
+>>>>>>> b591d4e (Lint)
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
@@ -44,7 +47,10 @@ class RatingsRelationManager extends RelationManager
                     ->required()
                     ->maxLength(255),
             ]);
+<<<<<<< HEAD
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     }
 
     public function table(Table $table): Table

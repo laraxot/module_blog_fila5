@@ -14,10 +14,14 @@ class TagSeeder extends Seeder
 {
     /** @var list<array{name: array{it: string, en: string}, type: string}> */
 <<<<<<< HEAD
+<<<<<<< HEAD
     private const array TAGS = [
 =======
     private const TAGS = [
 >>>>>>> laraxot/dev
+=======
+    private const TAGS = [
+>>>>>>> b591d4e (Lint)
         [
             'name' => ['it' => 'Mercati', 'en' => 'Markets'],
             'type' => 'predict',

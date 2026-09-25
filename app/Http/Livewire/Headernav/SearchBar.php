@@ -29,11 +29,15 @@ class SearchBar extends Component
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b591d4e (Lint)
         $viewParams = [
             'results' => $results,
         ];
 
         return view((string) $view, $viewParams);
+<<<<<<< HEAD
 =======
         $parameters = [
             'results' => $results,
@@ -41,5 +45,7 @@ class SearchBar extends Component
 
         return view((string) $view, $parameters);
 >>>>>>> laraxot/dev
+=======
+>>>>>>> b591d4e (Lint)
     }
 }
