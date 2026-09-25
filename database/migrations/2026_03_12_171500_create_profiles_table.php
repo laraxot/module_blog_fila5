@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Profile;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
@@ -98,7 +99,7 @@ return new class extends XotBaseMigration {
             ->table($this->getTable())
             ->whereNull('uuid')
             ->orderBy('id')
-            ->chunkById(100, function ($rows): void {
+            ->chunkById(100, function (Collection $rows): void {
                 foreach ($rows as $row) {
                     if (! is_object($row) || ! isset($row->id)) {
                         continue;
