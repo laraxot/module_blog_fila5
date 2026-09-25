@@ -15,6 +15,7 @@ use Modules\Xot\Actions\GetViewAction;
 class Lists extends Component
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_Crp7R3
     public const ITEMS_PER_PAGE = 10;
 =======
@@ -24,6 +25,9 @@ class Lists extends Component
 =======
     public const ITEMS_PER_PAGE = 10;
 >>>>>>> .merge_file_QUYO1p
+>>>>>>> laraxot/dev
+=======
+    public const int ITEMS_PER_PAGE = 10;
 >>>>>>> laraxot/dev
 
     // All categories
@@ -74,13 +78,17 @@ class Lists extends Component
         $view = app(GetViewAction::class)->execute($this->tpl);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_Crp7R3
 =======
+=======
+>>>>>>> laraxot/dev
         $viewParams = [
             'activeCategory' => $this->category,
         ];
 
         return view((string) $view, $viewParams);
+<<<<<<< HEAD
 =======
 >>>>>>> .merge_file_QUYO1p
         $parameters = [
@@ -97,6 +105,8 @@ class Lists extends Component
         return view((string) $view, $viewParams);
 =======
 >>>>>>> .merge_file_QUYO1p
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
     }
 

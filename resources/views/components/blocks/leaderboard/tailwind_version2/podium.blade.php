@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_6Lt8Tg
 =======
 =======
@@ -63,6 +64,8 @@
 =======
 =======
 >>>>>>> .merge_file_0k0emi
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 <a
 href="#"

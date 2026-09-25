@@ -17,6 +17,7 @@ class TextWidgetForm extends XotBaseResourceForm
      * @return array<int|string, SchemaComponent>
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_2LLuVF
     public static function getFormSchema(): array
 =======
@@ -26,6 +27,9 @@ class TextWidgetForm extends XotBaseResourceForm
 =======
     public static function getFormSchema(): array
 >>>>>>> .merge_file_2C1sEE
+>>>>>>> laraxot/dev
+=======
+    public function getFormSchema(): array
 >>>>>>> laraxot/dev
     {
         return [
@@ -38,6 +42,7 @@ class TextWidgetForm extends XotBaseResourceForm
                 // ->maxSize(5000)
                 // ->multiple()
                 // ->enableReordering()
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< .merge_file_2LLuVF
                 ->enableOpen()
@@ -52,6 +57,10 @@ class TextWidgetForm extends XotBaseResourceForm
                 ->enableOpen()
                 ->enableDownload()
 >>>>>>> .merge_file_2C1sEE
+>>>>>>> laraxot/dev
+=======
+                ->openable()
+                ->downloadable()
 >>>>>>> laraxot/dev
                 ->columnSpanFull()
                 // ->collection('avatars')

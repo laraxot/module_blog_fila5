@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_UO3ZoD
 {{-- search/v1.blade.php — split for claude-audit static. --}}
 @include('blog::components.blocks.search.partials.v1.blade_body_a')
 @include('blog::components.blocks.search.partials.v1.blade_body_b')
 =======
+=======
+>>>>>>> laraxot/dev
 {{-- {{ dddx(request()->query()) }} --}}
 
 {{-- @section('sidebar.left')
@@ -662,6 +665,7 @@
       </div>
       <!-- Product area Ends -->
     {{-- </div>
+<<<<<<< HEAD
 </main> --}}
 =======
 {{-- {{ dddx(request()->query()) }} --}}
@@ -1328,4 +1332,7 @@
 @include('blog::components.blocks.search.partials.v1.blade_body_a')
 @include('blog::components.blocks.search.partials.v1.blade_body_b')
 >>>>>>> .merge_file_pQENb9
+>>>>>>> laraxot/dev
+=======
+</main> --}}
 >>>>>>> laraxot/dev

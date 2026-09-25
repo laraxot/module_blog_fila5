@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
+<<<<<<< HEAD
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+=======
+>>>>>>> laraxot/dev
 use Filament\Schemas\Components\Component;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\CreateTextWidget;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages\EditTextWidget;
@@ -23,14 +26,18 @@ class TextWidgetResource extends XotBaseResource
     protected static string|\BackedEnum|null $navigationIcon = 'ui-widgets';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_51Px6N
 =======
 =======
 >>>>>>> .merge_file_8ZhCSX
+=======
+>>>>>>> laraxot/dev
     // protected static ?string $navigationGroup = 'Content';
     /**
      * @return array<string|int, Component>
      */
+<<<<<<< HEAD
     public static function getFormSchema(): array
     {
         return static::getFormFields();
@@ -86,6 +93,8 @@ class TextWidgetResource extends XotBaseResource
         ];
     }
 
+=======
+>>>>>>> laraxot/dev
     public static function getRelations(): array
     {
         return [

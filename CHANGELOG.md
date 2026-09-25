@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ## 1.0.0-dev.1 (2026-09-24)
 
@@ -10,6 +11,8 @@
 * PHPStan Blog, bmad story, docs/stories, second brain ([b9a2736](https://github.com/laraxot/module_blog_fila5/commit/b9a2736cbd588f7d5384d44b0932fef4209816bf))
 * phpstan l10 cast.string and cast.int errors ([c7bb03a](https://github.com/laraxot/module_blog_fila5/commit/c7bb03ab4504b2e7995436e13da51c5218da5e7a))
 
+>>>>>>> laraxot/dev
+=======
 >>>>>>> laraxot/dev
 # Changelog
 

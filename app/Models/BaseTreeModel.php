@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_DVP7u6
 <<<<<<< HEAD
 =======
@@ -16,6 +17,9 @@ use Illuminate\Database\Eloquent\Model;
 =======
 use Illuminate\Database\Eloquent\Model;
 >>>>>>> .merge_file_EvvrvF
+=======
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> laraxot/dev
 use Modules\Blog\Models\Concerns\HasPathByParentId;
 use Spatie\EloquentSortable\SortableTrait;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
@@ -40,6 +44,7 @@ abstract class BaseTreeModel extends BaseModel
         return 'cte_path';
     }
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_DVP7u6
 <<<<<<< HEAD
 =======
@@ -67,14 +72,27 @@ abstract class BaseTreeModel extends BaseModel
                             $this->save();
 >>>>>>> laraxot/dev
 >>>>>>> .merge_file_EvvrvF
+=======
+    public function makeChildOf(Model $parent): self // $parent is unused
+    {// if ($node->isSelfOrDescendantOf($this)) {
+        //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
+                    // }
+
+                    // Save the previous parent to be used when finishing.
+
+                    $this->save();
+>>>>>>> laraxot/dev
 
         return $this;
     }
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_DVP7u6
 >>>>>>> laraxot/dev
 =======
 >>>>>>> .merge_file_EvvrvF
+=======
+>>>>>>> laraxot/dev
     /**
      * Get the attributes that should be cast.
      *

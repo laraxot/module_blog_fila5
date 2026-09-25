@@ -14,6 +14,7 @@ class ProfileForm extends XotBaseResourceForm
      * @return array<int|string, SchemaComponent>
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_5MWDda
     public static function getFormSchema(): array
 =======
@@ -23,6 +24,9 @@ class ProfileForm extends XotBaseResourceForm
 =======
     public static function getFormSchema(): array
 >>>>>>> .merge_file_TlvMa7
+>>>>>>> laraxot/dev
+=======
+    public function getFormSchema(): array
 >>>>>>> laraxot/dev
     {
         return [

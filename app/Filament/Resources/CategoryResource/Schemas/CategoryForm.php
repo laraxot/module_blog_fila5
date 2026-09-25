@@ -21,6 +21,7 @@ class CategoryForm extends XotBaseResourceForm
      * @return array<int|string, SchemaComponent>
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_d1rRfd
     public static function getFormSchema(): array
 =======
@@ -31,6 +32,9 @@ class CategoryForm extends XotBaseResourceForm
     public static function getFormSchema(): array
 >>>>>>> .merge_file_rIuqUs
 >>>>>>> laraxot/dev
+=======
+    public function getFormSchema(): array
+>>>>>>> laraxot/dev
     {
         return [
             TextInput::make('title')
@@ -38,6 +42,7 @@ class CategoryForm extends XotBaseResourceForm
                 ->maxLength(2048)
                 ->reactive()
                 ->unique()
+<<<<<<< HEAD
                 ->afterStateUpdated(function (Set $set, $state): void {
 <<<<<<< HEAD
 <<<<<<< .merge_file_d1rRfd
@@ -49,6 +54,13 @@ class CategoryForm extends XotBaseResourceForm
 =======
                     $set('slug', Str::slug((string) $state));
 >>>>>>> .merge_file_rIuqUs
+>>>>>>> laraxot/dev
+=======
+                ->afterStateUpdated(function (Set $set, mixed $state): void {
+                    if (! is_string($state)) {
+                        return;
+                    }
+                    $set('slug', Str::slug($state));
 >>>>>>> laraxot/dev
                 }),
             TextInput::make('slug')
@@ -68,6 +80,7 @@ class CategoryForm extends XotBaseResourceForm
                 // ->multiple()
                 // ->enableReordering()
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_d1rRfd
                 ->enableOpen()
                 ->enableDownload()
@@ -81,6 +94,10 @@ class CategoryForm extends XotBaseResourceForm
                 ->enableOpen()
                 ->enableDownload()
 >>>>>>> .merge_file_rIuqUs
+>>>>>>> laraxot/dev
+=======
+                ->openable()
+                ->downloadable()
 >>>>>>> laraxot/dev
                 ->columnSpanFull()
                 ->collection('category')

@@ -1,6 +1,7 @@
 # LLM Wiki
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< .merge_file_7XBXyT
 Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sintesi, convenzioni e pagine curate.
 =======
@@ -72,4 +73,7 @@ Core module for the FixCity Platform.
 =======
 Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sintesi, convenzioni e pagine curate.
 >>>>>>> .merge_file_vIllei
+>>>>>>> laraxot/dev
+=======
+Questa cartella contiene pagine curate per l'uso con LLM (wiki). Mettere qui sintesi, convenzioni e pagine curate.
 >>>>>>> laraxot/dev
