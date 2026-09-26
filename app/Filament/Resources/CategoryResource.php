@@ -10,7 +10,6 @@ use Modules\Blog\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\ListCategories;
 use Modules\Blog\Filament\Resources\CategoryResource\Schemas\CategoryFormSchema;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Webmozart\Assert\Assert;
 
 class CategoryResource extends XotBaseResource
 {
