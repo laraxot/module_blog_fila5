@@ -39,7 +39,7 @@ class ViewArticle extends XotBaseViewRecord
                     DateTimePicker::make('closed_at')
                         ->native(false),
                 ])
-                ->action(function (array $data, $record): void {
+            ->action(function (array $data, mixed $record): void {
                     Assert::notNull($record, 'Record cannot be null');
                     if (is_object($record) && method_exists($record, 'update')) {
                         $record->update($data);
