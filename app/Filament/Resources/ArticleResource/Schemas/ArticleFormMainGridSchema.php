@@ -23,7 +23,7 @@ final class ArticleFormMainGridSchema
                 ->columnSpan(1)
                 ->required()
                 ->lazy()
-            ->afterStateUpdated(static function (mixed $set, mixed $get, mixed $state): void {
+                ->afterStateUpdated(static function (mixed $set, mixed $get, mixed $state): void {
                     Assert::isCallable($set, 'set must be callable');
                     Assert::isCallable($get, 'get must be callable');
 
