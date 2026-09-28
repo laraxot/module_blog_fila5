@@ -1,4 +1,7 @@
 ---
+qmd: "QMD SETUP"
+issues: []
+discussions: []
 title: "QMD Setup — Module Blog"
 type: documentation
 created: 2026-05-11

@@ -1,3 +1,14 @@
+---
+title: "parental sti architecture"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "parental sti architecture"
+issues: []
+discussions: []
+---
+
 # Parental/STI Architecture - Blog & Predict
 
 **Data**: 2026-03-20  
@@ -7,6 +18,14 @@
 
 ---
 
+title: "parental sti architecture"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "parental sti architecture"
+issues: []
+discussions: []
 ## 🔴 CRITICAL: Multi-Database Architecture
 
 ### Database Configuration

@@ -1,3 +1,14 @@
+---
+title: "duplicate methods analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "duplicate methods analysis"
+issues: []
+discussions: []
+---
+
 # Analisi Metodi Duplicati - Modulo Blog
 
 **Data Generazione**: 2025-10-15 06:41:17
@@ -54,6 +65,14 @@ public function sluggable(): array
 
 ---
 
+title: "duplicate methods analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "duplicate methods analysis"
+issues: []
+discussions: []
 ### 2. Metodo: `author`
 
 **Tipo Refactoring**: `Trait` | **Complessità**: 🟢 Low | **Confidenza**: ✅ 100%

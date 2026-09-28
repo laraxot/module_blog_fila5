@@ -1,4 +1,7 @@
 ---
+qmd: "index"
+issues: []
+discussions: []
 title: "concepts index — Blog"
 type: index
 tags: [concepts, Blog]

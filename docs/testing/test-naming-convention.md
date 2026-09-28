@@ -1,3 +1,14 @@
+---
+title: "test naming convention"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test naming convention"
+issues: []
+discussions: []
+---
+
 # Convenzione Naming File Test - Blog Module
 
 **Modulo:** Blog  
@@ -31,5 +42,13 @@ TagTest.php
 
 ---
 
+title: "test naming convention"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test naming convention"
+issues: []
+discussions: []
 **Blog Module - Test Naming Standards** ✅
 

@@ -1,3 +1,14 @@
+---
+title: "pages"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "pages"
+issues: []
+discussions: []
+---
+
 ## Gestione delle pagine
 
 ![page_list](img/page_list.jpg)

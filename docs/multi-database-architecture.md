@@ -1,3 +1,14 @@
+---
+title: "multi database architecture"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "multi database architecture"
+issues: []
+discussions: []
+---
+
 # Multi-Database Architecture - TenantServiceProvider
 
 **Data**: 2026-03-20  
@@ -7,6 +18,14 @@
 
 ---
 
+title: "multi database architecture"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "multi database architecture"
+issues: []
+discussions: []
 ## 🧠 Architettura Multi-Database
 
 ### Panoramica
