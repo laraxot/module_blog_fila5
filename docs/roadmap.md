@@ -1,3 +1,14 @@
+---
+title: "roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "roadmap"
+issues: []
+discussions: []
+---
+
 # Roadmap Modulo Blog
 
 **Versione**: 2025.10
@@ -177,6 +188,14 @@ Secondo le "Regole Windsurf per base_predict_fila5_mono", gli obiettivi per l'an
 
 ---
 
+title: "roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "roadmap"
+issues: []
+discussions: []
 **Status**: 🚧 ACTIVE DEVELOPMENT
 ## Collegamenti
 

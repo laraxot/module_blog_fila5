@@ -1,4 +1,10 @@
 ---
+title: "blog module"
+tags: [documentation]
+created: 2026-09-26
+qmd: "blog module"
+issues: []
+discussions: []
 type: overview
 module: Blog
 sources:

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Blog Module — Doctrine"
 type: doctrine
 tags: [blog, publishing, module-doctrine]

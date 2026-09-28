@@ -1,3 +1,14 @@
+---
+title: "route service provider"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "route service provider"
+issues: []
+discussions: []
+---
+
 # RouteServiceProvider
 
 ## Panoramica
