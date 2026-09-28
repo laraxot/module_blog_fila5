@@ -1,4 +1,7 @@
 ---
+qmd: "filament resource zen pattern"
+issues: []
+discussions: []
 title: "Filament Resource Zen Pattern (Blog Module)"
 type: concept
 sources: []

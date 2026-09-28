@@ -1,4 +1,7 @@
 ---
+qmd: "phpstan compliance"
+issues: []
+discussions: []
 title: "Blog Module - PHPStan Type Compliance"
 type: concept
 tags: [blog, phpstan, types, compliance, quality, static-analysis]

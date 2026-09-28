@@ -1,3 +1,14 @@
+---
+title: "transaction removal"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "transaction removal"
+issues: []
+discussions: []
+---
+
 # Rimozione Modello Transaction
 
 **Data**: 15 Ottobre 2025  
