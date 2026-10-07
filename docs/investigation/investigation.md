@@ -1,0 +1,33 @@
+---
+type: investigation
+title: "Investigation Feature Rich Editor"
+links: {github_issue: #XXX}
+---
+# Investigation: Feature Rich Editor
+
+## Problem Statement
+Analisi delle feature mancanti nel modulo Blog.
+
+## Current State
+- Documentazione esistente: 7 stories
+- Architettura: Actions,Adapters,Config,Console,DataObjects,Datas,Enums,Error,Events,Filament,Http,Models,Providers,Support,Traits,View,config,dataobjects,lang,resources_to_delete,tests,
+
+## Feature Missing
+1. Feature A - descrizione
+2. Feature B - descrizione
+3. Feature C - descrizione
+
+## Proposed Solution
+- Implementare le feature A/B/C usando le regole BMAD
+- Seguire: no controller, no services layer, module providers manifest
+
+## Acceptance Criteria
+- [ ] APCA contrast ≥75 body, ≥45 large-bold
+- [ ] Tokens ONLY, nessun hardcoded hex
+- [ ] Stati interattivi completi
+- [ ] Prefers-reduced-motion fallback
+
+## Next Steps
+1. Completare decision-log
+2. Implementare le feature
+3. Eseguire audit ux_audit + PHPStan
