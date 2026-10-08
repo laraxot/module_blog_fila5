@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Datas;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Modules\Blog\Actions\Category\GetBloodline;
 use Spatie\LaravelData\Data;
 
@@ -165,7 +166,7 @@ class ArticleData extends Data implements \Stringable
             ratings: $article->getArrayRatingsWithImage(),
             closedAtDate: $closedAtDate,
             timeLeftForHumans: $article->getTimeLeftForHumans(),
-            tags: $article->tags->map(
+            tags: new \Illuminate\Support\Collection($article->tags->map(
                 static function (mixed $tag): string {
                     if (! is_object($tag)) {
                         return '';
@@ -175,7 +176,7 @@ class ArticleData extends Data implements \Stringable
 
                     return is_string($name) ? $name : (is_scalar($name) ? (string) $name : '');
                 },
-            ),
+            )->all()),
         );
     }
 
