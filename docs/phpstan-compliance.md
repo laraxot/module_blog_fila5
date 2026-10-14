@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan compliance"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Compliance - Blog Module
@@ -87,14 +88,5 @@ cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 - ✅ Applicare stessi standard a nuovi sviluppi
 
 ---
-
-title: "phpstan compliance"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan compliance"
-issues: []
-discussions: []
 **Modulo Blog - PHPStan Level 10 Compliant!** 🎉
 

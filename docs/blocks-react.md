@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "blocks react"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://www.material-tailwind.com/project_docs/react/card

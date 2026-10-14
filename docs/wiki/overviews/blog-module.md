@@ -9,11 +9,12 @@ type: overview
 module: Blog
 sources:
   - ../../../README.md
-  - ../../../blocks.md
-  - ../../../structure.md
-  - ../../../pages.md
+  - ../../blocks.md
+  - ../../structure.md
+  - ../../pages.md
 confidence: high
 updated: 2026-04-15
+status: draft
 ---
 
 # Blog Module — Overview

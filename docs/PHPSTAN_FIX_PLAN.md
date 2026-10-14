@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "PHPSTAN FIX PLAN"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Blog Module - PHPStan Level 10 Fix Plan

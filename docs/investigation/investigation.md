@@ -2,6 +2,10 @@
 type: investigation
 title: "Investigation Feature Rich Editor"
 links: {github_issue: #XXX}
+status: draft
+updated: 2026-10-07
+tags: [docs, blog, investigation]
+qmd: "investigation: feature rich editor blog"
 ---
 # Investigation: Feature Rich Editor
 

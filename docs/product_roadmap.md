@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "product roadmap"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Blog Module - Product Roadmap
@@ -17,15 +18,6 @@ discussions: []
 **Status:** In Development
 
 ---
-
-title: "product roadmap"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "product roadmap"
-issues: []
-discussions: []
 ## Vision Statement
 
 To create a **best-in-class content publishing platform** that drives user engagement, educates our community, and establishes thought leadership in the prediction market space.

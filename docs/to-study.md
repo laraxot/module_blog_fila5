@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "to study"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://github.com/statikbe/laravel-filament-flexible-content-blocks/tree/main
