@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sync test codex module to project "
 issues: []
 discussions: []
+status: draft
 ---
 
 # Sync Sentinel

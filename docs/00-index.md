@@ -7,7 +7,10 @@ updated: 2026-09-26
 qmd: "00 index"
 issues: []
 discussions: []
+status: stale
 ---
+
+> Nota 2026-10-14 (docs-audit): Copia concorrente del vecchio 00-INDEX.md, con link a visual_editor.md (inesistente), a un hub di audit inesistente e al modulo Predict (inesistente). Indice canonico: 00-INDEX.md (riscritto 2026-10-14). Contenuto non riscritto, verificare prima di usarlo.
 
 # Blog Module Documentation Index
 
@@ -19,7 +22,7 @@ discussions: []
 | Documento | Scopo |
 |-----------|--------|
 | [ponytail-audit-over-engineering.md](./ponytail-audit-over-engineering.md) | Findings Ponytail Blog |
-| [Hub repo](../../../../docs/audit/ponytail-audit.md) | Audit repo-wide |
+| Hub repo _(riferimento non presente nel repository, verificato 2026-10-14)_ | Audit repo-wide |
 
 ## Hub Canonici
 
@@ -29,7 +32,7 @@ discussions: []
 | [blocks.md](./blocks.md) | Sistema di blocchi per contenuti modulari |
 | [pages.md](./pages.md) | Gestione pagine, SEO e metadati |
 | [comment.md](./comment.md) | Integrazione sistema commenti |
-| [visual_editor.md](./visual_editor.md) | Editor WYSIWYG e UI |
+| visual_editor.md _(riferimento non presente nel repository, verificato 2026-10-14)_ | Editor WYSIWYG e UI |
 | [themes.md](./themes.md) | Sistema di tematizzazione |
 | [ai.md](./ai.md) | Integrazione AI |
 | [iconpicker.md](./iconpicker.md) | Icon picker tool |
@@ -44,7 +47,7 @@ discussions: []
 
 ## Riferimenti Bidirezionali
 
-- [Predict docs index](../../Predict/docs/00-INDEX.md) - Modulo principale predizioni
+- Predict docs index _(riferimento non presente nel repository, verificato 2026-10-14)_ - Modulo principale predizioni
 - [Comment docs index](../../Comment/docs/00-INDEX.md) - Sistema commenti integrato
 - [UI docs index](../../UI/docs/00-INDEX.md) - Componenti UI riutilizzabili
 - [Xot docs index](../../Xot/docs/00-INDEX.md) - Core functionality

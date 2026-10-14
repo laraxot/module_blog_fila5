@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "visual editor"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://pinegrow.com/project_docs/tailwind/tailwind-blocks/

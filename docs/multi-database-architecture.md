@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "multi database architecture"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Multi-Database Architecture - TenantServiceProvider
@@ -17,15 +18,6 @@ discussions: []
 **Componenti**: TenantServiceProvider, config/local/predict/database.php
 
 ---
-
-title: "multi database architecture"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "multi database architecture"
-issues: []
-discussions: []
 ## 🧠 Architettura Multi-Database
 
 ### Panoramica

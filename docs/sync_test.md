@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sync test"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Sync Test File
@@ -19,13 +20,4 @@ This file is used to verify that:
 2. Files added to remote repository appear locally after sync
 
 ---
-
-title: "sync test"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "sync test"
-issues: []
-discussions: []
 **Test Status**: Created locally, waiting for sync

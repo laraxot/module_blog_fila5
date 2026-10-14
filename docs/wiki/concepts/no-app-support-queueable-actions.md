@@ -10,7 +10,8 @@ issues:
 discussions:
   - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
 related:
-  - ../../../../docs/wiki/rules/queueable-action-trait-mandatory.md
+  - ../../../../../../docs/wiki/rules/queueable-action-trait-mandatory.md
+status: draft
 ---
 
 # no `app/Support/` — business logic in QueueableAction
@@ -43,4 +44,4 @@ Tutti i 6 file `app/Support/*.php` rinominati a `.bak` (consumatori già su Acti
 
 ## Collegamenti
 
-- [queueable-action-trait-mandatory](../../../../docs/wiki/rules/queueable-action-trait-mandatory.md)
+- [queueable-action-trait-mandatory](../../../../../../docs/wiki/rules/queueable-action-trait-mandatory.md)

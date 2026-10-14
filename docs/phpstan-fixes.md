@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Blog Module - PHPStan Level 7 Fixes - Gennaio 2025
@@ -77,14 +78,6 @@ protected function getHeaderActions(): array
 - `docs/phpstan/guida_filament_table_actions.md`: Guida azioni Filament
 
 ---
-title: "phpstan fixes"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan fixes"
-issues: []
-discussions: []
 *Ultimo aggiornamento: Gennaio 2025*
 *Stato: ✅ Completato - 0 errori PHPStan*
 

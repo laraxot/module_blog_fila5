@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "ai"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://codewithkyrian.com/p/machine-learning-with-transformersphp-automatically-tagging-posts-in-laravel

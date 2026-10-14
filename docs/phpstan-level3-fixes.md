@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan level3 fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzioni PHPStan - Modulo Blog

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "test naming convention"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Convenzione Naming File Test - Blog Module
@@ -37,18 +38,9 @@ TagTest.php
 
 ## 📚 Riferimenti
 
-- [Regola Critica Progetto](../../../../docs/regole-critiche/test-naming-pascalcase.md)
-- [PHPStan Best Practices](../phpstan/best-practices.md)
+- [Regola Critica Progetto](../../../../../docs/regole-critiche/test-naming-pascalcase.md)
+- [PHPStan Best Practices](../filament/best-practices.md)
 
 ---
-
-title: "test naming convention"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "test naming convention"
-issues: []
-discussions: []
 **Blog Module - Test Naming Standards** ✅
 

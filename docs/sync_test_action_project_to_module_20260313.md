@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sync test action project to module 20260313"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Action Sync Sentinel
