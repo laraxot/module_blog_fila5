@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "prd"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Product Requirements Document (PRD) - Blog Module
@@ -17,15 +18,6 @@ discussions: []
 **Author**: Product Team
 
 ---
-
-title: "prd"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "prd"
-issues: []
-discussions: []
 ## Document Control
 
 | Version | Date | Author | Changes |
@@ -532,10 +524,10 @@ CREATE TABLE blog_revisions (
 - [Laravel Documentation](https://laravel.com/docs)
 
 ### 12.3 Related PRDs
-- [Cms Module PRD](../Cms/docs/PRD.md)
-- [Media Module PRD](../Media/docs/PRD.md)
-- [Seo Module PRD](../Seo/docs/PRD.md)
-- [Comment Module PRD](../Comment/docs/PRD.md)
+- [Cms Module PRD](../../Cms/docs/PRD.md)
+- [Media Module PRD](../../Media/docs/PRD.md)
+- [Seo Module PRD](../../Seo/docs/PRD.md)
+- [Comment Module PRD](../../Comment/docs/PRD.md)
 
 ---
 

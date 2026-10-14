@@ -11,6 +11,7 @@ qmd: "Blog module Services and Support banned use app Actions QueueableAction po
 related:
   - no-app-support-queueable-actions.md
   - ../../../Xot/docs/wiki/concepts/queueable-action-trait-mandatory.md
+status: draft
 ---
 
 # Blog — Services/Support vietati: solo Actions

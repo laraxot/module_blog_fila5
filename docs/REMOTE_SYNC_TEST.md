@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "REMOTE SYNC TEST"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Remote Sync Test File
