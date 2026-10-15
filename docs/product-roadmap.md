@@ -111,11 +111,8 @@ To create a **best-in-class content publishing platform** that drives user engag
 
 ---
 
-<<<<<<< .merge_file_s4otPC
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> .merge_file_F989ph

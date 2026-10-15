@@ -75,11 +75,8 @@ Launch core blog publishing platform with article CRUD and comment system.
 
 ---
 
-<<<<<<< .merge_file_34QlIv
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> .merge_file_y4Y11u
