@@ -227,6 +227,8 @@ use Spatie\Translatable\HasTranslations;
  * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
  * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
  *
+ * @property int $id
+ * @property string $slug
  * @mixin \Eloquent
  */
 class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
