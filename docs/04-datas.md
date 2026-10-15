@@ -61,3 +61,7 @@ Previously located in `app/dataobjects/` and `app/DataObjects/` directories, all
 - Naming convention: `*Data.php` (not `*Dto.php`)
 - Automatic serialization/deserialization support
 - Full PHPStan level max compliance
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

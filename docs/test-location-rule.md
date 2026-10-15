@@ -1,0 +1,1 @@
+# Test Location Rule — Blog\n- Tests: laravel/tests/Modules/Blog/\n- Fixtures (PHPStan): laravel/Modules/Blog/app/Fixtures/\n- NO laravel/Modules/Blog/tests/\n- BMAD + second brain + ponytail + filament

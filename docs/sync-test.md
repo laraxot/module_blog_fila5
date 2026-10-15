@@ -21,3 +21,8 @@ This file is used to verify that:
 
 ---
 **Test Status**: Created locally, waiting for sync
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

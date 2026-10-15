@@ -14,3 +14,8 @@ https://github.com/statikbe/laravel-filament-flexible-content-blocks/tree/main
 
 https://github.com/martin-ro/filament-page-blocks
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
