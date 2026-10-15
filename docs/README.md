@@ -5,7 +5,7 @@ status: active
 module: Blog
 tags: [blog, module, docs]
 created: 2026-09-26
-updated: 2026-10-14
+updated: 2026-10-15
 qmd: "blog modulo articoli categorie banner text widget blocchi filament twentyone cms limiti legacy predict"
 issues: []
 discussions: []
@@ -61,4 +61,16 @@ DB_DATABASE_LIMESURVEY= bash ../bashscripts/tools/pest-scratch-db.sh Modules/Blo
 
 ## Mappa della documentazione
 
-Indice operativo: [00-INDEX.md](./00-INDEX.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
+Indice operativo: [00-index.md](./00-index.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
+
+
+## Standing order (qualita' + docs)
+
+- **PHPStan a zero** sul codice del modulo: non ignorare errori, non abbassare il livello, non modificare `phpstan.neon` del progetto. Qualita' + docs + BMAD sono standing order, non opzionali.
+- **Cartella test**: solo `tests/` (minuscolo). `Tests/` e' vietato (case-collision su macOS/Windows e confusione PSR-4).
+- **Nomi `.md`**: kebab-case minuscolo, niente date/timestamp nel nome, unica eccezione `README.md`. Se esistono `readme.md` e `README.md`, resta solo `README.md`.
+- **Docs**: solo dentro `docs/` gia' esistente; consolida invece di moltiplicare file; link relativi; focus su scopo/perche'/business logic (DRY + KISS).
+- **Git**: forward-only (patch in avanti); no reset/revert/checkout come scorciatoia.
+- **BMAD + second brain**: indici e decisioni vivono in `docs/` del modulo; aggiornali quando cambia il perche', non solo il come.
+
+Vedi anche: [00-index.md](./00-index.md) · [index.md](./index.md)

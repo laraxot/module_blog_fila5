@@ -95,3 +95,7 @@ public function show($id)
 2. Implementare le correzioni proposte per i modelli e i controller.
 3. Eseguire l'analisi PHPStan a livello 10 per verificare che le correzioni risolvano effettivamente gli errori.
 4. Estendere i principi applicati ad altri moduli del progetto. 
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

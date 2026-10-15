@@ -38,3 +38,8 @@ DRY: 7/10 🟢 | KISS: 7/10 🟢 | **Overall: 7/10 🟢**
 
 **Status:** 🟢 BUONO
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

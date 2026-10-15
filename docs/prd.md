@@ -539,3 +539,8 @@ CREATE TABLE blog_revisions (
 | Engineering Lead | | | |
 | Design Lead | | | |
 | Stakeholder | | | |
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

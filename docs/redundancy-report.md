@@ -76,3 +76,8 @@ Verificare se il modello Blog\Comment è un wrapper del Comment module o una cop
 | 🟠 | BaseTreeModel non conforme | 1 file |
 | 🟡 | BaseMorphPivot ridondanza Updater | 1 file |
 | 🟡 | Comment model vs modulo Comment | 1 file |
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
