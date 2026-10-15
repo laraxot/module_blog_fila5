@@ -31,4 +31,4 @@ status: draft
 
 - Riscritti `README.md` e `00-INDEX.md` (indice canonico). Segnati: `pages.md` e `models/transaction-removal.md` (`stale`), `index.md` e `INDEX.md` (`stub`), `00-index.md` (`stale`).
 - Verificato: Fixcity non importa Blog (solo `morph_map.php`); lo usano Cms e il tema TwentyOne; 23 rotte Filament `blog/admin`; `app/resources_to_delete/` ha 112 file; `Transaction` esiste ancora; il modulo `Predict` citato non esiste; 1 test (passa).
-- Link rotti negli indici (criterio audit): 16 -> 2 (`raw/`, immutabile). Story: `stories/2026-10-14-docs-blog-verifica-ingressi.story.md`.
+- Link rotti negli indici (criterio audit): 16 -> 2 (`raw/`, immutabile). Story: `stories/docs-blog-verifica-ingressi.story.md`.
