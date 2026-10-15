@@ -63,8 +63,11 @@ Modules/Blog/tests/Unit/SumTest.php
 
 Serve un test che impedisca la ricomparsa del difetto: senza, il conteggio torna a
 crescere. Vedi il punto 4 del quadro generale.
+<<<<<<< .merge_file_PXlBZD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> .merge_file_Px0N86
