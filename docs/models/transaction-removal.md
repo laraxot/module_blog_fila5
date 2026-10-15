@@ -176,7 +176,7 @@ Se in futuro servisse un sistema di crediti/transazioni, le opzioni sono:
 - [Duplicate Methods Analysis](../duplicate-methods-analysis.md)
 
 ### Root Progetto
-- [View Cache Fix](../../../../docs/view-cache-components-fix-2025-10-15.md)
+- [View Cache Fix](../../../../docs/view-cache-components-fix-componenti-mancanti.md)
 - [Project Analysis](../../../../../docs/project-analysis-and-roadmap.md)
 
 ## Note Operative
