@@ -105,7 +105,7 @@ DB_DATABASE_LIMESURVEY= bash ../bashscripts/tools/pest-scratch-db.sh Modules/Blo
 
 ## Mappa della documentazione
 
-Indice operativo: [00-INDEX.md](./00-INDEX.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
+Indice operativo: [00-INDEX.md](./00-index.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
@@ -115,5 +115,5 @@ Indice operativo: [00-INDEX.md](./00-INDEX.md). Decisioni: [decision-log.md](./d
 
 ## Mappa della documentazione
 
-Indice operativo: [00-INDEX.md](./00-INDEX.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
+Indice operativo: [00-INDEX.md](./00-index.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
 >>>>>>> .merge_file_VxZIYO
