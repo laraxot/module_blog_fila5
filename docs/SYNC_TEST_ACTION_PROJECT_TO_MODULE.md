@@ -16,8 +16,11 @@ status: draft
 - date: 2026-03-13
 - direction: project-to-module-via-action
 - purpose: validate .github/workflows/sync-remote-repo.yml on Blog module
+<<<<<<< .merge_file_fRcZxc
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> .merge_file_r9DQuy

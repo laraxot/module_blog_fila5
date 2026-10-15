@@ -52,8 +52,11 @@ status: stale
 - [UI docs index](../../UI/docs/00-INDEX.md) - Componenti UI riutilizzabili
 - [Xot docs index](../../Xot/docs/00-INDEX.md) - Core functionality
 - [TwentyOne Theme index](../../../Themes/TwentyOne/docs/00-INDEX.md) - Theme utilizzato dai blog
+<<<<<<< .merge_file_T1dVGM
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> .merge_file_XYGS24

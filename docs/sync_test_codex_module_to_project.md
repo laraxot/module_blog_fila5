@@ -16,8 +16,11 @@ status: draft
 - date: 2026-03-13
 - direction: module-to-project
 - purpose: validate remote module -> project visibility on laraxot/module_blog_fila5 dev
+<<<<<<< .merge_file_2K11Cd
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> .merge_file_jkdjY7
