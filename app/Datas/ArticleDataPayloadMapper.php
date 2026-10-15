@@ -7,14 +7,14 @@ namespace Modules\Blog\Datas;
 final class ArticleDataPayloadMapper
 {
     /**
-     * @param array<string, mixed> $payload
+     * @param  array<string, mixed>  $payload
      */
     public static function coreFromPayload(array $payload): ArticleDataCore
     {
         return new ArticleDataCore(
-            id: (string) ($payload['id'] ?? ''),
-            uuid: (string) ($payload['uuid'] ?? ''),
-            slug: (string) ($payload['slug'] ?? ''),
+            id: self::nullableString($payload, 'id') ?? '',
+            uuid: self::nullableString($payload, 'uuid') ?? '',
+            slug: self::nullableString($payload, 'slug') ?? '',
             categoryId: self::nullableInt($payload, 'categoryId', 'category_id'),
             status: self::nullableString($payload, 'status'),
             showOnHomepage: (bool) ($payload['showOnHomepage'] ?? $payload['show_on_homepage'] ?? false),
@@ -25,7 +25,7 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param array<string, mixed> $payload
+     * @param  array<string, mixed>  $payload
      */
     public static function blocksFromPayload(array $payload): ArticleDataBlocks
     {
@@ -37,8 +37,7 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param array<string, mixed> $payload
-     *
+     * @param  array<string, mixed>  $payload
      * @return array<int|string, mixed>|string
      */
     public static function titleFromPayload(array $payload): array|string
@@ -49,31 +48,15 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param array<string, mixed> $payload
+     * @param  array<string, mixed>  $payload
      */
     private static function nullableInt(array $payload, string $primaryKey, string $fallbackKey): ?int
     {
-        if (isset($payload[$primaryKey])) {
-            return (int) $payload[$primaryKey];
-        }
-
-        if (isset($payload[$fallbackKey])) {
-            return (int) $payload[$fallbackKey];
-        }
-
-        return null;
-    }
-
-    /**
-     * @param array<string, mixed> $payload
-     */
-    private static function nullableString(array $payload, string $primaryKey, ?string $fallbackKey = null): ?string
-    {
-        if (is_string($payload[$primaryKey] ?? null)) {
+        if (is_int($payload[$primaryKey] ?? null)) {
             return $payload[$primaryKey];
         }
 
-        if (null !== $fallbackKey && is_string($payload[$fallbackKey] ?? null)) {
+        if (is_int($payload[$fallbackKey] ?? null)) {
             return $payload[$fallbackKey];
         }
 
@@ -81,8 +64,23 @@ final class ArticleDataPayloadMapper
     }
 
     /**
-     * @param array<string, mixed> $payload
-     *
+     * @param  array<string, mixed>  $payload
+     */
+    private static function nullableString(array $payload, string $primaryKey, ?string $fallbackKey = null): ?string
+    {
+        if (is_string($payload[$primaryKey] ?? null)) {
+            return $payload[$primaryKey];
+        }
+
+        if ($fallbackKey !== null && is_string($payload[$fallbackKey] ?? null)) {
+            return $payload[$fallbackKey];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param  array<string, mixed>  $payload
      * @return array<int|string, mixed>|null
      */
     private static function nullableArray(array $payload, string $primaryKey, string $fallbackKey): ?array

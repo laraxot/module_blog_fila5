@@ -1,3 +1,15 @@
+---
+title: "PRD"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "PRD"
+issues: []
+discussions: []
+status: draft
+---
+
 # Product Requirements Document (PRD) - Blog Module
 
 **Module**: Blog
@@ -6,7 +18,6 @@
 **Author**: Product Team
 
 ---
-
 ## Document Control
 
 | Version | Date | Author | Changes |
@@ -322,7 +333,7 @@ graph TD
 
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
-- Laravel 12+ required
+- Laravel 13+ required
 - Filament v5 compatibility
 - Database: MySQL 8.0+
 
@@ -513,10 +524,10 @@ CREATE TABLE blog_revisions (
 - [Laravel Documentation](https://laravel.com/docs)
 
 ### 12.3 Related PRDs
-- [Cms Module PRD](../Cms/docs/PRD.md)
-- [Media Module PRD](../Media/docs/PRD.md)
-- [Seo Module PRD](../Seo/docs/PRD.md)
-- [Comment Module PRD](../Comment/docs/PRD.md)
+- [Cms Module PRD](../../Cms/docs/PRD.md)
+- [Media Module PRD](../../Media/docs/PRD.md)
+- [Seo Module PRD](../../Seo/docs/PRD.md)
+- [Comment Module PRD](../../Comment/docs/PRD.md)
 
 ---
 
@@ -528,3 +539,8 @@ CREATE TABLE blog_revisions (
 | Engineering Lead | | | |
 | Design Lead | | | |
 | Stakeholder | | | |
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

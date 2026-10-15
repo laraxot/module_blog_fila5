@@ -1,3 +1,15 @@
+---
+title: "links"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "links"
+issues: []
+discussions: []
+status: draft
+---
+
 https://github.com/thedevdojo/pines
 
 https://github.com/stephenjude/filament-blog // faceless
@@ -68,3 +80,8 @@ https://github.com/leandrocfe/filament-blog
 
 
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

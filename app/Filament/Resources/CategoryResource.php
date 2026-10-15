@@ -10,7 +10,6 @@ use Modules\Blog\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\ListCategories;
 use Modules\Blog\Filament\Resources\CategoryResource\Schemas\CategoryFormSchema;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-use Webmozart\Assert\Assert;
 
 class CategoryResource extends XotBaseResource
 {
@@ -36,18 +35,6 @@ class CategoryResource extends XotBaseResource
     public static function getFormFields(): array
     {
         return CategoryFormSchema::build();
-    }
-
-    /**
-     * @return array<string|int, Component>
-     */
-    public static function getFormSchema(): array
-    {
-        /** @var array<string|int, Component> $fields */
-        $fields = static::getFormFields();
-        Assert::isArray($fields, 'getFormFields must return array');
-
-        return $fields;
     }
 
     public static function getPages(): array

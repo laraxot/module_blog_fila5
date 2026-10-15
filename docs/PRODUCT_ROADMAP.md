@@ -1,3 +1,15 @@
+---
+title: "PRODUCT ROADMAP"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "PRODUCT ROADMAP"
+issues: []
+discussions: []
+status: draft
+---
+
 # Blog Module - Product Roadmap
 
 **Module:** Blog  
@@ -6,7 +18,6 @@
 **Status:** In Development
 
 ---
-
 ## Vision Statement
 
 To create a **best-in-class content publishing platform** that drives user engagement, educates our community, and establishes thought leadership in the prediction market space.
@@ -100,3 +111,8 @@ To create a **best-in-class content publishing platform** that drives user engag
 
 ---
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

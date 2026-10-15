@@ -1,3 +1,15 @@
+---
+title: "base model"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "base model"
+issues: []
+discussions: []
+status: draft
+---
+
 # BaseModel
 
 Il `BaseModel` è la classe base per tutti i modelli nel modulo Blog. Estende `Illuminate\Database\Eloquent\Model` e implementa `Spatie\MediaLibrary\HasMedia`.
@@ -81,3 +93,8 @@ class YourModel extends BaseModel
 
 Chi estende `BaseModel` (soprattutto `Modules\Predict\Models\Predict` che estende `Modules\Blog\Models\Article`) sfrutta `Parental\HasChildren`. Lo stesso record rimane in `predict_data.articles`, ma il campo `type` decide quale classe PHP lo rappresenta: `Articles` è un tipo di Blog Post condiviso. Modifiche a questa tabella devono sempre rispettare lo schema centralizzato e mantenere la connection `blog`.
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

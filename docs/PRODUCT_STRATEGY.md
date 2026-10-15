@@ -1,3 +1,15 @@
+---
+title: "PRODUCT STRATEGY"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "PRODUCT STRATEGY"
+issues: []
+discussions: []
+status: draft
+---
+
 # Blog Module - Product Strategy
 
 **Module:** Blog  
@@ -5,7 +17,6 @@
 **Owner:** Product Team
 
 ---
-
 ## Executive Summary
 
 The Blog module serves as our primary content marketing channel, driving organic traffic, educating users, and building community engagement around prediction markets.
@@ -88,3 +99,8 @@ Turn readers into users.
 
 ---
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

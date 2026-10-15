@@ -6,6 +6,7 @@ namespace Modules\Blog\Support;
 
 use Illuminate\Support\Facades\Storage;
 use Modules\Blog\Models\Article;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\Feed\FeedItem;
 use Webmozart\Assert\Assert;
 
@@ -63,11 +64,12 @@ final class ArticleDelegates
     public static function toFeedItem(Article $article): FeedItem
     {
         Assert::notNull($article->user, '['.__LINE__.']['.__FILE__.']');
+        Assert::notNull($article->updated_at, '['.__LINE__.']['.__FILE__.']');
 
         return FeedItem::create()
-            ->id($article->slug)
-            ->title($article->title)
-            ->summary($article->description)
+            ->id(SafeStringCastAction::cast($article->slug))
+            ->title(SafeStringCastAction::cast($article->title))
+            ->summary(SafeStringCastAction::cast($article->description))
             ->updated($article->updated_at)
             ->authorName($article->user->name ?? 'Unknown');
     }
@@ -95,11 +97,11 @@ final class ArticleDelegates
         }
 
         if ($article->main_image_upload) {
-            return Storage::url($article->main_image_upload);
+            return Storage::url(SafeStringCastAction::cast($article->main_image_upload));
         }
 
         if (null !== $article->main_image_url) {
-            return $article->main_image_url;
+            return SafeStringCastAction::cast($article->main_image_url);
         }
 
         return '#';

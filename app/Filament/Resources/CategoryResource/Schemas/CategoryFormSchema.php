@@ -27,8 +27,8 @@ final class CategoryFormSchema
                 ->maxLength(2048)
                 ->reactive()
                 ->unique()
-                ->afterStateUpdated(static function (Set $set, $state): void {
-                    $set('slug', Str::slug((string) $state));
+                ->afterStateUpdated(static function (Set $set, mixed $state): void {
+                    $set('slug', Str::slug(is_string($state) ? $state : ''));
                 }),
             TextInput::make('slug')
                 ->required()
@@ -40,8 +40,8 @@ final class CategoryFormSchema
             TextInput::make('description')
                 ->maxLength(2048),
             SpatieMediaLibraryFileUpload::make('image')
-                ->enableOpen()
-                ->enableDownload()
+                ->openable()
+                ->downloadable()
                 ->columnSpanFull()
                 ->collection('category')
                 ->disk('uploads')

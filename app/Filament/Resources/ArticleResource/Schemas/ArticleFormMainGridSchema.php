@@ -23,14 +23,14 @@ final class ArticleFormMainGridSchema
                 ->columnSpan(1)
                 ->required()
                 ->lazy()
-                ->afterStateUpdated(static function ($set, $get, $state): void {
+                ->afterStateUpdated(static function (mixed $set, mixed $get, mixed $state): void {
                     Assert::isCallable($set, 'set must be callable');
                     Assert::isCallable($get, 'get must be callable');
 
                     if ($get('slug')) {
                         return;
                     }
-                    $set('slug', Str::slug((string) $state));
+                    $set('slug', Str::slug(is_string($state) ? $state : ''));
                 }),
 
             TextInput::make('slug')

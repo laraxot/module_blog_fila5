@@ -1,3 +1,15 @@
+---
+title: "redundancy report"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "redundancy report"
+issues: []
+discussions: []
+status: draft
+---
+
 - Inventario [ridondanze cross-modulo](../docs/redundancy-report.md)
 - Concetti [ridondanze cross-cutting](../Xot/docs/wiki/concepts/ridondanze-cross-cutting-codebase.md)
 
@@ -64,3 +76,8 @@ Verificare se il modello Blog\Comment è un wrapper del Comment module o una cop
 | 🟠 | BaseTreeModel non conforme | 1 file |
 | 🟡 | BaseMorphPivot ridondanza Updater | 1 file |
 | 🟡 | Comment model vs modulo Comment | 1 file |
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

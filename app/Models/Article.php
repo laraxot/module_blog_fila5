@@ -11,9 +11,18 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use Modules\Blog\Actions\Article\FilterArticleContentBlocksExceptAction;
+use Modules\Blog\Actions\Article\FilterArticleContentBlocksOnlyAction;
+use Modules\Blog\Actions\Article\FormatArticleHumanReadTimeAction;
+use Modules\Blog\Actions\Article\FormatArticlePublishedDateAction;
+use Modules\Blog\Actions\Article\FormatArticleTimeLeftForHumansAction;
+use Modules\Blog\Actions\Article\ResolveArticleMainImageFromAttributesAction;
+use Modules\Blog\Actions\Article\ResolveArticleMainImageUrlAction;
+use Modules\Blog\Actions\Article\ResolveArticleThumbnailAction;
+use Modules\Blog\Actions\Article\ResolveArticleTranslationAction;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Concerns\ArticleFeedable;
-use Modules\Blog\Support\ArticleDelegates;
+use Modules\Blog\Models\Concerns\ArticleQueryScopes;
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
@@ -35,27 +44,27 @@ use Spatie\Translatable\HasTranslations;
 /**
  * Modules\Blog\Models\Article.
  *
- * @property Profile|null                $author
- * @property Collection<int, Category>   $categories
- * @property int|null                    $categories_count
- * @property Collection<int, Comment>    $comments
- * @property int|null                    $comments_count
- * @property string                      $human_read_time
+ * @property Profile|null $author
+ * @property Collection<int, Category> $categories
+ * @property int|null $categories_count
+ * @property Collection<int, Comment> $comments
+ * @property int|null $comments_count
+ * @property string $human_read_time
  * @property MediaCollection<int, Media> $media
- * @property int|null                    $media_count
- * @property Collection<int, Tag>        $tags
- * @property Collection<int, Status>     $statuses
- * @property int|null                    $statuses_count
- * @property int|null                    $tags_count
- * @property UserContract|null           $user
- * @property string                      $body
- * @property Carbon                      $published_at
- * @property Carbon                      $updated_at
- * @property string                      $slug
- * @property string                      $title
- * @property string                      $description
- * @property string                      $main_image_upload
- * @property string                      $main_image_url
+ * @property int|null $media_count
+ * @property Collection<int, Tag> $tags
+ * @property Collection<int, Status> $statuses
+ * @property int|null $statuses_count
+ * @property int|null $tags_count
+ * @property UserContract|null $user
+ * @property string $body
+ * @property Carbon $published_at
+ * @property Carbon $updated_at
+ * @property string $slug
+ * @property string $title
+ * @property string $description
+ * @property string $main_image_upload
+ * @property string $main_image_url
  * @property array<string, mixed>|string $content_blocks
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article article(string $id)
@@ -63,7 +72,7 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|Article category(string $id)
  * @method static \Illuminate\Database\Eloquent\Builder|Article currentStatus(...$names)
  * @method static \Illuminate\Database\Eloquent\Builder|Article differentFromCurrentArticle(string $current_article)
- * @method static ArticleFactory                                factory($count = null, $state = [])
+ * @method static ArticleFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article onlyTrashed()
@@ -82,31 +91,31 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTags((\ArrayAccess<int|string, Tag>|Tag|array<int|string, Tag>|string) $tags, ?string $type = null)
  * @method static \Illuminate\Database\Eloquent\Builder|Article withoutTrashed()
  *
- * @property string                          $id
- * @property string                          $uuid
- * @property string|null                     $content
- * @property string|null                     $picture
- * @property int|null                        $category_id
- * @property int|null                        $author_id
- * @property string|null                     $status
- * @property int                             $show_on_homepage
- * @property int|null                        $read_time
- * @property string|null                     $excerpt
- * @property string                          $created_at
+ * @property string $id
+ * @property string $uuid
+ * @property string|null $content
+ * @property string|null $picture
+ * @property int|null $category_id
+ * @property int|null $author_id
+ * @property string|null $status
+ * @property int $show_on_homepage
+ * @property int|null $read_time
+ * @property string|null $excerpt
+ * @property string $created_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string|null                     $updated_by
- * @property string|null                     $created_by
- * @property string|null                     $deleted_by
- * @property array<string, mixed>|null       $footer_blocks
- * @property array<string, mixed>|null       $sidebar_blocks
- * @property int                             $is_featured
- * @property string|null                     $closed_at
- * @property Category|null                   $category
- * @property string                          $main_image
- * @property Collection<int, Rating>         $ratings
- * @property int|null                        $ratings_count
- * @property mixed                           $translations
- * @property string|null                     $rewarded_at
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $deleted_by
+ * @property array<string, mixed>|null $footer_blocks
+ * @property array<string, mixed>|null $sidebar_blocks
+ * @property int $is_featured
+ * @property string|null $closed_at
+ * @property Category|null $category
+ * @property string $main_image
+ * @property Collection<int, Rating> $ratings
+ * @property int|null $ratings_count
+ * @property mixed $translations
+ * @property string|null $rewarded_at
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereAuthorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereCategoryId($value)
@@ -137,21 +146,21 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUuid($value)
  *
- * @property int         $status_display
+ * @property int $status_display
  * @property string|null $bet_end_date
  * @property string|null $event_start_date
  * @property string|null $event_end_date
- * @property int         $is_wagerable
- * @property int|null    $wagers_count
- * @property int|null    $wagers_count_canonical
- * @property int|null    $wagers_count_total
- * @property int|null    $wagers
+ * @property int $is_wagerable
+ * @property int|null $wagers_count
+ * @property int|null $wagers_count_canonical
+ * @property int|null $wagers_count_total
+ * @property int|null $wagers
  * @property string|null $brier_score
  * @property string|null $brier_score_play_money
  * @property string|null $brier_score_real_money
- * @property float|null  $volume_play_money
- * @property float|null  $volume_real_money
- * @property int         $is_following
+ * @property float|null $volume_play_money
+ * @property float|null $volume_real_money
+ * @property int $is_following
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereBetEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereBrierScore($value)
@@ -181,37 +190,37 @@ use Spatie\Translatable\HasTranslations;
  *
  * @mixin Model
  *
- * @property string|null                                      $type
- * @property string|null                                      $extra
- * @property string|null                                      $resolved_at
- * @property string|null                                      $liquidity
- * @property float|null                                       $stocks_count
- * @property float|null                                       $stocks_value
- * @property string                                           $sum_credit_yes
- * @property string                                           $sum_credit_no
- * @property int                                              $count_credit_yes
- * @property int                                              $count_credit_no
+ * @property string|null $type
+ * @property string|null $extra
+ * @property string|null $resolved_at
+ * @property string|null $liquidity
+ * @property float|null $stocks_count
+ * @property float|null $stocks_value
+ * @property string $sum_credit_yes
+ * @property string $sum_credit_no
+ * @property int $count_credit_yes
+ * @property int $count_credit_no
  * @property Collection<int, CommentNotificationSubscription> $notificationSubscriptions
- * @property int|null                                         $notification_subscriptions_count
+ * @property int|null $notification_subscriptions_count
  *
- * @method static EloquentBuilder<static>|Article                       whereCountCreditNo($value)
- * @method static EloquentBuilder<static>|Article                       whereCountCreditYes($value)
- * @method static EloquentBuilder<static>|Article                       whereExtra($value)
- * @method static EloquentBuilder<static>|Article                       whereLiquidity($value)
- * @method static EloquentBuilder<static>|Article                       whereResolvedAt($value)
- * @method static EloquentBuilder<static>|Article                       whereStocksCount($value)
- * @method static EloquentBuilder<static>|Article                       whereStocksValue($value)
- * @method static EloquentBuilder<static>|Article                       whereSumCreditNo($value)
- * @method static EloquentBuilder<static>|Article                       whereSumCreditYes($value)
- * @method static EloquentBuilder<static>|Article                       whereType($value)
- * @method static EloquentBuilder<static>|Article                       withAnyTagsOfType(array<string, mixed>|string $type)
- * @method static Article|null                                          first()
- * @method static Collection<int, Article>                              get()
- * @method static Article                                               create(array<string, mixed> $attributes = [])
- * @method static Article                                               firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
+ * @method static EloquentBuilder<static>|Article whereCountCreditNo($value)
+ * @method static EloquentBuilder<static>|Article whereCountCreditYes($value)
+ * @method static EloquentBuilder<static>|Article whereExtra($value)
+ * @method static EloquentBuilder<static>|Article whereLiquidity($value)
+ * @method static EloquentBuilder<static>|Article whereResolvedAt($value)
+ * @method static EloquentBuilder<static>|Article whereStocksCount($value)
+ * @method static EloquentBuilder<static>|Article whereStocksValue($value)
+ * @method static EloquentBuilder<static>|Article whereSumCreditNo($value)
+ * @method static EloquentBuilder<static>|Article whereSumCreditYes($value)
+ * @method static EloquentBuilder<static>|Article whereType($value)
+ * @method static EloquentBuilder<static>|Article withAnyTagsOfType(array<string, mixed>|string $type)
+ * @method static Article|null first()
+ * @method static Collection<int, Article> get()
+ * @method static Article create(array<string, mixed> $attributes = [])
+ * @method static Article firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article where((string|\Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereNotNull((string|\Illuminate\Contracts\Database\Query\Expression) $columns)
- * @method static int                                                   count(string $columns = '*')
+ * @method static int count(string $columns = '*')
  *
  * @property ProfileContract|null $deleter
  *
@@ -223,6 +232,7 @@ use Spatie\Translatable\HasTranslations;
 class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
 {
     use ArticleFeedable;
+    use ArticleQueryScopes;
     use HasChildren;
     use HasComments;
     use HasRating;
@@ -311,17 +321,16 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /**
      * Ottiene la traduzione di un attributo in una specifica lingua.
      *
-     * @param string $key               Il nome dell'attributo da tradurre
-     * @param string $locale            Il codice della lingua richiesta
-     * @param bool   $useFallbackLocale Se utilizzare o meno la lingua di fallback
-     *
+     * @param  string  $key  Il nome dell'attributo da tradurre
+     * @param  string  $locale  Il codice della lingua richiesta
+     * @param  bool  $useFallbackLocale  Se utilizzare o meno la lingua di fallback
      * @return array<int|string, mixed>|string|int|null Il valore tradotto dell'attributo
      *
      * @SuppressWarnings("PHPMD.BooleanArgumentFlag")
      */
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): array|string|int|null
     {
-        return ArticleDelegates::translation($this, $key, $locale, $useFallbackLocale);
+        return app(ResolveArticleTranslationAction::class)->execute($this, $key, $locale, $useFallbackLocale);
     }
 
     /**
@@ -386,12 +395,12 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getFormattedDate(): string
     {
-        return ArticleDelegates::formattedDate($this);
+        return app(FormatArticlePublishedDateAction::class)->execute($this);
     }
 
     public function getThumbnail(): ?string
     {
-        return ArticleDelegates::thumbnail($this);
+        return app(ResolveArticleThumbnailAction::class)->execute($this);
     }
 
     /**
@@ -403,21 +412,9 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-                return ArticleDelegates::humanReadTime($attributes);
+                return app(FormatArticleHumanReadTimeAction::class)->execute($attributes);
             },
         );
-    }
-
-    /**
-     * Scope a query to only include articles different from current article.
-     *
-     * @param EloquentBuilder<Article> $query
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $currentArticle): EloquentBuilder
-    {
-        return $query->where('id', '!=', $currentArticle);
     }
 
     /**
@@ -441,7 +438,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getMainImage(): string
     {
-        return ArticleDelegates::mainImageUrl($this);
+        return app(ResolveArticleMainImageUrlAction::class)->execute($this);
     }
 
     /*
@@ -458,7 +455,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getUuidAttribute(?string $value): string
     {
-        if (null !== $value && '' !== $value) {
+        if ($value !== null && $value !== '') {
             return $value;
         }
         // dddx($value);
@@ -483,7 +480,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
 
     public function getTimeLeftForHumans(): ?string
     {
-        return ArticleDelegates::timeLeftForHumans($this);
+        return app(FormatArticleTimeLeftForHumansAction::class)->execute($this);
     }
 
     // /**
@@ -516,130 +513,21 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     }
 
     /**
-     * @param array<int, string> $nameBlocks
-     *
+     * @param  array<int, string>  $nameBlocks
      * @return array<int, array<string, mixed>>
      */
     public function getOnlyContentBlocks(array $nameBlocks): array
     {
-        return ArticleDelegates::onlyContentBlocks($this, $nameBlocks);
+        return app(FilterArticleContentBlocksOnlyAction::class)->execute($this, $nameBlocks);
     }
 
     /**
-     * @param array<int, string> $nameBlocks
-     *
+     * @param  array<int, string>  $nameBlocks
      * @return array<int, array<string, mixed>>
      */
     public function getExceptContentBlocks(array $nameBlocks): array
     {
-        return ArticleDelegates::exceptContentBlocks($this, $nameBlocks);
-    }
-
-    /**
-     * Scope a query to only include articles.
-     *
-     * @param EloquentBuilder<Article> $query
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopeArticle(EloquentBuilder $query, string $id): EloquentBuilder
-    {
-        return $query->where('author_id', $id);
-    }
-
-    /**
-     * Scope a query to only include published articles.
-     *
-     * @param EloquentBuilder<Article> $query
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopePublished(EloquentBuilder $query): EloquentBuilder
-    {
-        // return $query->where('status', 'published');
-        // return $query->currentStatus('published');
-        return $query
-            ->whereNotNull('published_at');
-    }
-
-    /**
-     * Scope a query to only include show on homepage articles.
-     *
-     * @param EloquentBuilder<Article> $query
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopeShowHomepage(EloquentBuilder $query): EloquentBuilder
-    {
-        return $query->where('show_on_homepage', 1);
-    }
-
-    /**
-     * Scope a query to only include posted articles until today.
-     *
-     * @param EloquentBuilder<Article> $query
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder
-    {
-        return $query->whereDate('published_at', '<=', Carbon::today()->toDateString());
-    }
-
-    /**
-     * Scope a query to only include articles with a specified category.
-     *
-     * @param EloquentBuilder<Article> $query
-     * @param string                   $id    The id of the category
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopeCategory(EloquentBuilder $query, string $id): EloquentBuilder
-    {
-        return $query->where('category_id', $id);
-    }
-
-    /**
-     * Scope a query to only include articles that belongs to an author.
-     *
-     * @param EloquentBuilder<Article> $query
-     * @param string                   $profileId The id of the author
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopeAuthor(EloquentBuilder $query, string $profileId): EloquentBuilder
-    {
-        return $query->where('author_id', $profileId);
-    }
-
-    /**
-     * Scope a query to only include articles with a specified tag.
-     *
-     * @param EloquentBuilder<Article> $query
-     * @param string                   $id    The id of the tag
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
-    {
-        return $query->whereHas('tags', static function ($q) use ($id): void {
-            $q->where('id', $id);
-        });
-    }
-
-    /**
-     * Scope a query to only include articles which contains searching words.
-     *
-     * @param EloquentBuilder<Article> $query
-     * @param string                   $searching The searching words
-     *
-     * @return EloquentBuilder<Article>
-     */
-    public function scopeSearch(EloquentBuilder $query, string $searching): EloquentBuilder
-    {
-        return $query->where('title', 'LIKE', "%{$searching}%")
-            ->orWhere('content', 'LIKE', "%{$searching}%")
-            ->orWhere('excerpt', 'LIKE', "%{$searching}%");
+        return app(FilterArticleContentBlocksExceptAction::class)->execute($this, $nameBlocks);
     }
 
     /**
@@ -705,7 +593,7 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             get: static function (mixed $value, array $attributes): string {
                 unset($value);
 
-                return ArticleDelegates::mainImage($attributes);
+                return app(ResolveArticleMainImageFromAttributesAction::class)->execute($attributes);
             },
         );
     }

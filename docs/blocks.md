@@ -1,3 +1,15 @@
+---
+title: "blocks"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "blocks"
+issues: []
+discussions: []
+status: draft
+---
+
 https://tailblocks.cc/
 https://github.com/mertJF/tailblocks
 //-----------------------------------------
@@ -50,3 +62,8 @@ https://betterprogramming.pub/10-open-source-libraries-for-tailwind-css-componen
 
 
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
