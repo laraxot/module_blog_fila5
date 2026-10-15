@@ -16,8 +16,11 @@ status: draft
 **Purpose**: Test remote → local sync
 
 This file was created on GitHub to test if sync pulls it back locally.
+<<<<<<< .merge_file_n8aJKY
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> .merge_file_xJyh1k
