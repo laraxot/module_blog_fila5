@@ -1,0 +1,1 @@
+# nwidart Test Convention — Blog\n- Feature tests: laravel/tests/Feature/Modules/Blog/\n- Unit tests: laravel/tests/Unit/Modules/Blog/\n- Integration: laravel/tests/Integration/Modules/Blog/\n- NEVER laravel/Modules/Blog/tests/\n- NEVER flat laravel/tests/Modules/\n- Fixtures PHPStan: laravel/Modules/Blog/app/Fixtures/
