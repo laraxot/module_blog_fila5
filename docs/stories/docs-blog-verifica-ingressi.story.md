@@ -8,7 +8,7 @@ module: Blog
 tags: [docs, blog, verifica, indici, link, legacy]
 qmd: "blog docs ingressi readme 00-index verifica codice twentyone cms predict resources_to_delete transaction link rotti stale"
 related:
-  - ../../../Fixcity/docs/stories/2026-10-13-dcp-56-organizzazione-docs-moduli-e-temi.story.md
+  - ../../../Fixcity/docs/stories/dcp-56-organizzazione-docs-moduli-e-temi.story.md
 ---
 
 # Blog docs: ingressi verificati contro il codice
