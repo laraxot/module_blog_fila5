@@ -29,11 +29,8 @@ Suggested cleanup order:
 1. Decide ownership for play-money-market fragments: Blog domain block or TwentyOne theme override.
 2. Replace theme copies with overrides only where they intentionally diverge.
 3. Keep one config path aligned with the module service provider.
-<<<<<<< .merge_file_URtVbT
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> .merge_file_C1YLQ7

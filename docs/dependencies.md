@@ -25,11 +25,8 @@ Uso reale nel codice (Blog):
 Blog dichiara comunque `spatie/laravel-feed: *` nel proprio `composer.json:47` (ridondante con Seo, ma innocuo: merge-plugin nwidart unisce tutti i `Modules/*/composer.json`, versioni compatibili coesistono).
 
 Vedi anche: `phpstan-fix-plan.md` (sezione FeedItem type safety), `structure.md` (elenco dipendenze), `Modules/Seo/docs/dependencies.md`.
-<<<<<<< .merge_file_9a1ifB
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> .merge_file_PsVY4W
