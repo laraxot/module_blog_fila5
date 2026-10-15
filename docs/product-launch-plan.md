@@ -89,11 +89,8 @@ status: draft
 
 ---
 
-<<<<<<< .merge_file_taanIw
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> .merge_file_gL74lT
