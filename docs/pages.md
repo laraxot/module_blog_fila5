@@ -136,3 +136,7 @@ Esempio: nella blade che visualizzerà la home si potranno visualizzare, tramite
      {{ $_theme->showPageContent('home') }}
 </x-layouts.app>
 ```
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

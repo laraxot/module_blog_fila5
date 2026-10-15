@@ -16,9 +16,7 @@
                 "Modules\\Blog\\Providers\\BlogServiceProvider",
                 "Modules\\Blog\\Providers\\Filament\\AdminPanelProvider"
             ],
-            "aliases": {
-
-            }
+            "aliases": {}
         }
     },
     "autoload": {
@@ -54,5 +52,4 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
-
 }

@@ -33,3 +33,8 @@ Gestione di blog, articoli, categorie, commenti e contenuti editoriali.
 
 ## Note
 - Personalizza la configurazione in base alle esigenze di import/export o automazioni editoriali.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
