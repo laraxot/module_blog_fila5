@@ -1,3 +1,15 @@
+---
+title: "sync test"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sync test"
+issues: []
+discussions: []
+status: draft
+---
+
 # Sync Test File
 
 **Created**: 2026-03-13  
@@ -8,5 +20,9 @@ This file is used to verify that:
 2. Files added to remote repository appear locally after sync
 
 ---
-
 **Test Status**: Created locally, waiting for sync
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "ai"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "ai"
+issues: []
+discussions: []
+status: draft
+---
+
 https://codewithkyrian.com/p/machine-learning-with-transformersphp-automatically-tagging-posts-in-laravel
 https://codewithkyrian.com/p/announcing-transformersphp-bring-machine-learning-magic-to-your-php-projects
 https://codewithkyrian.github.io/transformers-php/introduction
@@ -14,3 +26,8 @@ https://towardsdatascience.com/how-to-deploy-machine-learning-model-in-laravel-a
 
 
 https://www.youtube.com/watch?v=jgz8lr32brY
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

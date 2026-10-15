@@ -1,3 +1,15 @@
+---
+title: "phpstan level2 fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan level2 fixes"
+issues: []
+discussions: []
+status: draft
+---
+
 # Correzioni PHPStan Livello 2 - Modulo Blog
 
 Questo documento traccia gli errori PHPStan di livello 2 identificati nel modulo Blog e le relative soluzioni implementate.
@@ -93,3 +105,7 @@ class Article extends Model implements HasTranslationsContract
 2. Implementare le correzioni proposte
 3. Eseguire l'analisi PHPStan a livello 2
 4. Verificare la risoluzione degli errori 
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

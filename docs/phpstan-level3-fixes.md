@@ -1,3 +1,15 @@
+---
+title: "phpstan level3 fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan level3 fixes"
+issues: []
+discussions: []
+status: draft
+---
+
 # Correzioni PHPStan - Modulo Blog
 
 Questo documento traccia gli errori PHPStan identificati nel modulo Blog e le relative soluzioni implementate.
@@ -148,3 +160,7 @@ public function validateModel(\Illuminate\Database\Eloquent\Model|\ArrayAccess|n
 3. Verificare la compatibilità con i contratti
 4. Mantenere la documentazione aggiornata
 5. Eseguire PHPStan a livello 3 regolarmente 
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

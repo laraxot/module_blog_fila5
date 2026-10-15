@@ -1,3 +1,15 @@
+---
+title: "PHPSTAN FIX PLAN"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "PHPSTAN FIX PLAN"
+issues: []
+discussions: []
+status: draft
+---
+
 # Blog Module - PHPStan Level 10 Fix Plan
 
 ## Analysis Date
@@ -437,3 +449,7 @@ Modules/Blog/
 - TransactionFactory is missing and needs to be created
 - Type safety improvements needed for feed generation
 - ThemeComposer needs proper parameter handling
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

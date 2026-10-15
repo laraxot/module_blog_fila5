@@ -1,146 +1,69 @@
 ---
-title: "Blog Module Documentation"
+title: "Blog: ingresso del modulo"
 type: documentation
-tags: [module, documentation]
-created: 2026-06-05
-updated: 2026-06-05
+status: active
+module: Blog
+tags: [blog, module, docs]
+created: 2026-09-26
+updated: 2026-10-14
+qmd: "blog modulo articoli categorie banner text widget blocchi filament twentyone cms limiti legacy predict"
+issues: []
+discussions: []
 ---
 
-# 📝 Blog Module - Content Management
+# Blog
 
-## 📋 Quick Reference
-| Categoria | Guida | File |
-|-----------|-------| ---- |
-| **Content** | Blocks System | [blocks.md](blocks.md) |
-| **Features** | Comments | [comment.md](comment.md) |
-| **UI** | Visual Editor | [visual_editor.md](visual_editor.md) |
-| **SEO** | Pages & SEO | [pages.md](pages.md) |
-| **Themes** | Styling | [themes.md](themes.md) |
-| **Tools** | Icon Picker | [iconpicker.md](iconpicker.md) |
-| **AI** | Integration | [ai.md](ai.md) |
-| **MCP** | Server Setup | [mcp_server_recommended.md](mcp_server_recommended.md) |
-| **Analysis** | PHPStan | [phpstan-fixes.md](phpstan-fixes.md) |
+Ingresso della documentazione del modulo. Ogni affermazione e' stata confrontata con il codice il 2026-10-14.
 
-## 🎯 Core Features
-- **Content Blocks**: Modular content building system
-- **Visual Editor**: WYSIWYG editing experience
-- **Comment System**: User interaction and engagement
-- **SEO Optimization**: Search engine friendly content
-- **Theme Support**: Flexible theming system
-- **Multi-language**: Full translation support
+## Identita' e ownership
 
-## Descrizione
-Il modulo Blog gestisce blog, articoli, categorie e contenuti editoriali all'interno dell'applicazione. Fornisce un sistema completo per la creazione, gestione e visualizzazione di contenuti editoriali strutturati.
+- Namespace `Modules\Blog`, alias `blog`, repository git separato. Descrizione in `module.json`: blog, articoli, categorie e contenuti editoriali.
+- Provider in `module.json`: `BlogServiceProvider`, `Providers\Filament\AdminPanelProvider`; il primo e' anche in `laravel/config/app.php`. `Blog: true` in `laravel/modules_statuses.json` e nello stato del tenant Fixcity. Dipendenze dichiarate: Xot, UI, Lang, Cms.
+- Il testo precedente di questo README ("Core module for the FixCity Platform") era un modello generico e non corrisponde all'uso: vedi sotto.
 
-## Struttura
-Il modulo segue la struttura modulare standard di Laravel:
+## Cosa contiene davvero
 
+| Area | Contenuto verificato | Percorso |
+|---|---|---|
+| Modelli | `Article`, `Category`, `Banner`, `TextWidget`, `Tag`, `Profile`, `Transaction`, `UpvoteDownvote`, `PostView`, `Comment`, `Menu` e pivot | `app/Models/` |
+| Actions | `Article/` (formattazione date e tempo di lettura, immagine e miniatura, traduzione, import da JSON), `Banner/`, `Category/GetBloodline`, `ImportFromNewsApi`, `ParentChilds/GetTreeOptions` | `app/Actions/` |
+| Filament | risorse `Article`, `Banner`, `Category`, `Profile`, `TextWidget`; 11 blocchi (`ArticleCard`, `ArticleList`, `BannerAndSlides`, `Chart`, `Filter`, `Leaderboard`, `Search` ...); widget `LatestArticlesWidget` | `app/Filament/` |
+| Livewire | `Article/Chunk`, `Article/Lists`, `Headernav/SearchBar`, `Profile`, `Profile/Setting` | `app/Http/Livewire/` |
+| Comandi | `ShowArticleCommand`, `ShowArticleListCommand` | `app/Console/Commands/` |
+| Dati | 18 file in `database/migrations/` (alcuni con estensione `.to_article`, `.to_cms`, `.to_article_model`: non eseguiti) | `database/migrations/` |
+| Test | 1 file con 1 test | `tests/` |
+
+## Chi lo usa davvero in questo repository
+
+- Cms: `Modules/Cms/app/Config/xra.php` mappa `article` e `category` ai modelli Blog.
+- Fixcity: solo `Modules/Fixcity/config/morph_map.php`, che elenca `Article` e `Banner`. Nessun codice di `Modules/Fixcity/app` importa Blog.
+- Tema TwentyOne: `pages/articles/index`, `pages/articles/[slug]` e `pages/search` usano i modelli Blog. Il tema Sixteen, quello di Fixcity, ha solo stub in `pages_old/` (estensione `.stub`), non attivi.
+- Blog usa a sua volta Comment (`Article` usa `HasComments`) e Rating (7 file importano classi Rating).
+
+## Limiti
+
+1. Rotte: `routes/web.php` e `routes/api.php` sono vuoti; `php artisan route:list --json` mostra 23 rotte, tutte del pannello Filament `blog/admin`. Nessuna pagina pubblica nasce da questo modulo.
+2. Residui di un altro progetto: `app/resources_to_delete/` contiene 112 file, tra cui viste `play_money_markets` (mercati predittivi), e il nome della cartella dice che vanno eliminati. Molti documenti rimandano a un modulo `Predict` che non esiste in `laravel/Modules`.
+3. Duplicati dentro `app/`: `app/config/config.php` e `app/Config/config.php` sono identici; `app/lang/` convive con `lang/`; `app/Models/Article.bak`.
+4. Documentazione: [ai.md](./ai.md), [comment.md](./comment.md) e [themes.md](./themes.md) sono elenchi di URL, non descrivono integrazioni.
+5. Test quasi assenti: 1 test, passa; non e' una copertura.
+
+## Quick start
+
+Da `laravel/`:
+
+```bash
+# rotte del modulo (verificato il 2026-10-14: 23, tutte del pannello Filament blog/admin)
+php artisan route:list --name=blog
+# test su database usa-e-getta (la variabile vuota evita `unbound variable` dello script)
+DB_DATABASE_LIMESURVEY= bash ../bashscripts/tools/pest-scratch-db.sh Modules/Blog/tests
 ```
-/laravel/Modules/Blog/
-├── app/                      # Codice sorgente principale
-│   ├── Actions/              # Actions per la logica di business
-│   ├── Casts/                # Casts personalizzati
-│   ├── DataObjects/          # Data Objects (Spatie)
-│   ├── Filament/             # Risorse Filament
-│   ├── Http/                 # Controllers, Middleware, ecc.
-│   ├── Models/               # Modelli Eloquent
-│   ├── Providers/            # Service Providers
-│   └── Services/             # Servizi
-├── config/                   # Configurazioni
-├── database/                 # Migrazioni, seeders, factories
-├── docs/                     # Documentazione
-├── resources/                # Viste, assets, traduzioni
-└── tests/                    # Test unitari e funzionali
-```
 
-## Funzionalità
-- Gestione di articoli e post
-- Categorizzazione dei contenuti
-- Tagging e metadati
-- Gestione dei banner
-- Commenti e interazioni
-- Editor WYSIWYG
-- Supporto per contenuti multilingua
-- Integrazione con Filament per l'amministrazione
+## Mappa della documentazione
 
-## Modelli Disabilitati
-Alcuni modelli sono stati disabilitati perché non necessari per questo progetto:
+Indice operativo: [00-INDEX.md](./00-INDEX.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
 
-### Transaction (Disabilitato: 2025-10-15)
-Sistema di gestione crediti/transazioni utente. File mantenuti per riferimento storico:
-- `app/Models/Transaction.php.old`
-- `database/factories/TransactionFactory.php.disabled`
-
-**Documentazione**: [Transaction Removal](./models/transaction-removal.md)
-
-## Conflitti Risolti
-
-### module.json (2025-05-13)
-
-**Problema:** Conflitto nella descrizione del modulo, con la versione HEAD che aveva una descrizione vuota e la versione del branch che conteneva una descrizione dettagliata.
-
-**Soluzione:** Mantenuta la descrizione dettagliata della versione del branch: "Modulo per la gestione di blog, articoli, categorie e contenuti editoriali".
-
-**Motivazione:** Una descrizione chiara e completa nel file di configurazione del modulo migliora la documentazione e facilita la comprensione dello scopo e delle funzionalità del modulo.
-
-### BannerFactory.php e CategoryFactory.php
-
-**Problema:** Conflitti nelle factory per i modelli Banner e Category, con differenze nella definizione dei campi e dei valori predefiniti.
-
-**Soluzione:** Questi conflitti devono essere analizzati e risolti manualmente, considerando la struttura attuale dei modelli e le relazioni entre di essi.
-
-**Motivazione:** Le factory sono essenziali per i test e il seeding del database, quindi è importante che riflettano correttamente la struttura e le relazioni dei modelli.
-
-## Best Practices
-
-### Tipizzazione
-- Utilizzare `strict_types=1` in tutti i file PHP
-- Fornire tipizzazione completa per tutti i metodi e le proprietà
-- Documentare le classi e i metodi con DocBlocks completi
-- Utilizzare typed properties in PHP 8.0+
-
-### Modelli
-- Implementare correttamente `HasTranslationsContract` per i contenuti multilingua
-- Utilizzare Spatie Data Objects per strutture dati complesse
-- Seguire le convenzioni di naming per tabelle e campi
-
-### Filament
-- Utilizzare Resources per la gestione dei modelli
-- Implementare correttamente le azioni e i form
-- Seguire le best practices di Filament per gli amministratori
-
-### Testing
-- Scrivere test per tutte le funzionalità
-- Utilizzare le factory per generare dati di test
-- Testare le interazioni tra i modelli
-
-## 📁 Documentation Structure
-- Core documentation files in root level
-- Links and resources in [links.md](links.md)
-- Study materials in [to_study.md](to_study.md)
-- Technical structure in [structure.md](structure.md)
-
-## Collegamenti Bidirezionali
-- [Documentazione Principale](/laravel/docs/README.md)
-- [Modulo UI](/laravel/Modules/UI/docs/README.md)
-- [Modulo Cms](/laravel/Modules/Cms/docs/README.md)
-- [Modulo Comment](/laravel/Modules/Comment/docs/README.md)
-- [Modulo Lang](/laravel/Modules/Lang/docs/README.md)
-- [Modulo Xot](/laravel/Modules/Xot/docs/README.md)
-
----
-*Principio DRY: Una funzionalità = Una documentazione. Collegamenti logici e struttura pulita.*
-
-
-## Standard Rules & Workflow
-
-- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
-- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
-- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]
-
-## Documentation
-
-- [On-Demand Pattern](./ON-DEMAND-PATTERN.md) — Pattern per caricamento efficiente
-- [QMD Setup](./QMD-SETUP.md) — Configurazione ricerca locale
-- [Performance](./PERFORMANCE-OPTIMIZATION.md) — Metriche e best practice
-- [Project Structure](./PROJECT-STRUCTURE.md) — Directory layout
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
