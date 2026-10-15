@@ -1,15 +1,14 @@
 <?php
-namespace Modules\Blog\Tests;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+declare(strict_types=1);
 
-abstract class TestCase extends BaseTestCase
+namespace Tests\Modules\Blog;
+
+use Tests\Modules\Xot\XotBaseTestCase;
+
+/**
+ * Base test case for Blog module.
+ */
+abstract class TestCase extends XotBaseTestCase
 {
-    protected function getPackageProviders($app): array
-    {
-        return array_merge(parent::getPackageProviders($app), [
-            \Nwidart\Modules\LaravelModulesServiceProvider::class,
-            \Modules\Blog\Providers\BlogServiceProvider::class,
-        ]);
-    }
 }
