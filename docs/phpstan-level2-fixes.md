@@ -105,7 +105,3 @@ class Article extends Model implements HasTranslationsContract
 2. Implementare le correzioni proposte
 3. Eseguire l'analisi PHPStan a livello 2
 4. Verificare la risoluzione degli errori 
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

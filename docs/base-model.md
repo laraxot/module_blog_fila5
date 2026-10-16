@@ -93,8 +93,3 @@ class YourModel extends BaseModel
 
 Chi estende `BaseModel` (soprattutto `Modules\Predict\Models\Predict` che estende `Modules\Blog\Models\Article`) sfrutta `Parental\HasChildren`. Lo stesso record rimane in `predict_data.articles`, ma il campo `type` decide quale classe PHP lo rappresenta: `Articles` è un tipo di Blog Post condiviso. Modifiche a questa tabella devono sempre rispettare lo schema centralizzato e mantenere la connection `blog`.
 
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

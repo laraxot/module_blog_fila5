@@ -26,6 +26,7 @@ use Modules\Blog\Models\Concerns\ArticleQueryScopes;
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
 use Modules\Comment\Models\Concerns\HasComments;
+use Modules\Comment\Models\Contracts\Commentable;
 use Modules\Comment\Models\Contracts\SupportsCommentNotifications;
 use Modules\Lang\Models\Contracts\HasTranslationsContract;
 use Modules\Rating\Models\Rating;
@@ -69,7 +70,6 @@ use Spatie\Translatable\HasTranslations;
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article article(string $id)
  * @method static \Illuminate\Database\Eloquent\Builder|Article author(string $profile_id)
- * @method static \Illuminate\Database\Eloquent\Builder|Article category(string $id)
  * @method static \Illuminate\Database\Eloquent\Builder|Article currentStatus(...$names)
  * @method static \Illuminate\Database\Eloquent\Builder|Article differentFromCurrentArticle(string $current_article)
  * @method static ArticleFactory factory($count = null, $state = [])
@@ -109,7 +109,7 @@ use Spatie\Translatable\HasTranslations;
  * @property array<string, mixed>|null $footer_blocks
  * @property array<string, mixed>|null $sidebar_blocks
  * @property int $is_featured
- * @property string|null $closed_at
+ * @property \Carbon\\Carbon|null $closed_at
  * @property Category|null $category
  * @property string $main_image
  * @property Collection<int, Rating> $ratings
@@ -150,6 +150,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string|null $bet_end_date
  * @property string|null $event_start_date
  * @property string|null $event_end_date
+ * @property string|null $content_type
  * @property int $is_wagerable
  * @property int|null $wagers_count
  * @property int|null $wagers_count_canonical
@@ -227,11 +228,9 @@ use Spatie\Translatable\HasTranslations;
  * @method static EloquentBuilder<static>|Article childrenWith(array<string, mixed> $relations)
  * @method static EloquentBuilder<static>|Article childrenWithCount(array<string, mixed> $relations)
  *
- * @property int $id
- * @property string $slug
  * @mixin \Eloquent
  */
-class Article extends BaseModel implements Feedable, HasTranslationsContract, SupportsCommentNotifications
+class Article extends BaseModel implements Commentable, Feedable, HasTranslationsContract, SupportsCommentNotifications
 {
     use ArticleFeedable;
     use ArticleQueryScopes;
@@ -260,7 +259,8 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'user_id',
         'title',
         'slug',
-        // 'description',
+        'description',
+        'excerpt',
         'body',
         'images',
         'viewCount',
@@ -269,11 +269,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
         'footer_blocks',
         'sidebar_blocks',
         'is_featured',
+        'show_on_homepage',
         'main_image_upload',
         'main_image_url',
         'published_at',
         'closed_at',
         'category_id',
+        'content_type',
         'type',
         // 'is_closed', => closet_at
 
@@ -553,9 +555,21 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
     /**
      * Converti l'attributo 'closed_at' in un oggetto Carbon.
      */
-    public function getClosedAtAttribute(string $value): Carbon
+    public function getClosedAtAttribute(mixed $value): ?Carbon
     {
-        return Carbon::parse($value);
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        if (is_string($value)) {
+            return Carbon::parse($value);
+        }
+
+        if ($value instanceof Carbon) {
+            return $value;
+        }
+
+        return null;
     }
 
     /**
@@ -569,10 +583,13 @@ class Article extends BaseModel implements Feedable, HasTranslationsContract, Su
             'id' => 'string',
             'uuid' => 'string',
             'published_at' => 'datetime',
+            'event_start_date' => 'datetime',
+            'event_end_date' => 'datetime',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'main_image_upload' => 'string',
             'main_image_url' => 'string',
+            'content_type' => 'string',
         ];
     }
 

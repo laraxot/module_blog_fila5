@@ -22,9 +22,8 @@ use Modules\UI\Datas\SliderData;
 class ThemeComposer
 {
     public function __construct(
-        private readonly ThemeComposerSupport $support = new ThemeComposerSupport(),
-    ) {
-    }
+        private readonly ThemeComposerSupport $support = new ThemeComposerSupport,
+    ) {}
 
     /**
      * @return Collection<int, Category>
@@ -206,6 +205,50 @@ class ThemeComposer
         return $this->support->articles()->paginatedLatest($limit);
     }
 
+    /** @return Paginator<int, Article> */
+    public function paginatedBlogPosts(int $limit = 9, ?string $search = null, ?string $categorySlug = null): Paginator
+    {
+        return $this->support->articles()->paginatedPosts($limit, $search, $categorySlug);
+    }
+
+    /** @return Paginator<int, Article> */
+    public function paginatedPublicEvents(int $limit = 9): Paginator
+    {
+        return $this->support->articles()->paginatedComingSoon($limit);
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function featuredBlogPosts(int $number = 3): Collection
+    {
+        return $this->support->articles()->featuredPosts($number);
+    }
+
+    public function findPublishedPostBySlug(string $slug): ?Article
+    {
+        return $this->support->articles()->findPublishedPostBySlug($slug);
+    }
+
+    /** @return Paginator<int, Article> */
+    public function paginatedEvents(int $limit = 9): Paginator
+    {
+        return $this->support->articles()->paginatedEvents($limit);
+    }
+
+    public function findPublishedEventBySlug(string $slug): ?Article
+    {
+        return $this->support->articles()->findPublishedEventBySlug($slug);
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function featuredEvents(int $number = 6): Collection
+    {
+        return $this->support->articles()->featuredEvents($number);
+    }
+
     /**
      * @return Paginator<int, Article>
      */
@@ -268,8 +311,7 @@ class ThemeComposer
     }
 
     /**
-     * @param Collection<int, Article> $rows
-     *
+     * @param  Collection<int, Article>  $rows
      * @return list<ArticleData>
      */
     public function getArticleDataArray(Collection $rows): array
