@@ -64,7 +64,6 @@ Modules/Blog/tests/Unit/SumTest.php
 Serve un test che impedisca la ricomparsa del difetto: senza, il conteggio torna a
 crescere. Vedi il punto 4 del quadro generale.
 
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+## 2026-10-16 — docs root UPPERCASE
+
+Le coppie `PRD.md`/`prd.md` (e simili) in `docs/` root: il file UPPERCASE è stato ridotto a **redirect stub** verso il twin minuscolo. Canonico: minuscolo. Indice operativo: `00-INDEX.md` (alias `index.md`/`INDEX.md`/`00-index.md` redirect).

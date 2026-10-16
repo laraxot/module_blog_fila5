@@ -138,8 +138,3 @@ Questo modulo può essere usato come **riferimento** per gli altri moduli del pr
 **Analista**: Cascade AI  
 **Status**: ✅ ✅ ✅ **PERFETTO** ✅ ✅ ✅  
 **Prossimo modulo**: Cms
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

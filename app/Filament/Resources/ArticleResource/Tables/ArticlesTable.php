@@ -20,6 +20,13 @@ class ArticlesTable extends XotBaseResourceTable
                 ->limit(50),
             'slug' => TextColumn::make('slug')
                 ->limit(30),
+            'content_type' => TextColumn::make('content_type')
+                ->label('Tipo')
+                ->badge(),
+            'event_start_date' => TextColumn::make('event_start_date')
+                ->label('Inizio evento')
+                ->dateTime()
+                ->sortable(),
             'main_image_url' => TextColumn::make('main_image_url')
                 ->label('Image'),
             'author' => TextColumn::make('user.name')
@@ -48,6 +55,12 @@ class ArticlesTable extends XotBaseResourceTable
     public function getTableFilters(): array
     {
         return [
+            'content_type' => SelectFilter::make('content_type')
+                ->label('Tipo')
+                ->options([
+                    'post' => 'Post / Novità',
+                    'event' => 'Evento',
+                ]),
             'category' => SelectFilter::make('category')
                 ->relationship('category', 'name'),
             'user' => SelectFilter::make('user')
