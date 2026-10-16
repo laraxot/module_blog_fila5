@@ -194,8 +194,3 @@ Secondo le "Regole Windsurf per base_predict_fila5_mono", gli obiettivi per l'an
 [⬅️ Torna alla Roadmap Principale](/project_docs/roadmap.md)
 [⬅️ Torna alla Roadmap Principale](/docs/roadmap.md)
 
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

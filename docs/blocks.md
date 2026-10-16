@@ -62,8 +62,3 @@ https://betterprogramming.pub/10-open-source-libraries-for-tailwind-css-componen
 
 
 
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

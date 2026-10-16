@@ -14,10 +14,9 @@ use Modules\Blog\Models\Article;
 final class ThemeArticleSupport
 {
     public function __construct(
-        private readonly ThemeArticleQueries $articleQueries = new ThemeArticleQueries(),
-        private readonly ThemeArticleDataMapper $articleDataMapper = new ThemeArticleDataMapper(),
-    ) {
-    }
+        private readonly ThemeArticleQueries $articleQueries = new ThemeArticleQueries,
+        private readonly ThemeArticleDataMapper $articleDataMapper = new ThemeArticleDataMapper,
+    ) {}
 
     /**
      * @return \Illuminate\Database\Eloquent\Collection<int, Article>
@@ -66,7 +65,9 @@ final class ThemeArticleSupport
      */
     public function paginatedArticles(int $num): LengthAwarePaginator
     {
-        return Article::paginate($num);
+        return Article::query()
+            ->whereIn('content_type', ['post', 'event'])
+            ->paginate($num);
     }
 
     /**
@@ -83,6 +84,52 @@ final class ThemeArticleSupport
     public function paginatedLatest(int $limit): Paginator
     {
         return $this->articleQueries->paginatedLatest($limit);
+    }
+
+    /**
+     * Caller: ThemeComposer::paginatedBlogPosts (ThemeComposer.php ~209) → blocks/blog/index.
+     * Existing support layer (no alternate). Reads Article posts via ThemeArticleQueries.
+     * User: «per migliorare http://192.168.1.40:8000/it/blog/ … studiare … novita.html …»
+     *
+     * @return Paginator<int, Article>
+     */
+    public function paginatedPosts(int $limit, ?string $search = null, ?string $categorySlug = null): Paginator
+    {
+        return $this->articleQueries->paginatedPosts($limit, $search, $categorySlug);
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function featuredPosts(int $number): Collection
+    {
+        return $this->articleQueries->featuredPosts($number);
+    }
+
+    public function findPublishedPostBySlug(string $slug): ?Article
+    {
+        return $this->articleQueries->findPublishedPostBySlug($slug);
+    }
+
+    /**
+     * @return Paginator<int, Article>
+     */
+    public function paginatedEvents(int $limit): Paginator
+    {
+        return $this->articleQueries->paginatedEvents($limit);
+    }
+
+    public function findPublishedEventBySlug(string $slug): ?Article
+    {
+        return $this->articleQueries->findPublishedEventBySlug($slug);
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function featuredEvents(int $number): Collection
+    {
+        return $this->articleQueries->featuredEvents($number);
     }
 
     /**
@@ -147,8 +194,7 @@ final class ThemeArticleSupport
     }
 
     /**
-     * @param Collection<int, Article> $rows
-     *
+     * @param  Collection<int, Article>  $rows
      * @return list<ArticleData>
      */
     public function dataArray(Collection $rows): array
@@ -158,7 +204,10 @@ final class ThemeArticleSupport
 
     public function model(string $slug): ?Article
     {
-        return Article::where('slug', $slug)->first();
+        return Article::query()
+            ->whereIn('content_type', ['post', 'event'])
+            ->where('slug', $slug)
+            ->first();
     }
 
     /**
