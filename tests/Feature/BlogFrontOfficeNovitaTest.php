@@ -14,7 +14,7 @@ use Tests\TestCase;
 /**
  * Behaviour under test: FO /it/blog Novità — content_type=post only, featured read-only, detail SEO.
  * Existing related: DemoContentSeederTest.php (seed data). No prior FO listing HTTP test.
- * User: «completa http://192.168.1.40:8000/it/blog fa tutto con bmad + second brain + filament blueprint»
+ * User: «completa http://192.168.1.40:8000/it/blog fa tutto con bmad + second brain + filament blueprint».
  */
 class BlogFrontOfficeNovitaTest extends TestCase
 {
@@ -23,7 +23,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
     /** @var list<string> */
     protected $connectionsToTransact = ['blog', 'comment'];
 
-    public function test_paginated_and_featured_posts_are_content_type_post_only(): void
+    public function testPaginatedAndFeaturedPostsAreContentTypePostOnly(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -46,7 +46,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         }
     }
 
-    public function test_find_published_post_by_slug_ignores_events(): void
+    public function testFindPublishedPostBySlugIgnoresEvents(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -61,7 +61,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         $this->assertSame('post', $found->getAttribute('content_type'));
     }
 
-    public function test_resolve_page_action_blog_branch_returns_only_posts(): void
+    public function testResolvePageActionBlogBranchReturnsOnlyPosts(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -78,7 +78,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         $this->assertNull($resolvedEvent->item);
     }
 
-    public function test_blog_index_http_shows_featured_and_explore(): void
+    public function testBlogIndexHttpShowsFeaturedAndExplore(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -90,7 +90,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         $response->assertSee('Una segnalazione utile inizia da tre informazioni', false);
     }
 
-    public function test_blog_detail_http_uses_article_title_and_shows_credit(): void
+    public function testBlogDetailHttpUsesArticleTitleAndShowsCredit(): void
     {
         app(DemoContentSeeder::class)->run();
 
