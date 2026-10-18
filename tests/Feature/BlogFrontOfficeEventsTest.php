@@ -14,7 +14,7 @@ use Tests\TestCase;
 /**
  * Behaviour: FO /it/events — content_type=event only, featured read-only, detail SEO.
  * Related: DemoContentSeederTest.php, BlogFrontOfficeNovitaTest.php.
- * User: «completa http://192.168.1.40:8000/it/events utilizzando bmad + second brain + filament blueprint»
+ * User: «completa http://192.168.1.40:8000/it/events utilizzando bmad + second brain + filament blueprint».
  */
 class BlogFrontOfficeEventsTest extends TestCase
 {
@@ -23,7 +23,7 @@ class BlogFrontOfficeEventsTest extends TestCase
     /** @var list<string> */
     protected $connectionsToTransact = ['blog', 'comment'];
 
-    public function test_paginated_and_featured_events_are_content_type_event_only(): void
+    public function testPaginatedAndFeaturedEventsAreContentTypeEventOnly(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -45,7 +45,7 @@ class BlogFrontOfficeEventsTest extends TestCase
         }
     }
 
-    public function test_find_published_event_by_slug_ignores_posts(): void
+    public function testFindPublishedEventBySlugIgnoresPosts(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -60,7 +60,7 @@ class BlogFrontOfficeEventsTest extends TestCase
         $this->assertSame('event', $found->getAttribute('content_type'));
     }
 
-    public function test_resolve_page_action_events_branch_returns_only_events(): void
+    public function testResolvePageActionEventsBranchReturnsOnlyEvents(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -77,7 +77,7 @@ class BlogFrontOfficeEventsTest extends TestCase
         $this->assertNull($resolvedPost->item);
     }
 
-    public function test_events_index_http_shows_featured_and_explore(): void
+    public function testEventsIndexHttpShowsFeaturedAndExplore(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -88,7 +88,7 @@ class BlogFrontOfficeEventsTest extends TestCase
         $response->assertSee('Tutti gli eventi', false);
     }
 
-    public function test_events_detail_http_uses_article_title(): void
+    public function testEventsDetailHttpUsesArticleTitle(): void
     {
         app(DemoContentSeeder::class)->run();
 
