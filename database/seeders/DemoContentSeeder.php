@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Modules\Blog\Database\Factories\ArticleFactory;
-use Modules\Comment\Database\Factories\CommentFactory;
 use Modules\Blog\Models\Category;
+use Modules\Comment\Database\Factories\CommentFactory;
 
 class DemoContentSeeder extends Seeder
 {
@@ -24,12 +23,12 @@ class DemoContentSeeder extends Seeder
         ];
         foreach ($categories as $cat) {
             $id = (string) Str::uuid();
-            \Modules\Blog\Models\Category::firstOrCreate(
+            Category::firstOrCreate(
                 ['id' => $id],
                 ['name' => $cat['name'], 'description' => $cat['description'], 'icon' => '', 'is_active' => 1, 'sort_order' => 0]
             );
         }
-        $catMap = \Modules\Blog\Models\Category::pluck('id', 'name')->all();
+        $catMap = Category::pluck('id', 'name')->all();
 
         // Articoli realistici — demo per investitore (post + eventi)
         $catNames = ['Servizi' => 1, 'Cultura' => 2, 'Ambiente' => 3, 'Eventi' => 4]; // mappa approssimativa dopo creazione
@@ -61,7 +60,7 @@ class DemoContentSeeder extends Seeder
                 'content_type' => 'post',
                 'slug' => 'restauro-fontana-monumentale',
                 'excerpt' => 'Sono iniziati i lavori di restauro della fontana del XVII secolo dopo un attento studio archeologico.',
-                'content' => "<h2>Il restauro</h2><p>La fontana monumentale, simbolo del territorio, verrà restaurata con tecniche tradizionali. Il progetto è stato approvato dalla Soprintendenza.</p>",
+                'content' => '<h2>Il restauro</h2><p>La fontana monumentale, simbolo del territorio, verrà restaurata con tecniche tradizionali. Il progetto è stato approvato dalla Soprintendenza.</p>',
                 'is_featured' => false,
                 'show_on_homepage' => false,
                 'published_at' => now()->subDays(10),
@@ -71,7 +70,7 @@ class DemoContentSeeder extends Seeder
                 'content_type' => 'event',
                 'slug' => 'mercato-contadino-sabato-estate',
                 'excerpt' => 'Ogni sabato mattina i produttori locali propongono prodotti freschi, formaggi, miele e pane artigianale.',
-                'content' => "<h2>Quando</h2><p>Dal primo maggio al 30 settembre, ogni sabato dalle 8:00 alle 13:00 in piazza del mercato.</p>",
+                'content' => '<h2>Quando</h2><p>Dal primo maggio al 30 settembre, ogni sabato dalle 8:00 alle 13:00 in piazza del mercato.</p>',
                 'is_featured' => false,
                 'show_on_homepage' => false,
                 'published_at' => now()->subDays(3),
@@ -82,7 +81,7 @@ class DemoContentSeeder extends Seeder
                 'content_type' => 'post',
                 'slug' => 'nuovi-servizi-digitali-cittadini',
                 'excerpt' => 'È stato aggiornato il portale comunale per accedere ai servizi in modo semplice, sicuro e accessibile (WCAG 2.1 AA).',
-                'content' => "<h2>Servizi aggiornati</h2><p>Il portale ora include la richiesta di permessi, la segnalazione problemi, il pagamento TARI e la prenotazione appuntamenti.</p>",
+                'content' => '<h2>Servizi aggiornati</h2><p>Il portale ora include la richiesta di permessi, la segnalazione problemi, il pagamento TARI e la prenotazione appuntamenti.</p>',
                 'is_featured' => true,
                 'show_on_homepage' => true,
                 'published_at' => now()->subDays(7),
@@ -92,7 +91,7 @@ class DemoContentSeeder extends Seeder
                 'content_type' => 'event',
                 'slug' => 'concerto-orchestra-comunale',
                 'excerpt' => 'Una serata speciale con l\'Orchestra Comunale in un programma dedicato ai classici della musica italiana.',
-                'content' => "<h2>Programma</h2><p>Brani di Verdi, Puccini e musiche tradizionali. Ingresso libero su prenotazione.</p>",
+                'content' => '<h2>Programma</h2><p>Brani di Verdi, Puccini e musiche tradizionali. Ingresso libero su prenotazione.</p>',
                 'is_featured' => false,
                 'show_on_homepage' => false,
                 'published_at' => now()->subDays(1),
@@ -103,7 +102,7 @@ class DemoContentSeeder extends Seeder
                 'content_type' => 'post',
                 'slug' => 'uffici-comunali-chiudono-festivita',
                 'excerpt' => 'Informazioni su orari e chiusure per le festività nazionali e locali del mese.',
-                'content' => "<h2>Orari</h2><p>Gli uffici resteranno chiusi dal 25 al 27 aprile. I servizi digitali restano attivi 24/7.</p>",
+                'content' => '<h2>Orari</h2><p>Gli uffici resteranno chiusi dal 25 al 27 aprile. I servizi digitali restano attivi 24/7.</p>',
                 'is_featured' => false,
                 'show_on_homepage' => false,
                 'published_at' => now()->subDays(4),
@@ -113,7 +112,7 @@ class DemoContentSeeder extends Seeder
                 'content_type' => 'post',
                 'slug' => 'corsi-educazione-ambientale-scuole',
                 'excerpt' => 'Il Comune offre percorsi didattici gratuiti sulle energie rinnovabili, la raccolta differenziata e la biodiversità.',
-                'content' => "<h2>Per le scuole</h2><p>Destinatari: classi della scuola primaria e secondaria. Prenotazione tramite il portale.</p>",
+                'content' => '<h2>Per le scuole</h2><p>Destinatari: classi della scuola primaria e secondaria. Prenotazione tramite il portale.</p>',
                 'is_featured' => false,
                 'show_on_homepage' => false,
                 'published_at' => now()->subDays(6),
@@ -140,7 +139,7 @@ class DemoContentSeeder extends Seeder
                 ->usingName($item['slug'].'.svg')
                 ->toMediaCollection('main_image');
 
-            $created++;
+            ++$created;
         }
 
         // Commenti realistici (3 per articolo in evidenza)

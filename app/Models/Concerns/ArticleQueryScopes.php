@@ -14,7 +14,8 @@ use Modules\Blog\Models\Article;
 trait ArticleQueryScopes
 {
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeDifferentFromCurrentArticle(EloquentBuilder $query, string $currentArticle): EloquentBuilder
@@ -23,7 +24,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeArticle(EloquentBuilder $query, string $id): EloquentBuilder
@@ -32,7 +34,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopePublished(EloquentBuilder $query): EloquentBuilder
@@ -41,7 +44,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeShowHomepage(EloquentBuilder $query): EloquentBuilder
@@ -50,7 +54,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopePublishedUntilToday(EloquentBuilder $query): EloquentBuilder
@@ -59,7 +64,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeCategory(EloquentBuilder $query, string $id): EloquentBuilder
@@ -68,7 +74,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeAuthor(EloquentBuilder $query, string $profileId): EloquentBuilder
@@ -77,7 +84,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeTag(EloquentBuilder $query, string $id): EloquentBuilder
@@ -88,7 +96,8 @@ trait ArticleQueryScopes
     }
 
     /**
-     * @param  EloquentBuilder<Article>  $query
+     * @param EloquentBuilder<Article> $query
+     *
      * @return EloquentBuilder<Article>
      */
     public function scopeSearch(EloquentBuilder $query, string $searching): EloquentBuilder

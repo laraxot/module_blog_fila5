@@ -18,8 +18,8 @@ class GetBloodline
      */
     public function execute(?int $categoryId): EloquentCollection
     {
-        if ($categoryId === null) {
-            return new EloquentCollection;
+        if (null === $categoryId) {
+            return new EloquentCollection();
         }
         Assert::notNull($category = Category::find($categoryId), '['.__LINE__.']['.__FILE__.']');
 
