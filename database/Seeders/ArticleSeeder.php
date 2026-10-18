@@ -36,17 +36,17 @@ class ArticleSeeder extends Seeder
         }
 
         // Featured posts
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 2; ++$i) {
             $this->createArticle(['is_featured' => 1]);
         }
 
         // Published posts
-        for ($i = 0; $i < 26; $i++) {
+        for ($i = 0; $i < 26; ++$i) {
             $this->createArticle();
         }
 
         // Draft posts
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 2; ++$i) {
             $this->createArticle(['published_at' => null]);
         }
     }
@@ -81,6 +81,6 @@ class ArticleSeeder extends Seeder
             }
         }
 
-        return new \Illuminate\Database\Eloquent\Collection;
+        return new \Illuminate\Database\Eloquent\Collection();
     }
 }

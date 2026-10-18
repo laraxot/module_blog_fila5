@@ -166,7 +166,7 @@ class ArticleData extends Data implements \Stringable
             ratings: $article->getArrayRatingsWithImage(),
             closedAtDate: $closedAtDate,
             timeLeftForHumans: $article->getTimeLeftForHumans(),
-            tags: new \Illuminate\Support\Collection($article->tags->map(
+            tags: new Collection($article->tags->map(
                 static function (mixed $tag): string {
                     if (! is_object($tag)) {
                         return '';

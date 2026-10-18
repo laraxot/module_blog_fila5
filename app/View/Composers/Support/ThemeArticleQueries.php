@@ -32,7 +32,7 @@ final class ThemeArticleQueries
             ->orderBy('published_at', 'desc')
             ->get();
 
-        if ($rows->count() !== 0) {
+        if (0 !== $rows->count()) {
             return $rows;
         }
 
@@ -100,13 +100,13 @@ final class ThemeArticleQueries
             ->published()
             ->publishedUntilToday();
 
-        if (is_string($categorySlug) && $categorySlug !== '') {
+        if (is_string($categorySlug) && '' !== $categorySlug) {
             $query->whereHas('category', static function (EloquentBuilder $categoryQuery) use ($categorySlug): void {
                 $categoryQuery->where('slug', $categorySlug);
             });
         }
 
-        if (is_string($search) && $search !== '') {
+        if (is_string($search) && '' !== $search) {
             $like = '%'.$search.'%';
             $query->where(static function (EloquentBuilder $searchQuery) use ($like): void {
                 $searchQuery
