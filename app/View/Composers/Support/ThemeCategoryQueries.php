@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Blog\View\Composers\Support;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
 
 final class ThemeCategoryQueries
@@ -39,6 +37,7 @@ final class ThemeCategoryQueries
         $categories = Category::with([
             'categoryArticles' => static function (HasMany $query): mixed {
                 $query->withCount('ratings');
+
                 return null;
             },
         ])

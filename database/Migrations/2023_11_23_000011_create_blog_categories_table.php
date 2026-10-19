@@ -6,11 +6,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Blog\Models\Category;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-/**
+/*
  * Migrazione per la creazione della tabella delle categorie del blog.
  */
-return new class extends XotBaseMigration
-{
+return new class extends XotBaseMigration {
     protected ?string $model_class = Category::class;
 
     /**
