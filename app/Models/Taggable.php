@@ -114,7 +114,7 @@ class Taggable extends BaseMorphPivot
      *
      * @return $this
      */
-    public function setCustomProperty(string $name, int|string|float|array|null $value): self
+    public function setCustomProperty(string $name, int|string|float|array|null $value): static
     {
         $customProperties = $this->custom_properties;
 
