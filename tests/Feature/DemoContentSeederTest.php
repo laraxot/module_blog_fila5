@@ -22,7 +22,7 @@ class DemoContentSeederTest extends TestCase
     /** @var list<string> */
     protected $connectionsToTransact = ['blog', 'comment'];
 
-    public function test_demo_content_seeder_sets_post_and_event_content_types(): void
+    public function testDemoContentSeederSetsPostAndEventContentTypes(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -31,7 +31,7 @@ class DemoContentSeederTest extends TestCase
         $this->assertSame(0, Article::query()->whereNotNull('type')->count());
     }
 
-    public function test_demo_content_has_media_credits_and_no_lorem(): void
+    public function testDemoContentHasMediaCreditsAndNoLorem(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -46,7 +46,7 @@ class DemoContentSeederTest extends TestCase
         $this->assertDoesNotMatchRegularExpression('/lorem\s+ipsum/i', $json.' '.$sample->title.' '.$sample->description);
     }
 
-    public function test_demo_content_seeder_attaches_comments_via_comment_module(): void
+    public function testDemoContentSeederAttachesCommentsViaCommentModule(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -57,7 +57,7 @@ class DemoContentSeederTest extends TestCase
             ->get();
 
         $this->assertGreaterThanOrEqual(2, $comments->count());
-        $this->assertTrue($comments->contains(static fn (Comment $c): bool => $c->approved_at !== null));
+        $this->assertTrue($comments->contains(static fn (Comment $c): bool => null !== $c->approved_at));
         $this->assertTrue(
             Comment::query()->whereNotNull('parent_id')->whereNotNull('approved_at')->exists(),
             'Serve almeno una risposta editoriale (parent_id) approvata',
@@ -68,7 +68,7 @@ class DemoContentSeederTest extends TestCase
         );
     }
 
-    public function test_demo_content_seeder_is_idempotent(): void
+    public function testDemoContentSeederIsIdempotent(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -83,7 +83,7 @@ class DemoContentSeederTest extends TestCase
         $this->assertSame($articleSlugs, Article::query()->pluck('id', 'slug')->all());
     }
 
-    public function test_demo_content_seeder_skips_outside_allowed_environments(): void
+    public function testDemoContentSeederSkipsOutsideAllowedEnvironments(): void
     {
         $previous = App::environment();
         App::detectEnvironment(static fn (): string => 'production');
