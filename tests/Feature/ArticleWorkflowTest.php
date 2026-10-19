@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Article Workflow Feature Test
+ * Article Workflow Feature Test.
  *
  * Tests complete user workflows for blog articles:
  * - Create article workflow (validation, storage, redirect)
@@ -27,7 +27,8 @@ use Tests\TestCase;
 
 class ArticleWorkflowTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase;
+    use WithFaker;
 
     protected User $user;
 
@@ -38,7 +39,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /**
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     private function createArticle(array $attributes = []): Article
     {
@@ -46,7 +47,8 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /**
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
+     *
      * @return Collection<int, Article>
      */
     private function createArticles(int $count, array $attributes = []): Collection
@@ -80,7 +82,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Complete article creation workflow */
-    public function complete_article_creation_workflow(): void
+    public function completeArticleCreationWorkflow(): void
     {
         // Step 1: User authenticates
         $this->actingAs($this->user);
@@ -108,7 +110,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article update workflow */
-    public function article_update_workflow(): void
+    public function articleUpdateWorkflow(): void
     {
         $this->actingAs($this->user);
 
@@ -135,7 +137,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article publication workflow */
-    public function article_publication_workflow(): void
+    public function articlePublicationWorkflow(): void
     {
         $this->actingAs($this->user);
 
@@ -158,7 +160,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article unpublishing workflow */
-    public function article_unpublishing_workflow(): void
+    public function articleUnpublishingWorkflow(): void
     {
         $this->actingAs($this->user);
 
@@ -180,7 +182,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article deletion workflow */
-    public function article_deletion_workflow(): void
+    public function articleDeletionWorkflow(): void
     {
         $this->actingAs($this->user);
 
@@ -196,7 +198,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Multiple article management workflow */
-    public function multiple_article_management_workflow(): void
+    public function multipleArticleManagementWorkflow(): void
     {
         $this->actingAs($this->user);
 
@@ -226,7 +228,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article visibility based on publication status */
-    public function article_visibility_workflow(): void
+    public function articleVisibilityWorkflow(): void
     {
         $this->actingAs($this->user);
 
@@ -241,7 +243,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article lifecycle workflow (create -> edit -> publish -> archive) */
-    public function article_complete_lifecycle_workflow(): void
+    public function articleCompleteLifecycleWorkflow(): void
     {
         $this->actingAs($this->user);
 
@@ -276,7 +278,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Error handling in article workflow - validation */
-    public function article_workflow_handles_validation_errors(): void
+    public function articleWorkflowHandlesValidationErrors(): void
     {
         $this->actingAs($this->user);
 
@@ -294,7 +296,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Batch article operations workflow */
-    public function batch_article_operations_workflow(): void
+    public function batchArticleOperationsWorkflow(): void
     {
         $this->actingAs($this->user);
 
