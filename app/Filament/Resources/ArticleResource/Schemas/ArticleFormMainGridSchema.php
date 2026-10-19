@@ -52,12 +52,12 @@ final class ArticleFormMainGridSchema
                 ->required(),
             DateTimePicker::make('event_start_date')
                 ->label('Inizio evento')
-                ->visible(static fn (Get $get): bool => $get('content_type') === 'event')
-                ->required(static fn (Get $get): bool => $get('content_type') === 'event'),
+                ->visible(static fn (Get $get): bool => 'event' === $get('content_type'))
+                ->required(static fn (Get $get): bool => 'event' === $get('content_type')),
             DateTimePicker::make('event_end_date')
                 ->label('Fine evento')
-                ->visible(static fn (Get $get): bool => $get('content_type') === 'event')
-                ->required(static fn (Get $get): bool => $get('content_type') === 'event')
+                ->visible(static fn (Get $get): bool => 'event' === $get('content_type'))
+                ->required(static fn (Get $get): bool => 'event' === $get('content_type'))
                 ->after('event_start_date'),
             DateTimePicker::make('published_at')
                 ->columnSpan(1)
