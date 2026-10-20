@@ -25,4 +25,5 @@ agnostico `content_type=post|event`, senza introdurre un modulo duplicato.
 - La paginazione conserva la lingua e non mostra eventi nell’indice blog.
 - Ogni CTA apre `/it/blog/{slug}` senza 404.
 - Un post senza commenti o immagini resta leggibile.
+- Un titolo salvato come testo semplice (non JSON di traduzione) compare comunque sulla card: `Article::getTitle()` legge il valore grezzo.
 - Nessun commento pending appare al pubblico.

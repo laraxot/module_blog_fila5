@@ -30,6 +30,8 @@ i confini di dominio.
 - `CategoryResource`
 - `BannerResource`
 
+FO: la cartella CMS è il contenitore. `pages/blog/index.json` (slug `index`) è la lista Novità; `pages/blog/view.json` (slug `view`) monta il dettaglio. Stesso schema per `pages/events/`. Il testo del singolo pezzo resta sull'Article.
+
 ## Form / Table / Infolist
 
 Preferire triad schema dedicati (`*Form`, `*Table`, `*Infolist`) quando la Resource

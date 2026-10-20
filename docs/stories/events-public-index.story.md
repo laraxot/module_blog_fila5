@@ -23,6 +23,7 @@ chiara e localizzata, così posso scegliere un evento e aprirne il dettaglio.
 
 ## Technical notes
 
+- L'indice pubblico non mostra i luoghi di esempio del riferimento statico (castello, Gipsoteca, Colosseo). L'immagine in testa, se manca nel JSON, è la foto del primo evento reale.
 - Nessun modulo Event aggiuntivo: il contratto riusa `Blog\Models\Article`.
 - `content_type` è il discriminante editoriale; `type` resta riservato a Parental.
 - `ThemeComposer::paginatedPublicEvents()` riusa `ThemeArticleQueries::paginatedComingSoon()`.
