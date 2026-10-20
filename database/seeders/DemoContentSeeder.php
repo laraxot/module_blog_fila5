@@ -7,6 +7,7 @@ namespace Modules\Blog\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Modules\Blog\Database\Factories\ArticleFactory;
+use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
 use Modules\Comment\Database\Factories\CommentFactory;
 
@@ -28,10 +29,7 @@ class DemoContentSeeder extends Seeder
                 ['name' => $cat['name'], 'description' => $cat['description'], 'icon' => '', 'is_active' => 1, 'sort_order' => 0]
             );
         }
-        $catMap = Category::pluck('id', 'name')->all();
-
         // Articoli realistici — demo per investitore (post + eventi)
-        $catNames = ['Servizi' => 1, 'Cultura' => 2, 'Ambiente' => 3, 'Eventi' => 4]; // mappa approssimativa dopo creazione
         $items = [
             [
                 'title' => 'Nuova piazza pedonale in centro storico',
@@ -121,7 +119,7 @@ class DemoContentSeeder extends Seeder
 
         $created = 0;
         foreach ($items as $item) {
-            $article = ArticleFactory::new()->create([
+            $article = ArticleFactory::new()->createOne([
                 'title' => $item['title'],
                 'slug' => $item['slug'],
                 'content_type' => $item['content_type'],
@@ -139,7 +137,7 @@ class DemoContentSeeder extends Seeder
                 ->usingName($item['slug'].'.svg')
                 ->toMediaCollection('main_image');
 
-            ++$created;
+            $created++;
         }
 
         // Commenti realistici (3 per articolo in evidenza)
