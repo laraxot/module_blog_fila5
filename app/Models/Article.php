@@ -434,11 +434,35 @@ class Article extends BaseModel implements Commentable, Feedable, HasTranslation
 
     public function getTitle(): string
     {
-        if ($this->title) {
-            return $this->title;
+        $translated = $this->getAttribute('title');
+        if (is_string($translated) && $translated !== '') {
+            return $translated;
         }
 
-        return 'Get Title of article id '.$this->id;
+        $raw = $this->getRawOriginal('title');
+        if (! is_string($raw) || trim($raw) === '') {
+            return '';
+        }
+
+        $decoded = json_decode($raw, true);
+        if (! is_array($decoded)) {
+            return $raw;
+        }
+
+        $fallback = config('app.fallback_locale');
+        $fallbackLocale = is_string($fallback) ? $fallback : 'it';
+        $candidate = $decoded[app()->getLocale()] ?? $decoded[$fallbackLocale] ?? null;
+        if (is_string($candidate) && $candidate !== '') {
+            return $candidate;
+        }
+
+        foreach ($decoded as $value) {
+            if (is_string($value) && $value !== '') {
+                return $value;
+            }
+        }
+
+        return '';
     }
 
     public function getMainImage(): string
