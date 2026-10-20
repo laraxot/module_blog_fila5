@@ -13,7 +13,7 @@ class BlogDatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        if (null !== $this->command) {
+        if ($this->command !== null) {
             $this->command->info('BlogDatabaseSeeder: entity seeders…');
         }
 
@@ -36,7 +36,7 @@ class BlogDatabaseSeeder extends Seeder
             UpvoteDownvoteSeeder::class,
         ]);
 
-        if (filter_var(env('BLOG_SEED_LEGACY', false), FILTER_VALIDATE_BOOLEAN)) {
+        if (filter_var(config('env.BLOG_SEED_LEGACY', false), FILTER_VALIDATE_BOOLEAN)) {
             $this->call([
                 CommentSeeder::class,
                 ArticleSeeder::class,
@@ -47,7 +47,7 @@ class BlogDatabaseSeeder extends Seeder
             DemoContentSeeder::class,
         ]);
 
-        if (null !== $this->command) {
+        if ($this->command !== null) {
             $this->command->info('BlogDatabaseSeeder: completato.');
         }
     }

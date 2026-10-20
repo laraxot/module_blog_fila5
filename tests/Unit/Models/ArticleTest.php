@@ -43,11 +43,11 @@ class ArticleTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->article = new Article();
+        $this->article = new Article;
     }
 
     /**
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $attributes
      */
     private function createArticle(array $attributes = []): Article
     {
@@ -78,21 +78,21 @@ class ArticleTest extends TestCase
 
     /** Article has correct table name */
     #[Test]
-    public function itHasCorrectTableName(): void
+    public function it_has_correct_table_name(): void
     {
         $this->assertEquals('articles', $this->article->getTable());
     }
 
     /** Article has correct primary key */
     #[Test]
-    public function itHasCorrectPrimaryKey(): void
+    public function it_has_correct_primary_key(): void
     {
         $this->assertEquals('id', $this->article->getKeyName());
     }
 
     /** Article can be created with valid data */
     #[Test]
-    public function itCanCreateArticleWithValidData(): void
+    public function it_can_create_article_with_valid_data(): void
     {
         $data = [
             'title' => 'Test Article',
@@ -114,7 +114,7 @@ class ArticleTest extends TestCase
 
     /** Article can be updated */
     #[Test]
-    public function itCanUpdateArticle(): void
+    public function it_can_update_article(): void
     {
         $article = $this->createArticle([
             'title' => 'Original Title',
@@ -135,7 +135,7 @@ class ArticleTest extends TestCase
 
     /** Article can be published */
     #[Test]
-    public function itCanBePublished(): void
+    public function it_can_be_published(): void
     {
         $article = $this->createArticle([
             'title' => 'Unpublished Article',
@@ -150,7 +150,7 @@ class ArticleTest extends TestCase
 
     /** Article can be unpublished */
     #[Test]
-    public function itCanBeUnpublished(): void
+    public function it_can_be_unpublished(): void
     {
         $article = $this->createArticle([
             'title' => 'Published Article',
@@ -165,7 +165,7 @@ class ArticleTest extends TestCase
 
     /** Article can be found by slug */
     #[Test]
-    public function itCanBeFoundBySlug(): void
+    public function it_can_be_found_by_slug(): void
     {
         $created = $this->createArticle([
             'title' => 'Slug Test',
@@ -182,7 +182,7 @@ class ArticleTest extends TestCase
 
     /** Article can be found by title */
     #[Test]
-    public function itCanBeFoundByTitle(): void
+    public function it_can_be_found_by_title(): void
     {
         $created = $this->createArticle([
             'title' => 'Unique Title',
@@ -199,7 +199,7 @@ class ArticleTest extends TestCase
 
     /** Can query only published articles */
     #[Test]
-    public function itCanQueryPublishedArticles(): void
+    public function it_can_query_published_articles(): void
     {
         $this->createArticle(['title' => 'Published 1', 'slug' => 'pub-1', 'published_at' => Carbon::now()]);
         $this->createArticle(['title' => 'Draft 1', 'slug' => 'draft-1', 'published_at' => null]);
@@ -212,7 +212,7 @@ class ArticleTest extends TestCase
 
     /** Can query only draft articles */
     #[Test]
-    public function itCanQueryDraftArticles(): void
+    public function it_can_query_draft_articles(): void
     {
         $this->createArticle(['title' => 'Published', 'slug' => 'published', 'published_at' => Carbon::now()]);
         $this->createArticle(['title' => 'Draft 1', 'slug' => 'draft-1', 'published_at' => null]);
@@ -225,14 +225,14 @@ class ArticleTest extends TestCase
 
     /** Article uses timestamps */
     #[Test]
-    public function itUsesTimestamps(): void
+    public function it_uses_timestamps(): void
     {
         $this->assertTrue($this->article->usesTimestamps());
     }
 
     /** Article has created_at and updated_at */
     #[Test]
-    public function itHasTimestamps(): void
+    public function it_has_timestamps(): void
     {
         $article = $this->createArticle([
             'title' => 'Timestamp Test',
@@ -245,7 +245,7 @@ class ArticleTest extends TestCase
 
     /** Article can be deleted */
     #[Test]
-    public function itCanBeDeleted(): void
+    public function it_can_be_deleted(): void
     {
         $article = $this->createArticle([
             'title' => 'To Delete',
@@ -259,18 +259,17 @@ class ArticleTest extends TestCase
 
     /** Article can be created with factory */
     #[Test]
-    public function itCanBeCreatedWithFactory(): void
+    public function it_can_be_created_with_factory(): void
     {
         $article = $this->createArticle();
 
-        $this->assertInstanceOf(Article::class, $article);
         $this->assertNotEmpty($article->title);
         $this->assertNotEmpty($article->slug);
     }
 
     /** Article can be queried and ordered by creation date */
     #[Test]
-    public function itCanBeOrderedByCreatedDate(): void
+    public function it_can_be_ordered_by_created_date(): void
     {
         $this->createArticle(['title' => 'First', 'slug' => 'first', 'created_at' => now()->subDays(2)]);
         $this->createArticle(['title' => 'Second', 'slug' => 'second', 'created_at' => now()]);
@@ -293,7 +292,7 @@ class ArticleTest extends TestCase
 
     /** Article can be counted */
     #[Test]
-    public function itCanBeCounted(): void
+    public function it_can_be_counted(): void
     {
         ArticleFactory::new()->count(5)->create();
 
@@ -304,7 +303,7 @@ class ArticleTest extends TestCase
 
     /** Article query can be limited */
     #[Test]
-    public function itCanBeLimited(): void
+    public function it_can_be_limited(): void
     {
         ArticleFactory::new()->count(10)->create();
 
@@ -315,7 +314,7 @@ class ArticleTest extends TestCase
 
     /** Article can be paginated */
     #[Test]
-    public function itCanBePaginated(): void
+    public function it_can_be_paginated(): void
     {
         ArticleFactory::new()->count(25)->create();
 

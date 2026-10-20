@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Seeders;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Article;
@@ -14,6 +15,7 @@ use Webmozart\Assert\Assert;
 
 class ArticleSeeder extends Seeder
 {
+    /** @var list<array{name: string, image: string}> */
     private array $categories = [
         ['name' => 'Animals', 'image' => 'https://picsum.photos/id/219/800/600'],
         ['name' => 'Mountains', 'image' => 'https://picsum.photos/id/353/800/600'],
@@ -36,25 +38,26 @@ class ArticleSeeder extends Seeder
         }
 
         // Featured posts
-        for ($i = 0; $i < 2; ++$i) {
+        for ($i = 0; $i < 2; $i++) {
             $this->createArticle(['is_featured' => 1]);
         }
 
         // Published posts
-        for ($i = 0; $i < 26; ++$i) {
+        for ($i = 0; $i < 26; $i++) {
             $this->createArticle();
         }
 
         // Draft posts
-        for ($i = 0; $i < 2; ++$i) {
+        for ($i = 0; $i < 2; $i++) {
             $this->createArticle(['published_at' => null]);
         }
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection<int, Article>
+     * @param  array<string, mixed>  $data
+     * @return Collection<int, Article>
      */
-    private function createArticle(array $data = []): \Illuminate\Database\Eloquent\Collection
+    private function createArticle(array $data = []): Collection
     {
         $date = $this->date->subDay();
 
@@ -76,11 +79,11 @@ class ArticleSeeder extends Seeder
         $factory = Article::factory();
         if (is_object($factory) && method_exists($factory, 'create')) {
             $result = $factory->create($data);
-            if ($result instanceof \Illuminate\Database\Eloquent\Collection) {
+            if ($result instanceof Collection) {
                 return $result;
             }
         }
 
-        return new \Illuminate\Database\Eloquent\Collection();
+        return new Collection;
     }
 }

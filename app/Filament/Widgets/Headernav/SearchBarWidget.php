@@ -12,11 +12,13 @@ class SearchBarWidget extends XotBaseTableWidget
 {
     public function table(Table $table): Table
     {
+        $search = is_string($this->pageFilters['search'] ?? null) ? $this->pageFilters['search'] : '';
+
         return $table
             ->query(
                 Article::query()
                     ->whereIn('content_type', ['post', 'event'])
-                    ->where('title', 'like', '%'.$this->filters['search'] ?? '%')
+                    ->where('title', 'like', '%'.$search.'%')
             )
             ->columns([
                 // Per il widget di ricerca, potremmo voler mostrare solo il titolo, slug, ecc.

@@ -13,7 +13,7 @@ class BlogDemoSeeder extends Seeder
     public function run(): void
     {
         // BMAD + Second Brain: Demo contenuto blog per investitore (high parity DesignComuni)
-        $categories = CategoryFactory::new()->count(4)->create();
+        CategoryFactory::new()->count(4)->create();
 
         ArticleFactory::new()->count(3)->create([
             'content_type' => 'post',

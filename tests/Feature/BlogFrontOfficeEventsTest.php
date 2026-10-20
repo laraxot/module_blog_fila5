@@ -23,7 +23,7 @@ class BlogFrontOfficeEventsTest extends TestCase
     /** @var list<string> */
     protected $connectionsToTransact = ['blog', 'comment'];
 
-    public function testPaginatedAndFeaturedEventsAreContentTypeEventOnly(): void
+    public function test_paginated_and_featured_events_are_content_type_event_only(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -31,8 +31,8 @@ class BlogFrontOfficeEventsTest extends TestCase
         $events = $composer->paginatedEvents(20);
         $featured = $composer->featuredEvents(10);
 
-        $this->assertGreaterThanOrEqual(5, $events->count());
-        foreach ($events as $event) {
+        $this->assertGreaterThanOrEqual(5, count($events->items()));
+        foreach ($events->items() as $event) {
             $this->assertSame('event', $event->getAttribute('content_type'));
         }
 
@@ -45,22 +45,22 @@ class BlogFrontOfficeEventsTest extends TestCase
         }
     }
 
-    public function testFindPublishedEventBySlugIgnoresPosts(): void
+    public function test_find_published_event_by_slug_ignores_posts(): void
     {
         app(DemoContentSeeder::class)->run();
 
         $post = Article::query()->where('content_type', 'post')->firstOrFail();
         $composer = app(ThemeComposer::class);
 
-        $this->assertNull($composer->findPublishedEventBySlug((string) $post->getAttribute('slug')));
+        $this->assertNull($composer->findPublishedEventBySlug($post->slug));
 
         $event = Article::query()->where('content_type', 'event')->firstOrFail();
-        $found = $composer->findPublishedEventBySlug((string) $event->getAttribute('slug'));
+        $found = $composer->findPublishedEventBySlug($event->slug);
         $this->assertInstanceOf(Article::class, $found);
         $this->assertSame('event', $found->getAttribute('content_type'));
     }
 
-    public function testResolvePageActionEventsBranchReturnsOnlyEvents(): void
+    public function test_resolve_page_action_events_branch_returns_only_events(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -68,16 +68,16 @@ class BlogFrontOfficeEventsTest extends TestCase
         $event = Article::query()->where('content_type', 'event')->firstOrFail();
         $post = Article::query()->where('content_type', 'post')->firstOrFail();
 
-        $resolvedEvent = $action->execute('events', (string) $event->getAttribute('slug'));
+        $resolvedEvent = $action->execute('events', $event->slug);
         $this->assertSame('model', $resolvedEvent->renderMode);
         $this->assertInstanceOf(Article::class, $resolvedEvent->item);
         $this->assertSame('event', $resolvedEvent->item->getAttribute('content_type'));
 
-        $resolvedPost = $action->execute('events', (string) $post->getAttribute('slug'));
+        $resolvedPost = $action->execute('events', $post->slug);
         $this->assertNull($resolvedPost->item);
     }
 
-    public function testEventsIndexHttpShowsFeaturedAndExplore(): void
+    public function test_events_index_http_shows_featured_and_explore(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -88,7 +88,7 @@ class BlogFrontOfficeEventsTest extends TestCase
         $response->assertSee('Tutti gli eventi', false);
     }
 
-    public function testEventsDetailHttpUsesArticleTitle(): void
+    public function test_events_detail_http_uses_article_title(): void
     {
         app(DemoContentSeeder::class)->run();
 
