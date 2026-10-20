@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+use function Safe\json_decode;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -109,7 +111,7 @@ use Spatie\Translatable\HasTranslations;
  * @property array<string, mixed>|null       $footer_blocks
  * @property array<string, mixed>|null       $sidebar_blocks
  * @property int                             $is_featured
- * @property \Carbon\\Carbon|null $closed_at
+ * @property \Carbon\Carbon|null $closed_at
  * @property Category|null           $category
  * @property string                  $main_image
  * @property Collection<int, Rating> $ratings
