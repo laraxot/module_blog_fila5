@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\View\Composers\Support;
+namespace Modules\Blog\View\Composers\Data;
 
 use Illuminate\Support\Collection;
 use Modules\Blog\Models\Profile;
 use Modules\Blog\Models\Tag;
 
-final class ThemeCatalogSupport
+final class ThemeCatalogBag
 {
     /**
      * @return Collection<int, Profile>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\View\Composers\Support;
+namespace Modules\Blog\View\Composers\Rendering;
 
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Blog\Models\Article;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\View\Composers\Support;
+namespace Modules\Blog\View\Composers\Data;
 
 use Modules\Blog\Models\Banner;
 use Modules\UI\Datas\SliderData;
 use Webmozart\Assert\Assert;
 
-final class ThemeBannerSupport
+final class ThemeBannerBag
 {
     public function __construct(
         private readonly ThemeBannerMapper $bannerMapper = new ThemeBannerMapper(),

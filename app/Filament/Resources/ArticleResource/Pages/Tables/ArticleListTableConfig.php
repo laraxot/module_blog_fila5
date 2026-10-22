@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\Filament\Resources\ArticleResource\Pages\Support;
+namespace Modules\Blog\Filament\Resources\ArticleResource\Pages\Tables;
 
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;

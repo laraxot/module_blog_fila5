@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Livewire\Volt\Component;
 use Modules\Cms\Http\Middleware\PageSlugMiddleware;
-use Themes\Sixteen\Support\PageDescription;
+use Themes\Sixteen\Presentation\Metadata\PageDescription;
 
 use function Laravel\Folio\middleware;
 use function Laravel\Folio\name;

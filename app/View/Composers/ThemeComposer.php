@@ -16,13 +16,13 @@ use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
 use Modules\Blog\Models\Profile;
 use Modules\Blog\Models\Tag;
-use Modules\Blog\View\Composers\Support\ThemeComposerSupport;
+use Modules\Blog\View\Composers\Composition\ThemeComposerBag;
 use Modules\UI\Datas\SliderData;
 
 class ThemeComposer
 {
     public function __construct(
-        private readonly ThemeComposerSupport $support = new ThemeComposerSupport(),
+        private readonly ThemeComposerBag $bag = new ThemeComposerBag(),
     ) {
     }
 
@@ -31,7 +31,7 @@ class ThemeComposer
      */
     public function categories(): Collection
     {
-        return $this->support->categories()->categories();
+        return $this->bag->categories()->categories();
     }
 
     /**
@@ -47,7 +47,7 @@ class ThemeComposer
      */
     public function getArticles(): EloquentCollection
     {
-        return $this->support->articles()->allSorted();
+        return $this->bag->articles()->allSorted();
     }
 
     /**
@@ -66,7 +66,7 @@ class ThemeComposer
      */
     public function getFeaturedArticles(int $number = 6): Collection
     {
-        return $this->support->articles()->featured($number);
+        return $this->bag->articles()->featured($number);
     }
 
     /**
@@ -74,7 +74,7 @@ class ThemeComposer
      */
     public function getLatestArticles(int $number = 6): Collection
     {
-        return $this->support->articles()->latest($number);
+        return $this->bag->articles()->latest($number);
     }
 
     /**
@@ -82,7 +82,7 @@ class ThemeComposer
      */
     public function getArticlesByCategory(string $categoryId, int $number = 6): array
     {
-        return $this->support->articles()->byCategory($categoryId, $number);
+        return $this->bag->articles()->byCategory($categoryId, $number);
     }
 
     /**
@@ -90,7 +90,7 @@ class ThemeComposer
      */
     public function paginateArticlesByCategory(string $categoryId, int $limit = 6): Paginator
     {
-        return $this->support->articles()->paginateByCategory($categoryId, $limit);
+        return $this->bag->articles()->paginateByCategory($categoryId, $limit);
     }
 
     /**
@@ -98,7 +98,7 @@ class ThemeComposer
      */
     public function getNavCategories(): Collection
     {
-        return $this->support->categories()->navCategories();
+        return $this->bag->categories()->navCategories();
     }
 
     /**
@@ -106,7 +106,7 @@ class ThemeComposer
      */
     public function getFooterCategories(): Collection
     {
-        return $this->support->categories()->navCategories();
+        return $this->bag->categories()->navCategories();
     }
 
     /**
@@ -114,7 +114,7 @@ class ThemeComposer
      */
     public function getFooterAuthors(): Collection
     {
-        return $this->support->catalog()->footerAuthors();
+        return $this->bag->catalog()->footerAuthors();
     }
 
     /**
@@ -122,7 +122,7 @@ class ThemeComposer
      */
     public function getTags(): Collection
     {
-        return $this->support->catalog()->tags();
+        return $this->bag->catalog()->tags();
     }
 
     /**
@@ -130,7 +130,7 @@ class ThemeComposer
      */
     public function getFooterTags(): Collection
     {
-        return $this->support->catalog()->footerTags();
+        return $this->bag->catalog()->footerTags();
     }
 
     /**
@@ -138,7 +138,7 @@ class ThemeComposer
      */
     public function getMoreArticles(Model $model): Collection
     {
-        return $this->support->articles()->moreArticles($model);
+        return $this->bag->articles()->moreArticles($model);
     }
 
     /**
@@ -146,12 +146,12 @@ class ThemeComposer
      */
     public function getPaginatedArticles(int $num = 15): LengthAwarePaginator
     {
-        return $this->support->articles()->paginatedArticles($num);
+        return $this->bag->articles()->paginatedArticles($num);
     }
 
     public function showArticleSidebarContent(string $slug): Renderable
     {
-        return $this->support->sidebar()->showArticleSidebarContent($slug);
+        return $this->bag->sidebar()->showArticleSidebarContent($slug);
     }
 
     /**
@@ -172,12 +172,12 @@ class ThemeComposer
      */
     public function getBanner(): array
     {
-        return $this->support->banners()->all();
+        return $this->bag->banners()->all();
     }
 
     public function getSingleBanner(object $banner): SliderData
     {
-        return $this->support->banners()->single($banner);
+        return $this->bag->banners()->single($banner);
     }
 
     /**
@@ -195,7 +195,7 @@ class ThemeComposer
      */
     public function getArticlesLatest(int $number = 6): array
     {
-        return $this->support->articles()->articlesLatest($number);
+        return $this->bag->articles()->articlesLatest($number);
     }
 
     /**
@@ -203,19 +203,19 @@ class ThemeComposer
      */
     public function paginatedArticlesLatest(int $limit = 6): Paginator
     {
-        return $this->support->articles()->paginatedLatest($limit);
+        return $this->bag->articles()->paginatedLatest($limit);
     }
 
     /** @return Paginator<int, Article> */
     public function paginatedBlogPosts(int $limit = 9, ?string $search = null, ?string $categorySlug = null): Paginator
     {
-        return $this->support->articles()->paginatedPosts($limit, $search, $categorySlug);
+        return $this->bag->articles()->paginatedPosts($limit, $search, $categorySlug);
     }
 
     /** @return Paginator<int, Article> */
     public function paginatedPublicEvents(int $limit = 9): Paginator
     {
-        return $this->support->articles()->paginatedComingSoon($limit);
+        return $this->bag->articles()->paginatedComingSoon($limit);
     }
 
     /**
@@ -223,23 +223,23 @@ class ThemeComposer
      */
     public function featuredBlogPosts(int $number = 3): Collection
     {
-        return $this->support->articles()->featuredPosts($number);
+        return $this->bag->articles()->featuredPosts($number);
     }
 
     public function findPublishedPostBySlug(string $slug): ?Article
     {
-        return $this->support->articles()->findPublishedPostBySlug($slug);
+        return $this->bag->articles()->findPublishedPostBySlug($slug);
     }
 
     /** @return Paginator<int, Article> */
     public function paginatedEvents(int $limit = 9): Paginator
     {
-        return $this->support->articles()->paginatedEvents($limit);
+        return $this->bag->articles()->paginatedEvents($limit);
     }
 
     public function findPublishedEventBySlug(string $slug): ?Article
     {
-        return $this->support->articles()->findPublishedEventBySlug($slug);
+        return $this->bag->articles()->findPublishedEventBySlug($slug);
     }
 
     /**
@@ -247,7 +247,7 @@ class ThemeComposer
      */
     public function featuredEvents(int $number = 6): Collection
     {
-        return $this->support->articles()->featuredEvents($number);
+        return $this->bag->articles()->featuredEvents($number);
     }
 
     /**
@@ -255,7 +255,7 @@ class ThemeComposer
      */
     public function paginatedArticlesComingSoon(int $limit = 6): Paginator
     {
-        return $this->support->articles()->paginatedComingSoon($limit);
+        return $this->bag->articles()->paginatedComingSoon($limit);
     }
 
     /**
@@ -263,7 +263,7 @@ class ThemeComposer
      */
     public function paginatedArticlesOrderByNumberOfBets(int $limit = 6): Paginator
     {
-        return $this->support->articles()->paginatedByWagers($limit);
+        return $this->bag->articles()->paginatedByWagers($limit);
     }
 
     /**
@@ -271,12 +271,12 @@ class ThemeComposer
      */
     public function paginatedArticlesOrderByVolumes(int $limit = 6): Paginator
     {
-        return $this->support->articles()->paginatedByVolume($limit);
+        return $this->bag->articles()->paginatedByVolume($limit);
     }
 
     public function mapArticle(object $article): object
     {
-        return $this->support->articles()->mapArticle($article);
+        return $this->bag->articles()->mapArticle($article);
     }
 
     /**
@@ -284,7 +284,7 @@ class ThemeComposer
      */
     public function getArticlesComingSoon(int $number = 6): array
     {
-        return $this->support->articles()->comingSoon($number);
+        return $this->bag->articles()->comingSoon($number);
     }
 
     /**
@@ -292,7 +292,7 @@ class ThemeComposer
      */
     public function getArticlesOrderByNumberOfBets(int $number = 6): array
     {
-        return $this->support->articles()->orderedByWagers($number);
+        return $this->bag->articles()->orderedByWagers($number);
     }
 
     /**
@@ -300,7 +300,7 @@ class ThemeComposer
      */
     public function getArticlesOrderByVolumes(int $number = 6): array
     {
-        return $this->support->articles()->orderedByVolume($number);
+        return $this->bag->articles()->orderedByVolume($number);
     }
 
     /**
@@ -308,7 +308,7 @@ class ThemeComposer
      */
     public function getAllArticles(): array
     {
-        return $this->support->articles()->allData();
+        return $this->bag->articles()->allData();
     }
 
     /**
@@ -318,17 +318,17 @@ class ThemeComposer
      */
     public function getArticleDataArray(Collection $rows): array
     {
-        return $this->support->articles()->dataArray($rows);
+        return $this->bag->articles()->dataArray($rows);
     }
 
     public function getArticleModel(string $slug): ?Article
     {
-        return $this->support->articles()->model($slug);
+        return $this->bag->articles()->model($slug);
     }
 
     public function getCategoryModel(string $slug): ?Model
     {
-        return $this->support->categories()->model($slug);
+        return $this->bag->categories()->model($slug);
     }
 
     /**
@@ -336,6 +336,6 @@ class ThemeComposer
      */
     public function getHotTopics(): array
     {
-        return $this->support->categories()->hotTopics();
+        return $this->bag->categories()->hotTopics();
     }
 }

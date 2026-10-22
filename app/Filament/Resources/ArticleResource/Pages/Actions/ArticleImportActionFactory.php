@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\Filament\Resources\ArticleResource\Pages\Support;
+namespace Modules\Blog\Filament\Resources\ArticleResource\Pages\Actions;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
