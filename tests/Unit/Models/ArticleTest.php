@@ -17,7 +17,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\ArticleFactory;
@@ -27,16 +26,15 @@ use Tests\TestCase;
 
 class ArticleTest extends TestCase
 {
-    use RefreshDatabase;
     use WithFaker;
 
     /**
-     * Il modello Article vive sulla connessione `blog`: RefreshDatabase annulla solo la connessione predefinita,
-     * senza questa riga le righe create da un test restano visibili ai successivi.
+     * Article vive su `blog` (stesso MariaDB di Fixcity in testing).
+     * Isolamento: DatabaseTransactions sul TestCase root — mai RefreshDatabase.
      *
      * @var list<string>
      */
-    protected $connectionsToTransact = ['blog'];
+    protected $connectionsToTransact = ['blog', 'fixcity', 'mariadb'];
 
     protected Article $article;
 
