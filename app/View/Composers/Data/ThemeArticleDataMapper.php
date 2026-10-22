@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\View\Composers\Support;
+namespace Modules\Blog\View\Composers\Data;
 
 use Illuminate\Support\Collection;
 use Modules\Blog\Datas\ArticleData;
