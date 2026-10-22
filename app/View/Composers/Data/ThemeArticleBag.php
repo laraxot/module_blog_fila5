@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\View\Composers\Support;
+namespace Modules\Blog\View\Composers\Data;
+
+use Modules\Blog\View\Composers\Queries\ThemeArticleQueries;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +13,7 @@ use Illuminate\Support\Collection;
 use Modules\Blog\Datas\ArticleData;
 use Modules\Blog\Models\Article;
 
-final class ThemeArticleSupport
+final class ThemeArticleBag
 {
     public function __construct(
         private readonly ThemeArticleQueries $articleQueries = new ThemeArticleQueries(),

@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\View\Composers\Support;
+namespace Modules\Blog\View\Composers\Data;
+
+use Modules\Blog\View\Composers\Queries\ThemeCategoryQueries;
 
 use Illuminate\Support\Collection;
 use Modules\Blog\Models\Category;
 
-final class ThemeCategorySupport
+final class ThemeCategoryBag
 {
     public function __construct(
         private readonly ThemeCategoryQueries $categoryQueries = new ThemeCategoryQueries(),
