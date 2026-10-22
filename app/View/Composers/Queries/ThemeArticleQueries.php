@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\View\Composers\Support;
+namespace Modules\Blog\View\Composers\Queries;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
@@ -138,7 +138,7 @@ final class ThemeArticleQueries
 
     /**
      * Post in evidenza per lista Novità (Design Comuni) — sola lettura, no side-effect.
-     * Callers: ThemeArticleSupport::featuredPosts → ThemeComposer::featuredBlogPosts → blocks/blog/index.
+     * Callers: ThemeArticleBag::featuredPosts → ThemeComposer::featuredBlogPosts → blocks/blog/index.
      * Differisce da featured(): non aggiorna show_on_homepage.
      *
      * @return Collection<int, Article>
@@ -189,7 +189,7 @@ final class ThemeArticleQueries
 
     /**
      * Eventi in evidenza per lista Eventi (Design Comuni) — sola lettura, no side-effect.
-     * Callers: ThemeArticleSupport::featuredEvents → ThemeComposer::featuredEvents → blocks/events/index.
+     * Callers: ThemeArticleBag::featuredEvents → ThemeComposer::featuredEvents → blocks/events/index.
      *
      * @return Collection<int, Article>
      */
