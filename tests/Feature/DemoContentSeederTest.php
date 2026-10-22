@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Modules\Blog;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\App;
 use Modules\Blog\Database\Seeders\DemoContentSeeder;
 use Modules\Blog\Models\Article;
@@ -17,7 +16,6 @@ use Tests\TestCase;
  */
 class DemoContentSeederTest extends TestCase
 {
-    use RefreshDatabase;
 
     /** @var list<string> */
     protected $connectionsToTransact = ['blog', 'comment'];
@@ -60,12 +58,10 @@ class DemoContentSeederTest extends TestCase
         $this->assertTrue($comments->contains(static fn (Comment $c): bool => null !== $c->approved_at));
         $this->assertTrue(
             Comment::query()->whereNotNull('parent_id')->whereNotNull('approved_at')->exists(),
-            'Serve almeno una risposta editoriale (parent_id) approvata',
-        );
+            'Serve almeno una risposta editoriale (parent_id) approvata');
         $this->assertTrue(
             Comment::query()->whereNull('approved_at')->exists(),
-            'Serve almeno un commento pending non esposto',
-        );
+            'Serve almeno un commento pending non esposto');
     }
 
     public function testDemoContentSeederIsIdempotent(): void

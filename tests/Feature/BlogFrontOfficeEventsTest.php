@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Modules\Blog;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Blog\Database\Seeders\DemoContentSeeder;
 use Modules\Blog\Models\Article;
 use Modules\Blog\View\Composers\ThemeComposer;
@@ -18,7 +17,6 @@ use Tests\TestCase;
  */
 class BlogFrontOfficeEventsTest extends TestCase
 {
-    use RefreshDatabase;
 
     /** @var list<string> */
     protected $connectionsToTransact = ['blog', 'comment'];
@@ -40,8 +38,7 @@ class BlogFrontOfficeEventsTest extends TestCase
         foreach ($featured as $event) {
             $this->assertSame('event', $event->getAttribute('content_type'));
             $this->assertTrue(
-                (bool) $event->getAttribute('is_featured') || (bool) $event->getAttribute('show_on_homepage'),
-            );
+                (bool) $event->getAttribute('is_featured') || (bool) $event->getAttribute('show_on_homepage'));
         }
     }
 

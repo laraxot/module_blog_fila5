@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Modules\Blog;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Blog\Database\Seeders\DemoContentSeeder;
 use Modules\Blog\Models\Article;
 use Modules\Blog\View\Composers\ThemeComposer;
@@ -18,7 +17,6 @@ use Tests\TestCase;
  */
 class BlogFrontOfficeNovitaTest extends TestCase
 {
-    use RefreshDatabase;
 
     /** @var list<string> */
     protected $connectionsToTransact = ['blog', 'comment'];
@@ -41,8 +39,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         foreach ($featured as $post) {
             $this->assertSame('post', $post->getAttribute('content_type'));
             $this->assertTrue(
-                (bool) $post->getAttribute('is_featured') || (bool) $post->getAttribute('show_on_homepage'),
-            );
+                (bool) $post->getAttribute('is_featured') || (bool) $post->getAttribute('show_on_homepage'));
         }
     }
 

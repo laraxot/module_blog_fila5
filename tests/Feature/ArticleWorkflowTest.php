@@ -16,7 +16,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Modules\Blog;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\ArticleFactory;
@@ -27,7 +26,6 @@ use Tests\TestCase;
 
 class ArticleWorkflowTest extends TestCase
 {
-    use RefreshDatabase;
     use WithFaker;
 
     protected User $user;

@@ -41,4 +41,4 @@ Esito atteso: `[OK] No errors`.
 
 - [Convenzione naming test](../testing/test-naming-convention.md)
 - [Scope `published()`](../../app/Models/Concerns/ArticleQueryScopes.php)
-- Claim swarm: [phpstan-swarm-modules](../../../../docs/chat/phpstan-swarm-modules-2026-10-15.md)
+- Claim swarm: [phpstan-swarm-modules](../../../../docs/chat/phpstan-swarm-modules.md)
