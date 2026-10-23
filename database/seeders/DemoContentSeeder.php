@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Article;
@@ -160,6 +161,8 @@ class DemoContentSeeder extends Seeder
             }
         }
 
-        $this->command->info("DemoContentSeeder: $created articoli creati con immagini, categorie, commenti e contenuto HTML realistico.");
+        if ($this->command instanceof Command) {
+            $this->command->info("DemoContentSeeder: $created articoli creati con immagini, categorie, commenti e contenuto HTML realistico.");
+        }
     }
 }
