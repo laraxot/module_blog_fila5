@@ -5,6 +5,7 @@ module: Blog
 status: decision-input
 updated: 2026-10-15
 tags: [inbound, afc, blog, eventi, bmad]
+qmd: "afc → blog fixcity blog"
 ---
 
 # AFC → Blog FixCity
