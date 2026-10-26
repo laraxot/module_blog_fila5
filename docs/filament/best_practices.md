@@ -1,3 +1,11 @@
+---
+title: "Best Practices per Filament nel Modulo Blog"
+type: note
+status: draft
+updated: 2026-10-18
+tags: [docs, blog, filament]
+qmd: "best practices per filament nel modulo blog blog"
+---
 # Best Practices per Filament nel Modulo Blog
 
 ## Visibilità dei Metodi

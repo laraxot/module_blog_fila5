@@ -6,6 +6,8 @@ module: Blog
 created: 2026-10-16
 tags: [bmad, brainstorming, blog, events, content, comments]
 related: [./blog-detail-planning.md]
+updated: 2026-10-17
+qmd: "ipotesi e decisioni blog"
 ---
 
 # Ipotesi e decisioni

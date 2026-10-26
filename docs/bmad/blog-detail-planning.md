@@ -9,6 +9,8 @@ related:
   - ./blog-detail-brainstorming.md
   - ../../Comment/docs/bmad/ticket-comments-planning.md
   - ../../../Themes/Sixteen/docs/bmad/content-detail-planning.md
+updated: 2026-10-17
+qmd: "scopo blog"
 ---
 
 # Scopo

@@ -9,6 +9,8 @@ tags: [bmad, blog, module, stories, remaining-work]
 related:
   - ../../docs/second-brain/project/bmad-architecture.md
   - ../../docs/second-brain/project/bmad-stories.md
+status: draft
+qmd: "blog module   bmad stories & remaining work blog"
 ---
 
 # Blog Module — BMAD Stories & Remaining Work
