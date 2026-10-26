@@ -19,7 +19,7 @@ class BlogFrontOfficeEventsTest extends TestCase
 {
 
     /** @var list<string> */
-    protected $connectionsToTransact = ['blog', 'comment'];
+    protected array $connectionsToTransact = ['blog', 'comment'];
 
     public function test_paginated_and_featured_events_are_content_type_event_only(): void
     {

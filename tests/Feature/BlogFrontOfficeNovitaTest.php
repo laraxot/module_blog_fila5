@@ -19,7 +19,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
 {
 
     /** @var list<string> */
-    protected $connectionsToTransact = ['blog', 'comment'];
+    protected array $connectionsToTransact = ['blog', 'comment'];
 
     public function testPaginatedAndFeaturedPostsAreContentTypePostOnly(): void
     {

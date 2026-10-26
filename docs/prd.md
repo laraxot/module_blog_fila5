@@ -524,9 +524,9 @@ CREATE TABLE blog_revisions (
 - [Laravel Documentation](https://laravel.com/docs)
 
 ### 12.3 Related PRDs
-- [Cms Module PRD](../../Cms/docs/PRD.md)
+- [Cms Module PRD](../../Cms/docs/prd.md)
 - [Media Module PRD](../../Media/docs/PRD.md)
-- [Seo Module PRD](../../Seo/docs/PRD.md)
+- [Seo Module PRD](../../Seo/docs/prd.md)
 - [Comment Module PRD](../../Comment/docs/PRD.md)
 
 ---
