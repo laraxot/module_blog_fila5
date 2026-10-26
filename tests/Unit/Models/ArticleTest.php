@@ -34,7 +34,7 @@ class ArticleTest extends TestCase
      *
      * @var list<string>
      */
-    protected $connectionsToTransact = ['blog', 'fixcity', 'mariadb'];
+    protected array $connectionsToTransact = ['blog', 'fixcity', 'mariadb'];
 
     protected Article $article;
 
