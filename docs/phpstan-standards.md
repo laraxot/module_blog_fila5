@@ -4,6 +4,8 @@ type: standards
 status: stable
 source_of_truth: true
 tags: [phpstan, blog, level-10, generics, collection]
+updated: 2026-10-15
+qmd: "blog   phpstan standards (source of truth) blog"
 ---
 
 # Blog — PHPStan Standards (Source of Truth)

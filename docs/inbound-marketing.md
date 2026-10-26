@@ -3,6 +3,8 @@ title: "Blog come canale inbound civico"
 type: bmad-reference
 status: discovery
 updated: 2026-10-15
+tags: [docs, blog]
+qmd: "inbound marketing blog"
 ---
 
 Il Blog module è il luogo naturale per guide, casi d'uso, FAQ e changelog

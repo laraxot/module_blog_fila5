@@ -1,3 +1,11 @@
+---
+title: "Test Location Rule — Blog"
+type: note
+status: draft
+updated: 2026-10-19
+tags: [docs, blog]
+qmd: "test location rule   blog blog"
+---
 # Test Location Rule — Blog
 
 - Tests: `laravel/Modules/Blog/tests/`.
