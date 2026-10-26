@@ -35,5 +35,5 @@ Correggere PHPDoc/factory su `Banner`; grep `MenuFactory` vs `BannerFactory` pri
 
 ## Collegamenti
 
-- [00-INDEX.md](./00-INDEX.md)
+- [00-INDEX.md](./00-index.md)
 - [Predict audit](../../Predict/docs/ponytail-audit-over-engineering.md)

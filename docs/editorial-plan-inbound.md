@@ -5,6 +5,7 @@ module: Blog
 status: decision-input
 updated: 2026-10-15
 tags: [inbound, editorial-plan, blog, bmad]
+qmd: "piano editoriale (ownership blog) blog"
 ---
 
 # Piano editoriale (ownership Blog)

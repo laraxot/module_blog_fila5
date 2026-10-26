@@ -4,6 +4,9 @@ type: brainstorming
 status: active
 github_issue: "#blog-eventi-demo"
 links: { design_comuni: "https://italia.github.io/design-comuni-pagine-statiche/" }
+updated: 2026-10-17
+tags: [docs, blog, bmad]
+qmd: "blog eventi content.brainstorming blog"
 ---
 
 ## Scopo del progetto

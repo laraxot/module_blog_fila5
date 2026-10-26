@@ -1,3 +1,11 @@
+---
+title: "BLOG MODULE - ROADMAP 2025"
+type: note
+status: draft
+updated: 2026-10-18
+tags: [docs, blog]
+qmd: "blog module - roadmap 2025 blog"
+---
 # 🎯 BLOG MODULE - ROADMAP 2025
 
 **Modulo**: Blog ([Description])  

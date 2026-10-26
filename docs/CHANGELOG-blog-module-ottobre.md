@@ -1,3 +1,11 @@
+---
+title: "Blog Module - Changelog Ottobre 2025"
+type: note
+status: draft
+updated: 2026-10-22
+tags: [docs, blog]
+qmd: "blog module - changelog ottobre 2025 blog"
+---
 # Blog Module - Changelog Ottobre 2025
 
 ## 2025-10-15 - Rimozione Transaction Model

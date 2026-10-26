@@ -4,22 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\Blog\View\Composers\Data;
 
-use Modules\Blog\View\Composers\Queries\ThemeArticleQueries;
-
+use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorContract;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Modules\Blog\Datas\ArticleData;
 use Modules\Blog\Models\Article;
+use Modules\Blog\View\Composers\Queries\ThemeArticleQueries;
 
 final class ThemeArticleBag
 {
     public function __construct(
-        private readonly ThemeArticleQueries $articleQueries = new ThemeArticleQueries(),
-        private readonly ThemeArticleDataMapper $articleDataMapper = new ThemeArticleDataMapper(),
-    ) {
-    }
+        private readonly ThemeArticleQueries $articleQueries = new ThemeArticleQueries,
+        private readonly ThemeArticleDataMapper $articleDataMapper = new ThemeArticleDataMapper,
+    ) {}
 
     /**
      * @return \Illuminate\Database\Eloquent\Collection<int, Article>
@@ -94,11 +93,12 @@ final class ThemeArticleBag
      * Existing support layer (no alternate). Reads Article posts via ThemeArticleQueries.
      * User: «per migliorare http://192.168.1.40:8000/it/blog/ … studiare … novita.html …».
      *
-     * @return Paginator<int, Article>
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginatorContract<int, Article>
      */
-    public function paginatedPosts(int $limit, ?string $search = null, ?string $categorySlug = null): Paginator
+    public function paginatedPosts(int $limit, ?string $search = null, ?string $categorySlug = null, array $excludeIds = []): LengthAwarePaginatorContract
     {
-        return $this->articleQueries->paginatedPosts($limit, $search, $categorySlug);
+        return $this->articleQueries->paginatedPosts($limit, $search, $categorySlug, $excludeIds);
     }
 
     /**
@@ -115,11 +115,12 @@ final class ThemeArticleBag
     }
 
     /**
-     * @return Paginator<int, Article>
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginatorContract<int, Article>
      */
-    public function paginatedEvents(int $limit): Paginator
+    public function paginatedEvents(int $limit, array $excludeIds = []): LengthAwarePaginatorContract
     {
-        return $this->articleQueries->paginatedEvents($limit);
+        return $this->articleQueries->paginatedEvents($limit, $excludeIds);
     }
 
     public function findPublishedEventBySlug(string $slug): ?Article
@@ -197,8 +198,7 @@ final class ThemeArticleBag
     }
 
     /**
-     * @param Collection<int, Article> $rows
-     *
+     * @param  Collection<int, Article>  $rows
      * @return list<ArticleData>
      */
     public function dataArray(Collection $rows): array

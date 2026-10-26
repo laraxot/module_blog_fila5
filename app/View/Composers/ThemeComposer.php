@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\View\Composers;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorContract;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -22,9 +23,8 @@ use Modules\UI\Datas\SliderData;
 class ThemeComposer
 {
     public function __construct(
-        private readonly ThemeComposerBag $bag = new ThemeComposerBag(),
-    ) {
-    }
+        private readonly ThemeComposerBag $bag = new ThemeComposerBag,
+    ) {}
 
     /**
      * @return Collection<int, Category>
@@ -206,10 +206,13 @@ class ThemeComposer
         return $this->bag->articles()->paginatedLatest($limit);
     }
 
-    /** @return Paginator<int, Article> */
-    public function paginatedBlogPosts(int $limit = 9, ?string $search = null, ?string $categorySlug = null): Paginator
+    /**
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginatorContract<int, Article>
+     */
+    public function paginatedBlogPosts(int $limit = 9, ?string $search = null, ?string $categorySlug = null, array $excludeIds = []): LengthAwarePaginatorContract
     {
-        return $this->bag->articles()->paginatedPosts($limit, $search, $categorySlug);
+        return $this->bag->articles()->paginatedPosts($limit, $search, $categorySlug, $excludeIds);
     }
 
     /** @return Paginator<int, Article> */
@@ -231,10 +234,13 @@ class ThemeComposer
         return $this->bag->articles()->findPublishedPostBySlug($slug);
     }
 
-    /** @return Paginator<int, Article> */
-    public function paginatedEvents(int $limit = 9): Paginator
+    /**
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginatorContract<int, Article>
+     */
+    public function paginatedEvents(int $limit = 9, array $excludeIds = []): LengthAwarePaginatorContract
     {
-        return $this->bag->articles()->paginatedEvents($limit);
+        return $this->bag->articles()->paginatedEvents($limit, $excludeIds);
     }
 
     public function findPublishedEventBySlug(string $slug): ?Article
@@ -312,8 +318,7 @@ class ThemeComposer
     }
 
     /**
-     * @param Collection<int, Article> $rows
-     *
+     * @param  Collection<int, Article>  $rows
      * @return list<ArticleData>
      */
     public function getArticleDataArray(Collection $rows): array

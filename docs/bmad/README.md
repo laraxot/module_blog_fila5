@@ -33,7 +33,7 @@ discussions: ["https://github.com/laraxot/base_fixcity_fila5/discussions/392"]
 - [Validazione date evento](../stories/inbound-event-date-validation.story.md)
 - [Qualità e CTA](../stories/inbound-editorial-quality-cta.story.md)
 - [Pillar e tassonomia](../stories/inbound-taxonomy-pillars.story.md)
-- [Dossier coordinatore Fixcity](../../../../Fixcity/docs/bmad/inbound-marketing/README.md)
+- [Dossier coordinatore Fixcity](../../../Fixcity/docs/bmad/inbound-marketing/README.md)
 
 ## Front-office (presentazione Sixteen)
 
@@ -41,4 +41,4 @@ discussions: ["https://github.com/laraxot/base_fixcity_fila5/discussions/392"]
 - Lista/dettaglio Eventi: [inbound-fo-events](../../../../Themes/Sixteen/docs/bmad/blueprints/inbound-fo-events.md)
 - Hub tema: [inbound-fo-index](../../../../Themes/Sixteen/docs/bmad/inbound-fo-index.md)
 - Commenti FO: [fo-comments](../../../Comment/docs/bmad/fo-comments/)
-- Indice modulo: [../00-INDEX.md](../00-INDEX.md)
+- Indice modulo: [../00-INDEX.md](../00-index.md)

@@ -8,6 +8,7 @@ tags: [ponytail, filament-blueprint, inbound, bmad]
 related:
   - ./inbound-blog-events.md
   - ../../../../Fixcity/docs/bmad/inbound-marketing/purpose.md
+qmd: "ladder ponytail applicata allo scopo inbound blog"
 ---
 
 # Ladder Ponytail applicata allo scopo inbound

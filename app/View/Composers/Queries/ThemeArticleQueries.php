@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\View\Composers\Queries;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -32,7 +33,7 @@ final class ThemeArticleQueries
             ->orderBy('published_at', 'desc')
             ->get();
 
-        if (0 !== $rows->count()) {
+        if ($rows->count() !== 0) {
             return $rows;
         }
 
@@ -89,10 +90,13 @@ final class ThemeArticleQueries
     /**
      * Public editorial posts; events have their own Design Comuni listing.
      * Optional Design Comuni lista filters: keyword search + category slug.
+     * Length-aware so the pager can link every page; $excludeIds (featured posts) is applied in the query,
+     * so pages stay full and the total matches what the list can reach.
      *
-     * @return Paginator<int, Article>
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginator<int, Article>
      */
-    public function paginatedPosts(int $limit, ?string $search = null, ?string $categorySlug = null): Paginator
+    public function paginatedPosts(int $limit, ?string $search = null, ?string $categorySlug = null, array $excludeIds = []): LengthAwarePaginator
     {
         $query = $this->contentQuery()
             ->where('content_type', 'post')
@@ -100,13 +104,17 @@ final class ThemeArticleQueries
             ->published()
             ->publishedUntilToday();
 
-        if (is_string($categorySlug) && '' !== $categorySlug) {
+        if ($excludeIds !== []) {
+            $query->whereKeyNot($excludeIds);
+        }
+
+        if (is_string($categorySlug) && $categorySlug !== '') {
             $query->whereHas('category', static function (EloquentBuilder $categoryQuery) use ($categorySlug): void {
                 $categoryQuery->where('slug', $categorySlug);
             });
         }
 
-        if (is_string($search) && '' !== $search) {
+        if (is_string($search) && $search !== '') {
             $like = '%'.$search.'%';
             $query->where(static function (EloquentBuilder $searchQuery) use ($like): void {
                 $searchQuery
@@ -118,22 +126,31 @@ final class ThemeArticleQueries
 
         return $query
             ->orderByDesc('published_at')
-            ->simplePaginate($limit)
+            ->orderByDesc('id')
+            ->paginate($limit)
             ->withQueryString();
     }
 
     public function findPublishedPostBySlug(string $slug): ?Article
     {
         /** @var Article|null $post */
-        $post = $this->contentQuery()
-            ->where('content_type', 'post')
+        $post = $this->publishedPostsQuery()
             ->where('slug', $slug)
-            ->published()
-            ->publishedUntilToday()
             ->with(['category'])
             ->first();
 
         return $post;
+    }
+
+    /**
+     * Slug dei post serviti da /{lang}/blog/{slug}: la stessa query di findPublishedPostBySlug, cosi' la sitemap (DCP-273)
+     * elenca un URL se e solo se la sua pagina risponde con l'articolo.
+     *
+     * @return Collection<int, mixed>
+     */
+    public function publishedPostSlugs(): Collection
+    {
+        return $this->publishedPostsQuery()->orderBy('slug')->pluck('slug');
     }
 
     /**
@@ -161,30 +178,52 @@ final class ThemeArticleQueries
 
     /**
      * Public events listing (Design Comuni «Eventi» / Vivere il comune).
+     * Order: upcoming or ongoing events first (soonest start first), then past events (most recent first),
+     * then events without a start date. An event is past once its end (or, without an end, its start) is before now.
      *
-     * @return Paginator<int, Article>
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginator<int, Article>
      */
-    public function paginatedEvents(int $limit): Paginator
+    public function paginatedEvents(int $limit, array $excludeIds = []): LengthAwarePaginator
     {
-        return $this->contentQuery()
+        $now = now()->toDateTimeString();
+        $query = $this->contentQuery()
             ->where('content_type', 'event')
             ->with(['category'])
-            ->published()
-            ->orderBy('event_start_date')
-            ->simplePaginate($limit);
+            ->published();
+
+        if ($excludeIds !== []) {
+            $query->whereKeyNot($excludeIds);
+        }
+
+        return $query
+            ->orderByRaw('CASE WHEN event_start_date IS NULL THEN 2 WHEN COALESCE(event_end_date, event_start_date) >= ? THEN 0 ELSE 1 END', [$now])
+            ->orderByRaw('CASE WHEN COALESCE(event_end_date, event_start_date) >= ? THEN event_start_date END ASC', [$now])
+            ->orderByDesc('event_start_date')
+            ->orderByDesc('id')
+            ->paginate($limit)
+            ->withQueryString();
     }
 
     public function findPublishedEventBySlug(string $slug): ?Article
     {
         /** @var Article|null $event */
-        $event = $this->contentQuery()
-            ->where('content_type', 'event')
+        $event = $this->publishedEventsQuery()
             ->where('slug', $slug)
-            ->published()
             ->with(['category'])
             ->first();
 
         return $event;
+    }
+
+    /**
+     * Slug degli eventi serviti da /{lang}/events/{slug}: la stessa query di findPublishedEventBySlug (sitemap, DCP-273).
+     *
+     * @return Collection<int, mixed>
+     */
+    public function publishedEventSlugs(): Collection
+    {
+        return $this->publishedEventsQuery()->orderBy('slug')->pluck('slug');
     }
 
     /**
@@ -283,6 +322,31 @@ final class ThemeArticleQueries
     public function allByCreatedAt(): Collection
     {
         return $this->contentQuery()->orderBy('created_at', 'desc')->get();
+    }
+
+    /**
+     * Cosa significa «pubblicato» per un post: SSoT del dettaglio /blog/{slug} e della sitemap.
+     *
+     * @return EloquentBuilder<Article>
+     */
+    private function publishedPostsQuery(): EloquentBuilder
+    {
+        return $this->contentQuery()
+            ->where('content_type', 'post')
+            ->published()
+            ->publishedUntilToday();
+    }
+
+    /**
+     * Cosa significa «pubblicato» per un evento: SSoT del dettaglio /events/{slug} e della sitemap.
+     *
+     * @return EloquentBuilder<Article>
+     */
+    private function publishedEventsQuery(): EloquentBuilder
+    {
+        return $this->contentQuery()
+            ->where('content_type', 'event')
+            ->published();
     }
 
     /** @return EloquentBuilder<Article> */

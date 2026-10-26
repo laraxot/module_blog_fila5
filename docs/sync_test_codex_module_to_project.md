@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "sync test codex module to project 20260313"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: sync-test-codex-module-to-project-.md
 ---
 
 # Sync Sentinel

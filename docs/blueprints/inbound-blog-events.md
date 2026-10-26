@@ -15,6 +15,7 @@ related:
   - ../inbound-marketing.md
   - ../afc-pattern-adaptation.md
   - ./inbound-blog-events-ponytail-audit.md
+qmd: "obiettivo blog"
 ---
 
 # Obiettivo
