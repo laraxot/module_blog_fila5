@@ -6,7 +6,7 @@ namespace Modules\Blog\Filament\Resources\ArticleResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
-use Modules\Blog\Filament\Resources\ArticleResource\Pages\Support\ArticleImportActionFactory;
+use Modules\Blog\Filament\Resources\ArticleResource\Pages\Actions\ArticleImportActionFactory;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListArticles extends XotBaseListRecords

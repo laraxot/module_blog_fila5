@@ -5,7 +5,7 @@ status: active
 module: Blog
 tags: [blog, module, docs]
 created: 2026-09-26
-updated: 2026-10-15
+updated: 2026-10-14
 qmd: "blog modulo articoli categorie banner text widget blocchi filament twentyone cms limiti legacy predict"
 issues: []
 discussions: []
@@ -39,14 +39,15 @@ Ingresso della documentazione del modulo. Ogni affermazione e' stata confrontata
 - Fixcity: solo `Modules/Fixcity/config/morph_map.php`, che elenca `Article` e `Banner`. Nessun codice di `Modules/Fixcity/app` importa Blog.
 - Tema TwentyOne: `pages/articles/index`, `pages/articles/[slug]` e `pages/search` usano i modelli Blog. Il tema Sixteen, quello di Fixcity, ha solo stub in `pages_old/` (estensione `.stub`), non attivi.
 - Blog usa a sua volta Comment (`Article` usa `HasComments`) e Rating (7 file importano classi Rating).
+- Seo: `Blog\Actions\Article\ListPublishedArticlePathsAction` implementa `Seo\Contracts\SitemapPathsContract` ed e' registrata con tag in `BlogServiceProvider::register()` (DCP-273). Elenca `blog/{slug}` ed `events/{slug}` con le stesse query di `ThemeArticleQueries` usate dal dettaglio. La dipendenza va Blog -> Seo; Seo non importa Blog.
 
 ## Limiti
 
-1. Rotte: `routes/web.php` e `routes/api.php` sono vuoti; `php artisan route:list --json` mostra 23 rotte, tutte del pannello Filament `blog/admin`. Nessuna pagina pubblica nasce da questo modulo.
+1. Rotte: `routes/web.php` e `routes/api.php` sono vuoti; `php artisan route:list --json` mostra 23 rotte, tutte del pannello Filament `blog/admin`. Le pagine Folio del modulo (`resources/views/pages/blog/[slug].blade.php` e `events/[slug].blade.php`, route name `blog.show` e `events.show`, visibili con `php artisan folio:list`, non con `route:list`) sono **oscurate** dalla pagina del tema Sixteen `[container0]/[slug0]/index.blade.php`, che serve il dettaglio di articoli ed eventi (misurato 2026-10-26: uno slug inventato risponde 200 «Novita'» dal tema, una pagina di questo modulo darebbe 404). Non vanno cancellate: `route('events.show', ...)` e' usata da due template del tema. Vedi [page-directory-structure del tema](../../../Themes/Sixteen/docs/page-directory-structure.md).
 2. Residui di un altro progetto: `app/resources_to_delete/` contiene 112 file, tra cui viste `play_money_markets` (mercati predittivi), e il nome della cartella dice che vanno eliminati. Molti documenti rimandano a un modulo `Predict` che non esiste in `laravel/Modules`.
 3. Duplicati dentro `app/`: `app/config/config.php` e `app/Config/config.php` sono identici; `app/lang/` convive con `lang/`; `app/Models/Article.bak`.
 4. Documentazione: [ai.md](./ai.md), [comment.md](./comment.md) e [themes.md](./themes.md) sono elenchi di URL, non descrivono integrazioni.
-5. Test quasi assenti: 1 test, passa; non e' una copertura.
+5. Test: 6 file in `tests/` (misurato 2026-10-26). `BlogFrontOfficeNovitaTest` e `BlogFrontOfficeEventsTest` (10 test) sono **rossi** gia' sulla baseline: `DemoContentSeeder:28` fa `Category::firstOrCreate` senza `id` e `categories.id` e' `varchar(191)` senza default, quindi la seconda categoria da' `Duplicate entry ''`. Non dipende dalla sitemap (DCP-273). Da decidere chi possiede la forma di `categories` (la migration del Blog crea `id()` + `title`, il DB reale ha chiave stringa + `name`).
 
 ## Quick start
 
@@ -61,16 +62,8 @@ DB_DATABASE_LIMESURVEY= bash ../bashscripts/tools/pest-scratch-db.sh Modules/Blo
 
 ## Mappa della documentazione
 
-Indice operativo: [00-index.md](./00-index.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
+Indice operativo: [00-INDEX.md](./00-index.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
 
+## Post agnostico
 
-## Standing order (qualita' + docs)
-
-- **PHPStan a zero** sul codice del modulo: non ignorare errori, non abbassare il livello, non modificare `phpstan.neon` del progetto. Qualita' + docs + BMAD sono standing order, non opzionali.
-- **Cartella test**: solo `tests/` (minuscolo). `Tests/` e' vietato (case-collision su macOS/Windows e confusione PSR-4).
-- **Nomi `.md`**: kebab-case minuscolo, niente date/timestamp nel nome, unica eccezione `README.md`. Se esistono `readme.md` e `README.md`, resta solo `README.md`.
-- **Docs**: solo dentro `docs/` gia' esistente; consolida invece di moltiplicare file; link relativi; focus su scopo/perche'/business logic (DRY + KISS).
-- **Git**: forward-only (patch in avanti); no reset/revert/checkout come scorciatoia.
-- **BMAD + second brain**: indici e decisioni vivono in `docs/` del modulo; aggiornali quando cambia il perche', non solo il come.
-
-Vedi anche: [00-index.md](./00-index.md) · [index.md](./index.md)
+[brainstorming-post-vs-article.md](./brainstorming-post-vs-article.md) · rename deferred [IM-BLOG-008](./stories/inbound-rename-article-to-post.story.md).

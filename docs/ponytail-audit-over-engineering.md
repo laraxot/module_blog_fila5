@@ -37,8 +37,3 @@ Correggere PHPDoc/factory su `Banner`; grep `MenuFactory` vs `BannerFactory` pri
 
 - [00-INDEX.md](./00-index.md)
 - [Predict audit](../../Predict/docs/ponytail-audit-over-engineering.md)
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

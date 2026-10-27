@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Article Model Test Suite
+ * Article Model Test Suite.
  *
  * Tests Blog\Models\Article functionality:
  * - Table configuration and relationships
@@ -16,17 +16,25 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Modules\Blog\Models;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Carbon;
+use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Article;
-use Modules\Blog\Models\ArticleCategory;
-use Modules\Blog\Models\Category;
-use Modules\Blog\Models\Tag;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ArticleTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use WithFaker;
+
+    /**
+     * Article vive su `blog` (stesso MariaDB di Fixcity in testing).
+     * Isolamento: DatabaseTransactions sul TestCase root — mai RefreshDatabase.
+     *
+     * @var list<string>
+     */
+    protected array $connectionsToTransact = ['blog', 'fixcity', 'mariadb'];
 
     protected Article $article;
 
@@ -36,26 +44,62 @@ class ArticleTest extends TestCase
         $this->article = new Article;
     }
 
-    /** @test Article has correct table name */
-    public function it_has_correct_table_name(): void
+    /**
+     * @param  array<string, mixed>  $attributes
+     */
+    private function createArticle(array $attributes = []): Article
     {
-        $this->assertEquals('blog_articles', $this->article->getTable());
+        return ArticleFactory::new()->createOne($attributes);
     }
 
-    /** @test Article has correct primary key */
+    private function freshArticle(Article $article): Article
+    {
+        $fresh = $article->fresh();
+        $this->assertInstanceOf(Article::class, $fresh);
+
+        return $fresh;
+    }
+
+    private function assertArticleIsPublished(Article $article): void
+    {
+        $this->assertTrue(
+            Article::published()->whereKey($article->getKey())->exists()
+        );
+    }
+
+    private function assertArticleIsDraft(Article $article): void
+    {
+        $this->assertFalse(
+            Article::published()->whereKey($article->getKey())->exists()
+        );
+    }
+
+    /** Article has correct table name */
+    #[Test]
+    public function it_has_correct_table_name(): void
+    {
+        $this->assertEquals('articles', $this->article->getTable());
+    }
+
+    /** Article has correct primary key */
+    #[Test]
     public function it_has_correct_primary_key(): void
     {
         $this->assertEquals('id', $this->article->getKeyName());
     }
 
-    /** @test Article can be created with valid data */
+    /** Article can be created with valid data */
+    #[Test]
     public function it_can_create_article_with_valid_data(): void
     {
         $data = [
             'title' => 'Test Article',
             'slug' => 'test-article',
-            'content' => 'This is test content',
-            'published' => true,
+            'description' => 'Test description',
+            'content_blocks' => [],
+            'sidebar_blocks' => [],
+            'footer_blocks' => [],
+            'published_at' => Carbon::now(),
         ];
 
         $article = Article::create($data);
@@ -63,59 +107,65 @@ class ArticleTest extends TestCase
         $this->assertInstanceOf(Article::class, $article);
         $this->assertEquals('Test Article', $article->title);
         $this->assertEquals('test-article', $article->slug);
-        $this->assertTrue($article->published);
+        $this->assertArticleIsPublished($article);
     }
 
-    /** @test Article can be updated */
+    /** Article can be updated */
+    #[Test]
     public function it_can_update_article(): void
     {
-        $article = Article::create([
+        $article = $this->createArticle([
             'title' => 'Original Title',
             'slug' => 'original-title',
             'content' => 'Original content',
         ]);
 
+        $blocks = [['type' => 'paragraph', 'data' => ['text' => 'Updated content']]];
         $article->update([
             'title' => 'Updated Title',
-            'content' => 'Updated content',
+            'content_blocks' => $blocks,
         ]);
 
-        $this->assertEquals('Updated Title', $article->fresh()->title);
-        $this->assertEquals('Updated content', $article->fresh()->content);
+        $fresh = $this->freshArticle($article);
+        $this->assertEquals('Updated Title', $fresh->title);
+        $this->assertEquals($blocks, $fresh->content_blocks);
     }
 
-    /** @test Article can be published */
+    /** Article can be published */
+    #[Test]
     public function it_can_be_published(): void
     {
-        $article = Article::create([
+        $article = $this->createArticle([
             'title' => 'Unpublished Article',
             'slug' => 'unpublished',
-            'published' => false,
+            'published_at' => null,
         ]);
 
-        $article->update(['published' => true]);
+        $article->update(['published_at' => Carbon::now()]);
 
-        $this->assertTrue($article->fresh()->published);
+        $this->assertArticleIsPublished($this->freshArticle($article));
     }
 
-    /** @test Article can be unpublished */
+    /** Article can be unpublished */
+    #[Test]
     public function it_can_be_unpublished(): void
     {
-        $article = Article::create([
+        $article = $this->createArticle([
             'title' => 'Published Article',
             'slug' => 'published',
-            'published' => true,
+            'published_at' => Carbon::now(),
         ]);
 
-        $article->update(['published' => false]);
+        $article->update(['published_at' => null]);
 
-        $this->assertFalse($article->fresh()->published);
+        $this->assertArticleIsDraft($this->freshArticle($article));
     }
 
-    /** @test Article can be found by slug */
+    /** Article can be found by slug */
+    #[Test]
     public function it_can_be_found_by_slug(): void
     {
-        $article = Article::create([
+        $created = $this->createArticle([
             'title' => 'Slug Test',
             'slug' => 'slug-test-unique',
             'content' => 'Test content',
@@ -124,58 +174,65 @@ class ArticleTest extends TestCase
         $found = Article::where('slug', 'slug-test-unique')->first();
 
         $this->assertInstanceOf(Article::class, $found);
+        $this->assertSame($created->id, $found->id);
         $this->assertEquals('Slug Test', $found->title);
     }
 
-    /** @test Article can be found by title */
+    /** Article can be found by title */
+    #[Test]
     public function it_can_be_found_by_title(): void
     {
-        $article = Article::create([
+        $created = $this->createArticle([
             'title' => 'Unique Title',
             'slug' => 'unique-title',
             'content' => 'Content',
         ]);
 
-        $found = Article::where('title', 'Unique Title')->first();
+        $found = Article::where('title->'.app()->getLocale(), 'Unique Title')->first();
 
         $this->assertInstanceOf(Article::class, $found);
+        $this->assertSame($created->id, $found->id);
         $this->assertEquals('unique-title', $found->slug);
     }
 
-    /** @test Can query only published articles */
+    /** Can query only published articles */
+    #[Test]
     public function it_can_query_published_articles(): void
     {
-        Article::create(['title' => 'Published 1', 'slug' => 'pub-1', 'published' => true]);
-        Article::create(['title' => 'Draft 1', 'slug' => 'draft-1', 'published' => false]);
-        Article::create(['title' => 'Published 2', 'slug' => 'pub-2', 'published' => true]);
+        $this->createArticle(['title' => 'Published 1', 'slug' => 'pub-1', 'published_at' => Carbon::now()]);
+        $this->createArticle(['title' => 'Draft 1', 'slug' => 'draft-1', 'published_at' => null]);
+        $this->createArticle(['title' => 'Published 2', 'slug' => 'pub-2', 'published_at' => Carbon::now()]);
 
-        $published = Article::where('published', true)->get();
+        $published = Article::published()->get();
 
         $this->assertCount(2, $published);
     }
 
-    /** @test Can query only draft articles */
+    /** Can query only draft articles */
+    #[Test]
     public function it_can_query_draft_articles(): void
     {
-        Article::create(['title' => 'Published', 'slug' => 'published', 'published' => true]);
-        Article::create(['title' => 'Draft 1', 'slug' => 'draft-1', 'published' => false]);
-        Article::create(['title' => 'Draft 2', 'slug' => 'draft-2', 'published' => false]);
+        $this->createArticle(['title' => 'Published', 'slug' => 'published', 'published_at' => Carbon::now()]);
+        $this->createArticle(['title' => 'Draft 1', 'slug' => 'draft-1', 'published_at' => null]);
+        $this->createArticle(['title' => 'Draft 2', 'slug' => 'draft-2', 'published_at' => null]);
 
-        $drafts = Article::where('published', false)->get();
+        $drafts = Article::query()->whereNull('published_at')->get();
 
         $this->assertCount(2, $drafts);
     }
 
-    /** @test Article uses timestamps */
+    /** Article uses timestamps */
+    #[Test]
     public function it_uses_timestamps(): void
     {
         $this->assertTrue($this->article->usesTimestamps());
     }
 
-    /** @test Article has created_at and updated_at */
+    /** Article has created_at and updated_at */
+    #[Test]
     public function it_has_timestamps(): void
     {
-        $article = Article::create([
+        $article = $this->createArticle([
             'title' => 'Timestamp Test',
             'slug' => 'timestamp-test',
         ]);
@@ -184,68 +241,80 @@ class ArticleTest extends TestCase
         $this->assertNotNull($article->updated_at);
     }
 
-    /** @test Article can be deleted */
+    /** Article can be deleted */
+    #[Test]
     public function it_can_be_deleted(): void
     {
-        $article = Article::create([
+        $article = $this->createArticle([
             'title' => 'To Delete',
             'slug' => 'to-delete',
         ]);
 
-        $articleId = $article->id;
         $article->delete();
 
-        $this->assertDatabaseMissing('blog_articles', ['id' => $articleId]);
+        $this->assertSoftDeleted($article);
     }
 
-    /** @test Article can be created with factory */
+    /** Article can be created with factory */
+    #[Test]
     public function it_can_be_created_with_factory(): void
     {
-        $article = Article::factory()->create();
+        $article = $this->createArticle();
 
-        $this->assertInstanceOf(Article::class, $article);
         $this->assertNotEmpty($article->title);
         $this->assertNotEmpty($article->slug);
     }
 
-    /** @test Article can be queried and ordered by creation date */
+    /** Article can be queried and ordered by creation date */
+    #[Test]
     public function it_can_be_ordered_by_created_date(): void
     {
-        Article::create(['title' => 'First', 'slug' => 'first', 'created_at' => now()->subDays(2)]);
-        Article::create(['title' => 'Second', 'slug' => 'second', 'created_at' => now()]);
-        Article::create(['title' => 'Third', 'slug' => 'third', 'created_at' => now()->subDay()]);
+        $this->createArticle(['title' => 'First', 'slug' => 'first', 'created_at' => now()->subDays(2)]);
+        $this->createArticle(['title' => 'Second', 'slug' => 'second', 'created_at' => now()]);
+        $this->createArticle(['title' => 'Third', 'slug' => 'third', 'created_at' => now()->subDay()]);
 
+        /** @var Collection<int, Article> $ordered */
         $ordered = Article::orderBy('created_at', 'asc')->get();
 
-        $this->assertEquals('First', $ordered[0]->title);
-        $this->assertEquals('Third', $ordered[1]->title);
-        $this->assertEquals('Second', $ordered[2]->title);
+        $first = $ordered->get(0);
+        $second = $ordered->get(1);
+        $third = $ordered->get(2);
+
+        $this->assertInstanceOf(Article::class, $first);
+        $this->assertInstanceOf(Article::class, $second);
+        $this->assertInstanceOf(Article::class, $third);
+        $this->assertEquals('First', $first->title);
+        $this->assertEquals('Third', $second->title);
+        $this->assertEquals('Second', $third->title);
     }
 
-    /** @test Article can be counted */
+    /** Article can be counted */
+    #[Test]
     public function it_can_be_counted(): void
     {
-        Article::factory()->count(5)->create();
+        ArticleFactory::new()->count(5)->create();
 
         $count = Article::count();
 
         $this->assertGreaterThanOrEqual(5, $count);
     }
 
-    /** @test Article query can be limited */
+    /** Article query can be limited */
+    #[Test]
     public function it_can_be_limited(): void
     {
-        Article::factory()->count(10)->create();
+        ArticleFactory::new()->count(10)->create();
 
         $limited = Article::limit(3)->get();
 
         $this->assertCount(3, $limited);
     }
 
-    /** @test Article can be paginated */
+    /** Article can be paginated */
+    #[Test]
     public function it_can_be_paginated(): void
     {
-        Article::factory()->count(25)->create();
+        ArticleFactory::new()->count(25)->create();
 
         $paginated = Article::paginate(10);
 

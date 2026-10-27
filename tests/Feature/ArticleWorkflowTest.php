@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Article Workflow Feature Test
+ * Article Workflow Feature Test.
  *
  * Tests complete user workflows for blog articles:
  * - Create article workflow (validation, storage, redirect)
@@ -15,26 +15,72 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Modules\Blog;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Carbon;
+use Modules\Blog\Database\Factories\ArticleFactory;
 use Modules\Blog\Models\Article;
+use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use Tests\TestCase;
 
 class ArticleWorkflowTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use WithFaker;
 
     protected User $user;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->user = User::factory()->create();
+        $this->user = UserFactory::new()->createOne();
+    }
+
+    /**
+     * @param array<string, mixed> $attributes
+     */
+    private function createArticle(array $attributes = []): Article
+    {
+        return ArticleFactory::new()->createOne($attributes);
+    }
+
+    /**
+     * @param array<string, mixed> $attributes
+     *
+     * @return Collection<int, Article>
+     */
+    private function createArticles(int $count, array $attributes = []): Collection
+    {
+        /** @var Collection<int, Article> $articles */
+        $articles = ArticleFactory::new()->count($count)->create($attributes);
+
+        return $articles;
+    }
+
+    private function freshArticle(Article $article): Article
+    {
+        $fresh = $article->fresh();
+        $this->assertInstanceOf(Article::class, $fresh);
+
+        return $fresh;
+    }
+
+    private function assertArticleIsPublished(Article $article): void
+    {
+        $this->assertTrue(
+            Article::published()->whereKey($article->getKey())->exists()
+        );
+    }
+
+    private function assertArticleIsDraft(Article $article): void
+    {
+        $this->assertFalse(
+            Article::published()->whereKey($article->getKey())->exists()
+        );
     }
 
     /** @test Complete article creation workflow */
-    public function complete_article_creation_workflow(): void
+    public function completeArticleCreationWorkflow(): void
     {
         // Step 1: User authenticates
         $this->actingAs($this->user);
@@ -45,7 +91,7 @@ class ArticleWorkflowTest extends TestCase
             'title' => 'My First Article',
             'slug' => 'my-first-article',
             'content' => 'This is the content of my first article.',
-            'published' => false, // Start as draft
+            'published_at' => null,
         ];
 
         // Step 3: Create article in database
@@ -58,16 +104,16 @@ class ArticleWorkflowTest extends TestCase
         ]);
 
         // Step 5: Verify article is in draft state
-        $this->assertFalse($article->fresh()->published);
+        $this->assertArticleIsDraft($article);
     }
 
     /** @test Article update workflow */
-    public function article_update_workflow(): void
+    public function articleUpdateWorkflow(): void
     {
         $this->actingAs($this->user);
 
         // Create initial article
-        $article = Article::factory()->create([
+        $article = $this->createArticle([
             'title' => 'Original Title',
             'content' => 'Original content',
         ]);
@@ -84,60 +130,62 @@ class ArticleWorkflowTest extends TestCase
             'title' => 'Updated Title',
         ]);
 
-        $this->assertEquals('Updated content with more details', $article->fresh()->content);
+        $fresh = $this->freshArticle($article);
+        $this->assertEquals('Updated content with more details', $fresh->content);
     }
 
     /** @test Article publication workflow */
-    public function article_publication_workflow(): void
+    public function articlePublicationWorkflow(): void
     {
         $this->actingAs($this->user);
 
         // Create draft article
-        $article = Article::factory()->create(['published' => false]);
+        $article = $this->createArticle(['published_at' => null]);
 
         // Verify is draft
-        $this->assertFalse($article->published);
+        $this->assertArticleIsDraft($article);
 
         // Publish article
-        $article->update(['published' => true]);
+        $publishedAt = Carbon::now();
+        $article->update(['published_at' => $publishedAt]);
 
         // Verify is published
-        $this->assertTrue($article->fresh()->published);
+        $this->assertArticleIsPublished($this->freshArticle($article));
 
         // Verify published articles are queryable
-        $published = Article::where('published', true)->get();
+        $published = Article::published()->get();
         $this->assertTrue($published->contains('id', $article->id));
     }
 
     /** @test Article unpublishing workflow */
-    public function article_unpublishing_workflow(): void
+    public function articleUnpublishingWorkflow(): void
     {
         $this->actingAs($this->user);
 
         // Create published article
-        $article = Article::factory()->create(['published' => true]);
+        $article = $this->createArticle(['published_at' => Carbon::now()]);
 
         // Verify is published
-        $this->assertTrue($article->published);
+        $this->assertArticleIsPublished($article);
 
         // Unpublish article
-        $article->update(['published' => false]);
+        $article->update(['published_at' => null]);
 
         // Verify is now draft
-        $this->assertFalse($article->fresh()->published);
+        $this->assertArticleIsDraft($this->freshArticle($article));
 
         // Verify not in published query
-        $published = Article::where('published', true)->get();
+        $published = Article::published()->get();
         $this->assertFalse($published->contains('id', $article->id));
     }
 
     /** @test Article deletion workflow */
-    public function article_deletion_workflow(): void
+    public function articleDeletionWorkflow(): void
     {
         $this->actingAs($this->user);
 
         // Create article
-        $article = Article::factory()->create();
+        $article = $this->createArticle();
         $articleId = $article->id;
 
         // Delete article
@@ -148,61 +196,62 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Multiple article management workflow */
-    public function multiple_article_management_workflow(): void
+    public function multipleArticleManagementWorkflow(): void
     {
         $this->actingAs($this->user);
 
         // Create multiple articles
-        $article1 = Article::factory()->create(['title' => 'Article 1', 'published' => true]);
-        $article2 = Article::factory()->create(['title' => 'Article 2', 'published' => false]);
-        $article3 = Article::factory()->create(['title' => 'Article 3', 'published' => true]);
+        $article1 = $this->createArticle(['title' => 'Article 1', 'published_at' => Carbon::now()]);
+        $article2 = $this->createArticle(['title' => 'Article 2', 'published_at' => null]);
+        $article3 = $this->createArticle(['title' => 'Article 3', 'published_at' => Carbon::now()]);
 
         // Query published articles
-        $published = Article::where('published', true)->get();
+        $published = Article::published()->get();
         $this->assertCount(2, $published);
+        $this->assertTrue($published->contains('id', $article3->id));
 
         // Update one article
-        $article2->update(['published' => true]);
+        $article2->update(['published_at' => Carbon::now()]);
 
         // Verify count increased
-        $publishedAfter = Article::where('published', true)->get();
+        $publishedAfter = Article::published()->get();
         $this->assertCount(3, $publishedAfter);
 
         // Delete one article
         $article1->delete();
 
         // Verify count decreased
-        $publishedFinal = Article::where('published', true)->get();
+        $publishedFinal = Article::published()->get();
         $this->assertCount(2, $publishedFinal);
     }
 
     /** @test Article visibility based on publication status */
-    public function article_visibility_workflow(): void
+    public function articleVisibilityWorkflow(): void
     {
         $this->actingAs($this->user);
 
-        $draftArticle = Article::factory()->create(['published' => false]);
-        $publishedArticle = Article::factory()->create(['published' => true]);
+        $draftArticle = $this->createArticle(['published_at' => null]);
+        $publishedArticle = $this->createArticle(['published_at' => Carbon::now()]);
 
         // Simulate public article query (published only)
-        $visibleArticles = Article::where('published', true)->get();
+        $visibleArticles = Article::published()->get();
 
         $this->assertTrue($visibleArticles->contains('id', $publishedArticle->id));
         $this->assertFalse($visibleArticles->contains('id', $draftArticle->id));
     }
 
     /** @test Article lifecycle workflow (create -> edit -> publish -> archive) */
-    public function article_complete_lifecycle_workflow(): void
+    public function articleCompleteLifecycleWorkflow(): void
     {
         $this->actingAs($this->user);
 
         // Stage 1: Create draft
-        $article = Article::factory()->create([
+        $article = $this->createArticle([
             'title' => 'Lifecycle Test Article',
-            'published' => false,
+            'published_at' => null,
         ]);
 
-        $this->assertFalse($article->published);
+        $this->assertArticleIsDraft($article);
 
         // Stage 2: Edit content
         $article->update([
@@ -210,24 +259,24 @@ class ArticleWorkflowTest extends TestCase
         ]);
 
         // Stage 3: Publish
-        $article->update(['published' => true]);
-        $this->assertTrue($article->fresh()->published);
+        $article->update(['published_at' => Carbon::now()]);
+        $this->assertArticleIsPublished($this->freshArticle($article));
 
         // Stage 4: Verify in public query
-        $publicArticles = Article::where('published', true)->get();
+        $publicArticles = Article::published()->get();
         $this->assertTrue($publicArticles->contains('id', $article->id));
 
         // Stage 5: Unpublish (archive)
-        $article->update(['published' => false]);
-        $this->assertFalse($article->fresh()->published);
+        $article->update(['published_at' => null]);
+        $this->assertArticleIsDraft($this->freshArticle($article));
 
         // Stage 6: Verify no longer in public query
-        $publicArticlesAfter = Article::where('published', true)->get();
+        $publicArticlesAfter = Article::published()->get();
         $this->assertFalse($publicArticlesAfter->contains('id', $article->id));
     }
 
     /** @test Error handling in article workflow - validation */
-    public function article_workflow_handles_validation_errors(): void
+    public function articleWorkflowHandlesValidationErrors(): void
     {
         $this->actingAs($this->user);
 
@@ -237,8 +286,7 @@ class ArticleWorkflowTest extends TestCase
                 // Missing 'title'
                 'slug' => 'test-slug',
             ]);
-            // If reach here, validation may not be enforced at model level
-            $this->assertTrue(true);
+            $this->fail('Expected validation or persistence exception when title is missing');
         } catch (\Exception $e) {
             // Validation failed as expected
             $this->assertStringContainsString('title', strtolower($e->getMessage()));
@@ -246,19 +294,21 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Batch article operations workflow */
-    public function batch_article_operations_workflow(): void
+    public function batchArticleOperationsWorkflow(): void
     {
         $this->actingAs($this->user);
 
         // Create multiple articles
-        $articles = Article::factory()->count(5)->create();
+        $articles = $this->createArticles(5);
 
         // Bulk update to publish all
-        Article::whereIn('id', $articles->pluck('id'))->update(['published' => true]);
+        $ids = $articles->pluck('id');
+        Article::query()->whereIn('id', $ids)->update(['published_at' => Carbon::now()]);
 
         // Verify all published
-        $published = Article::whereIn('id', $articles->pluck('id'))
-            ->where('published', true)
+        $published = Article::query()
+            ->whereIn('id', $ids)
+            ->whereNotNull('published_at')
             ->get();
 
         $this->assertCount(5, $published);

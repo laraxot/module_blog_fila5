@@ -90,8 +90,3 @@ cd /var/www/_bases/base_fixcity_fila5_mono/laravel
 ---
 **Modulo Blog - PHPStan Level 10 Compliant!** 🎉
 
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

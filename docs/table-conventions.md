@@ -72,8 +72,3 @@ Le convenzioni per le tabelle nel modulo Blog sono progettate per garantire:
 - [Documentazione Filament Tables](../laravel/Modules/Xot/docs/FILAMENT-TABLES.md)
 - [Sistema di Traduzione](../../Lang/docs/README.md)
 - [Convenzioni Generali](../../../../docs/naming_conventions.md) 
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

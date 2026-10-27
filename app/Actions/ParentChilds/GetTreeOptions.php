@@ -51,7 +51,8 @@ class GetTreeOptions
     }
 
     /**
-     * @param  array<int, Category|Menu>  $models
+     * @param array<int, Category|Menu> $models
+     *
      * @return array<int|string, string>
      */
     private function buildOptionsFromModels(array $models): array
@@ -65,7 +66,7 @@ class GetTreeOptions
     }
 
     /**
-     * @param  array<int|string, string>  $results
+     * @param array<int|string, string> $results
      */
     private function appendModelOptions(array &$results, Category|Menu $mod, string $prefix): void
     {

@@ -10,97 +10,56 @@ discussions: []
 status: draft
 ---
 
-# Blog Module - Product Strategy
+# Blog - Product Strategy
 
-**Module:** Blog  
-**Version:** 1.0.0  
-**Owner:** Product Team
+> Strategia prodotto. Modulo.
+> Allineamento strategico stimato: 72%.
 
----
-## Executive Summary
+## Missione
 
-The Blog module serves as our primary content marketing channel, driving organic traffic, educating users, and building community engagement around prediction markets.
+Portare **Blog** a uno stato in cui il progetto ottiene un vantaggio netto e misurabile su questa area: backbone editoriale con articoli, categorie, banner e profili.
 
----
+## Problema da risolvere
 
-## Market Analysis
+- chiarire il ruolo del componente nel sistema
+- evitare sovrapposizioni con altri moduli o temi
+- rendere il valore del componente esplicito e verificabile
 
-### TAM / SAM / SOM
+## Principi strategici
 
-| Segment | TAM | SAM | SOM (2028) |
-|---------|-----|-----|------------|
-| **Content Marketing** | $100B | $10B | $500M |
-| **SEO Traffic** | $50B | $5B | $250M |
-| **Total** | $150B | $15B | $750M |
+- DRY: riuso prima di duplicare
+- KISS: superfici semplici e veritiere
+- truth over demo: nessuna feature solo apparente
+- docs come interscambio tra agenti AI
 
----
+## Scelte strategiche
 
-## Strategic Pillars
+- concentrare gli investimenti sui gap P0 e P1
+- misurare il progresso con percentuali e quality gates
+- collegare ogni evoluzione a issue, discussion e test
 
-### Pillar 1: SEO Excellence
-Rank #1 for prediction market keywords.
+## Cosa non fare
 
-### Pillar 2: Quality Content
-Publish authoritative, well-researched articles.
+- aggiungere feature cosmetiche prima del core
+- introdurre stack o dipendenze senza ownership chiara
+- lasciare zone grigie tra codice reale e documento di prodotto
 
-### Pillar 3: Community Engagement
-Build active comment community.
+## Metriche strategiche
 
-### Pillar 4: Conversion Optimization
-Turn readers into users.
+| Area | Target |
+|------|--------|
+| Chiarezza di scope | 100% |
+| Aderenza docs-codice | > 90% |
+| Gap P0 aperti | < 10% |
 
----
+## Collegamenti
 
-## Go-to-Market Strategy
+- [PRD](prd.md)
+- [Product Roadmap](product-roadmap.md)
+- [Indice centrale](../../../../docs/project/PRODUCT_DOCS_INDEX_2026_03_12.md)
 
-### Phase 1: Foundation (Q1 2026)
-- Launch blog with 10 quality articles
-- Basic SEO optimization
+## Regola architetturale
 
-### Phase 2: Growth (Q2-Q3 2026)
-- Publish 5 articles/week
-- Guest posting program
-- Social media promotion
-
-### Phase 3: Monetization (Q4 2026)
-- Premium content launch
-- Sponsorship program
-
----
-
-## Financial Projections
-
-| Year | Traffic Value | Conversion Value | Total |
-|------|---------------|------------------|-------|
-| 2026 | $100K | $200K | $300K |
-| 2027 | $500K | $1M | $1.5M |
-| 2028 | $1M | $3M | $4M |
-
----
-
-## Risks and Mitigation
-
-| Risk | Mitigation |
-|------|------------|
-| **Low traffic** | SEO optimization, promotion |
-| **Low engagement** | Quality content, community management |
-| **Algorithm changes** | Diversify traffic sources |
-
----
-
-## Success Criteria
-
-| Metric | 12-Month Target |
-|--------|-----------------|
-| **Monthly Pageviews** | 500K |
-| **Organic Traffic** | 70% of total |
-| **Conversion Rate** | 5% to signup |
-| **Domain Authority** | 50+ |
-
----
-
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+- Action-first: niente generic `Services` per la business logic
+- Standard operativo: `spatie/laravel-queueable-action`
+- Convenzione: Action con metodo `execute()` e dispatch tramite container
