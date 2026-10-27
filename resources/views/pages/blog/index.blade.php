@@ -34,7 +34,7 @@ new class extends Component
         ?? 'Notizie, comunicati e avvisi sul territorio e sui servizi civici.';
 @endphp
 
-{{-- Owner: Blog Folio. Copy/SEO: CMS JSON blog.index. Dati: ThemeComposer content_type=post. --}}
+{{-- Owner: Blog Folio. Copy/SEO: CMS JSON blog.index. Dati: ThemeComposer type=post. --}}
 <x-layouts.app :title="$pageTitle" :meta-description="$pageDescription" header-active="novita">
     @volt('blog.index')
     <div class="page-content content" data-dc data-slug="blog.index" data-side="content">

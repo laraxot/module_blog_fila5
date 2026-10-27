@@ -24,11 +24,11 @@ class DemoInvestorSeeder extends Seeder
         }
 
         $articles = [
-            ['title' => 'Fixcity: la piattaforma per le segnalazioni del Comune', 'content' => '<h2>Obiettivo</h2><p>Fixcity permette ai cittadini di segnalare problemi sul territorio in modo semplice, trasparente e tracciabile. Per l\'investitore: modello SaaS per PA con ricavi ricorrenti.</p>', 'category_slug' => 'servizi-pubblici', 'is_featured' => 1, 'content_type' => 'post', 'published_at' => now()],
-            ['title' => 'Evento: Open Day del Comune — 15 novembre', 'content' => '<h2>Dettagli</h2><p>Partecipazione aperta a cittadini e imprese. Presentazione della piattaforma Fixcity e del portale design-comuni.</p>', 'category_slug' => 'eventi', 'is_featured' => 1, 'content_type' => 'event', 'published_at' => now(), 'event_start_date' => now()->addDays(5)],
-            ['title' => 'Nuovo regolamento per la raccolta differenziata', 'content' => '<p>Il Comune aggiorna le linee guida ambientali. Fixcity supporta la trasparenza con dati in tempo reale.</p>', 'category_slug' => 'ambiente', 'content_type' => 'post', 'published_at' => now()],
-            ['title' => 'Novità: integrazione con il portale PA', 'content' => '<p>Fixcity si integra con il sistema di identità digitale SPID e CIE per una maggiore sicurezza.</p>', 'category_slug' => 'novita', 'content_type' => 'post', 'published_at' => now()],
-            ['title' => 'Report annuale: 642 segnalazioni gestite', 'content' => '<h2>Performance</h2><p>Nel 2026 sono state gestite oltre 642 segnalazioni con un tempo medio di risposta di 3 giorni.</p>', 'category_slug' => 'servizi-pubblici', 'is_featured' => 1, 'content_type' => 'post', 'published_at' => now()],
+            ['title' => 'Fixcity: la piattaforma per le segnalazioni del Comune', 'content' => '<h2>Obiettivo</h2><p>Fixcity permette ai cittadini di segnalare problemi sul territorio in modo semplice, trasparente e tracciabile. Per l\'investitore: modello SaaS per PA con ricavi ricorrenti.</p>', 'category_slug' => 'servizi-pubblici', 'is_featured' => 1, 'type' => 'post', 'published_at' => now()],
+            ['title' => 'Evento: Open Day del Comune — 15 novembre', 'content' => '<h2>Dettagli</h2><p>Partecipazione aperta a cittadini e imprese. Presentazione della piattaforma Fixcity e del portale design-comuni.</p>', 'category_slug' => 'eventi', 'is_featured' => 1, 'type' => 'event', 'published_at' => now(), 'event_start_date' => now()->addDays(5)],
+            ['title' => 'Nuovo regolamento per la raccolta differenziata', 'content' => '<p>Il Comune aggiorna le linee guida ambientali. Fixcity supporta la trasparenza con dati in tempo reale.</p>', 'category_slug' => 'ambiente', 'type' => 'post', 'published_at' => now()],
+            ['title' => 'Novità: integrazione con il portale PA', 'content' => '<p>Fixcity si integra con il sistema di identità digitale SPID e CIE per una maggiore sicurezza.</p>', 'category_slug' => 'novita', 'type' => 'post', 'published_at' => now()],
+            ['title' => 'Report annuale: 642 segnalazioni gestite', 'content' => '<h2>Performance</h2><p>Nel 2026 sono state gestite oltre 642 segnalazioni con un tempo medio di risposta di 3 giorni.</p>', 'category_slug' => 'servizi-pubblici', 'is_featured' => 1, 'type' => 'post', 'published_at' => now()],
         ];
 
         foreach ($articles as $a) {
@@ -38,7 +38,7 @@ class DemoInvestorSeeder extends Seeder
                 'content' => $a['content'],
                 'category_id' => $cat?->id,
                 'is_featured' => $a['is_featured'] ?? 0,
-                'content_type' => $a['content_type'],
+                'type' => $a['type'],
                 'published_at' => $a['published_at'],
                 'event_start_date' => $a['event_start_date'] ?? null,
                 'show_on_homepage' => 1,
