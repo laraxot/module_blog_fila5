@@ -16,21 +16,21 @@ related:
 Fase BMAD: documentazione e qualita' (DOC-010 e DOC-002 del piano `bmad-output/stories/docs-organization/`).
 
 ## Richiesta
-Studiare il modulo Blog, correggere `README.md`, `00-index.md` e gli indici, ridurre i link rotti, segnare i documenti falsi.
+Studiare il modulo Blog, correggere `README.md`, `00-INDEX.md` e gli indici, ridurre i link rotti, segnare i documenti falsi.
 
 ## Analisi
 - Il README diceva "Core module for the FixCity Platform": Fixcity non importa Blog (solo `morph_map.php` elenca `Article` e `Banner`). Lo usano Cms (`xra.php`) e il tema TwentyOne; il tema Sixteen di Fixcity ha solo stub `pages_old/*.stub`.
 - Rotte: `routes/` vuoto, 23 rotte Filament `blog/admin`.
 - `app/` contiene 332 file, 112 in `app/resources_to_delete/` (anche viste `play_money_markets`), `app/config/config.php` e `app/Config/config.php` identici, `app/lang/` accanto a `lang/`, `Article.bak`.
-- `00-index.md` presentava `ai.md` come "Integrazione AI" e `comment.md` come "Integrazione sistema commenti": sono elenchi di URL. `visual_editor.md`, l'hub di audit e il modulo `Predict` non esistono.
+- `00-INDEX.md` presentava `ai.md` come "Integrazione AI" e `comment.md` come "Integrazione sistema commenti": sono elenchi di URL. `visual_editor.md`, l'hub di audit e il modulo `Predict` non esistono.
 - `pages.md` descrive la gestione pagine: Blog non ha `PageResource` e la migrazione `create_blog_pages_table` e' `.to_cms`.
 - `models/transaction-removal.md` dice "Completato" ma `app/Models/Transaction.php` esiste e la migrazione `2024_05_02_185212_create_transactions_table.php` e' attiva.
-- `index.md` e `index.md` sono stub vuoti (solo un commento HTML).
+- `index.md` e `INDEX.md` sono stub vuoti (solo un commento HTML).
 - Test: 1 file, 1 test.
 
 ## Modifiche
-- `README.md` riscritto; `00-index.md` riscritto come indice canonico (stato verificato, ruolo delle directory, documenti stale, elenchi di URL dichiarati tali).
-- Segnati con nota datata: `pages.md` e `models/transaction-removal.md` (`stale`), `index.md` e `index.md` (`stub`), `00-index.md` (`stale`).
+- `README.md` riscritto; `00-INDEX.md` riscritto come indice canonico (stato verificato, ruolo delle directory, documenti stale, elenchi di URL dichiarati tali).
+- Segnati con nota datata: `pages.md` e `models/transaction-removal.md` (`stale`), `index.md` e `INDEX.md` (`stub`), `00-index.md` (`stale`).
 - `wiki/index.md`: 8 link senza bersaglio resi testo "riferimento non presente nel repository".
 - Front matter: 22 file corretti con `frontmatter --fix --default-status draft` (56 righe spurie rimosse).
 
@@ -45,7 +45,7 @@ Pest su DB usa-e-getta                            Tests: 1 passed (1 assertions)
 ```
 
 ## Decisioni
-- Un solo indice canonico (`00-index.md`); gli stub vuoti sono marcati, non riempiti con un secondo indice.
+- Un solo indice canonico (`00-INDEX.md`); gli stub vuoti sono marcati, non riempiti con un secondo indice.
 - Il codice non e' stato toccato: `resources_to_delete/`, `Article.bak`, duplicati di `config` e `lang` sono segnalati.
 
 ## Aperto
