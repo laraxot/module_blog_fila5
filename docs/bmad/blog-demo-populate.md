@@ -13,7 +13,12 @@ demo_content:
   - Categorie: Servizi, Cultura, Ambiente, Eventi
 verification:
   local_http: 200
-  local_url: http://127.0.0.1:8765/it/blog/
+  local_urls:
+    - http://192.168.1.40:8000/it/blog
+    - http://192.168.1.40:8000/it/events
+    - http://192.168.1.40:8000/it/tickets
   remote_target: https://fixcity.eu/it/blog/
   db: mariadb (non sqlite)
-  article_count: 16
+  article_count: 29
+  ticket_count: 538
+  verified: 2026-10-26

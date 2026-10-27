@@ -4,165 +4,111 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
-use Modules\Blog\Database\Factories\ArticleFactory;
+use Illuminate\Database\Seeder;
+use Modules\Blog\Database\Seeders\Demo\DemoArticleCatalog;
 use Modules\Blog\Models\Article;
-use Modules\Blog\Models\Category;
-use Modules\Comment\Database\Factories\CommentFactory;
+use Modules\Blog\Models\Event;
+use Modules\Blog\Models\Post;
+use Modules\Comment\Models\Contracts\CanComment;
+use Modules\Fixcity\Models\User;
 
+/**
+ * Novita' ed Eventi demo (Parental STI `type` = post | event), idempotente per slug.
+ *
+ * Contenuti: DemoArticleCatalog (it/en, immagini Design Comuni). Commenti: thread con risposte dai cittadini demo
+ * (DemoUsersSeeder), solo se l'articolo non ne ha ancora. Nessuna categoria: la tabella `categories` e' condivisa con le
+ * categorie delle segnalazioni, e una categoria del blog comparirebbe tra quelle dei ticket.
+ */
 class DemoContentSeeder extends Seeder
 {
+    /** @var list<array{0: string, 1: string}> */
+    private const array THREADS = [
+        ['Finalmente! Era una delle cose che segnalavamo da mesi.', 'Confermo, e la segnalazione risulta già chiusa nella mia area personale.'],
+        ['Ci sarà anche un servizio per chi ha difficoltà motorie?', 'Sì, nella pagina è indicato che il luogo è accessibile.'],
+        ['Ottima iniziativa, grazie per l\'aggiornamento.', ''],
+    ];
+
     public function run(): void
     {
-        // Categorie per la demo
-        $categories = [
-            ['name' => 'Servizi', 'description' => 'Servizi comunali'],
-            ['name' => 'Cultura', 'description' => 'Eventi culturali'],
-            ['name' => 'Ambiente', 'description' => 'Ambiente e sostenibilità'],
-            ['name' => 'Eventi', 'description' => 'Eventi e iniziative'],
-        ];
-        foreach ($categories as $cat) {
-            $id = (string) Str::uuid();
-            Category::firstOrCreate(
-                ['id' => $id],
-                ['name' => $cat['name'], 'description' => $cat['description'], 'icon' => '', 'is_active' => 1, 'sort_order' => 0]
-            );
-        }
-        // Articoli realistici — demo per investitore (post + eventi)
-        $items = [
-            [
-                'title' => 'Nuova piazza pedonale in centro storico',
-                'content_type' => 'post',
-                'slug' => 'nuova-piazza-pedonale-centro-storico',
-                'excerpt' => 'Il Comune ha approvato il progetto di riqualificazione della piazza centrale con aree pedonali, panchine e illuminazione sostenibile.',
-                'content' => "<h2>Il progetto</h2><p>La piazza centrale sarà riqualificata con un nuovo pavimento in pietra locale, aree pedonali estese e panchine realizzate con materiali riciclati. L'intervento prevede anche una nuova illuminazione LED a basso consumo.</p><p>Il cantiere inizierà a marzo 2026 e si concluderà entro la fine dell'anno.</p>",
-                'is_featured' => true,
-                'show_on_homepage' => true,
-                'published_at' => now()->subDays(2),
-            ],
-            [
-                'title' => 'Festa della Cultura 2026 — programma completo',
-                'content_type' => 'event',
-                'slug' => 'festa-cultura-2026',
-                'excerpt' => 'Dal 15 al 18 maggio, eventi culturali, mostre, concerti e laboratori per tutte le età in piazza e nei luoghi d\'interesse.',
-                'content' => "<h2>Programma</h2><p>Venerdì 15 maggio: inaugurazione con concerto della banda comunale. Sabato 16: mostre d'arte contemporanea. Domenica 17: laboratori per bambini. Lunedì 18: conferenza sul patrimonio locale.</p>",
-                'is_featured' => true,
-                'show_on_homepage' => true,
-                'published_at' => now()->subDays(5),
-                'event_start_date' => now()->addDays(30)->format('Y-m-d'),
-                'event_end_date' => now()->addDays(33)->format('Y-m-d'),
-            ],
-            [
-                'title' => 'Restauro della fontana monumentale del XVII secolo',
-                'content_type' => 'post',
-                'slug' => 'restauro-fontana-monumentale',
-                'excerpt' => 'Sono iniziati i lavori di restauro della fontana del XVII secolo dopo un attento studio archeologico.',
-                'content' => '<h2>Il restauro</h2><p>La fontana monumentale, simbolo del territorio, verrà restaurata con tecniche tradizionali. Il progetto è stato approvato dalla Soprintendenza.</p>',
-                'is_featured' => false,
-                'show_on_homepage' => false,
-                'published_at' => now()->subDays(10),
-            ],
-            [
-                'title' => 'Mercato contadino del sabato — apertura estiva',
-                'content_type' => 'event',
-                'slug' => 'mercato-contadino-sabato-estate',
-                'excerpt' => 'Ogni sabato mattina i produttori locali propongono prodotti freschi, formaggi, miele e pane artigianale.',
-                'content' => '<h2>Quando</h2><p>Dal primo maggio al 30 settembre, ogni sabato dalle 8:00 alle 13:00 in piazza del mercato.</p>',
-                'is_featured' => false,
-                'show_on_homepage' => false,
-                'published_at' => now()->subDays(3),
-                'event_start_date' => now()->addDays(7)->format('Y-m-d'),
-            ],
-            [
-                'title' => 'Nuovi servizi digitali per i cittadini',
-                'content_type' => 'post',
-                'slug' => 'nuovi-servizi-digitali-cittadini',
-                'excerpt' => 'È stato aggiornato il portale comunale per accedere ai servizi in modo semplice, sicuro e accessibile (WCAG 2.1 AA).',
-                'content' => '<h2>Servizi aggiornati</h2><p>Il portale ora include la richiesta di permessi, la segnalazione problemi, il pagamento TARI e la prenotazione appuntamenti.</p>',
-                'is_featured' => true,
-                'show_on_homepage' => true,
-                'published_at' => now()->subDays(7),
-            ],
-            [
-                'title' => 'Concerto all\'aperto — Orchestra Comunale',
-                'content_type' => 'event',
-                'slug' => 'concerto-orchestra-comunale',
-                'excerpt' => 'Una serata speciale con l\'Orchestra Comunale in un programma dedicato ai classici della musica italiana.',
-                'content' => '<h2>Programma</h2><p>Brani di Verdi, Puccini e musiche tradizionali. Ingresso libero su prenotazione.</p>',
-                'is_featured' => false,
-                'show_on_homepage' => false,
-                'published_at' => now()->subDays(1),
-                'event_start_date' => now()->addDays(14)->format('Y-m-d'),
-            ],
-            [
-                'title' => 'Gli uffici comunali chiudono per festività',
-                'content_type' => 'post',
-                'slug' => 'uffici-comunali-chiudono-festivita',
-                'excerpt' => 'Informazioni su orari e chiusure per le festività nazionali e locali del mese.',
-                'content' => '<h2>Orari</h2><p>Gli uffici resteranno chiusi dal 25 al 27 aprile. I servizi digitali restano attivi 24/7.</p>',
-                'is_featured' => false,
-                'show_on_homepage' => false,
-                'published_at' => now()->subDays(4),
-            ],
-            [
-                'title' => 'Corsi di educazione ambientale per le scuole',
-                'content_type' => 'post',
-                'slug' => 'corsi-educazione-ambientale-scuole',
-                'excerpt' => 'Il Comune offre percorsi didattici gratuiti sulle energie rinnovabili, la raccolta differenziata e la biodiversità.',
-                'content' => '<h2>Per le scuole</h2><p>Destinatari: classi della scuola primaria e secondaria. Prenotazione tramite il portale.</p>',
-                'is_featured' => false,
-                'show_on_homepage' => false,
-                'published_at' => now()->subDays(6),
-            ],
-        ];
+        $citizens = array_values(User::query()->where('email', 'like', '%@fixcity.demo')->orderBy('email')->limit(12)->get()->all());
 
-        $created = 0;
-        foreach ($items as $item) {
-            $article = ArticleFactory::new()->createOne([
-                'title' => $item['title'],
-                'slug' => $item['slug'],
-                'content_type' => $item['content_type'],
-                'excerpt' => $item['excerpt'],
-                'content' => $item['content'],
-                'is_featured' => $item['is_featured'],
-                'show_on_homepage' => $item['show_on_homepage'],
-                'published_at' => $item['published_at'],
-                'event_start_date' => $item['event_start_date'] ?? null,
-                'event_end_date' => $item['event_end_date'] ?? null,
+        $posts = 0;
+        foreach (DemoArticleCatalog::posts() as $index => $item) {
+            $post = Post::query()->updateOrCreate(['slug' => $item['slug']], [
+                ...$this->common($item['title'], $item['summary'], $item['body'], $item['image'], $item['featured']),
+                'published_at' => now()->subDays($item['days_ago'])->setTime(9, 30),
             ]);
-
-            // Immagine principale se disponibile (simulato con URL placeholder reale)
-            $article->addMediaFromString('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400"><rect width="800" height="400" fill="#0ea5e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="white">'.addslashes($item['title']).'</text></svg>')
-                ->usingName($item['slug'].'.svg')
-                ->toMediaCollection('main_image');
-
-            $created++;
+            $this->comments($post, $citizens, $index);
+            $posts++;
         }
 
-        // Commenti realistici (3 per articolo in evidenza)
-        $featuredIds = Article::where('is_featured', true)->pluck('id')->all();
-        $comments = [
-            'Ottima iniziativa, finalmente un segnale concreto per il centro storico.',
-            'Parteciperemo alla Festa della Cultura con la nostra famiglia.',
-            'Speriamo che i lavori della fontana rispettino i tempi previsti.',
-            'I servizi digitali sono molto utili, grazie alla trasparenza.',
-            'Il mercato contadino è un punto di riferimento per la città.',
-        ];
-        foreach ($featuredIds as $index => $id) {
-            if (isset($comments[$index])) {
-                CommentFactory::new()->create([
-                    'comment' => $comments[$index],
-                    'article_id' => $id,
-                    'author_id' => null,
-                    'created_at' => now()->subHours($index * 2),
-                ]);
-            }
+        $events = 0;
+        foreach (DemoArticleCatalog::events() as $index => $item) {
+            $start = now()->addDays($item['starts_in'])->setTime(18, 0);
+            $event = Event::query()->updateOrCreate(['slug' => $item['slug']], [
+                ...$this->common($item['title'], $item['summary'], $item['body'], $item['image'], $item['featured']),
+                'published_at' => now()->subDays(max(1, 14 - $index)),
+                'event_start_date' => $start,
+                'event_end_date' => $start->copy()->addDays($item['lasts'] - 1)->setTime(23, 0),
+            ]);
+            $this->comments($event, $citizens, $index + 3);
+            $events++;
         }
 
         if ($this->command instanceof Command) {
-            $this->command->info("DemoContentSeeder: $created articoli creati con immagini, categorie, commenti e contenuto HTML realistico.");
+            $this->command->info("DemoContentSeeder: {$posts} notizie e {$events} eventi (it/en), con immagini Design Comuni e commenti.");
+        }
+    }
+
+    /**
+     * @param  array{it: string, en: string}  $title
+     * @param  array{it: list<string>, en: list<string>}  $body
+     * @return array<string, mixed>
+     */
+    private function common(array $title, string $summary, array $body, string $image, bool $featured): array
+    {
+        $blocks = [];
+        foreach ($body as $locale => $paragraphs) {
+            $blocks[$locale] = array_map(
+                static fn (string $text): array => ['type' => 'paragraph', 'data' => ['text' => '<p>'.e($text).'</p>']],
+                $paragraphs,
+            );
+        }
+
+        return [
+            'title' => $title,
+            'description' => $summary,
+            'excerpt' => $summary,
+            'main_image_url' => DemoArticleCatalog::image($image),
+            'content_blocks' => $blocks,
+            'sidebar_blocks' => [],
+            'footer_blocks' => [],
+            'is_featured' => $featured,
+            'show_on_homepage' => $featured,
+            'status' => 'published',
+        ];
+    }
+
+    /**
+     * @param  list<User>  $citizens
+     */
+    private function comments(Article $article, array $citizens, int $offset): void
+    {
+        if ($citizens === [] || $article->comments()->exists()) {
+            return;
+        }
+
+        foreach (self::THREADS as $i => [$text, $reply]) {
+            $author = $citizens[($offset + $i) % count($citizens)];
+            $replier = $citizens[($offset + $i + 5) % count($citizens)];
+            if (! $author instanceof CanComment || ! $replier instanceof CanComment) {
+                continue;
+            }
+            $comment = $article->comment($text, $author);
+            if ($reply !== '') {
+                $comment->comment($reply, $replier);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ use Tests\TestCase;
 
 /**
  * Demo marketing-ready: post + eventi + commenti morph + media locali.
- * content_type=post|event; Parental `type` resta null (STI).
+ * Parental STI `type` = post|event (Post, Event).
  */
 class DemoContentSeederTest extends TestCase
 {
@@ -24,16 +24,16 @@ class DemoContentSeederTest extends TestCase
     {
         app(DemoContentSeeder::class)->run();
 
-        $this->assertSame(8, Article::query()->where('content_type', 'post')->count());
-        $this->assertSame(5, Article::query()->where('content_type', 'event')->count());
-        $this->assertSame(0, Article::query()->whereNotNull('type')->count());
+        $this->assertSame(8, Article::query()->where('type', 'post')->count());
+        $this->assertSame(6, Article::query()->where('type', 'event')->count());
+        $this->assertSame(0, Article::query()->whereNull('type')->count());
     }
 
     public function testDemoContentHasMediaCreditsAndNoLorem(): void
     {
         app(DemoContentSeeder::class)->run();
 
-        $sample = Article::query()->where('slug', 'una-segnalazione-utile-inizia-da-tre-informazioni')->first();
+        $sample = Article::query()->where('slug', 'piano-asfaltature-autunno')->first();
         $this->assertNotNull($sample);
         $this->assertNotEmpty($sample->main_image_url);
         $blocks = $sample->content_blocks;
@@ -48,7 +48,7 @@ class DemoContentSeederTest extends TestCase
     {
         app(DemoContentSeeder::class)->run();
 
-        $article = Article::query()->where('slug', 'una-segnalazione-utile-inizia-da-tre-informazioni')->firstOrFail();
+        $article = Article::query()->where('slug', 'piano-asfaltature-autunno')->firstOrFail();
         $comments = Comment::query()
             ->where('commentable_type', $article->getMorphClass())
             ->where('commentable_id', $article->getKey())
@@ -86,7 +86,7 @@ class DemoContentSeederTest extends TestCase
 
         try {
             app(DemoContentSeeder::class)->run();
-            $this->assertSame(0, Article::query()->where('slug', 'una-segnalazione-utile-inizia-da-tre-informazioni')->count());
+            $this->assertSame(0, Article::query()->where('slug', 'piano-asfaltature-autunno')->count());
         } finally {
             App::detectEnvironment(static fn () => $previous);
         }

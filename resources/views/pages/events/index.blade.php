@@ -34,7 +34,7 @@ new class extends Component
         ?? 'Appuntamenti pubblici, laboratori e incontri sul territorio.';
 @endphp
 
-{{-- Owner: Blog Folio. Copy/SEO: CMS JSON events.index. Dati: ThemeComposer content_type=event. --}}
+{{-- Owner: Blog Folio. Copy/SEO: CMS JSON events.index. Dati: ThemeComposer type=event. --}}
 <x-layouts.app :title="$pageTitle" :meta-description="$pageDescription" header-active="live">
     @volt('events.index')
     <div class="page-content content" data-dc data-slug="events.index" data-side="content">

@@ -16,14 +16,14 @@ class BlogDemoSeeder extends Seeder
         CategoryFactory::new()->count(4)->create();
 
         ArticleFactory::new()->count(3)->create([
-            'content_type' => 'post',
+            'type' => 'post',
             'is_featured' => true,
             'show_on_homepage' => true,
             'published_at' => now()->subDays(2),
         ]);
 
         ArticleFactory::new()->count(2)->create([
-            'content_type' => 'event',
+            'type' => 'event',
             'is_featured' => true,
             'published_at' => now()->subDay(),
         ]);
