@@ -12,8 +12,3 @@ status: draft
 
 https://www.material-tailwind.com/project_docs/react/card
 
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

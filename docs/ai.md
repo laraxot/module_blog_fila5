@@ -26,8 +26,3 @@ https://towardsdatascience.com/how-to-deploy-machine-learning-model-in-laravel-a
 
 
 https://www.youtube.com/watch?v=jgz8lr32brY
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

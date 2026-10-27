@@ -10,6 +10,4 @@ use Modules\User\Filament\Resources\ProfileResource\Pages\BaseListProfiles;
 class ListProfiles extends BaseListProfiles
 {
     protected static string $resource = ProfileResource::class;
-
-
 }

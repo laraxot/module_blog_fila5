@@ -268,8 +268,3 @@ class EditPost extends EditRecord
 ## Conclusione
 
 L'integrazione dei server MCP con il modulo Blog consente di migliorare significativamente le funzionalità del modulo, fornendo analisi avanzate dei contenuti, memorizzazione efficiente dei metadati e interazioni complesse con il database. Seguendo le linee guida e gli esempi forniti in questo documento, è possibile implementare queste funzionalità in modo conforme alle regole di sviluppo stabilite per i progetti base_predict_fila5_mono.
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
