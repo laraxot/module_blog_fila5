@@ -36,6 +36,10 @@ TagTest.php
 - [ ] No duplicati case-insensitive
 - [ ] PHPStan Level 10 passa
 
+## PHPStan sui test articolo
+
+Dettaglio fix swarm (factory tipizzate, `published_at`, guard su `fresh()`): [phpstan-article-tests.story](../stories/phpstan-article-tests.story.md).
+
 ## 📚 Riferimenti
 
 - [Regola Critica Progetto](../../../../../docs/regole-critiche/test-naming-pascalcase.md)

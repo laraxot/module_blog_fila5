@@ -86,8 +86,3 @@ protected function getHeaderActions(): array
 Pattern aggiuntivi: `EloquentBuilder<Model>`, `BelongsTo<Related, $this>`, `EloquentCollection<int, Category>`, `array<string, mixed>` su pivot/factory, `SafeStringCastAction` in `Article`.
 
 Piani 2026-03-02 risolti o assorbiti in STORY-286 — vedi `docs/stories/STORY-286-phpstan-blog-zero-errors.dev.md`.
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

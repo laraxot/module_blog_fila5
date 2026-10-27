@@ -12,8 +12,3 @@ status: draft
 
 https://pinegrow.com/project_docs/tailwind/tailwind-blocks/
 
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
