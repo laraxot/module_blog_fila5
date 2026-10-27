@@ -37,7 +37,7 @@ final class ArticleFormMainGridSchema
             TextInput::make('slug')
                 ->columnSpan(1)
                 ->required(),
-            Select::make('content_type')
+            Select::make('type')
                 ->label('Tipo contenuto')
                 ->options([
                     'post' => 'Post / Novità',
@@ -52,12 +52,12 @@ final class ArticleFormMainGridSchema
                 ->required(),
             DateTimePicker::make('event_start_date')
                 ->label('Inizio evento')
-                ->visible(static fn (Get $get): bool => 'event' === $get('content_type'))
-                ->required(static fn (Get $get): bool => 'event' === $get('content_type')),
+                ->visible(static fn (Get $get): bool => 'event' === $get('type'))
+                ->required(static fn (Get $get): bool => 'event' === $get('type')),
             DateTimePicker::make('event_end_date')
                 ->label('Fine evento')
-                ->visible(static fn (Get $get): bool => 'event' === $get('content_type'))
-                ->required(static fn (Get $get): bool => 'event' === $get('content_type'))
+                ->visible(static fn (Get $get): bool => 'event' === $get('type'))
+                ->required(static fn (Get $get): bool => 'event' === $get('type'))
                 ->after('event_start_date'),
             DateTimePicker::make('published_at')
                 ->columnSpan(1)

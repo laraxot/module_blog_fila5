@@ -17,7 +17,7 @@ class SearchBarWidget extends XotBaseTableWidget
         return $table
             ->query(
                 Article::query()
-                    ->whereIn('content_type', ['post', 'event'])
+                    ->whereIn('type', ['post', 'event'])
                     ->where('title', 'like', '%'.$search.'%')
             )
             ->columns([

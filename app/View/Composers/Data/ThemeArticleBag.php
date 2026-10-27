@@ -68,7 +68,7 @@ final class ThemeArticleBag
     public function paginatedArticles(int $num): LengthAwarePaginator
     {
         return Article::query()
-            ->whereIn('content_type', ['post', 'event'])
+            ->whereIn('type', ['post', 'event'])
             ->paginate($num);
     }
 
@@ -209,7 +209,7 @@ final class ThemeArticleBag
     public function model(string $slug): ?Article
     {
         return Article::query()
-            ->whereIn('content_type', ['post', 'event'])
+            ->whereIn('type', ['post', 'event'])
             ->where('slug', $slug)
             ->first();
     }
