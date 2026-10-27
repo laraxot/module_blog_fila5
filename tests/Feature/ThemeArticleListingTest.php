@@ -7,7 +7,6 @@ namespace Tests\Feature\Modules\Blog;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Article;
@@ -24,26 +23,7 @@ final class ThemeArticleListingTest extends TestCase
     /** @var list<string> */
     protected array $connectionsToTransact = ['blog'];
 
-    /**
-     * The scratch database clones the development schema, which can lag behind the Blog migrations.
-     * Apply the forward-only, idempotent Blog migration for `articles.content_type` here: refreshApplication()
-     * runs before DatabaseTransactions opens the transaction, so the DDL cannot break the savepoints.
-     */
-    protected function refreshApplication(): void
-    {
-        parent::refreshApplication();
-
-        if (Schema::connection('blog')->hasColumn('articles', 'content_type')) {
-            return;
-        }
-
-        Artisan::call('migrate', [
-            '--path' => dirname(__DIR__, 2).'/database/migrations/2026_10_15_000001_add_content_type_to_articles_table.php',
-            '--realpath' => true,
-        ]);
-    }
-
-    /** The Blog schema this test needs is ensured in refreshApplication(); a full migrate would run DDL inside the transaction. */
+    /** `articles.type` (Parental STI) exists in the cloned schema; a full migrate would run DDL inside the transaction. */
     protected function runTestingMigrations(): void {}
 
     public function test_blog_posts_are_length_aware_and_every_page_is_reachable(): void
@@ -131,7 +111,7 @@ final class ThemeArticleListingTest extends TestCase
             'content_blocks' => [['type' => 'paragraph', 'data' => ['text' => '<p>'.$title.'</p>']]],
             'sidebar_blocks' => [],
             'footer_blocks' => [],
-            'content_type' => $contentType,
+            'type' => $contentType,
             'published_at' => $publishedAt,
             'event_start_date' => $eventStart,
         ]);
