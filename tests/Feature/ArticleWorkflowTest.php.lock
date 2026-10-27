@@ -1,0 +1,6 @@
+LOCKED at 2026-10-15T13:35:03+00:00
+Task: laravel/Modules/Blog/tests/Unit/Models/ArticleTest.php
+Agent: unknown
+Session: unknown
+PID: 3857634
+PID note: subshell di lock.sh, gia' terminato — NON usarlo per giudicare il lock stale, guarda 'LOCKED at'
