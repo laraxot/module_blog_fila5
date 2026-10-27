@@ -97,7 +97,7 @@ class Lists extends Component
     private function getArticleQuery(): EloquentBuilder
     {
         $query = Article::query()
-            ->whereIn('content_type', ['post', 'event'])
+            ->whereIn('type', ['post', 'event'])
             ->published();
         $activeCategory = $this->category;
         if ($activeCategory instanceof Category) {

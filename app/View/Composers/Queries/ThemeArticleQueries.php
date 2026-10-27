@@ -99,7 +99,7 @@ final class ThemeArticleQueries
     public function paginatedPosts(int $limit, ?string $search = null, ?string $categorySlug = null, array $excludeIds = []): LengthAwarePaginator
     {
         $query = $this->contentQuery()
-            ->where('content_type', 'post')
+            ->where('type', 'post')
             ->with(['category'])
             ->published()
             ->publishedUntilToday();
@@ -115,13 +115,7 @@ final class ThemeArticleQueries
         }
 
         if (is_string($search) && $search !== '') {
-            $like = '%'.$search.'%';
-            $query->where(static function (EloquentBuilder $searchQuery) use ($like): void {
-                $searchQuery
-                    ->where('title', 'like', $like)
-                    ->orWhere('description', 'like', $like)
-                    ->orWhere('excerpt', 'like', $like);
-            });
+            $this->whereMatches($query, $search);
         }
 
         return $query
@@ -163,7 +157,7 @@ final class ThemeArticleQueries
     public function featuredPosts(int $number): Collection
     {
         return $this->contentQuery()
-            ->where('content_type', 'post')
+            ->where('type', 'post')
             ->where(static function (EloquentBuilder $query): void {
                 $query->where('is_featured', true)
                     ->orWhere('show_on_homepage', true);
@@ -188,7 +182,7 @@ final class ThemeArticleQueries
     {
         $now = now()->toDateTimeString();
         $query = $this->contentQuery()
-            ->where('content_type', 'event')
+            ->where('type', 'event')
             ->with(['category'])
             ->published();
 
@@ -235,7 +229,7 @@ final class ThemeArticleQueries
     public function featuredEvents(int $number): Collection
     {
         return $this->contentQuery()
-            ->where('content_type', 'event')
+            ->where('type', 'event')
             ->where(static function (EloquentBuilder $query): void {
                 $query->where('is_featured', true)
                     ->orWhere('show_on_homepage', true);
@@ -252,7 +246,7 @@ final class ThemeArticleQueries
      */
     public function paginatedComingSoon(int $limit): Paginator
     {
-        return $this->contentQuery()->where('content_type', 'event')->published()
+        return $this->contentQuery()->where('type', 'event')->published()
             ->where('event_start_date', '>', now())
             ->orderBy('event_start_date')
             ->simplePaginate($limit);
@@ -285,7 +279,7 @@ final class ThemeArticleQueries
      */
     public function comingSoon(int $number): Collection
     {
-        return $this->contentQuery()->where('content_type', 'event')->published()
+        return $this->contentQuery()->where('type', 'event')->published()
             ->where('event_start_date', '>', now())
             ->orderBy('event_start_date')
             ->take($number)
@@ -332,7 +326,7 @@ final class ThemeArticleQueries
     private function publishedPostsQuery(): EloquentBuilder
     {
         return $this->contentQuery()
-            ->where('content_type', 'post')
+            ->where('type', 'post')
             ->published()
             ->publishedUntilToday();
     }
@@ -345,14 +339,52 @@ final class ThemeArticleQueries
     private function publishedEventsQuery(): EloquentBuilder
     {
         return $this->contentQuery()
-            ->where('content_type', 'event')
+            ->where('type', 'event')
             ->published();
+    }
+
+    /**
+     * Published posts and events matching $search, newest first: the site-wide front-office search (/{lang}/ricerca).
+     * «Published» is the same as the detail pages: posts via publishedPostsQuery(), events via publishedEventsQuery().
+     *
+     * @return EloquentCollection<int, Article>
+     */
+    public function searchPublishedPostsAndEvents(string $search, int $limit): EloquentCollection
+    {
+        $query = $this->contentQuery()->where(function (EloquentBuilder $visible): void {
+            $visible->whereIn('id', $this->publishedPostsQuery()->select('id'))
+                ->orWhereIn('id', $this->publishedEventsQuery()->select('id'));
+        });
+
+        return $this->whereMatches($query, $search)
+            ->orderByDesc('published_at')
+            ->orderByDesc('id')
+            ->take($limit)
+            ->get();
+    }
+
+    /**
+     * Keyword match on title, description and excerpt (LIKE wildcards must already be stripped by the caller).
+     *
+     * @param  EloquentBuilder<Article>  $query
+     * @return EloquentBuilder<Article>
+     */
+    private function whereMatches(EloquentBuilder $query, string $search): EloquentBuilder
+    {
+        $like = '%'.$search.'%';
+
+        return $query->where(static function (EloquentBuilder $searchQuery) use ($like): void {
+            $searchQuery
+                ->where('title', 'like', $like)
+                ->orWhere('description', 'like', $like)
+                ->orWhere('excerpt', 'like', $like);
+        });
     }
 
     /** @return EloquentBuilder<Article> */
     private function contentQuery(): EloquentBuilder
     {
-        // SSoT: content_type=post|event (mai Parental `type`; article legacy escluso)
-        return Article::query()->whereIn('content_type', ['post', 'event']);
+        // SSoT: Parental STI `type` = post|event (Post, Event); legacy rows senza tipo escluse
+        return Article::query()->whereIn('type', ['post', 'event']);
     }
 }

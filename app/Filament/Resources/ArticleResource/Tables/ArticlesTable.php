@@ -20,7 +20,7 @@ class ArticlesTable extends XotBaseResourceTable
                 ->limit(50),
             'slug' => TextColumn::make('slug')
                 ->limit(30),
-            'content_type' => TextColumn::make('content_type')
+            'type' => TextColumn::make('type')
                 ->label('Tipo')
                 ->badge(),
             'event_start_date' => TextColumn::make('event_start_date')
@@ -55,7 +55,7 @@ class ArticlesTable extends XotBaseResourceTable
     public function getTableFilters(): array
     {
         return [
-            'content_type' => SelectFilter::make('content_type')
+            'type' => SelectFilter::make('type')
                 ->label('Tipo')
                 ->options([
                     'post' => 'Post / Novità',

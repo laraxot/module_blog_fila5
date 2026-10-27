@@ -51,13 +51,13 @@ class ArticleFactory extends Factory
             'footer_blocks' => [],
             'sidebar_blocks' => [],
             'description' => 'Sintesi di prova senza Lorem Ipsum.',
-            // `type` è Parental STI — usare solo content_type (post|event)
-            'content_type' => 'post',
+            // `type` = alias Parental STI: post (Post) | event (Event)
+            'type' => 'post',
         ];
     }
 
     /**
-     * Post editoriale demo (content_type=post) — testi civici + immagine Design Comuni.
+     * Post editoriale demo (type=post) — testi civici + immagine Design Comuni.
      */
     public function demoArticle(): static
     {
@@ -78,7 +78,7 @@ class ArticleFactory extends Factory
             'title' => $title,
             'description' => 'Tre informazioni bastano a rendere una segnalazione azionabile.',
             'excerpt' => 'Tre informazioni bastano a rendere una segnalazione azionabile.',
-            'content_type' => 'post',
+            'type' => 'post',
             'status' => 'published',
             'published_at' => now()->subDays(7),
             'closed_at' => null,
@@ -99,7 +99,7 @@ class ArticleFactory extends Factory
     }
 
     /**
-     * Evento demo = Article con content_type=event (nessun modulo Event).
+     * Evento demo = Article con type=event (nessun modulo Event).
      * Non toccare la colonna Parental `type`.
      */
     public function demoEvent(CarbonInterface $startsAt, CarbonInterface $endsAt): static
@@ -113,7 +113,7 @@ class ArticleFactory extends Factory
             'title' => $title,
             'description' => 'Imparare insieme a usare il servizio digitale comunale.',
             'excerpt' => 'Imparare insieme a usare il servizio digitale comunale.',
-            'content_type' => 'event',
+            'type' => 'event',
             'status' => 'published',
             'published_at' => now()->subDays(3),
             'event_start_date' => $startsAt,
