@@ -10,18 +10,28 @@ use Modules\Blog\Database\Seeders\Demo\DemoArticleCatalog;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Event;
 use Modules\Blog\Models\Post;
+use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\Contracts\CanComment;
+use Modules\Fixcity\Database\Seeders\DemoUsersSeeder;
 use Modules\Fixcity\Models\User;
 
 /**
  * Novita' ed Eventi demo (Parental STI `type` = post | event), idempotente per slug.
  *
- * Contenuti: DemoArticleCatalog (it/en, immagini Design Comuni). Commenti: thread con risposte dai cittadini demo
- * (DemoUsersSeeder), solo se l'articolo non ne ha ancora. Nessuna categoria: la tabella `categories` e' condivisa con le
- * categorie delle segnalazioni, e una categoria del blog comparirebbe tra quelle dei ticket.
+ * Contenuti: DemoArticleCatalog (it/en, immagini Design Comuni con credito nella didascalia). Commenti: thread con
+ * risposte dai cittadini demo (DemoUsersSeeder, creati se mancano), solo se l'articolo non ne ha ancora; l'ultimo thread
+ * resta in moderazione, cosi' la demo mostra entrambi gli stati. Nessuna categoria: la tabella `categories` e' condivisa
+ * con le categorie delle segnalazioni, e una categoria del blog comparirebbe tra quelle dei ticket.
+ * Fuori da local/testing/demo non scrive niente, come FixcityDemoSeeder.
  */
 class DemoContentSeeder extends Seeder
 {
+    /** @var list<string> */
+    private const array ALLOWED_ENVIRONMENTS = ['local', 'testing', 'demo'];
+
+    /** @var array{it: string, en: string} */
+    private const array IMAGE_CREDIT = ['it' => 'Foto: Asset Design Comuni (Developers Italia)', 'en' => 'Photo: Design Comuni assets (Developers Italia)'];
+
     /** @var list<array{0: string, 1: string}> */
     private const array THREADS = [
         ['Finalmente! Era una delle cose che segnalavamo da mesi.', 'Confermo, e la segnalazione risulta già chiusa nella mia area personale.'],
@@ -31,7 +41,13 @@ class DemoContentSeeder extends Seeder
 
     public function run(): void
     {
-        $citizens = array_values(User::query()->where('email', 'like', '%@fixcity.demo')->orderBy('email')->limit(12)->get()->all());
+        if (! app()->environment(self::ALLOWED_ENVIRONMENTS)) {
+            $this->command?->warn('DemoContentSeeder: ambiente non ammesso, nessun dato scritto.');
+
+            return;
+        }
+
+        $citizens = $this->citizens();
 
         $posts = 0;
         foreach (DemoArticleCatalog::posts() as $index => $item) {
@@ -62,6 +78,19 @@ class DemoContentSeeder extends Seeder
     }
 
     /**
+     * @return list<User>
+     */
+    private function citizens(): array
+    {
+        $query = static fn () => User::query()->where('email', 'like', '%@fixcity.demo')->orderBy('email')->limit(12);
+        if (! $query()->exists()) {
+            app(DemoUsersSeeder::class)->run();
+        }
+
+        return array_values($query()->get()->all());
+    }
+
+    /**
      * @param  array{it: string, en: string}  $title
      * @param  array{it: list<string>, en: list<string>}  $body
      * @return array<string, mixed>
@@ -70,10 +99,14 @@ class DemoContentSeeder extends Seeder
     {
         $blocks = [];
         foreach ($body as $locale => $paragraphs) {
-            $blocks[$locale] = array_map(
-                static fn (string $text): array => ['type' => 'paragraph', 'data' => ['text' => '<p>'.e($text).'</p>']],
-                $paragraphs,
-            );
+            $blocks[$locale] = [
+                ...array_map(
+                    static fn (string $text): array => ['type' => 'paragraph', 'data' => ['text' => '<p>'.e($text).'</p>']],
+                    $paragraphs,
+                ),
+                // figura principale: ResolveArticleBodyAction la riconosce dall'URL e ne mostra il credito
+                ['type' => 'image', 'data' => ['url' => DemoArticleCatalog::image($image), 'alt' => $title[$locale], 'credit' => self::IMAGE_CREDIT[$locale]]],
+            ];
         }
 
         return [
@@ -105,10 +138,20 @@ class DemoContentSeeder extends Seeder
             if (! $author instanceof CanComment || ! $replier instanceof CanComment) {
                 continue;
             }
-            $comment = $article->comment($text, $author);
+            // l'ultimo thread resta in moderazione: non compare nel front office
+            $approved = $i < count(self::THREADS) - 1;
+            $comment = $this->moderated($article->comment($text, $author), $approved);
             if ($reply !== '') {
-                $comment->comment($reply, $replier);
+                $this->moderated($comment->comment($reply, $replier), $approved);
             }
         }
+    }
+
+    /** Stato di moderazione esplicito, senza notifiche: non dipende dall'auto-approvazione configurata. */
+    private function moderated(Comment $comment, bool $approved): Comment
+    {
+        $comment->forceFill(['approved_at' => $approved ? now() : null])->save();
+
+        return $comment;
     }
 }

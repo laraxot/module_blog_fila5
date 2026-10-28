@@ -17,11 +17,10 @@ use Tests\TestCase;
  */
 class BlogFrontOfficeNovitaTest extends TestCase
 {
-
     /** @var list<string> */
     protected array $connectionsToTransact = ['blog', 'comment'];
 
-    public function testPaginatedAndFeaturedPostsAreContentTypePostOnly(): void
+    public function test_paginated_and_featured_posts_are_content_type_post_only(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -43,7 +42,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         }
     }
 
-    public function testFindPublishedPostBySlugIgnoresEvents(): void
+    public function test_find_published_post_by_slug_ignores_events(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -58,7 +57,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         $this->assertSame('post', $found->getAttribute('type'));
     }
 
-    public function testResolvePageActionBlogBranchReturnsOnlyPosts(): void
+    public function test_resolve_page_action_blog_branch_returns_only_posts(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -75,7 +74,7 @@ class BlogFrontOfficeNovitaTest extends TestCase
         $this->assertNull($resolvedEvent->item);
     }
 
-    public function testBlogIndexHttpShowsFeaturedAndExplore(): void
+    public function test_blog_index_http_shows_featured_and_explore(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -84,17 +83,18 @@ class BlogFrontOfficeNovitaTest extends TestCase
         $response->assertSee('Novità', false);
         $response->assertSee('Notizie in evidenza', false);
         $response->assertSee('Esplora tutte le novità', false);
-        $response->assertSee('Piano asfaltature d\'autunno: 14 strade rinnovate', false);
+        $response->assertSee('Piano asfaltature d\'autunno: 14 strade rinnovate');
     }
 
-    public function testBlogDetailHttpUsesArticleTitleAndShowsCredit(): void
+    public function test_blog_detail_http_uses_article_title_and_shows_credit(): void
     {
         app(DemoContentSeeder::class)->run();
 
         $slug = 'piano-asfaltature-autunno';
         $response = $this->get('/it/blog/'.$slug);
         $response->assertOk();
-        $response->assertSee('<title>Piano asfaltature d\'autunno: 14 strade rinnovate</title>', false);
+        // il layout SEO aggiunge il nome del sito al titolo
+        $response->assertSee('<title>'.e('Piano asfaltature d\'autunno: 14 strade rinnovate').' | ', false);
         $response->assertSee('Asset Design Comuni', false);
         $response->assertSee('Commenti', false);
         $response->assertSee('Torna alle novità', false);
