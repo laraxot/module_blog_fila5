@@ -7,6 +7,7 @@ namespace Modules\Blog\Filament\Resources\ArticleResource\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables\Filters\SelectFilter;
+use Modules\Blog\Models\Category;
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class ArticlesTable extends XotBaseResourceTable
@@ -61,8 +62,10 @@ class ArticlesTable extends XotBaseResourceTable
                     'post' => 'Post / Novità',
                     'event' => 'Evento',
                 ]),
+            // `categories` non ha `name`: il nome è `title` (traducibile, JSON)
             'category' => SelectFilter::make('category')
-                ->relationship('category', 'name'),
+                ->relationship('category', 'title')
+                ->getOptionLabelFromRecordUsing(static fn (Category $record): string => (string) $record->getTranslation('title', app()->getLocale())),
             'user' => SelectFilter::make('user')
                 ->relationship('user', 'name'),
         ];

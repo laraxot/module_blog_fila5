@@ -29,8 +29,18 @@ final class DemoCommentator extends User implements CanComment
         return $commentator;
     }
 
+    public function getKey(): mixed
+    {
+        return parent::getKey();
+    }
+
     public function getMorphClass(): string
     {
         return User::class;
+    }
+
+    public function notify(mixed $instance): void
+    {
+        parent::notify($instance);
     }
 }
