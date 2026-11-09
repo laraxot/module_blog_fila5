@@ -20,11 +20,7 @@ final class ArticleImportActionFactory
                 FileUpload::make('file')
                     ->label('')
                     ->imagePreviewHeight('250')
-<<<<<<< .merge_file_LZpSvX
-                    ->reactive()
-=======
                     ->live()
->>>>>>> .merge_file_R6Oqyr
                     ->afterStateUpdated(static function (callable $set, TemporaryUploadedFile $state): void {
                         $set('fileContent', File::get($state->getRealPath()));
                     }),
