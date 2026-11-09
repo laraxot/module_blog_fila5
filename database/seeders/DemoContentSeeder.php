@@ -6,14 +6,26 @@ namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Seeder;
+<<<<<<< .merge_file_2QSrb1
 use Modules\Blog\Database\Seeders\Demo\DemoArticleCatalog;
 use Modules\Blog\Models\Article;
+=======
+use Illuminate\Database\Eloquent\Factories\Sequence;
+use Modules\Blog\Database\Seeders\Demo\DemoArticleCatalog;
+use Modules\Blog\Models\Article;
+use Modules\Blog\Models\DemoCommentator;
+>>>>>>> .merge_file_n7vWEQ
 use Modules\Blog\Models\Event;
 use Modules\Blog\Models\Post;
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\Contracts\CanComment;
+<<<<<<< .merge_file_2QSrb1
 use Modules\Fixcity\Database\Seeders\DemoUsersSeeder;
 use Modules\Fixcity\Models\User;
+=======
+use Modules\User\Database\Factories\UserFactory;
+use Modules\User\Models\User;
+>>>>>>> .merge_file_n7vWEQ
 
 /**
  * Novita' ed Eventi demo (Parental STI `type` = post | event), idempotente per slug.
@@ -78,6 +90,7 @@ class DemoContentSeeder extends Seeder
     }
 
     /**
+<<<<<<< .merge_file_2QSrb1
      * @return list<User>
      */
     private function citizens(): array
@@ -88,6 +101,26 @@ class DemoContentSeeder extends Seeder
         }
 
         return array_values($query()->get()->all());
+=======
+     * @return list<DemoCommentator>
+     */
+    private function citizens(): array
+    {
+        $query = User::query()->where('email', 'like', '%@fixcity.demo')->orderBy('email')->limit(12);
+        if (! $query->exists()) {
+            UserFactory::new()
+                ->count(12)
+                ->state(new Sequence(static fn (Sequence $sequence): array => [
+                    'email' => 'citizen'.($sequence->index + 1).'@fixcity.demo',
+                ]))
+                ->create();
+        }
+
+        return array_values($query
+            ->get()
+            ->map(static fn (User $user): DemoCommentator => DemoCommentator::fromUser($user))
+            ->all());
+>>>>>>> .merge_file_n7vWEQ
     }
 
     /**
