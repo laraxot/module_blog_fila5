@@ -29,5 +29,4 @@ render(function (View $view, string $slug): View {
     :meta-description="$pageDescription"
     header-active="novita"
 >
-    <x-pub_theme::blocks.blog.detail :post="$post" />
 </x-layouts.app>
