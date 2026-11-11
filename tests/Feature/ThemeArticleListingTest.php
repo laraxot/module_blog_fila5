@@ -79,7 +79,9 @@ final class ThemeArticleListingTest extends TestCase
             $this->makeArticle('post', 'Pager post '.$index, Carbon::now()->subDays($index));
         }
 
-        $html = view('pub_theme::components.blocks.blog.index', ['data' => []])->render();
+        /** @var view-string $blogIndexView */
+        $blogIndexView = 'pub_theme::components.blocks.blog.index';
+        $html = view($blogIndexView, ['data' => []])->render();
 
         $this->assertStringContainsString('15 notizie trovate', $html);
         $this->assertStringContainsString('page=2', $html);
@@ -93,7 +95,9 @@ final class ThemeArticleListingTest extends TestCase
             $this->makeArticle('event', 'Pager event '.$index, Carbon::now()->subMonth(), Carbon::now()->addDays($index));
         }
 
-        $html = view('pub_theme::components.blocks.events.index', ['data' => []])->render();
+        /** @var view-string $eventsIndexView */
+        $eventsIndexView = 'pub_theme::components.blocks.events.index';
+        $html = view($eventsIndexView, ['data' => []])->render();
 
         $this->assertStringContainsString('class="pagination-wrapper', $html);
         $this->assertStringContainsString('page=2', $html);
