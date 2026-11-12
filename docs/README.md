@@ -67,3 +67,9 @@ Indice operativo: [00-INDEX.md](./00-index.md). Decisioni: [decision-log.md](./d
 ## Post agnostico
 
 [brainstorming-post-vs-article.md](./brainstorming-post-vs-article.md) · rename deferred [IM-BLOG-008](./stories/inbound-rename-article-to-post.story.md).
+
+## Story aperte sui contenuti demo (2026-11-12)
+
+- [Catalogo demo: la sintesi e' una sola stringa italiana (F-08)](./stories/demo-catalog-summary-localization.story.md): decisione aperta, lato dati di [F-07 nel Cms](../../Cms/docs/stories/untranslated-detail-pages-indexing.story.md). Discussione con le decisioni: [#95](https://github.com/laraxot/theme_sixteen_fila5/discussions/95).
+
+Nota: `index.md` e `00-index.md` si rimandano a vicenda come «canonico» (e `index.md` punta a `00-INDEX.md`, che con questo nome non esiste): l'ingresso reale e' questo README.
