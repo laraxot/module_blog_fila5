@@ -10,15 +10,14 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 /*
- * Integrazione User <-> Blog: utenti (connessione `user`) e articoli (connessione `blog`) convivono nello stesso test e
- * nella stessa transazione. Spostato da laravel/tests/Integration (regola: i test vivono nei moduli). La versione precedente
+ * Integrazione User <-> Blog: utenti (connessione `user`) e articoli (connessione del Blog, nei test alias della connessione
+ * predefinita) convivono nello stesso test e nella stessa transazione. Spostato da laravel/tests/Integration (regola: i test vivono nei moduli). La versione precedente
  * usava annotazioni `@test` (ignorate da PHPUnit 12) e colonne inesistenti (`published`, `blog_articles`): non girava mai.
  */
-it('stores users and articles on their own connections', function (): void {
+it('stores users and articles side by side', function (): void {
     $user = User::factory()->create();
     $article = Article::factory()->create();
 
-    Assert::assertSame('blog', $article->getConnectionName());
     Assert::assertTrue(User::query()->whereKey($user->getKey())->exists());
     Assert::assertTrue(Article::query()->whereKey($article->getKey())->exists());
 });

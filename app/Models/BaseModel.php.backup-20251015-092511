@@ -25,7 +25,6 @@ abstract class BaseModel extends \Modules\Xot\Models\XotBaseModel implements Has
     // use Searchable;
     // use Cachable;
     use InteractsWithMedia;
-    use SoftDeletes;
     use Updater;
 
     /**
