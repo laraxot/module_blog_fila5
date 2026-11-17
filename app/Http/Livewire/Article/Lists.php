@@ -18,8 +18,9 @@ class Lists extends Component
 
     // All categories
     /**
-     * @var Collection<int, Category>
+     * @var Collection<Category>
      */
+    /** @var Collection<int, \Modules\Blog\Models\Category> */
     public Collection $categories;
 
     // Variables keeping track of the current post query
@@ -63,11 +64,11 @@ class Lists extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $viewParams = [
+        $view_params = [
             'activeCategory' => $this->category,
         ];
 
-        return view((string) $view, $viewParams);
+        return view((string) $view, $view_params);
     }
 
     public function updatedCategory(): void
@@ -92,15 +93,15 @@ class Lists extends Component
     // }
 
     /**
-     * @return EloquentBuilder<Article>
+     * Summary of getArticleQuery.
+     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder<\Modules\Blog\Models\Article>
      */
     private function getArticleQuery(): EloquentBuilder
     {
-        $query = Article::query()
-            ->whereIn('type', ['post', 'event'])
-            ->published();
-        $activeCategory = $this->category;
-        if ($activeCategory instanceof Category) {
+        $query = Article::published();
+        if (($activeCategory = $this->category) instanceof Category) {
             $query = $query->whereCategoryId($activeCategory->id);
         }
 

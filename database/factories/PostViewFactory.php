@@ -25,7 +25,7 @@ class PostViewFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             'ip_address' => fake()->word,

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Modules\Blog\Database\Factories\BannerFactory;
+use Modules\Blog\Database\Factories\MenuFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -21,9 +21,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
  * Modules\Cms\Models\Menu.
  *
- * @property int $id
- * @property string $name
- * @property array<string, mixed>|null $items
+ * @property int         $id
+ * @property string      $name
+ * @property array<int, array<string, mixed>>|null  $items
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
@@ -31,7 +31,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
  *
- * @method static BannerFactory factory($count = null, $state = [])
+ * @method static MenuFactory  factory($count = null, $state = [])
  * @method static Builder|Menu newModelQuery()
  * @method static Builder|Menu newQuery()
  * @method static Builder|Menu onlyTrashed()
@@ -48,24 +48,24 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
  *
- * @property string|null $link
- * @property string|null $title
- * @property string|null $description
- * @property string|null $action_text
- * @property string|null $category_id
- * @property Carbon|null $start_date
- * @property Carbon|null $end_date
- * @property bool $hot_topic
- * @property int|null $open_markets_count
- * @property bool $landing_banner
- * @property int|null $pos
- * @property Category|null $category
- * @property string $desktop_thumbnail
- * @property string $desktop_thumbnail_webp
- * @property string $mobile_thumbnail
- * @property string $mobile_thumbnail_webp
+ * @property string|null                                       $link
+ * @property string|null                                       $title
+ * @property string|null                                       $description
+ * @property string|null                                       $action_text
+ * @property string|null                                       $category_id
+ * @property Carbon|null                                       $start_date
+ * @property Carbon|null                                       $end_date
+ * @property bool                                              $hot_topic
+ * @property int|null                                          $open_markets_count
+ * @property bool                                              $landing_banner
+ * @property int|null                                          $pos
+ * @property Category|null                                     $category
+ * @property string                                            $desktop_thumbnail
+ * @property string                                            $desktop_thumbnail_webp
+ * @property string                                            $mobile_thumbnail
+ * @property string                                            $mobile_thumbnail_webp
  * @property MediaCollection<int, \Modules\Media\Models\Media> $media
- * @property int|null $media_count
+ * @property int|null                                          $media_count
  *
  * @method static Builder|Banner whereActionText($value)
  * @method static Builder|Banner whereCategoryId($value)
@@ -84,13 +84,13 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  *
  * @mixin Model
  *
- * @method static Banner|null first()
+ * @method static Banner|null             first()
  * @method static Collection<int, Banner> get()
- * @method static Banner create(array<string, mixed> $attributes = [])
- * @method static Banner firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
- * @method static Builder<static>|Banner where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|Banner whereNotNull((string|Expression) $columns)
- * @method static int count(string $columns = '*')
+ * @method static Banner                  create(array<string, mixed> $attributes = [])
+ * @method static Banner                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
+ * @method static Builder<static>|Banner  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|Banner  whereNotNull((string|Expression) $columns)
+ * @method static int                     count(string $columns = '*')
  *
  * @property ProfileContract|null $deleter
  *
@@ -156,10 +156,10 @@ class Banner extends BaseModel implements HasMedia
     /**
      * https://dev.to/npesado/convert-images-to-webp-4i06.
      */
-    public function registerMediaConversions(?Media $media = null): void // $media is unused but part of interface
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('cover')
-                                                    // ->format(Manipulations::FORMAT_WEBP)
+            // ->format(Manipulations::FORMAT_WEBP)
             ->width(320)
             ->height(200);
     }
@@ -185,7 +185,9 @@ class Banner extends BaseModel implements HasMedia
         return $this->getFirstMediaUrl('banner');
     }
 
-    /** @return BelongsTo<Category, $this> */
+    /**
+     * @return BelongsTo<Category, $this>
+     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -193,7 +195,7 @@ class Banner extends BaseModel implements HasMedia
 
     public function getUrlCategoryPage(): string
     {
-        if ($this->category === null) {
+        if (null === $this->category) {
             return route('categories.index', ['lang' => app()->getLocale()]);
         }
 

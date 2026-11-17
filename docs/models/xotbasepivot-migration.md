@@ -1,15 +1,3 @@
----
-title: "xotbasepivot migration"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "xotbasepivot migration"
-issues: []
-discussions: []
-status: draft
----
-
 # Blog Module - XotBasePivot Migration
 
 ## 📊 Overview
@@ -24,6 +12,7 @@ Il modulo Blog ha un **caso speciale**: utilizza `SoftDeletes` nei suoi Pivot mo
 - ⚠️ **Caso Speciale:** SoftDeletes trait
 
 ---
+
 ## 🔧 Pivot Models Impattati
 
 ### 1. CategoryPost

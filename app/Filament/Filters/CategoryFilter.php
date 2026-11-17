@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Filters;
 
-use Modules\Xot\Filament\Tables\Filters\XotBaseSelectFilter;
+use Filament\Tables\Filters\SelectFilter;
 
-class CategoryFilter extends XotBaseSelectFilter
+class CategoryFilter extends SelectFilter
 {
     protected function setUp(): void
     {

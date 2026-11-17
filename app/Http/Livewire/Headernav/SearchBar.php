@@ -25,17 +25,13 @@ class SearchBar extends Component
         $results = [];
 
         if ('' !== $this->search && '0' !== $this->search) {
-            $results = Article::query()
-                ->whereIn('type', ['post', 'event'])
-                ->published()
-                ->where('title', 'like', '%'.$this->search.'%')
-                ->get();
+            $results = Article::where('title', 'like', '%'.$this->search.'%')->get();
         }
 
-        $viewParams = [
+        $view_params = [
             'results' => $results,
         ];
 
-        return view((string) $view, $viewParams);
+        return view((string) $view, $view_params);
     }
 }

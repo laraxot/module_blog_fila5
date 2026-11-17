@@ -62,12 +62,12 @@ class Setting extends Component implements HasActions, HasForms
          */
         $view = app(GetViewAction::class)->execute($this->version);
 
-        $viewParams = [
+        $view_params = [
             'view' => $view,
             '_profile' => $this->model,
         ];
 
-        return view((string) $view, $viewParams);
+        return view((string) $view, $view_params);
     }
 
     public function editProfile(): void
@@ -89,7 +89,7 @@ class Setting extends Component implements HasActions, HasForms
     {
         return Action::make('editEmail')
             ->record($this->model)
-            ->fillForm(fn (): array => [
+            ->fillForm(fn ($record, $arguments): array => [
                 'email' => $this->model->user?->email,
             ])
             ->schema([
@@ -105,7 +105,9 @@ class Setting extends Component implements HasActions, HasForms
             ->modalSubmitActionLabel('Update email')
             ->modalCancelActionLabel('Cancel')
             ->action(function (array $data): void {
-                $verified = $this->model->email === $data['email'] ? ($this->model->user ? $this->model->user->email_verified_at : null) : null;
+                $verified = $this->model->email === $data['email']
+                    ? ($this->model->user?->email_verified_at)
+                    : null;
 
                 $this->model->update([
                     'email' => $data['email'],
@@ -157,7 +159,7 @@ class Setting extends Component implements HasActions, HasForms
     {
         return Action::make('edit')
             ->record($this->model)
-            ->fillForm(fn (): array => [
+            ->fillForm(fn ($record, $arguments): array => [
                 'user_name' => $this->model->user_name,
                 'first_name' => $this->model->first_name,
                 'last_name' => $this->model->last_name,
@@ -188,7 +190,7 @@ class Setting extends Component implements HasActions, HasForms
             // ->modalIcon('heroicon-o-banknotes')
             ->stickyModalHeader()
             ->stickyModalFooter()
-            ->action(function (array $data): void {
+            ->action(function (array $data, $arguments, Component $livewire): void {
                 $this->model->update([
                     'first_name' => $data['first_name'],
                     'last_name' => $data['last_name'],

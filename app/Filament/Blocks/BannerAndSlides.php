@@ -12,6 +12,7 @@ class BannerAndSlides
 {
     public static function make(
         string $name = 'banner_and_slides',
+        string $context = 'form',
     ): Block {
         return Block::make($name)
             ->schema([

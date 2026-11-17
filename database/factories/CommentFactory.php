@@ -20,9 +20,11 @@ class CommentFactory extends Factory
     protected $model = Comment::class;
 
     /**
+     * Define the model's default state.
+     *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             'comment' => fake()->text,

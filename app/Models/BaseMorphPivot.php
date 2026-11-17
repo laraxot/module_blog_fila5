@@ -13,6 +13,7 @@ use Modules\Xot\Traits\Updater;
  */
 abstract class BaseMorphPivot extends XotBaseMorphPivot
 {
+    use SoftDeletes;
     use Updater;
 
     /**

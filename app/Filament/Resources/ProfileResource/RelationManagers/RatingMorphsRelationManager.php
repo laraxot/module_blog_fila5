@@ -10,22 +10,24 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Modules\Xot\Filament\Resources\RelationManagers\XotBaseRelationManager;
 
-class RatingMorphsRelationManager extends XotBaseRelationManager
+class RatingMorphsRelationManager extends RelationManager
 {
     // protected static string $relationship = 'ratings';
     protected static string $relationship = 'ratingMorphs';
 
-    public function getFormSchema(): array
+    public function form(Schema $schema): Schema
     {
-        return [
-            'title' => TextInput::make('title')
-                ->required()
-                ->maxLength(255),
-        ];
+        return $schema
+            ->components([
+                TextInput::make('title')
+                    ->required()
+                    ->maxLength(255),
+            ]);
     }
 
     public function table(Table $table): Table

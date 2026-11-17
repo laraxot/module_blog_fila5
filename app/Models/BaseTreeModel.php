@@ -15,7 +15,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
  * @property string|null $parent_id
- * @property string $name
+ * @property string      $name
  */
 abstract class BaseTreeModel extends BaseModel
 {
@@ -33,8 +33,9 @@ abstract class BaseTreeModel extends BaseModel
         return 'cte_path';
     }
 
-    public function makeChildOf(Model $parent): self // $parent is unused
-    {// if ($node->isSelfOrDescendantOf($this)) {
+    public function makeChildOf(Model $parent): self
+    {
+        // if ($node->isSelfOrDescendantOf($this)) {
         //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
         // }
 

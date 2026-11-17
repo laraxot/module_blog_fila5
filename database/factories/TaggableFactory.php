@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\Models\Taggable;
 
 /**
- * @extends Factory<Taggable>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Blog\Models\Taggable>
  */
-/** @extends Factory<Taggable> */
 class TaggableFactory extends Factory
 {
     /**

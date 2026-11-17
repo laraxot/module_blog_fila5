@@ -1,9 +1,9 @@
 {
     "name": "Blog",
     "alias": "blog",
-    "description": "Modulo per la gestione di blog, articoli, categorie e contenuti editoriali",
+    "description": "Modulo per la gestione di blog, articoli, categorie, banner e contenuti editoriali",
     "keywords": ["blog", "articles", "categories", "content", "editorial"],
-    "priority": 10,
+    "priority": 0,
     "active": 1,
     "order": 10,
     "providers": [
@@ -12,7 +12,7 @@
     ],
     "aliases": {},
     "files": [],
-    "requires": ["Xot", "UI", "Lang", "Cms"],
+    "requires": ["Xot", "UI", "Lang", "User", "Media", "Rating", "Comment", "Cms", "Tenant"],
     "minimumCoreVersion": "10.0",
-    "phpVersion": "^8.1"
+    "phpVersion": "^8.3"
 }

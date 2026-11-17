@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Widgets;
 
 use Filament\Tables\Table;
-use Modules\Xot\Filament\Widgets\XotBaseTableWidget;
+use Filament\Widgets\TableWidget as BaseWidget;
 
-class LatestArticlesWidget extends XotBaseTableWidget
+class LatestArticlesWidget extends BaseWidget
 {
     public function table(Table $table): Table
     {

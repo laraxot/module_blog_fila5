@@ -1,21 +1,7 @@
----
-title: "transaction removal"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "transaction removal"
-issues: []
-discussions: []
-status: stale
----
-
-> Nota 2026-10-14 (docs-audit): Dichiara 'Completato' la rimozione del modello Transaction; laravel/Modules/Blog/app/Models/Transaction.php esiste ancora e database/migrations/2024_05_02_185212_create_transactions_table.php e' attiva (verificato 2026-10-14). Contenuto non riscritto, verificare prima di usarlo.
-
 # Rimozione Modello Transaction
 
-**Data**: 15 Ottobre 2025  
-**Stato**: ✅ Completato  
+**Data**: 15 Ottobre 2025
+**Stato**: ✅ Completato
 **Motivo**: Modello non necessario per questo progetto
 
 ## Problema Iniziale
@@ -23,9 +9,9 @@ status: stale
 Durante l'esecuzione di `php artisan migrate:fresh`, il sistema tentava di caricare il modello `Transaction` che non esisteva più:
 
 ```
-ErrorException 
-include(/var/www/_bases/base_fixcity_fila5_mono/laravel/vendor/composer/
-../../Modules/Blog/app/Models/Transaction.php): 
+ErrorException
+include(/var/www/_bases/base_fixcity_fila5/laravel/vendor/composer/
+../../Modules/Blog/app/Models/Transaction.php):
 Failed to open stream: No such file or directory
 ```
 
@@ -54,7 +40,7 @@ Il modello Transaction gestiva transazioni di crediti per utenti:
 class Transaction extends BaseModel
 {
     protected $connection = 'blog';
-    
+
     protected $fillable = [
         'date',
         'model_type',
@@ -176,8 +162,8 @@ Se in futuro servisse un sistema di crediti/transazioni, le opzioni sono:
 - [Duplicate Methods Analysis](../duplicate-methods-analysis.md)
 
 ### Root Progetto
-- [View Cache Fix](../../../../docs/view-cache-components-fix-componenti-mancanti.md)
-- [Project Analysis](../../../../../docs/project-analysis-and-roadmap.md)
+- [View Cache Fix](../../../../docs/view-cache-components-fix-2025-10-15.md)
+- [Project Analysis](../../../../docs/project-analysis-and-roadmap.md)
 
 ## Note Operative
 
@@ -198,8 +184,8 @@ Dopo 6-12 mesi senza utilizzo, considerare:
 
 ## Principi Zen Applicati
 
-> "Il codice che non serve è codice che confonde"  
-> "La documentazione preserva la saggezza delle decisioni"  
+> "Il codice che non serve è codice che confonde"
+> "La documentazione preserva la saggezza delle decisioni"
 > "Mantieni ciò che potrebbe servire, nascond i ciò che ora non serve"
 
 ## Conclusioni

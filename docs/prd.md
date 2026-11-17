@@ -1,15 +1,3 @@
----
-title: "prd"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "prd"
-issues: []
-discussions: []
-status: draft
----
-
 # Product Requirements Document (PRD) - Blog Module
 
 **Module**: Blog
@@ -18,6 +6,7 @@ status: draft
 **Author**: Product Team
 
 ---
+
 ## Document Control
 
 | Version | Date | Author | Changes |
@@ -333,7 +322,7 @@ graph TD
 
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
-- Laravel 13+ required
+- Laravel 12+ required
 - Filament v5 compatibility
 - Database: MySQL 8.0+
 
@@ -524,10 +513,10 @@ CREATE TABLE blog_revisions (
 - [Laravel Documentation](https://laravel.com/docs)
 
 ### 12.3 Related PRDs
-- [Cms Module PRD](../../Cms/docs/prd.md)
-- [Media Module PRD](../../Media/docs/PRD.md)
-- [Seo Module PRD](../../Seo/docs/prd.md)
-- [Comment Module PRD](../../Comment/docs/prd.md)
+- [Cms Module PRD](../Cms/docs/PRD.md)
+- [Media Module PRD](../Media/docs/PRD.md)
+- [Seo Module PRD](../Seo/docs/PRD.md)
+- [Comment Module PRD](../Comment/docs/PRD.md)
 
 ---
 
@@ -539,3 +528,4 @@ CREATE TABLE blog_revisions (
 | Engineering Lead | | | |
 | Design Lead | | | |
 | Stakeholder | | | |
+||||||| parent of 43a44cd (.)

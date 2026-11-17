@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
+use Filament\Resources\Pages\CreateRecord;
 use Modules\Blog\Filament\Resources\TextWidgetResource;
-use Modules\Xot\Filament\Resources\Pages\XotBaseCreateRecord;
 
-class CreateTextWidget extends XotBaseCreateRecord
+class CreateTextWidget extends CreateRecord
 {
     protected static string $resource = TextWidgetResource::class;
 

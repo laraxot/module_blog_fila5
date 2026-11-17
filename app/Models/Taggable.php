@@ -15,15 +15,15 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Modules\Blog\Models\Taggable.
  *
- * @property int $id
- * @property int $tag_id
- * @property string $taggable_type
- * @property int $taggable_id
+ * @property int         $id
+ * @property int         $tag_id
+ * @property string      $taggable_type
+ * @property int         $taggable_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- * @property array<string, mixed> $custom_properties
+ * @property array<array-key, mixed> $custom_properties
  *
  * @method static Builder|Taggable newModelQuery()
  * @method static Builder|Taggable newQuery()
@@ -49,13 +49,13 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *
- * @method static Taggable|null first()
+ * @method static Taggable|null             first()
  * @method static Collection<int, Taggable> get()
- * @method static Taggable create(array<string, mixed> $attributes = [])
- * @method static Taggable firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
- * @method static Builder<static>|Taggable where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|Taggable whereNotNull((string|Expression) $columns)
- * @method static int count(string $columns = '*')
+ * @method static Taggable                  create(array<string, mixed> $attributes = [])
+ * @method static Taggable                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
+ * @method static Builder<static>|Taggable  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|Taggable  whereNotNull((string|Expression) $columns)
+ * @method static int                       count(string $columns = '*')
  *
  * @mixin \Eloquent
  */
@@ -86,7 +86,8 @@ class Taggable extends BaseMorphPivot
     ];
 
     /**
-     * @param  array<string, mixed>  $customProperties
+     * @param array<string, mixed> $customProperties
+     * @return $this
      */
     public function withCustomProperties(array $customProperties): self
     {
@@ -110,16 +111,16 @@ class Taggable extends BaseMorphPivot
     }
 
     /**
-     * @param  array<string, mixed>|int|string|float|null  $value
+     * @param int|string|float|array<string, mixed>|null $value
      * @return $this
      */
-    public function setCustomProperty(string $name, int|string|float|array|null $value): static
+    public function setCustomProperty(string $name, int|string|float|array|null $value): self
     {
         $customProperties = $this->custom_properties;
 
         Arr::set($customProperties, $name, $value);
 
-        $this->custom_properties = self::normalizeCustomProperties($customProperties);
+        $this->custom_properties = $this->typedCustomProperties($customProperties);
 
         return $this;
     }
@@ -130,25 +131,26 @@ class Taggable extends BaseMorphPivot
 
         Arr::forget($customProperties, $name);
 
-        $this->custom_properties = self::normalizeCustomProperties($customProperties);
+        $this->custom_properties = $this->typedCustomProperties($customProperties);
 
         return $this;
     }
 
+
     /**
-     * @param  array<mixed, mixed>  $properties
+     * @param array<int|string, mixed> $properties
      * @return array<string, mixed>
      */
-    private static function normalizeCustomProperties(array $properties): array
+    private function typedCustomProperties(array $properties): array
     {
-        $normalized = [];
+        $typed = [];
         foreach ($properties as $key => $value) {
             if (is_string($key)) {
-                $normalized[$key] = $value;
+                $typed[$key] = $value;
             }
         }
 
-        return $normalized;
+        return $typed;
     }
 
     /** @return array<string, string> */

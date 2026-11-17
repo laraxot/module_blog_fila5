@@ -8,19 +8,19 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Pages\Page;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
-use Modules\Blog\Models\Profile as BlogProfile;
 // use Modules\Blog\Models\Profile;
-use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
+use Modules\Blog\Models\Profile as BlogProfile;
+use Modules\Xot\Actions\Cast\SafeArrayCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
-use Modules\Xot\Filament\Pages\XotBasePage;
 
 /**
  * @property Schema $form
  */
-class Profile extends XotBasePage implements HasForms
+class Profile extends Page implements HasForms
 {
     use InteractsWithForms;
     // public Article $article;
@@ -31,7 +31,7 @@ class Profile extends XotBasePage implements HasForms
     /** @var array<string, mixed> */
     public array $data = [];
 
-    public BlogProfile $profile;
+    public BlogProfile $model;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
@@ -41,15 +41,31 @@ class Profile extends XotBasePage implements HasForms
         BlogProfile $model,
         string $tpl = 'v1',
     ): void {
-        $this->profile = $model;
+        $this->model = $model;
         $this->tpl = $tpl;
-        $this->data = self::buildFormData($this->profile);
+        $this->data = $this->model->toArray();
+        unset(
+            $this->data['id'],
+            $this->data['user_id'],
+            $this->data['created_at'],
+            $this->data['updated_at'],
+            $this->data['updated_by'],
+            $this->data['created_by'],
+            $this->data['deleted_at'],
+            $this->data['deleted_by'],
+
+            $this->data['slug'],
+            $this->data['extra']
+        );
 
         // $this->data['photo_profile'] = $this->model->getFirstMedia('photo_profile');
 
         // dddx($this->data);
 
-        $this->form->fill($this->data);
+        /** @var array<string, mixed> $formData */
+        $formData = SafeArrayCastAction::cast($this->data);
+
+        $this->form->fill($formData);
     }
 
     public function render(): View
@@ -59,14 +75,17 @@ class Profile extends XotBasePage implements HasForms
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $viewParams = [
+        $view_params = [
             'view' => $view,
         ];
 
-        return view((string) $view, $viewParams);
+        return view((string) $view, $view_params);
     }
 
-    public function url(): string
+    /**
+     * @param array<string, mixed> $params
+     */
+    public function url(string $name, array $params): string
     {
         return '#';
     }
@@ -96,7 +115,7 @@ class Profile extends XotBasePage implements HasForms
     {
         $data = $this->form->getState();
 
-        $this->profile->update($data);
+        $this->model->update($data);
 
         // $article_aggregate = ArticleAggregate::retrieve($this->article->id);
         // Assert::isArray($ratings_add = $data['ratings_add']);
@@ -116,36 +135,7 @@ class Profile extends XotBasePage implements HasForms
     }
 
     /**
-     * @return array<string, mixed>
-     */
-    private static function buildFormData(BlogProfile $model): array
-    {
-        $excluded = [
-            'id',
-            'user_id',
-            'created_at',
-            'updated_at',
-            'updated_by',
-            'created_by',
-            'deleted_at',
-            'deleted_by',
-            'slug',
-            'extra',
-        ];
-        $attributes = app(SafeArrayByModelCastAction::class)->execute($model);
-        $data = [];
-        foreach ($attributes as $key => $value) {
-            if (! is_string($key) || in_array($key, $excluded, true)) {
-                continue;
-            }
-            $data[$key] = $value;
-        }
-
-        return $data;
-    }
-
-    /**
-     * @return array<int, Action>
+     * @return array<int|string, mixed>
      */
     protected function getFormActions(): array
     {

@@ -25,7 +25,7 @@ class ProfileFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             'id' => fake()->randomNumber(5, false),
