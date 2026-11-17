@@ -1,0 +1,2 @@
+providers:
+  - Modules\Blog\Providers\BlogServiceProvider
