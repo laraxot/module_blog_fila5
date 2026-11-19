@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "mcp integration"
 type: note
@@ -11,17 +10,11 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Integrazione dei Server MCP con il Modulo Blog
 
 ## Panoramica
 
-<<<<<<< HEAD
 Questo documento fornisce linee guida per l'integrazione dei server MCP (Model Context Protocol) con il modulo Blog, seguendo le regole di sviluppo e le convenzioni di codice stabilite per i progetti base_predict_fila5_mono.
-=======
-Questo documento fornisce linee guida per l'integrazione dei server MCP (Model Context Protocol) con il modulo Blog, seguendo le regole di sviluppo e le convenzioni di codice stabilite per i progetti base_predict_fila5.
->>>>>>> laraxot/dev
 
 ## Server MCP Consigliati
 
@@ -77,11 +70,7 @@ class AnalyzePostContentAction
                 'keywords'
             ]
         );
-<<<<<<< HEAD
         
-=======
-
->>>>>>> laraxot/dev
         return new ContentAnalysisData(
             readabilityScore: $analysis['readability']['score'] ?? 0,
             seoScore: $analysis['seo']['score'] ?? 0,
@@ -178,28 +167,17 @@ class PostStatisticsRepository
     public function getStatisticsByCategory(): array
     {
         $results = $this->mcpService->mysql()->executeQuery(
-<<<<<<< HEAD
             'SELECT c.name as category, COUNT(p.id) as post_count, 
              AVG(LENGTH(p.content)) as avg_length, 
-=======
-            'SELECT c.name as category, COUNT(p.id) as post_count,
-             AVG(LENGTH(p.content)) as avg_length,
->>>>>>> laraxot/dev
              SUM(p.view_count) as total_views
              FROM posts p
              JOIN post_category pc ON p.id = pc.post_id
              JOIN categories c ON pc.category_id = c.id
              GROUP BY c.name'
         );
-<<<<<<< HEAD
         
         $statistics = [];
         
-=======
-
-        $statistics = [];
-
->>>>>>> laraxot/dev
         foreach ($results as $result) {
             $statistics[$result['category']] = new PostStatisticsData(
                 category: $result['category'],
@@ -208,11 +186,7 @@ class PostStatisticsRepository
                 totalViews: (int) $result['total_views']
             );
         }
-<<<<<<< HEAD
         
-=======
-
->>>>>>> laraxot/dev
         return $statistics;
     }
 }
@@ -239,11 +213,7 @@ use Filament\Forms\Components\Placeholder;
 class EditPost extends EditRecord
 {
     protected static string $resource = PostResource::class;
-<<<<<<< HEAD
     
-=======
-
->>>>>>> laraxot/dev
     public function getHeaderActions(): array
     {
         return [
@@ -252,55 +222,32 @@ class EditPost extends EditRecord
                 ->icon('heroicon-o-sparkles')
                 ->action(function () {
                     $post = $this->record;
-<<<<<<< HEAD
                     
                     /** @var MCPServiceContract $mcpService */
                     $mcpService = app(MCPServiceContract::class);
                     
-=======
-
-                    /** @var MCPServiceContract $mcpService */
-                    $mcpService = app(MCPServiceContract::class);
-
->>>>>>> laraxot/dev
                     $analysis = $mcpService->sequentialThinking()->analyze(
                         $post->content,
                         ['readability', 'seo', 'sentiment', 'keywords']
                     );
-<<<<<<< HEAD
                     
-=======
-
->>>>>>> laraxot/dev
                     // Memorizza l'analisi
                     $mcpService->memory()->store(
                         "post_analysis_{$post->id}",
                         $analysis
                     );
-<<<<<<< HEAD
                     
-=======
-
->>>>>>> laraxot/dev
                     // Aggiorna i metadati del post
                     $post->update([
                         'meta_description' => $analysis['seo']['meta_description'] ?? $post->meta_description,
                         'keywords' => implode(', ', $analysis['keywords'] ?? [])
                     ]);
-<<<<<<< HEAD
                     
-=======
-
->>>>>>> laraxot/dev
                     Notification::make()
                         ->title('Analisi completata')
                         ->success()
                         ->send();
-<<<<<<< HEAD
                     
-=======
-
->>>>>>> laraxot/dev
                     $this->refreshFormData([
                         'meta_description',
                         'keywords'
@@ -308,11 +255,7 @@ class EditPost extends EditRecord
                 })
         ];
     }
-<<<<<<< HEAD
     
-=======
-
->>>>>>> laraxot/dev
     protected function getHeaderWidgets(): array
     {
         return [
@@ -324,8 +267,4 @@ class EditPost extends EditRecord
 
 ## Conclusione
 
-<<<<<<< HEAD
 L'integrazione dei server MCP con il modulo Blog consente di migliorare significativamente le funzionalità del modulo, fornendo analisi avanzate dei contenuti, memorizzazione efficiente dei metadati e interazioni complesse con il database. Seguendo le linee guida e gli esempi forniti in questo documento, è possibile implementare queste funzionalità in modo conforme alle regole di sviluppo stabilite per i progetti base_predict_fila5_mono.
-=======
-L'integrazione dei server MCP con il modulo Blog consente di migliorare significativamente le funzionalità del modulo, fornendo analisi avanzate dei contenuti, memorizzazione efficiente dei metadati e interazioni complesse con il database. Seguendo le linee guida e gli esempi forniti in questo documento, è possibile implementare queste funzionalità in modo conforme alle regole di sviluppo stabilite per i progetti base_predict_fila5.
->>>>>>> laraxot/dev

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "PHPSTAN FIX PLAN"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Blog Module - PHPStan Level 10 Fix Plan
 
 ## Analysis Date

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "links"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 https://github.com/thedevdojo/pines
 
 https://github.com/stephenjude/filament-blog // faceless

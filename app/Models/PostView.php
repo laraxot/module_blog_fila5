@@ -10,19 +10,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\PostViewFactory;
-<<<<<<< HEAD
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
-=======
-use Modules\Xot\Contracts\ProfileContract;
-use Modules\Media\Models\Media;
->>>>>>> laraxot/dev
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 
 /**
  * Modules\Blog\Models\PostView.
  *
-<<<<<<< HEAD
  * @property int $id
  * @property string $ip_address
  * @property string $user_agent
@@ -32,17 +26,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property Carbon|null $updated_at
  *
  * @method static PostViewFactory factory($count = null, $state = [])
-=======
- * @property int         $id
- * @property string      $ip_address
- * @property string      $user_agent
- * @property int         $post_id
- * @property int         $user_id
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- *
- * @method static PostViewFactory  factory($count = null, $state = [])
->>>>>>> laraxot/dev
  * @method static Builder|PostView newModelQuery()
  * @method static Builder|PostView newQuery()
  * @method static Builder|PostView onlyTrashed()
@@ -67,7 +50,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|PostView whereDeletedBy($value)
  * @method static Builder|PostView whereUpdatedBy($value)
  *
-<<<<<<< HEAD
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  * @property MediaCollection<int, Media> $media
@@ -80,20 +62,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|PostView where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|PostView whereNotNull((string|Expression) $columns)
  * @method static int count(string $columns = '*')
-=======
- * @property ProfileContract|null        $creator
- * @property ProfileContract|null        $updater
- * @property MediaCollection<int, Media> $media
- * @property int|null                    $media_count
- *
- * @method static PostView|null             first()
- * @method static Collection<int, PostView> get()
- * @method static PostView                  create(array<string, mixed> $attributes = [])
- * @method static PostView                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
- * @method static Builder<static>|PostView  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|PostView  whereNotNull((string|Expression) $columns)
- * @method static int                       count(string $columns = '*')
->>>>>>> laraxot/dev
  *
  * @property ProfileContract|null $deleter
  *

@@ -10,15 +10,10 @@ return [
         'navigation_icon' => 'heroicon-o-document-text',
         'navigation_sort' => 1,
         'description' => 'Gestione completa degli articoli del blog',
-<<<<<<< HEAD
         'sort' => 47,
         'icon' => 'heroicon-o-document-text',
         'group' => 'Contenuti',
     ],
-=======
-    ],
-
->>>>>>> laraxot/dev
     'fields' => [
         'id' => [
             'label' => 'ID',
@@ -112,7 +107,6 @@ return [
             'tooltip' => 'Abilita i commenti per questo articolo',
             'help' => 'I commenti permettono ai lettori di interagire con l\'articolo',
         ],
-<<<<<<< HEAD
         'content_blocks' => [
             'label' => 'Blocchi del contenuto',
             'placeholder' => '',
@@ -132,10 +126,6 @@ return [
             'description' => '',
         ],
     ],
-=======
-    ],
-
->>>>>>> laraxot/dev
     'actions' => [
         'create' => [
             'label' => 'Nuovo articolo',
@@ -148,10 +138,7 @@ return [
             'tooltip' => 'Modifica l\'articolo selezionato',
             'success' => 'Articolo aggiornato con successo',
             'error' => 'Errore durante l\'aggiornamento dell\'articolo',
-<<<<<<< HEAD
             'icon' => 'edit',
-=======
->>>>>>> laraxot/dev
         ],
         'delete' => [
             'label' => 'Elimina articolo',
@@ -159,10 +146,7 @@ return [
             'success' => 'Articolo eliminato con successo',
             'error' => 'Errore durante l\'eliminazione dell\'articolo',
             'confirmation' => 'Sei sicuro di voler eliminare questo articolo? Questa azione è irreversibile.',
-<<<<<<< HEAD
             'icon' => 'delete',
-=======
->>>>>>> laraxot/dev
         ],
         'publish' => [
             'label' => 'Pubblica articolo',
@@ -186,7 +170,6 @@ return [
             'label' => 'Anteprima',
             'tooltip' => 'Visualizza l\'anteprima dell\'articolo',
         ],
-<<<<<<< HEAD
         'reorderRecords' => [
             'tooltip' => '',
             'icon' => 'reorderRecords',
@@ -276,10 +259,6 @@ return [
             'tooltip' => 'createAnother',
         ],
     ],
-=======
-    ],
-
->>>>>>> laraxot/dev
     'validation' => [
         'title' => [
             'required' => 'Il titolo è obbligatorio',
@@ -322,10 +301,6 @@ return [
             'max' => 'La meta description non può superare i :max caratteri',
         ],
     ],
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     'filters' => [
         'status' => [
             'label' => 'Stato',
@@ -348,10 +323,6 @@ return [
             'placeholder' => 'Cerca negli articoli...',
         ],
     ],
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     'stats' => [
         'total' => [
             'label' => 'Totale articoli',
@@ -370,20 +341,12 @@ return [
             'description' => 'Articoli pubblicati negli ultimi 7 giorni',
         ],
     ],
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     'empty_states' => [
         'no_articles' => 'Nessun articolo trovato',
         'no_published_articles' => 'Nessun articolo pubblicato',
         'no_draft_articles' => 'Nessuna bozza trovata',
         'create_first' => 'Crea il tuo primo articolo per iniziare',
     ],
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     'help' => [
         'title' => 'Il titolo dell\'articolo deve essere descrittivo e accattivante per attirare i lettori',
         'slug' => 'Lo slug viene utilizzato nell\'URL dell\'articolo. Viene generato automaticamente dal titolo ma può essere personalizzato',
@@ -394,8 +357,5 @@ return [
         'published_at' => 'La data di pubblicazione determina quando l\'articolo diventa visibile ai lettori',
         'seo' => 'I meta tag aiutano i motori di ricerca a comprendere e indicizzare il contenuto dell\'articolo',
     ],
-<<<<<<< HEAD
     'label' => 'article',
-=======
->>>>>>> laraxot/dev
 ];

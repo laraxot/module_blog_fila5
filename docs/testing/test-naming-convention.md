@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "test naming convention"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Convenzione Naming File Test - Blog Module
 
 **Modulo:** Blog  
@@ -39,7 +36,6 @@ TagTest.php
 - [ ] No duplicati case-insensitive
 - [ ] PHPStan Level 10 passa
 
-<<<<<<< HEAD
 ## PHPStan sui test articolo
 
 Dettaglio fix swarm (factory tipizzate, `published_at`, guard su `fresh()`): [phpstan-article-tests.story](../stories/phpstan-article-tests.story.md).
@@ -50,14 +46,5 @@ Dettaglio fix swarm (factory tipizzate, `published_at`, guard su `fresh()`): [ph
 - [PHPStan Best Practices](../filament/best-practices.md)
 
 ---
-=======
-## 📚 Riferimenti
-
-- [Regola Critica Progetto](../../../../docs/regole-critiche/test-naming-pascalcase.md)
-- [PHPStan Best Practices](../filament/best-practices.md)
-
----
-
->>>>>>> laraxot/dev
 **Blog Module - Test Naming Standards** ✅
 

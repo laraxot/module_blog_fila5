@@ -25,11 +25,7 @@ class TextWidgetFactory extends Factory
      *
      * @return array<string, mixed>
      */
-<<<<<<< HEAD
     public function definition(): array
-=======
-    public function definition()
->>>>>>> laraxot/dev
     {
         return [
             'key' => fake()->word,

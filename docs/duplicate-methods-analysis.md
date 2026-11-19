@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "duplicate methods analysis"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Analisi Metodi Duplicati - Modulo Blog
 
 **Data Generazione**: 2025-10-15 06:41:17
@@ -68,10 +65,6 @@ public function sluggable(): array
 **Procedere con refactoring** - Alta confidenza e bassa complessità rendono questa ottimizzazione sicura.
 
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
 ### 2. Metodo: `author`
 
 **Tipo Refactoring**: `Trait` | **Complessità**: 🟢 Low | **Confidenza**: ✅ 100%

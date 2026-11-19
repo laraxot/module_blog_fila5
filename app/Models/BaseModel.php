@@ -22,10 +22,6 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 abstract class BaseModel extends XotBaseModel implements HasMedia
 {
     use InteractsWithMedia;
-<<<<<<< HEAD
-=======
-    use SoftDeletes;
->>>>>>> laraxot/dev
 
     /**
      * The connection name for the model.

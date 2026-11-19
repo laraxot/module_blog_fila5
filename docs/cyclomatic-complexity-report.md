@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "cyclomatic complexity report"
 type: note
@@ -11,18 +10,12 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Cyclomatic Complexity Report - Module: Blog
 
 **Generated:** 2025-10-01 19:44:11  
 **Analyzer:** Super Mucca 🐮
 
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
 ## 📊 Summary Statistics
 
 | Metric | Value |

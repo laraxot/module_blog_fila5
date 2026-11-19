@@ -1,12 +1,8 @@
 @props(['post_id', 'text'])
 
-<<<<<<< HEAD
 @if ($post = \Modules\Blog\Models\Article::query()
     ->whereIn('type', ['post', 'event'])
     ->find($post_id))
-=======
-@if ($post = \Modules\Blog\Models\Article::find($post_id))
->>>>>>> laraxot/dev
     <a
         class="block relative aspect-[4/3] border bg-gray-100"
         href="{{ $this->url('show',['record'=>$post]) }}"

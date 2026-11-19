@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 title: "file naming rules"
 type: note
 tags: [documentation]
@@ -12,11 +11,6 @@ module: theme
 topic: file-naming-rules
 canonical: ../../../Themes/docs/shared-components/file-naming-rules.md
 status: stub
-=======
-module: theme
-topic: file-naming-rules
-canonical: ../../../Themes/docs/shared-components/file-naming-rules.md
->>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/file-naming-rules.md

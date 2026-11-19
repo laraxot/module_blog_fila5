@@ -1,15 +1,9 @@
 {
     "name": "Blog",
     "alias": "blog",
-<<<<<<< HEAD
     "description": "Modulo per la gestione di blog, articoli, categorie e contenuti editoriali",
     "keywords": ["blog", "articles", "categories", "content", "editorial"],
     "priority": 10,
-=======
-    "description": "Modulo per la gestione di blog, articoli, categorie, banner e contenuti editoriali",
-    "keywords": ["blog", "articles", "categories", "content", "editorial"],
-    "priority": 0,
->>>>>>> laraxot/dev
     "active": 1,
     "order": 10,
     "providers": [
@@ -18,14 +12,7 @@
     ],
     "aliases": {},
     "files": [],
-<<<<<<< HEAD
     "requires": ["Xot", "UI", "Lang", "Cms"],
     "minimumCoreVersion": "10.0",
     "phpVersion": "^8.1"
 }
-=======
-    "requires": ["Xot", "UI", "Lang", "User", "Media", "Rating", "Comment", "Cms", "Tenant"],
-    "minimumCoreVersion": "10.0",
-    "phpVersion": "^8.3"
-}
->>>>>>> laraxot/dev

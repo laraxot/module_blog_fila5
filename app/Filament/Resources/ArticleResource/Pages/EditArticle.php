@@ -34,13 +34,8 @@ class EditArticle extends LangBaseEditRecord
                     Checkbox::make('sidebar_blocks')->inline(),
                     Checkbox::make('footer_blocks')->inline(),
                 ])
-<<<<<<< HEAD
                 ->action(function (Article $record, ArticleResource $articleResource, array $data): void {
                     $locales = $articleResource->getTranslatableLocales();
-=======
-                ->action(function (Article $record, ArticleResource $article_resource, array $data): void {
-                    $locales = $article_resource->getTranslatableLocales();
->>>>>>> laraxot/dev
 
                     /** @var array<string, mixed> $safeData */
                     $safeData = SafeArrayCastAction::cast($data);
@@ -48,11 +43,7 @@ class EditArticle extends LangBaseEditRecord
                     app(TranslateContentAction::class)->execute(
                         'article',
                         $record->id,
-<<<<<<< HEAD
                         array_values(array_map(fn (mixed $locale) => (string) $locale, $locales)),
-=======
-                        array_values(array_map(static fn ($locale): string => is_string($locale) ? $locale : (is_scalar($locale) ? (string) $locale : ''), $locales)),
->>>>>>> laraxot/dev
                         $safeData,
                         Article::class
                     );

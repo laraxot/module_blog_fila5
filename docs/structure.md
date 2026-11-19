@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "structure"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Modulo Blog
 
 Data: 2025-04-23 19:09:55

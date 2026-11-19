@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "ai"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 https://codewithkyrian.com/p/machine-learning-with-transformersphp-automatically-tagging-posts-in-laravel
 https://codewithkyrian.com/p/announcing-transformersphp-bring-machine-learning-magic-to-your-php-projects
 https://codewithkyrian.github.io/transformers-php/introduction

@@ -34,7 +34,6 @@ class ArticleInfolist extends XotBaseResourceInfolist
                 ->color(fn (bool $state): string => $state ? 'success' : 'gray'),
             'published_at' => TextEntry::make('published_at')->date(),
             'closed_at' => TextEntry::make('closed_at')->date(),
-<<<<<<< HEAD
             'type' => TextEntry::make('type')
                 ->label('Tipo contenuto')
                 ->badge(),
@@ -44,9 +43,6 @@ class ArticleInfolist extends XotBaseResourceInfolist
             'event_end_date' => TextEntry::make('event_end_date')
                 ->label('Fine evento')
                 ->dateTime(),
-=======
-            'type' => TextEntry::make('type'),
->>>>>>> laraxot/dev
             'created_at' => TextEntry::make('created_at')->dateTime(),
             'updated_at' => TextEntry::make('updated_at')->dateTime(),
         ];

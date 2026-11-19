@@ -7,11 +7,8 @@ namespace Modules\Blog\Filament\Resources\ArticleResource\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables\Filters\SelectFilter;
-<<<<<<< HEAD
 use Modules\Blog\Models\Category;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
-=======
->>>>>>> laraxot/dev
 use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class ArticlesTable extends XotBaseResourceTable
@@ -25,7 +22,6 @@ class ArticlesTable extends XotBaseResourceTable
                 ->limit(50),
             'slug' => TextColumn::make('slug')
                 ->limit(30),
-<<<<<<< HEAD
             'type' => TextColumn::make('type')
                 ->label('Tipo')
                 ->badge(),
@@ -33,8 +29,6 @@ class ArticlesTable extends XotBaseResourceTable
                 ->label('Inizio evento')
                 ->dateTime()
                 ->sortable(),
-=======
->>>>>>> laraxot/dev
             'main_image_url' => TextColumn::make('main_image_url')
                 ->label('Image'),
             'author' => TextColumn::make('user.name')
@@ -63,7 +57,6 @@ class ArticlesTable extends XotBaseResourceTable
     public function getTableFilters(): array
     {
         return [
-<<<<<<< HEAD
             'type' => SelectFilter::make('type')
                 ->label('Tipo')
                 ->options([
@@ -74,10 +67,6 @@ class ArticlesTable extends XotBaseResourceTable
             'category' => SelectFilter::make('category')
                 ->relationship('category', 'title')
                 ->getOptionLabelFromRecordUsing(static fn (Category $record): string => SafeStringCastAction::cast($record->getTranslation('title', app()->getLocale()))),
-=======
-            'category' => SelectFilter::make('category')
-                ->relationship('category', 'name'),
->>>>>>> laraxot/dev
             'user' => SelectFilter::make('user')
                 ->relationship('user', 'name'),
         ];

@@ -1,31 +1,20 @@
 ---
-<<<<<<< HEAD
 title: "blog module"
 tags: [documentation]
 created: 2026-09-26
 qmd: "blog module"
 issues: []
 discussions: []
-=======
->>>>>>> laraxot/dev
 type: overview
 module: Blog
 sources:
   - ../../../README.md
-<<<<<<< HEAD
   - ../../blocks.md
   - ../../structure.md
   - ../../pages.md
 confidence: high
 updated: 2026-04-15
 status: draft
-=======
-  - ../../../blocks.md
-  - ../../../structure.md
-  - ../../../pages.md
-confidence: high
-updated: 2026-04-15
->>>>>>> laraxot/dev
 ---
 
 # Blog Module — Overview

@@ -12,12 +12,6 @@ use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
-<<<<<<< HEAD
-=======
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\TextColumn;
->>>>>>> laraxot/dev
 use Illuminate\Support\Facades\File;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Modules\Blog\Actions\Banner\ImportBannerFromByJsonTextAction;
@@ -26,34 +20,6 @@ use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListBanners extends XotBaseListRecords
 {
-<<<<<<< HEAD
-=======
-    /**
-     * Definisce le colonne della tabella di elenco banner.
-     *
-     * @return array<string, Column>
-     */
-    public function getTableColumns(): array
-    {
-        return [
-            'id' => TextColumn::make('id')
-                ->label(static::trans('fields.id'))
-                ->sortable()
-                ->searchable(),
-            'title' => TextColumn::make('title')
-                ->label(static::trans('fields.title'))
-                ->sortable()
-                ->searchable(),
-            'category' => TextColumn::make('category.title')
-                ->label(static::trans('fields.category.title'))
-                ->sortable()
-                ->searchable(),
-            'image' => SpatieMediaLibraryImageColumn::make('image')
-                ->label(static::trans('fields.image'))
-                ->collection('banner'),
-        ];
-    }
->>>>>>> laraxot/dev
     // protected static string $resource = BannerResource::class;
 
     protected function getHeaderActions(): array

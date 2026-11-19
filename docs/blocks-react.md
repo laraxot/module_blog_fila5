@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "blocks react"
 type: note
@@ -11,7 +10,5 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 https://www.material-tailwind.com/project_docs/react/card
 

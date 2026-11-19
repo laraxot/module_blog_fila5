@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 title: "product roadmap"
 type: note
 tags: [documentation]
@@ -12,11 +11,6 @@ module: theme
 topic: product-roadmap
 canonical: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP-Modules.md
 status: stub
-=======
-module: theme
-topic: product-roadmap
-canonical: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP-Modules.md
->>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP-Modules.md

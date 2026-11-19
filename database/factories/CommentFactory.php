@@ -20,17 +20,9 @@ class CommentFactory extends Factory
     protected $model = Comment::class;
 
     /**
-<<<<<<< HEAD
      * @return array<string, mixed>
      */
     public function definition(): array
-=======
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
->>>>>>> laraxot/dev
     {
         return [
             'comment' => fake()->text,

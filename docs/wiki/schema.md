@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "schema"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Blog Module — Wiki Schema
 
 ## Struttura wiki

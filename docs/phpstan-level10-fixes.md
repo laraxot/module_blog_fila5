@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "phpstan level10 fixes"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Correzioni PHPStan Livello 10 - Modulo Blog
 
 Questo documento traccia gli errori PHPStan di livello 10 identificati nel modulo Blog e le relative soluzioni implementate.

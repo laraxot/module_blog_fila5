@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "phpstan fixes"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Correzioni PHPStan nel Modulo Blog
 
 ## ListArticles.php

@@ -3,10 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Schema;
-=======
->>>>>>> laraxot/dev
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /*
@@ -43,7 +40,6 @@ return new class extends XotBaseMigration {
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-<<<<<<< HEAD
                 $tableName = $this->getTable();
 
                 // Add timestamps only if they don't exist
@@ -69,11 +65,6 @@ return new class extends XotBaseMigration {
                 }
 
                 if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'pos')) {
-=======
-                $this->updateTimestamps(table: $table, hasSoftDeletes: true);
-
-                if (! $this->hasColumn('pos')) {
->>>>>>> laraxot/dev
                     $table->integer('pos')->nullable();
                 }
             }

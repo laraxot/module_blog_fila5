@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "research"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # User Research - Blog Module
 
 ## Insights

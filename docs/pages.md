@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "pages"
 type: note
@@ -13,8 +12,6 @@ status: stale
 
 > Nota 2026-10-14 (docs-audit): Descrive la gestione delle pagine con blocchi in Filament come funzione del modulo; Blog non ha PageResource (risorse: Article, Banner, Category, Profile, TextWidget) e la migrazione create_blog_pages_table e' marcata .to_cms, cioe' spostata nel modulo Cms (verificato 2026-10-14). Contenuto non riscritto, verificare prima di usarlo.
 
-=======
->>>>>>> laraxot/dev
 ## Gestione delle pagine
 
 ![page_list](img/page_list.jpg)

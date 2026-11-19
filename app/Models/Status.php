@@ -13,7 +13,6 @@ use Spatie\ModelStatus\Status as BaseStatus;
 /**
  * Modules\Blog\Models\Status.
  *
-<<<<<<< HEAD
  * @property int $id
  * @property string $name
  * @property string|null $reason
@@ -24,18 +23,6 @@ use Spatie\ModelStatus\Status as BaseStatus;
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property Model|Eloquent $model
-=======
- * @property int             $id
- * @property string          $name
- * @property string|null     $reason
- * @property string          $model_type
- * @property int             $model_id
- * @property Carbon|null     $created_at
- * @property Carbon|null     $updated_at
- * @property string|null     $updated_by
- * @property string|null     $created_by
- * @property Model|\Eloquent $model
->>>>>>> laraxot/dev
  *
  * @method static Builder|Status newModelQuery()
  * @method static Builder|Status newQuery()
@@ -52,13 +39,8 @@ use Spatie\ModelStatus\Status as BaseStatus;
  *
  * @property string $ip_address
  * @property string $user_agent
-<<<<<<< HEAD
  * @property int $post_id
  * @property int $user_id
-=======
- * @property int    $post_id
- * @property int    $user_id
->>>>>>> laraxot/dev
  *
  * @method static Builder|Status whereIpAddress($value)
  * @method static Builder|Status wherePostId($value)

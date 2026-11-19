@@ -80,11 +80,7 @@
                 Login
                 </a> --}}
                 <x-filament::link :href="route('login')" class="bg-blue-1 text-white hover:bg-blue-2 hover:text-blue-3 focus:ring-4 focus:outline-none focus:ring-blue font-semibold rounded-lg text-sm px-10 h-12 flex items-center justify-center text-center">
-<<<<<<< HEAD
                     {{ (string) __('user::auth.login-in.text') }}
-=======
-                    {{ (string) __('user::auth.login-in') }}
->>>>>>> laraxot/dev
                 </x-filament::link>
             </div>
         </div>

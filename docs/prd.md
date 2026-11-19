@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "prd"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Product Requirements Document (PRD) - Blog Module
 
 **Module**: Blog
@@ -21,10 +18,6 @@ status: draft
 **Author**: Product Team
 
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
 ## Document Control
 
 | Version | Date | Author | Changes |
@@ -340,11 +333,7 @@ graph TD
 
 ### 7.4 Technical Constraints
 - PHP 8.3+ required
-<<<<<<< HEAD
 - Laravel 13+ required
-=======
-- Laravel 12+ required
->>>>>>> laraxot/dev
 - Filament v5 compatibility
 - Database: MySQL 8.0+
 
@@ -535,17 +524,10 @@ CREATE TABLE blog_revisions (
 - [Laravel Documentation](https://laravel.com/docs)
 
 ### 12.3 Related PRDs
-<<<<<<< HEAD
 - [Cms Module PRD](../../Cms/docs/prd.md)
 - [Media Module PRD](../../Media/docs/PRD.md)
 - [Seo Module PRD](../../Seo/docs/prd.md)
 - [Comment Module PRD](../../Comment/docs/prd.md)
-=======
-- [Cms Module PRD](../Cms/docs/PRD.md)
-- [Media Module PRD](../Media/docs/PRD.md)
-- [Seo Module PRD](../Seo/docs/PRD.md)
-- [Comment Module PRD](../Comment/docs/PRD.md)
->>>>>>> laraxot/dev
 
 ---
 
@@ -557,7 +539,3 @@ CREATE TABLE blog_revisions (
 | Engineering Lead | | | |
 | Design Lead | | | |
 | Stakeholder | | | |
-<<<<<<< HEAD
-=======
-||||||| parent of 43a44cd (.)
->>>>>>> laraxot/dev

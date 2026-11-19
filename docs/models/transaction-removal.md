@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "transaction removal"
 type: note
@@ -17,12 +16,6 @@ status: stale
 
 **Data**: 15 Ottobre 2025  
 **Stato**: ✅ Completato  
-=======
-# Rimozione Modello Transaction
-
-**Data**: 15 Ottobre 2025
-**Stato**: ✅ Completato
->>>>>>> laraxot/dev
 **Motivo**: Modello non necessario per questo progetto
 
 ## Problema Iniziale
@@ -30,15 +23,9 @@ status: stale
 Durante l'esecuzione di `php artisan migrate:fresh`, il sistema tentava di caricare il modello `Transaction` che non esisteva più:
 
 ```
-<<<<<<< HEAD
 ErrorException 
 include(/var/www/_bases/base_fixcity_fila5_mono/laravel/vendor/composer/
 ../../Modules/Blog/app/Models/Transaction.php): 
-=======
-ErrorException
-include(/var/www/_bases/base_fixcity_fila5/laravel/vendor/composer/
-../../Modules/Blog/app/Models/Transaction.php):
->>>>>>> laraxot/dev
 Failed to open stream: No such file or directory
 ```
 
@@ -67,11 +54,7 @@ Il modello Transaction gestiva transazioni di crediti per utenti:
 class Transaction extends BaseModel
 {
     protected $connection = 'blog';
-<<<<<<< HEAD
     
-=======
-
->>>>>>> laraxot/dev
     protected $fillable = [
         'date',
         'model_type',
@@ -193,13 +176,8 @@ Se in futuro servisse un sistema di crediti/transazioni, le opzioni sono:
 - [Duplicate Methods Analysis](../duplicate-methods-analysis.md)
 
 ### Root Progetto
-<<<<<<< HEAD
 - [View Cache Fix](../../../../docs/view-cache-components-fix-componenti-mancanti.md)
 - [Project Analysis](../../../../../docs/project-analysis-and-roadmap.md)
-=======
-- [View Cache Fix](../../../../docs/view-cache-components-fix-2025-10-15.md)
-- [Project Analysis](../../../../docs/project-analysis-and-roadmap.md)
->>>>>>> laraxot/dev
 
 ## Note Operative
 
@@ -220,13 +198,8 @@ Dopo 6-12 mesi senza utilizzo, considerare:
 
 ## Principi Zen Applicati
 
-<<<<<<< HEAD
 > "Il codice che non serve è codice che confonde"  
 > "La documentazione preserva la saggezza delle decisioni"  
-=======
-> "Il codice che non serve è codice che confonde"
-> "La documentazione preserva la saggezza delle decisioni"
->>>>>>> laraxot/dev
 > "Mantieni ciò che potrebbe servire, nascond i ciò che ora non serve"
 
 ## Conclusioni

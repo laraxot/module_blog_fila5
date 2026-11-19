@@ -8,15 +8,9 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Filters;
 
-<<<<<<< HEAD
 use Modules\Xot\Filament\Tables\Filters\XotBaseSelectFilter;
 
 class CategoryFilter extends XotBaseSelectFilter
-=======
-use Filament\Tables\Filters\SelectFilter;
-
-class CategoryFilter extends SelectFilter
->>>>>>> laraxot/dev
 {
     protected function setUp(): void
     {

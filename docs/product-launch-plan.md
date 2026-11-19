@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 title: "product launch plan"
 type: note
 tags: [documentation]
@@ -12,11 +11,6 @@ module: theme
 topic: product-launch-plan
 canonical: ../../../Themes/docs/shared-components/PRODUCT_LAUNCH_PLAN-Modules.md
 status: stub
-=======
-module: theme
-topic: product-launch-plan
-canonical: ../../../Themes/docs/shared-components/PRODUCT_LAUNCH_PLAN-Modules.md
->>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/PRODUCT_LAUNCH_PLAN-Modules.md

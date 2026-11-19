@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "themes"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 1
 ----------------------
 2

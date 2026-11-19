@@ -6,13 +6,7 @@ return [
     'navigation' => [
         'name' => 'Profilo',
         'plural' => 'Profili',
-<<<<<<< HEAD
         'group' => 'Contenuti',
-=======
-        'group' => [
-            'name' => 'Content',
-        ],
->>>>>>> laraxot/dev
         'sort' => 56,
         'icon' => 'heroicon-o-user',
         'label' => 'Profilo',

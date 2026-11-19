@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Pages;
 
-<<<<<<< HEAD
 use Modules\Xot\Filament\Pages\XotBaseDashboard;
 
 /**
@@ -20,11 +19,6 @@ use Modules\Xot\Filament\Pages\XotBaseDashboard;
  * Canon: docs/wiki/guidelines/xotbase-extension-rules.md
  */
 class Dashboard extends XotBaseDashboard
-=======
-use Filament\Pages\Page;
-
-class Dashboard extends Page
->>>>>>> laraxot/dev
 {
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-home';
 

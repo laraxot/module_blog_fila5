@@ -18,14 +18,8 @@ class Lists extends Component
 
     // All categories
     /**
-<<<<<<< HEAD
      * @var Collection<int, Category>
      */
-=======
-     * @var Collection<Category>
-     */
-    /** @var Collection<int, \Modules\Blog\Models\Category> */
->>>>>>> laraxot/dev
     public Collection $categories;
 
     // Variables keeping track of the current post query
@@ -69,19 +63,11 @@ class Lists extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-<<<<<<< HEAD
         $viewParams = [
             'activeCategory' => $this->category,
         ];
 
         return view((string) $view, $viewParams);
-=======
-        $view_params = [
-            'activeCategory' => $this->category,
-        ];
-
-        return view((string) $view, $view_params);
->>>>>>> laraxot/dev
     }
 
     public function updatedCategory(): void
@@ -106,7 +92,6 @@ class Lists extends Component
     // }
 
     /**
-<<<<<<< HEAD
      * @return EloquentBuilder<Article>
      */
     private function getArticleQuery(): EloquentBuilder
@@ -116,17 +101,6 @@ class Lists extends Component
             ->published();
         $activeCategory = $this->category;
         if ($activeCategory instanceof Category) {
-=======
-     * Summary of getArticleQuery.
-     */
-    /**
-     * @return \Illuminate\Database\Eloquent\Builder<\Modules\Blog\Models\Article>
-     */
-    private function getArticleQuery(): EloquentBuilder
-    {
-        $query = Article::published();
-        if (($activeCategory = $this->category) instanceof Category) {
->>>>>>> laraxot/dev
             $query = $query->whereCategoryId($activeCategory->id);
         }
 

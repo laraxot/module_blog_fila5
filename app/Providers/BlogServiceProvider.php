@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Providers;
 
-<<<<<<< HEAD
 use Modules\Blog\Actions\Article\ListPublishedArticlePathsAction;
 use Modules\Seo\Contracts\SitemapPathsContract;
 use Modules\Xot\Providers\XotBaseServiceProvider;
@@ -12,10 +11,6 @@ use Modules\Xot\Providers\XotBaseServiceProvider;
 /**
  * @SuppressWarnings("PHPMD.CamelCasePropertyName")
  */
-=======
-use Modules\Xot\Providers\XotBaseServiceProvider;
-
->>>>>>> laraxot/dev
 class BlogServiceProvider extends XotBaseServiceProvider
 {
     public string $name = 'Blog';
@@ -32,11 +27,8 @@ class BlogServiceProvider extends XotBaseServiceProvider
     public function register(): void
     {
         parent::register();
-<<<<<<< HEAD
 
         // Post ed eventi pubblicati entrano nella sitemap di Seo senza che Seo conosca Blog (DCP-273).
         $this->app->tag([ListPublishedArticlePathsAction::class], SitemapPathsContract::TAG);
-=======
->>>>>>> laraxot/dev
     }
 }

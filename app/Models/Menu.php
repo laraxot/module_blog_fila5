@@ -12,10 +12,7 @@ use Illuminate\Support\Carbon;
 use Modules\Blog\Actions\ParentChilds\GetTreeOptions;
 use Modules\Blog\Database\Factories\MenuFactory;
 use Modules\Media\Models\Media;
-<<<<<<< HEAD
 use Modules\Xot\Contracts\ProfileContract;
-=======
->>>>>>> laraxot/dev
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -25,15 +22,9 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 /**
  * Modules\Blog\Models\Menu.
  *
-<<<<<<< HEAD
  * @property int $id
  * @property string $name
  * @property array<string, mixed>|null $items
-=======
- * @property int         $id
- * @property string      $name
- * @property array<int, array<string, mixed>>|null  $items
->>>>>>> laraxot/dev
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
@@ -41,11 +32,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property Carbon|null $deleted_at
  * @property string|null $deleted_by
  *
-<<<<<<< HEAD
  * @method static MenuFactory factory($count = null, $state = [])
-=======
- * @method static MenuFactory  factory($count = null, $state = [])
->>>>>>> laraxot/dev
  * @method static Builder|Menu newModelQuery()
  * @method static Builder|Menu newQuery()
  * @method static Builder|Menu onlyTrashed()
@@ -62,7 +49,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static Builder|Menu withTrashed()
  * @method static Builder|Menu withoutTrashed()
  *
-<<<<<<< HEAD
  * @property string $title
  * @property int|null $parent_id
  * @property Collection<int, Menu> $children
@@ -121,66 +107,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu depthFirst()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu doesntHaveChildren()
  * @method static Collection<int, static> get($columns = ['*'])
-=======
- * @property string                      $title
- * @property int|null                    $parent_id
- * @property Collection<int, Menu>|array<int, Menu>      $children
- * @property int|null                    $children_count
- * @property MediaCollection<int, Media> $media
- * @property int|null                    $media_count
- * @property Menu|null                   $parent
- * @property Collection<int, Menu>|array<int, Menu>      $ancestors                  The model's recursive parents.
- * @property int|null                    $ancestors_count
- * @property Collection<int, Menu>|array<int, Menu>      $ancestorsAndSelf           The model's recursive parents and itself.
- * @property int|null                    $ancestors_and_self_count
- * @property Collection<int, Menu>|array<int, Menu>      $bloodline                  The model's ancestors, descendants and itself.
- * @property int|null                    $bloodline_count
- * @property Collection<int, Menu>|array<int, Menu>      $childrenAndSelf            The model's direct children and itself.
- * @property int|null                    $children_and_self_count
- * @property Collection<int, Menu>|array<int, Menu>      $descendants                The model's recursive children.
- * @property int|null                    $descendants_count
- * @property Collection<int, Menu>|array<int, Menu>      $descendantsAndSelf         The model's recursive children and itself.
- * @property int|null                    $descendants_and_self_count
- * @property Collection<int, Menu>|array<int, Menu>      $parentAndSelf              The model's direct parent and itself.
- * @property int|null                    $parent_and_self_count
- * @property Menu|null                   $rootAncestor               The model's topmost parent.
- * @property Collection<int, Menu>|array<int, Menu>      $siblings                   The parent's other children.
- * @property int|null                    $siblings_count
- * @property Collection<int, Menu>|array<int, Menu>      $siblingsAndSelf            All the parent's children.
- * @property int|null                    $siblings_and_self_count
- * @property string                      $title
- * @property int|null                    $parent_id
- * @property Collection<int, Menu>|array<int, Menu>      $children
- * @property int|null                    $children_count
- * @property MediaCollection<int, Media> $media
- * @property int|null                    $media_count
- * @property Menu|null                   $parent
- * @property Collection<int, Menu>|array<int, Menu>      $ancestors                  The model's recursive parents.
- * @property int|null                    $ancestors_count
- * @property Collection<int, Menu>|array<int, Menu>      $ancestorsAndSelf           The model's recursive parents and itself.
- * @property int|null                    $ancestors_and_self_count
- * @property Collection<int, Menu>|array<int, Menu>      $bloodline                  The model's ancestors, descendants and itself.
- * @property int|null                    $bloodline_count
- * @property Collection<int, Menu>|array<int, Menu>      $childrenAndSelf            The model's direct children and itself.
- * @property int|null                    $children_and_self_count
- * @property Collection<int, Menu>|array<int, Menu>      $descendants                The model's recursive children.
- * @property int|null                    $descendants_count
- * @property Collection<int, Menu>|array<int, Menu>      $descendantsAndSelf         The model's recursive children and itself.
- * @property int|null                    $descendants_and_self_count
- * @property Collection<int, Menu>|array<int, Menu>      $parentAndSelf              The model's direct parent and itself.
- * @property int|null                    $parent_and_self_count
- * @property Menu|null                   $rootAncestor               The model's topmost parent.
- * @property Collection<int, Menu>|array<int, Menu>      $siblings                   The parent's other children.
- * @property int|null                    $siblings_count
- * @property Collection<int, Menu>|array<int, Menu>      $siblingsAndSelf            All the parent's children.
- * @property int|null                    $siblings_and_self_count
- *
- * @method static Collection<int, static>                                 all($columns = ['*'])
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu breadthFirst()
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu depthFirst()
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu doesntHaveChildren()
- * @method static Collection<int, static>                                 get($columns = ['*'])
->>>>>>> laraxot/dev
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu getExpressionGrammar()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu hasChildren()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu hasParent()
@@ -207,7 +133,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property-read int $depth
  * @property-read string $path
  *
-<<<<<<< HEAD
  * @method static Menu|null first()
  * @method static \Illuminate\Database\Eloquent\Collection<int, Menu> get()
  * @method static Menu create(array<string, mixed> $attributes = [])
@@ -217,17 +142,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static int count(string $columns = '*')
  *
  * @property ProfileContract|null $deleter
-=======
- * @method static Menu|null                                           first()
- * @method static \Illuminate\Database\Eloquent\Collection<int, Menu> get()
- * @method static Menu                                                create(array<string, mixed> $attributes = [])
- * @method static Menu                                                firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
- * @method static Builder<static>|Menu                                where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
- * @method static Builder<static>|Menu                                whereNotNull((string|Expression) $columns)
- * @method static int                                                 count(string $columns = '*')
- *
- * @property \Modules\Xot\Contracts\ProfileContract|null $deleter
->>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */
@@ -244,19 +158,11 @@ class Menu extends BaseModel implements HasMedia
     ];
 
     /**
-<<<<<<< HEAD
      * @return array<int|string, string>
      */
     public static function getTreeMenuOptions(): array
     {
         $instance = new self;
-=======
-     * @return array<string|int, string>
-     */
-    public static function getTreeMenuOptions(): array
-    {
-        $instance = new self();
->>>>>>> laraxot/dev
 
         return app(GetTreeOptions::class)->execute($instance);
 

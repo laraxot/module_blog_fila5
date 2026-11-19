@@ -6,12 +6,9 @@ namespace Modules\Blog\Providers;
 
 use Modules\Xot\Providers\XotBaseRouteServiceProvider;
 
-<<<<<<< HEAD
 /**
  * @SuppressWarnings("PHPMD.CamelCasePropertyName")
  */
-=======
->>>>>>> laraxot/dev
 class RouteServiceProvider extends XotBaseRouteServiceProvider
 {
     public string $name = 'Blog';

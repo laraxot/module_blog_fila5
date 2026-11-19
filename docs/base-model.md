@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "base model"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # BaseModel
 
 Il `BaseModel` è la classe base per tutti i modelli nel modulo Blog. Estende `Illuminate\Database\Eloquent\Model` e implementa `Spatie\MediaLibrary\HasMedia`.

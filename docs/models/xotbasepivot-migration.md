@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "xotbasepivot migration"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Blog Module - XotBasePivot Migration
 
 ## 📊 Overview
@@ -27,10 +24,6 @@ Il modulo Blog ha un **caso speciale**: utilizza `SoftDeletes` nei suoi Pivot mo
 - ⚠️ **Caso Speciale:** SoftDeletes trait
 
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
 ## 🔧 Pivot Models Impattati
 
 ### 1. CategoryPost

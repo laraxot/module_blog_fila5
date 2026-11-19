@@ -25,14 +25,6 @@ class BannerResource extends XotBaseResource
 
     protected static string|\BackedEnum|null $navigationIcon = 'ui-starbanner';
 
-<<<<<<< HEAD
-=======
-    // public static function getTranslatableLocales(): array
-    // {
-    //     return ['it', 'en'];
-    // }
-
->>>>>>> laraxot/dev
     /**
      * Ritorna i campi del form (compatibilità con XotBaseResource).
      *

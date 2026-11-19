@@ -25,11 +25,7 @@ class UpvoteDownvoteFactory extends Factory
      *
      * @return array<string, mixed>
      */
-<<<<<<< HEAD
     public function definition(): array
-=======
-    public function definition()
->>>>>>> laraxot/dev
     {
         return [
             'is_upvote' => fake()->boolean,

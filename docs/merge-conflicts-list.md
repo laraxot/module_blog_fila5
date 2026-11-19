@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 title: "merge conflicts list"
 type: note
 tags: [documentation]
@@ -12,11 +11,6 @@ module: theme
 topic: merge-conflicts-list
 canonical: ../../../Themes/docs/shared-components/merge-conflicts-list.md
 status: stub
-=======
-module: theme
-topic: merge-conflicts-list
-canonical: ../../../Themes/docs/shared-components/merge-conflicts-list.md
->>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/merge-conflicts-list.md

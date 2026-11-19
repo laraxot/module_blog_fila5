@@ -16,10 +16,6 @@ class ArticleContent
 {
     public static function make(
         string $name,
-<<<<<<< HEAD
-=======
-        string $context = 'form',
->>>>>>> laraxot/dev
     ): Builder {
         return Builder::make($name)
             ->blocks([

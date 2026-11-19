@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "launch"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Product Launch Plan - Blog Module
 
 ## Checklist

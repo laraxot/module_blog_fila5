@@ -29,14 +29,8 @@ class Meta extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-<<<<<<< HEAD
         $viewParams = [];
 
         return view($view, $viewParams);
-=======
-        $view_params = [];
-
-        return view($view, $view_params);
->>>>>>> laraxot/dev
     }
 }

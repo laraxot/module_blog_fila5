@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "parental sti architecture"
 type: note
@@ -11,8 +10,6 @@ discussions: []
 status: draft
 ---
 
-=======
->>>>>>> laraxot/dev
 # Parental/STI Architecture - Blog & Predict
 
 **Data**: 2026-03-20  
@@ -21,10 +18,6 @@ status: draft
 **Package**: [tightenco/parental](https://github.com/tighten/parental)
 
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
 ## 🔴 CRITICAL: Multi-Database Architecture
 
 ### Database Configuration

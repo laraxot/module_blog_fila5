@@ -9,7 +9,6 @@ use Illuminate\View\Component;
 use Modules\Blog\Models\Article;
 use Modules\Xot\Actions\GetViewAction;
 
-<<<<<<< HEAD
 class Card extends Component
 {
     public bool $showAuthor;
@@ -20,20 +19,6 @@ class Card extends Component
         public string $tpl = 'v1',
     ) {
         $this->showAuthor = 'visible' === $authorDisplay;
-=======
-// use Modules\Xot\View\Components\XotBaseComponent;
-
-/**
- * .
- */
-class Card extends Component
-{
-    public function __construct(
-        public Article $article,
-        public bool $showAuthor = false,
-        public string $tpl = 'v1',
-    ) {
->>>>>>> laraxot/dev
     }
 
     public function render(): Renderable
@@ -43,14 +28,8 @@ class Card extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-<<<<<<< HEAD
         $viewParams = [];
 
         return view($view, $viewParams);
-=======
-        $view_params = [];
-
-        return view($view, $view_params);
->>>>>>> laraxot/dev
     }
 }

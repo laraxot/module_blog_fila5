@@ -8,14 +8,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\Models\Menu;
 
 /**
-<<<<<<< HEAD
  * @extends Factory<Menu>
  */
 /** @extends Factory<Menu> */
-=======
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Blog\Models\Menu>
- */
->>>>>>> laraxot/dev
 class MenuFactory extends Factory
 {
     /**
