@@ -82,7 +82,9 @@ class YourModel extends BaseModel
 
 - Il BaseModel è una classe astratta, quindi non può essere istanziata direttamente
 - Tutti i modelli che estendono BaseModel ereditano automaticamente la gestione dei media
-- Il soft delete è abilitato di default
+- Il soft delete è abilitato di default (`use SoftDeletes` in `BaseModel`; le tabelle hanno `deleted_at`). Il mirror `8a8f309737` del
+  2026-11-17 aveva tolto il trait lasciando l'import: `Article::getDeletedAtColumn()` non esisteva più e
+  `delete()` cancellava davvero le righe. Ripristinato il 2026-11-19.
 - Gli attributi sono automaticamente convertiti in snake_case quando serializzati
 
 ## Connessione `predict_data`

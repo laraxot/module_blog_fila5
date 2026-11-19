@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Modules\Blog;
+namespace Modules\Blog\Tests\Feature;
 
 use Modules\Blog\Actions\Article\ResolveArticleBodyAction;
 use Modules\Blog\Models\Article;
@@ -11,6 +11,8 @@ use Tests\TestCase;
 /**
  * The public article body keeps every editor block (title, paragraph, image, image_spatie, ...),
  * not only paragraphs. One image becomes the lead figure; the rest stay in the body.
+ *
+ * @see Modules/Blog/docs/test-location-rule.md#namespace-dei-test
  */
 final class ResolveArticleBodyActionTest extends TestCase
 {
