@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "user research"
 type: note
 tags: [documentation]
@@ -11,6 +12,11 @@ module: theme
 topic: user-research
 canonical: ../../../Themes/docs/shared-components/USER_RESEARCH-Modules.md
 status: stub
+=======
+module: theme
+topic: user-research
+canonical: ../../../Themes/docs/shared-components/USER_RESEARCH-Modules.md
+>>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/USER_RESEARCH-Modules.md

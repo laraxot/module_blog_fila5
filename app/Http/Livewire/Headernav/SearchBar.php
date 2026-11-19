@@ -25,6 +25,7 @@ class SearchBar extends Component
         $results = [];
 
         if ('' !== $this->search && '0' !== $this->search) {
+<<<<<<< HEAD
             $results = Article::query()
                 ->whereIn('type', ['post', 'event'])
                 ->published()
@@ -37,5 +38,15 @@ class SearchBar extends Component
         ];
 
         return view((string) $view, $viewParams);
+=======
+            $results = Article::where('title', 'like', '%'.$this->search.'%')->get();
+        }
+
+        $view_params = [
+            'results' => $results,
+        ];
+
+        return view((string) $view, $view_params);
+>>>>>>> laraxot/dev
     }
 }

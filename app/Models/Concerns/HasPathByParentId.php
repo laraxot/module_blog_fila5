@@ -22,11 +22,19 @@ trait HasPathByParentId
      */
     public function getPathAttribute(?string $value): string
     {
+<<<<<<< HEAD
         if ($value !== null) {
             return $value;
         }
         $pathValue = $this->getPath();
         if ($this->getKey() !== null) {
+=======
+        if (null !== $value) {
+            return $value;
+        }
+        $pathValue = $this->getPath();
+        if (null !== $this->getKey()) {
+>>>>>>> laraxot/dev
             $this->update(['path' => $pathValue]);
         }
 
@@ -41,7 +49,11 @@ trait HasPathByParentId
     public function getBreads(): string
     {
         $delim = ' > ';
+<<<<<<< HEAD
         if ($this->parent === null) {
+=======
+        if (null === $this->parent) {
+>>>>>>> laraxot/dev
             return '';
         }
 
@@ -56,11 +68,19 @@ trait HasPathByParentId
 
     public function getRootIdAttribute(?string $value): ?string
     {
+<<<<<<< HEAD
         if ($value !== null || $this->getKey() === null) {
             return $value;
         }
         $root = $this->rootAncestor()->first();
         if ($root === null) {
+=======
+        if (null !== $value || null === $this->getKey()) {
+            return $value;
+        }
+        $root = $this->rootAncestor()->first();
+        if (null === $root) {
+>>>>>>> laraxot/dev
             $this->update(['root_id' => null]);
 
             return null;
@@ -73,7 +93,13 @@ trait HasPathByParentId
         return $value;
     }
 
+<<<<<<< HEAD
     /** @return BelongsTo<static, $this> */
+=======
+    /**
+     * @return BelongsTo<static, $this>
+     */
+>>>>>>> laraxot/dev
     public function root(): BelongsTo
     {
         return $this->belongsTo(
@@ -85,11 +111,19 @@ trait HasPathByParentId
 
     public function getRootNameAttribute(?string $value): ?string
     {
+<<<<<<< HEAD
         if ($value !== null || $this->getKey() === null) {
             return $value;
         }
         $root = $this->rootAncestor()->first();
         if ($root === null) {
+=======
+        if (null !== $value || null === $this->getKey()) {
+            return $value;
+        }
+        $root = $this->rootAncestor()->first();
+        if (null === $root) {
+>>>>>>> laraxot/dev
             $this->update(['root_name' => null]);
 
             return null;
@@ -103,18 +137,31 @@ trait HasPathByParentId
 
     public function getIsLeafAttribute(?bool $value): ?bool
     {
+<<<<<<< HEAD
         if ($value !== null || $this->getKey() === null) {
             return $value;
         }
         $value = ($this->children()->count() === 0);
+=======
+        if (null !== $value || null === $this->getKey()) {
+            return $value;
+        }
+        $value = (0 === $this->children()->count());
+>>>>>>> laraxot/dev
         $this->update(['is_leaf' => $value]);
 
         return $value;
     }
 
+<<<<<<< HEAD
     public function getFullBreadsAttribute(?string $value): ?string // $value is unused but part of attribute getter
     {
         if ($this->root_name !== null) {
+=======
+    public function getFullBreadsAttribute(?string $value): ?string
+    {
+        if (null !== $this->root_name) {
+>>>>>>> laraxot/dev
             return $this->root_name.' > '.$this->breads;
         }
 
@@ -123,7 +170,11 @@ trait HasPathByParentId
 
     public function getBreadsAttribute(?string $value): ?string
     {
+<<<<<<< HEAD
         if ($value !== null || $this->getKey() === null) {
+=======
+        if (null !== $value || null === $this->getKey()) {
+>>>>>>> laraxot/dev
             return $value;
         }
 

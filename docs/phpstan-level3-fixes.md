@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "phpstan level3 fixes"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Correzioni PHPStan - Modulo Blog
 
 Questo documento traccia gli errori PHPStan identificati nel modulo Blog e le relative soluzioni implementate.

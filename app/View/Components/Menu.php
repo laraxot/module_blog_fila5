@@ -30,7 +30,11 @@ class Menu extends Component
         $view = app(GetViewAction::class)->execute($this->tpl);
         $menu = MenuModel::firstOrCreate(['name' => $this->name]);
 
+<<<<<<< HEAD
         $viewParams = [
+=======
+        $view_params = [
+>>>>>>> laraxot/dev
             'menu' => $menu,
         ];
         if (null === $menu->items) {
@@ -38,6 +42,10 @@ class Menu extends Component
             $menu->save();
         }
 
+<<<<<<< HEAD
         return view($view, $viewParams);
+=======
+        return view($view, $view_params);
+>>>>>>> laraxot/dev
     }
 }

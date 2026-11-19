@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "merge conflict files list"
 type: note
 tags: [documentation]
@@ -11,6 +12,11 @@ module: theme
 topic: merge-conflict-files-list
 canonical: ../../../Themes/docs/shared-components/merge-conflict-files-list.md
 status: stub
+=======
+module: theme
+topic: merge-conflict-files-list
+canonical: ../../../Themes/docs/shared-components/merge-conflict-files-list.md
+>>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/merge-conflict-files-list.md

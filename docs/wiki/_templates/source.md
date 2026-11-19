@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "source"
 type: note
 tags: [documentation]
@@ -11,6 +12,11 @@ module: theme
 topic: source
 canonical: ../../../../../Themes/docs/shared-components/source.md
 status: stub
+=======
+module: theme
+topic: source
+canonical: ../../../../../Themes/docs/shared-components/source.md
+>>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../../../Themes/docs/shared-components/source.md

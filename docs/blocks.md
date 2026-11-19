@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "blocks"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 https://tailblocks.cc/
 https://github.com/mertJF/tailblocks
 //-----------------------------------------

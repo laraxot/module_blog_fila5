@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\Models\Taggable;
 
 /**
+<<<<<<< HEAD
  * @extends Factory<Taggable>
  */
 /** @extends Factory<Taggable> */
+=======
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Blog\Models\Taggable>
+ */
+>>>>>>> laraxot/dev
 class TaggableFactory extends Factory
 {
     /**

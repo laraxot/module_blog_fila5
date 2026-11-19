@@ -15,7 +15,11 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
  * @property string|null $parent_id
+<<<<<<< HEAD
  * @property string $name
+=======
+ * @property string      $name
+>>>>>>> laraxot/dev
  */
 abstract class BaseTreeModel extends BaseModel
 {
@@ -33,8 +37,14 @@ abstract class BaseTreeModel extends BaseModel
         return 'cte_path';
     }
 
+<<<<<<< HEAD
     public function makeChildOf(Model $parent): self // $parent is unused
     {// if ($node->isSelfOrDescendantOf($this)) {
+=======
+    public function makeChildOf(Model $parent): self
+    {
+        // if ($node->isSelfOrDescendantOf($this)) {
+>>>>>>> laraxot/dev
         //    throw new MoveNotPossibleException('Cannot make unit descendant of itself');
         // }
 

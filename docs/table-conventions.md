@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "table conventions"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Convenzioni per le Tabelle nel Modulo Blog
 
 ## Perché queste convenzioni?
@@ -70,5 +73,10 @@ Le convenzioni per le tabelle nel modulo Blog sono progettate per garantire:
 - [Sistema di Traduzione](../laravel/Modules/Lang/project_docs/README.md)
 - [Convenzioni Generali](../project_docs/NAMING_CONVENTIONS.md) 
 - [Documentazione Filament Tables](../laravel/Modules/Xot/docs/FILAMENT-TABLES.md)
+<<<<<<< HEAD
 - [Sistema di Traduzione](../../Lang/docs/README.md)
 - [Convenzioni Generali](../../../../docs/naming_conventions.md) 
+=======
+- [Sistema di Traduzione](../laravel/Modules/Lang/docs/README.md)
+- [Convenzioni Generali](../docs/NAMING_CONVENTIONS.md) 
+>>>>>>> laraxot/dev

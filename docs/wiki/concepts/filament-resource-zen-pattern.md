@@ -1,7 +1,10 @@
 ---
+<<<<<<< HEAD
 qmd: "filament resource zen pattern"
 issues: []
 discussions: []
+=======
+>>>>>>> laraxot/dev
 title: "Filament Resource Zen Pattern (Blog Module)"
 type: concept
 sources: []
@@ -13,7 +16,10 @@ related:
   - ../../Xot/docs/wiki/concepts/xotbase-resource-zen-pattern.md
   - ../../Xot/docs/wiki/concepts/xotbase-resourceform-zen-pattern.md
   - ../../Xot/docs/wiki/concepts/xotbase-resource-table-zen-pattern.md
+<<<<<<< HEAD
 status: draft
+=======
+>>>>>>> laraxot/dev
 ---
 
 # Filament Resource Zen Pattern (Blog Module)

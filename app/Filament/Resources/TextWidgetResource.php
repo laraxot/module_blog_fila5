@@ -22,6 +22,11 @@ class TextWidgetResource extends XotBaseResource
     // protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static string|\BackedEnum|null $navigationIcon = 'ui-widgets';
 
+<<<<<<< HEAD
+=======
+    // protected static ?string $navigationGroup = 'Content';
+
+>>>>>>> laraxot/dev
     /**
      * Ritorna i campi del form (compatibilità con XotBaseResource).
      *

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "mcp server recommended"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # MCP Server Consigliati per il Modulo Blog
 
 ## Scopo del Modulo

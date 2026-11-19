@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "enum standards"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Enum Standards - Blog Module
 
 ## Overview

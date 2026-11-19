@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "concept"
 type: note
 tags: [documentation]
@@ -11,6 +12,11 @@ module: theme
 topic: concept
 canonical: ../../../../../Themes/docs/shared-components/concept.md
 status: stub
+=======
+module: theme
+topic: concept
+canonical: ../../../../../Themes/docs/shared-components/concept.md
+>>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../../../Themes/docs/shared-components/concept.md

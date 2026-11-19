@@ -62,12 +62,20 @@ class Setting extends Component implements HasActions, HasForms
          */
         $view = app(GetViewAction::class)->execute($this->version);
 
+<<<<<<< HEAD
         $viewParams = [
+=======
+        $view_params = [
+>>>>>>> laraxot/dev
             'view' => $view,
             '_profile' => $this->model,
         ];
 
+<<<<<<< HEAD
         return view((string) $view, $viewParams);
+=======
+        return view((string) $view, $view_params);
+>>>>>>> laraxot/dev
     }
 
     public function editProfile(): void
@@ -89,7 +97,11 @@ class Setting extends Component implements HasActions, HasForms
     {
         return Action::make('editEmail')
             ->record($this->model)
+<<<<<<< HEAD
             ->fillForm(fn (): array => [
+=======
+            ->fillForm(fn ($record, $arguments): array => [
+>>>>>>> laraxot/dev
                 'email' => $this->model->user?->email,
             ])
             ->schema([
@@ -105,7 +117,13 @@ class Setting extends Component implements HasActions, HasForms
             ->modalSubmitActionLabel('Update email')
             ->modalCancelActionLabel('Cancel')
             ->action(function (array $data): void {
+<<<<<<< HEAD
                 $verified = $this->model->email === $data['email'] ? ($this->model->user ? $this->model->user->email_verified_at : null) : null;
+=======
+                $verified = $this->model->email === $data['email']
+                    ? ($this->model->user?->email_verified_at)
+                    : null;
+>>>>>>> laraxot/dev
 
                 $this->model->update([
                     'email' => $data['email'],
@@ -157,7 +175,11 @@ class Setting extends Component implements HasActions, HasForms
     {
         return Action::make('edit')
             ->record($this->model)
+<<<<<<< HEAD
             ->fillForm(fn (): array => [
+=======
+            ->fillForm(fn ($record, $arguments): array => [
+>>>>>>> laraxot/dev
                 'user_name' => $this->model->user_name,
                 'first_name' => $this->model->first_name,
                 'last_name' => $this->model->last_name,
@@ -188,7 +210,11 @@ class Setting extends Component implements HasActions, HasForms
             // ->modalIcon('heroicon-o-banknotes')
             ->stickyModalHeader()
             ->stickyModalFooter()
+<<<<<<< HEAD
             ->action(function (array $data): void {
+=======
+            ->action(function (array $data, $arguments, Component $livewire): void {
+>>>>>>> laraxot/dev
                 $this->model->update([
                     'first_name' => $data['first_name'],
                     'last_name' => $data['last_name'],

@@ -12,6 +12,10 @@ class BannerAndSlides
 {
     public static function make(
         string $name = 'banner_and_slides',
+<<<<<<< HEAD
+=======
+        string $context = 'form',
+>>>>>>> laraxot/dev
     ): Block {
         return Block::make($name)
             ->schema([

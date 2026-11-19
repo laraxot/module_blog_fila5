@@ -6,7 +6,13 @@ return [
     'navigation' => [
         'name' => 'Banner',
         'plural' => 'Banners',
+<<<<<<< HEAD
         'group' => 'Contenuti',
+=======
+        'group' => [
+            'name' => 'Content',
+        ],
+>>>>>>> laraxot/dev
         'sort' => 28,
         'icon' => 'heroicon-o-rectangle-stack',
         'label' => 'Banner',

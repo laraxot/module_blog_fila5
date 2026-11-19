@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "product strategy"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Blog - Product Strategy
 
 > Strategia prodotto. Modulo.

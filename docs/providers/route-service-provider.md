@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "route service provider"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # RouteServiceProvider
 
 ## Panoramica

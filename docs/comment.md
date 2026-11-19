@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "comment"
 type: note
@@ -10,5 +11,7 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 https://github.com/Lakshan-Madushanka/laravel-comments/tree/main
 

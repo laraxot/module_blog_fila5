@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "best practices"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Best Practices per Filament nel Modulo Blog
 
 ## Visibilità dei Metodi

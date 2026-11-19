@@ -13,6 +13,10 @@ class DropdownMenu
 {
     public static function make(
         string $name = 'dropdown_menu',
+<<<<<<< HEAD
+=======
+        string $context = 'form',
+>>>>>>> laraxot/dev
     ): Block {
         return Block::make($name)
             ->schema([

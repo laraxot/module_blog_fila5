@@ -5,9 +5,32 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources\ProfileResource\Pages;
 
 use Modules\Blog\Filament\Resources\ProfileResource;
+<<<<<<< HEAD
 use Modules\User\Filament\Resources\ProfileResource\Pages\BaseListProfiles;
 
 class ListProfiles extends BaseListProfiles
 {
     protected static string $resource = ProfileResource::class;
+=======
+use Modules\User\Filament\Resources\BaseProfileResource\Pages\ListProfiles as UserListProfiles;
+
+class ListProfiles extends UserListProfiles
+{
+    protected static string $resource = ProfileResource::class;
+
+    // protected function getHeaderActions(): array
+    // {
+    //    return [
+    //        Actions\CreateAction::make(),
+    //    ];
+    // }
+
+    /**
+     * Sovrascrive la visibilità per rispettare la signature della classe base.
+     */
+    public function getTableActions(): array
+    {
+        return parent::getTableActions();
+    }
+>>>>>>> laraxot/dev
 }

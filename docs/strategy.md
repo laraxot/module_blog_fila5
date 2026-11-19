@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "strategy"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Product Strategy Doc - Blog Module
 
 ## Strategic Pillars

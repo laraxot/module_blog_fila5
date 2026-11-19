@@ -20,6 +20,10 @@ use Modules\Xot\Models\XotBasePivot;
  */
 abstract class BasePivot extends XotBasePivot
 {
+<<<<<<< HEAD
+=======
+    use SoftDeletes;
+>>>>>>> laraxot/dev
 
     /**
      * The connection name for the model.

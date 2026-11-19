@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "phpstan analysis"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # PHPStan Analysis - Blog Module
 
 **Data**: 2025-10-10T12:40:18+02:00  
@@ -17,6 +20,10 @@ status: draft
 **Files Analizzati**: 139
 
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
 ## 🎉 RISULTATO PERFETTO
 
 ### ✅ Errori Totali: **0**

@@ -6,13 +6,17 @@ namespace Modules\Blog\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+<<<<<<< HEAD
 /**
  * Orchestratore Blog — N modelli owner = N {Model}Seeder (regola Laraxot).
  */
+=======
+>>>>>>> laraxot/dev
 class BlogDatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+<<<<<<< HEAD
         if ($this->command !== null) {
             $this->command->info('BlogDatabaseSeeder: entity seeders…');
         }
@@ -50,5 +54,11 @@ class BlogDatabaseSeeder extends Seeder
         if ($this->command !== null) {
             $this->command->info('BlogDatabaseSeeder: completato.');
         }
+=======
+        $this->call([
+            SiteSeeder::class,
+            ArticleSeeder::class,
+        ]);
+>>>>>>> laraxot/dev
     }
 }

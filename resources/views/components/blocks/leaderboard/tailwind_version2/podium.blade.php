@@ -27,11 +27,19 @@ class="flex max-lg:gap-4 max-lg:py-2 lg:flex-col lg:items-center text-neutral-5 
                 @endif
                 py-1.5 px-4 max-lg:absolute max-lg:-bottom-4 lg:-mt-4 rounded-full text-xs leading-none">
                 @if($loop->iteration == 1)
+<<<<<<< HEAD
                     2°
                 @elseif($loop->iteration == 2)
                     1°
                 @else
                     3°
+=======
+                    2nd
+                @elseif($loop->iteration == 2)
+                    1st
+                @else
+                    3rd
+>>>>>>> laraxot/dev
                 @endif
             </span>
     </div>
@@ -39,7 +47,11 @@ class="flex max-lg:gap-4 max-lg:py-2 lg:flex-col lg:items-center text-neutral-5 
         <span class="mb-2 lg:mt-6 text-base lg:text-xl font-semibold"
             >{{ $profile->full_name }}</span
             >
+<<<<<<< HEAD
         <span class="text-base leading-none">{{ number_format((float) $profile->credits, 0, ',', '.') }}</span>
+=======
+        <span class="text-base leading-none">{{ $profile->credits }}</span>
+>>>>>>> laraxot/dev
     </div>
 </a>
 

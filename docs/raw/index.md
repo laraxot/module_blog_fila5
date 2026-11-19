@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "index"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Raw Sources — Blog
 
 Questo layer contiene le fonti grezze: documenti immutabili che l'LLM legge ma non modifica.
@@ -43,6 +46,7 @@ Il layer raw per questo modulo/tema è **l'intera cartella `docs/`** (esclusa `d
 
 ---
 
+<<<<<<< HEAD
 title: "index"
 type: note
 tags: [documentation]
@@ -51,4 +55,6 @@ updated: 2026-09-26
 qmd: "index"
 issues: []
 discussions: []
+=======
+>>>>>>> laraxot/dev
 *Ultimo aggiornamento: 2026-04-15*

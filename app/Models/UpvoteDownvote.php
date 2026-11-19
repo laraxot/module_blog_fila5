@@ -10,13 +10,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Modules\Blog\Database\Factories\UpvoteDownvoteFactory;
+<<<<<<< HEAD
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
+=======
+use Modules\Xot\Contracts\ProfileContract;
+use Modules\Media\Models\Media;
+>>>>>>> laraxot/dev
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 
 /**
  * Modules\Blog\Models\UpvoteDownvote.
  *
+<<<<<<< HEAD
  * @property int $id
  * @property int $is_upvote
  * @property int $post_id
@@ -25,6 +31,16 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property Carbon|null $updated_at
  *
  * @method static UpvoteDownvoteFactory factory($count = null, $state = [])
+=======
+ * @property int         $id
+ * @property int         $is_upvote
+ * @property int         $post_id
+ * @property int         $user_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ *
+ * @method static UpvoteDownvoteFactory  factory($count = null, $state = [])
+>>>>>>> laraxot/dev
  * @method static Builder|UpvoteDownvote newModelQuery()
  * @method static Builder|UpvoteDownvote newQuery()
  * @method static Builder|UpvoteDownvote onlyTrashed()
@@ -48,6 +64,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|UpvoteDownvote whereDeletedBy($value)
  * @method static Builder|UpvoteDownvote whereUpdatedBy($value)
  *
+<<<<<<< HEAD
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  * @property MediaCollection<int, Media> $media
@@ -60,6 +77,20 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder<static>|UpvoteDownvote where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|UpvoteDownvote whereNotNull((string|Expression) $columns)
  * @method static int count(string $columns = '*')
+=======
+ * @property ProfileContract|null        $creator
+ * @property ProfileContract|null        $updater
+ * @property MediaCollection<int, Media> $media
+ * @property int|null                    $media_count
+ *
+ * @method static UpvoteDownvote|null             first()
+ * @method static Collection<int, UpvoteDownvote> get()
+ * @method static UpvoteDownvote                  create(array<string, mixed> $attributes = [])
+ * @method static UpvoteDownvote                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
+ * @method static Builder<static>|UpvoteDownvote  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|UpvoteDownvote  whereNotNull((string|Expression) $columns)
+ * @method static int                             count(string $columns = '*')
+>>>>>>> laraxot/dev
  *
  * @property ProfileContract|null $deleter
  *

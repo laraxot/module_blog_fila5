@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "sprint"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Sprint Planning Meeting - Blog Module
 
 ## Definition of Done

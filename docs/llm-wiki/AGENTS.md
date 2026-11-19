@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "AGENTS"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Blog Module LLM Wiki Agent Instructions
 
 > **Module/Theme:** Blog
@@ -34,9 +37,12 @@ You are the **Blog Wiki Maintainer**. Your job is to:
 
 ```yaml
 ---
+<<<<<<< HEAD
 qmd: "AGENTS"
 issues: []
 discussions: []
+=======
+>>>>>>> laraxot/dev
 title: "Page Title"
 type: concept|entity|source|comparison|decision|troubleshooting
 sources: ["raw/articles/filename.md"]

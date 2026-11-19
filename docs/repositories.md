@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "repositories"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 https://github.com/guillaumebriday/laravel-blog
 
 

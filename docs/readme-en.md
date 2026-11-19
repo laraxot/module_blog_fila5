@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "readme en"
 type: note
@@ -14,6 +15,12 @@ status: draft
 
 [![Domain-Blog](https://img.shields.io/badge/Domain-Editorial-6D4C41.svg)](#)
 [![Laravel 13](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
+=======
+# 📰 Blog — English presentation
+
+[![Domain-Blog](https://img.shields.io/badge/Domain-Editorial-6D4C41.svg)](#)
+[![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
+>>>>>>> laraxot/dev
 [![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
 [![PHP 8.4+](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://php.net/)
 [![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
@@ -25,6 +32,10 @@ status: draft
 > **Municipal news and press releases.** Articles, categories, SEO-friendly editorial content.
 
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
 ## Why it exists
 
 Institutional channel to inform citizens.
@@ -50,7 +61,11 @@ Institutional channel to inform citizens.
 
 Tell the **public service story** clearly.
 
+<<<<<<< HEAD
 Frontoffice stack: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filament v5** — see [STORY-133](../../../../docs/stories/STORY-133-frontend-stack-religion-tailwind-alpine-lit.md).
+=======
+Frontoffice stack: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filament v5** — see [STORY-133](../../../docs/stories/STORY-133-frontend-stack-religion-tailwind-alpine-lit.md).
+>>>>>>> laraxot/dev
 
 ---
 

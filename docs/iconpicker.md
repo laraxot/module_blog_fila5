@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "iconpicker"
 type: note
@@ -10,5 +11,7 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 https://github.com/yodagg/tinymce-fontawesomepicker
 

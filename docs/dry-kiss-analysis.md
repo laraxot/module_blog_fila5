@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "dry kiss analysis"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # 🐄 DRY & KISS Analysis - Blog
 
 **Data:** 2025-10-15 | **Status:** ✅

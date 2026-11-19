@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "roadmap"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Roadmap Modulo Blog
 
 **Versione**: 2025.10
@@ -148,7 +151,11 @@ status: draft
 ### A Lungo Termine
 1. [ ] Multi-language Support
 2. [ ] Advanced Analytics
+<<<<<<< HEAD
 3. [ ] API Documentation 
+=======
+3. [ ] API Documentation
+>>>>>>> laraxot/dev
 
 ## Analisi Statica del Codice (PHPStan)
 
@@ -172,7 +179,11 @@ I risultati completi sono disponibili nella cartella [docs/phpstan](phpstan/).
 
 ### Obiettivi di Qualità
 
+<<<<<<< HEAD
 Secondo le "Regole Windsurf per base_predict_fila5_mono", gli obiettivi per l'analisi PHPStan sono:
+=======
+Secondo le "Regole Windsurf per base_predict_fila5", gli obiettivi per l'analisi PHPStan sono:
+>>>>>>> laraxot/dev
 
 - Iniziare dal livello 1 per i nuovi moduli
 - Assicurarsi che tutto il codice passi almeno il livello 5
@@ -188,6 +199,10 @@ Secondo le "Regole Windsurf per base_predict_fila5_mono", gli obiettivi per l'an
 5. Eseguire regolarmente l'analisi PHPStan durante lo sviluppo
 
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
 **Status**: 🚧 ACTIVE DEVELOPMENT
 ## Collegamenti
 

@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "sprint planning"
 type: note
 tags: [documentation]
@@ -11,6 +12,11 @@ module: theme
 topic: sprint-planning
 canonical: ../../../Themes/docs/shared-components/SPRINT_PLANNING-Modules.md
 status: stub
+=======
+module: theme
+topic: sprint-planning
+canonical: ../../../Themes/docs/shared-components/SPRINT_PLANNING-Modules.md
+>>>>>>> laraxot/dev
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/SPRINT_PLANNING-Modules.md

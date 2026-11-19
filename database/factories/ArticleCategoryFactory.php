@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\Models\ArticleCategory;
 
 /**
+<<<<<<< HEAD
  * @extends Factory<ArticleCategory>
  */
 /** @extends Factory<ArticleCategory> */
+=======
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Blog\Models\ArticleCategory>
+ */
+>>>>>>> laraxot/dev
 class ArticleCategoryFactory extends Factory
 {
     /**

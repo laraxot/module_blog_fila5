@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "multi database architecture"
 type: note
@@ -10,6 +11,8 @@ discussions: []
 status: draft
 ---
 
+=======
+>>>>>>> laraxot/dev
 # Multi-Database Architecture - TenantServiceProvider
 
 **Data**: 2026-03-20  
@@ -18,6 +21,10 @@ status: draft
 **Componenti**: TenantServiceProvider, config/local/predict/database.php
 
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
 ## 🧠 Architettura Multi-Database
 
 ### Panoramica

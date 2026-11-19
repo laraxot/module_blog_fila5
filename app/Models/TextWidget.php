@@ -12,8 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Modules\Blog\Database\Factories\TextWidgetFactory;
+<<<<<<< HEAD
 use Modules\Media\Models\Media;
 use Modules\Xot\Contracts\ProfileContract;
+=======
+use Modules\Xot\Contracts\ProfileContract;
+use Modules\Media\Models\Media;
+>>>>>>> laraxot/dev
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
@@ -22,6 +27,7 @@ use Webmozart\Assert\Assert;
 /**
  * Modules\Blog\Models\TextWidget.
  *
+<<<<<<< HEAD
  * @property int $id
  * @property string $key
  * @property string|null $image
@@ -36,6 +42,22 @@ use Webmozart\Assert\Assert;
  * @property int|null $media_count
  *
  * @method static TextWidgetFactory factory($count = null, $state = [])
+=======
+ * @property int                         $id
+ * @property string                      $key
+ * @property string|null                 $image
+ * @property string|null                 $title
+ * @property string|null                 $content
+ * @property int                         $active
+ * @property Carbon|null                 $created_at
+ * @property Carbon|null                 $updated_at
+ * @property string|null                 $updated_by
+ * @property string|null                 $created_by
+ * @property MediaCollection<int, Media> $media
+ * @property int|null                    $media_count
+ *
+ * @method static TextWidgetFactory  factory($count = null, $state = [])
+>>>>>>> laraxot/dev
  * @method static Builder|TextWidget newModelQuery()
  * @method static Builder|TextWidget newQuery()
  * @method static Builder|TextWidget onlyTrashed()
@@ -64,6 +86,7 @@ use Webmozart\Assert\Assert;
  *
  * @mixin Model
  *
+<<<<<<< HEAD
  * @method static TextWidget|null first()
  * @method static Collection<int, TextWidget> get()
  * @method static TextWidget create(array<string, mixed> $attributes = [])
@@ -71,6 +94,15 @@ use Webmozart\Assert\Assert;
  * @method static Builder<static>|TextWidget where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  * @method static Builder<static>|TextWidget whereNotNull((string|Expression) $columns)
  * @method static int count(string $columns = '*')
+=======
+ * @method static TextWidget|null             first()
+ * @method static Collection<int, TextWidget> get()
+ * @method static TextWidget                  create(array<string, mixed> $attributes = [])
+ * @method static TextWidget                  firstOrCreate(array<string, mixed> $attributes = [], array<string, mixed> $values = [])
+ * @method static Builder<static>|TextWidget  where((string|Closure) $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
+ * @method static Builder<static>|TextWidget  whereNotNull((string|Expression) $columns)
+ * @method static int                         count(string $columns = '*')
+>>>>>>> laraxot/dev
  *
  * @property ProfileContract|null $deleter
  *

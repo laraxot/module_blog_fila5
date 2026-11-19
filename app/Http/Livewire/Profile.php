@@ -8,6 +8,7 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+<<<<<<< HEAD
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
 use Modules\Blog\Models\Profile as BlogProfile;
@@ -16,11 +17,25 @@ use Modules\Xot\Actions\Cast\SafeArrayByModelCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Actions\GetViewAction;
 use Modules\Xot\Filament\Pages\XotBasePage;
+=======
+use Filament\Pages\Page;
+use Filament\Schemas\Schema;
+use Illuminate\Contracts\View\View;
+// use Modules\Blog\Models\Profile;
+use Modules\Blog\Models\Profile as BlogProfile;
+use Modules\Xot\Actions\Cast\SafeArrayCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Modules\Xot\Actions\GetViewAction;
+>>>>>>> laraxot/dev
 
 /**
  * @property Schema $form
  */
+<<<<<<< HEAD
 class Profile extends XotBasePage implements HasForms
+=======
+class Profile extends Page implements HasForms
+>>>>>>> laraxot/dev
 {
     use InteractsWithForms;
     // public Article $article;
@@ -31,7 +46,11 @@ class Profile extends XotBasePage implements HasForms
     /** @var array<string, mixed> */
     public array $data = [];
 
+<<<<<<< HEAD
     public BlogProfile $profile;
+=======
+    public BlogProfile $model;
+>>>>>>> laraxot/dev
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
@@ -41,15 +60,41 @@ class Profile extends XotBasePage implements HasForms
         BlogProfile $model,
         string $tpl = 'v1',
     ): void {
+<<<<<<< HEAD
         $this->profile = $model;
         $this->tpl = $tpl;
         $this->data = self::buildFormData($this->profile);
+=======
+        $this->model = $model;
+        $this->tpl = $tpl;
+        $this->data = $this->model->toArray();
+        unset(
+            $this->data['id'],
+            $this->data['user_id'],
+            $this->data['created_at'],
+            $this->data['updated_at'],
+            $this->data['updated_by'],
+            $this->data['created_by'],
+            $this->data['deleted_at'],
+            $this->data['deleted_by'],
+
+            $this->data['slug'],
+            $this->data['extra']
+        );
+>>>>>>> laraxot/dev
 
         // $this->data['photo_profile'] = $this->model->getFirstMedia('photo_profile');
 
         // dddx($this->data);
 
+<<<<<<< HEAD
         $this->form->fill($this->data);
+=======
+        /** @var array<string, mixed> $formData */
+        $formData = SafeArrayCastAction::cast($this->data);
+
+        $this->form->fill($formData);
+>>>>>>> laraxot/dev
     }
 
     public function render(): View
@@ -59,6 +104,7 @@ class Profile extends XotBasePage implements HasForms
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
+<<<<<<< HEAD
         $viewParams = [
             'view' => $view,
         ];
@@ -67,6 +113,19 @@ class Profile extends XotBasePage implements HasForms
     }
 
     public function url(): string
+=======
+        $view_params = [
+            'view' => $view,
+        ];
+
+        return view((string) $view, $view_params);
+    }
+
+    /**
+     * @param array<string, mixed> $params
+     */
+    public function url(string $name, array $params): string
+>>>>>>> laraxot/dev
     {
         return '#';
     }
@@ -96,7 +155,11 @@ class Profile extends XotBasePage implements HasForms
     {
         $data = $this->form->getState();
 
+<<<<<<< HEAD
         $this->profile->update($data);
+=======
+        $this->model->update($data);
+>>>>>>> laraxot/dev
 
         // $article_aggregate = ArticleAggregate::retrieve($this->article->id);
         // Assert::isArray($ratings_add = $data['ratings_add']);
@@ -116,6 +179,7 @@ class Profile extends XotBasePage implements HasForms
     }
 
     /**
+<<<<<<< HEAD
      * @return array<string, mixed>
      */
     private static function buildFormData(BlogProfile $model): array
@@ -146,6 +210,9 @@ class Profile extends XotBasePage implements HasForms
 
     /**
      * @return array<int, Action>
+=======
+     * @return array<int|string, mixed>
+>>>>>>> laraxot/dev
      */
     protected function getFormActions(): array
     {
