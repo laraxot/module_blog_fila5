@@ -22,9 +22,25 @@
 
 ## 🔗 Riferimenti
 
-- [Xot Module](../Xot/docs/00-index.md) - Base classes
+- [Xot Module](../../Xot/docs/00-index.md) - Base classes
 - [AGENTS.md](../../../../AGENTS.md) - Project guidelines
 
 ---
 
 **Ultimo Aggiornamento**: 2026-03-24
+
+## Mappa delle cartelle
+
+Elenco generato dall'audit qualita' (issue #64): ogni cartella di `docs/` con il numero di file `.md`.
+Le cartelle di import grezzo (`raw/`, `root-*-files/`), immagini e log sono escluse.
+
+| Cartella | File .md |
+|---|---|
+| [`filament/`](filament/) | 1 |
+| [`fixes/`](fixes/) | 1 |
+| [`llm-wiki/`](llm-wiki/) | 1 |
+| [`models/`](models/README.md) | 3 |
+| [`providers/`](providers/) | 1 |
+| [`roadmap/`](roadmap/README.md) | 1 |
+| [`testing/`](testing/) | 1 |
+| [`wiki/`](wiki/index.md) | 19 |

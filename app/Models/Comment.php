@@ -83,8 +83,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|Comment whereOriginalText($value)
  * @method static Builder|Comment whereText($value)
  *
- * @property ProfileContract|null        $creator
- * @property ProfileContract|null        $updater
  * @property MediaCollection<int, Media> $media
  * @property int|null                    $media_count
  *
