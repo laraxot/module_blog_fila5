@@ -13,7 +13,7 @@ declare(strict_types=1);
  * - Article visibility based on publication status
  */
 
-namespace Tests\Feature\Modules\Blog;
+namespace Modules\Blog\Tests\Feature;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -24,6 +24,7 @@ use Modules\User\Database\Factories\UserFactory;
 use Modules\User\Models\User;
 use Tests\TestCase;
 
+/** @see Modules/Blog/docs/test-location-rule.md#namespace-dei-test */
 class ArticleWorkflowTest extends TestCase
 {
     use WithFaker;
@@ -37,7 +38,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /**
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $attributes
      */
     private function createArticle(array $attributes = []): Article
     {
@@ -45,8 +46,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /**
-     * @param array<string, mixed> $attributes
-     *
+     * @param  array<string, mixed>  $attributes
      * @return Collection<int, Article>
      */
     private function createArticles(int $count, array $attributes = []): Collection
@@ -80,7 +80,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Complete article creation workflow */
-    public function completeArticleCreationWorkflow(): void
+    public function complete_article_creation_workflow(): void
     {
         // Step 1: User authenticates
         $this->actingAs($this->user);
@@ -108,7 +108,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article update workflow */
-    public function articleUpdateWorkflow(): void
+    public function article_update_workflow(): void
     {
         $this->actingAs($this->user);
 
@@ -135,7 +135,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article publication workflow */
-    public function articlePublicationWorkflow(): void
+    public function article_publication_workflow(): void
     {
         $this->actingAs($this->user);
 
@@ -158,7 +158,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article unpublishing workflow */
-    public function articleUnpublishingWorkflow(): void
+    public function article_unpublishing_workflow(): void
     {
         $this->actingAs($this->user);
 
@@ -180,7 +180,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article deletion workflow */
-    public function articleDeletionWorkflow(): void
+    public function article_deletion_workflow(): void
     {
         $this->actingAs($this->user);
 
@@ -196,7 +196,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Multiple article management workflow */
-    public function multipleArticleManagementWorkflow(): void
+    public function multiple_article_management_workflow(): void
     {
         $this->actingAs($this->user);
 
@@ -226,7 +226,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article visibility based on publication status */
-    public function articleVisibilityWorkflow(): void
+    public function article_visibility_workflow(): void
     {
         $this->actingAs($this->user);
 
@@ -241,7 +241,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Article lifecycle workflow (create -> edit -> publish -> archive) */
-    public function articleCompleteLifecycleWorkflow(): void
+    public function article_complete_lifecycle_workflow(): void
     {
         $this->actingAs($this->user);
 
@@ -276,7 +276,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Error handling in article workflow - validation */
-    public function articleWorkflowHandlesValidationErrors(): void
+    public function article_workflow_handles_validation_errors(): void
     {
         $this->actingAs($this->user);
 
@@ -294,7 +294,7 @@ class ArticleWorkflowTest extends TestCase
     }
 
     /** @test Batch article operations workflow */
-    public function batchArticleOperationsWorkflow(): void
+    public function batch_article_operations_workflow(): void
     {
         $this->actingAs($this->user);
 

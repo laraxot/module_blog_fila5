@@ -148,6 +148,30 @@ final class ThemeArticleQueries
     }
 
     /**
+     * Ultima modifica dei post pubblicati: slug => updated_at (sitemap `<lastmod>`, #736).
+     *
+     * @see Modules/Seo/docs/adr/search-engine-presence.md
+     *
+     * @return Collection<string, mixed>
+     */
+    public function publishedPostLastModified(): Collection
+    {
+        return $this->publishedPostsQuery()->pluck('updated_at', 'slug');
+    }
+
+    /**
+     * Ultima modifica degli eventi pubblicati: slug => updated_at (sitemap `<lastmod>`, #736).
+     *
+     * @see Modules/Seo/docs/adr/search-engine-presence.md
+     *
+     * @return Collection<string, mixed>
+     */
+    public function publishedEventLastModified(): Collection
+    {
+        return $this->publishedEventsQuery()->pluck('updated_at', 'slug');
+    }
+
+    /**
      * Post in evidenza per lista Novità (Design Comuni) — sola lettura, no side-effect.
      * Callers: ThemeArticleBag::featuredPosts → ThemeComposer::featuredBlogPosts → blocks/blog/index.
      * Differisce da featured(): non aggiorna show_on_homepage.

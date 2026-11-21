@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Modules\Blog;
+namespace Modules\Blog\Tests\Feature;
 
 use Modules\Blog\Database\Seeders\DemoContentSeeder;
 use Modules\Blog\Models\Article;
@@ -14,6 +14,8 @@ use Tests\TestCase;
  * Behaviour under test: FO /it/blog Novità — type=post only, featured read-only, detail SEO.
  * Existing related: DemoContentSeederTest.php (seed data). No prior FO listing HTTP test.
  * User: «completa http://192.168.1.40:8000/it/blog fa tutto con bmad + second brain + filament blueprint».
+ *
+ * @see Modules/Blog/docs/test-location-rule.md#namespace-dei-test
  */
 class BlogFrontOfficeNovitaTest extends TestCase
 {

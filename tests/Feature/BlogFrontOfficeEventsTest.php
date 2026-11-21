@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Modules\Blog;
+namespace Modules\Blog\Tests\Feature;
 
 use Modules\Blog\Database\Seeders\DemoContentSeeder;
 use Modules\Blog\Models\Article;
@@ -14,10 +14,11 @@ use Tests\TestCase;
  * Behaviour: FO /it/events — type=event only, featured read-only, detail SEO.
  * Related: DemoContentSeederTest.php, BlogFrontOfficeNovitaTest.php.
  * User: «completa http://192.168.1.40:8000/it/events utilizzando bmad + second brain + filament blueprint».
+ *
+ * @see Modules/Blog/docs/test-location-rule.md#namespace-dei-test
  */
 class BlogFrontOfficeEventsTest extends TestCase
 {
-
     /** @var list<string> */
     protected array $connectionsToTransact = ['blog', 'comment'];
 

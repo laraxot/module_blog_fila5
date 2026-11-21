@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Modules\Blog;
+namespace Modules\Blog\Tests\Feature;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -17,6 +17,8 @@ use Tests\TestCase;
  * Public Novità and Eventi listings: every published item is reachable through a length-aware pager,
  * featured items are excluded in the query (not after paging), and events list upcoming first.
  * Story: Modules/Blog/docs/stories/blog-events-listing-body-and-search.story.md.
+ *
+ * @see Modules/Blog/docs/test-location-rule.md#namespace-dei-test
  */
 final class ThemeArticleListingTest extends TestCase
 {

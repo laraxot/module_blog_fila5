@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Modules\Blog;
+namespace Modules\Blog\Tests\Feature;
 
 use Illuminate\Support\Facades\App;
 use Modules\Blog\Database\Seeders\DemoContentSeeder;
@@ -13,14 +13,15 @@ use Tests\TestCase;
 /**
  * Demo marketing-ready: post + eventi + commenti morph + media locali.
  * Parental STI `type` = post|event (Post, Event).
+ *
+ * @see Modules/Blog/docs/test-location-rule.md#namespace-dei-test
  */
 class DemoContentSeederTest extends TestCase
 {
-
     /** @var list<string> */
     protected array $connectionsToTransact = ['blog', 'comment'];
 
-    public function testDemoContentSeederSetsPostAndEventContentTypes(): void
+    public function test_demo_content_seeder_sets_post_and_event_content_types(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -29,7 +30,7 @@ class DemoContentSeederTest extends TestCase
         $this->assertSame(0, Article::query()->whereNull('type')->count());
     }
 
-    public function testDemoContentHasMediaCreditsAndNoLorem(): void
+    public function test_demo_content_has_media_credits_and_no_lorem(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -44,7 +45,7 @@ class DemoContentSeederTest extends TestCase
         $this->assertDoesNotMatchRegularExpression('/lorem\s+ipsum/i', $json.' '.$sample->title.' '.$sample->description);
     }
 
-    public function testDemoContentSeederAttachesCommentsViaCommentModule(): void
+    public function test_demo_content_seeder_attaches_comments_via_comment_module(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -55,7 +56,7 @@ class DemoContentSeederTest extends TestCase
             ->get();
 
         $this->assertGreaterThanOrEqual(2, $comments->count());
-        $this->assertTrue($comments->contains(static fn (Comment $c): bool => null !== $c->approved_at));
+        $this->assertTrue($comments->contains(static fn (Comment $c): bool => $c->approved_at !== null));
         $this->assertTrue(
             Comment::query()->whereNotNull('parent_id')->whereNotNull('approved_at')->exists(),
             'Serve almeno una risposta editoriale (parent_id) approvata');
@@ -64,7 +65,7 @@ class DemoContentSeederTest extends TestCase
             'Serve almeno un commento pending non esposto');
     }
 
-    public function testDemoContentSeederIsIdempotent(): void
+    public function test_demo_content_seeder_is_idempotent(): void
     {
         app(DemoContentSeeder::class)->run();
 
@@ -79,7 +80,7 @@ class DemoContentSeederTest extends TestCase
         $this->assertSame($articleSlugs, Article::query()->pluck('id', 'slug')->all());
     }
 
-    public function testDemoContentSeederSkipsOutsideAllowedEnvironments(): void
+    public function test_demo_content_seeder_skips_outside_allowed_environments(): void
     {
         $previous = App::environment();
         App::detectEnvironment(static fn (): string => 'production');

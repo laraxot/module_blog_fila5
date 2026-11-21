@@ -18,10 +18,12 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * - Soft Deletes support
  *
  * @see XotBaseModel
+ * @see Modules/Blog/docs/base-model.md
  */
 abstract class BaseModel extends XotBaseModel implements HasMedia
 {
     use InteractsWithMedia;
+    use SoftDeletes;
 
     /**
      * The connection name for the model.

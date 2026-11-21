@@ -14,7 +14,7 @@ declare(strict_types=1);
  * - Content translation support
  */
 
-namespace Tests\Unit\Modules\Blog\Models;
+namespace Modules\Blog\Tests\Unit\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -24,6 +24,7 @@ use Modules\Blog\Models\Article;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
+/** @see Modules/Blog/docs/test-location-rule.md#namespace-dei-test */
 class ArticleTest extends TestCase
 {
     use WithFaker;

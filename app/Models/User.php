@@ -6,17 +6,14 @@ namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Support\Carbon;
 use Modules\Comment\Models\Comment;
 use Modules\Comment\Models\CommentNotificationSubscription;
-use Modules\Comment\Models\Concerns\InteractsWithComments;
-use Modules\Comment\Models\Contracts\CanComment;
 use Modules\Comment\Models\Reaction;
 use Modules\User\Database\Factories\UserFactory;
+use Modules\User\Models\BaseUser;
 use Modules\User\Models\Device;
 use Modules\User\Models\Membership;
 use Modules\User\Models\OauthAccessToken;
@@ -26,7 +23,6 @@ use Modules\User\Models\Role;
 use Modules\User\Models\Team;
 use Modules\User\Models\Tenant;
 use Modules\User\Models\TenantUser;
-use Modules\User\Models\BaseUser;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -78,8 +74,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property int|null $tenants_count
  * @property Collection<int, OauthAccessToken> $tokens
  * @property int|null $tokens_count
- * @property Collection<int, TicketComment> $ticketComments
- * @property int|null $ticket_comments_count
  *
  * @method static UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
@@ -113,10 +107,8 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class User extends BaseUser
 {
-     /**
+    /**
      * The connection name for the model.
      */
-     protected $connection = 'blog';
-
-
+    protected $connection = 'blog';
 }
