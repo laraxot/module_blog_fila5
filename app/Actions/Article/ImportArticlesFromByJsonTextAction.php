@@ -16,6 +16,11 @@ use Spatie\MediaLibrary\MediaCollections\FileAdder;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
+/**
+ * Importa articoli, categorie e rating da un JSON (legacy): crea, non aggiorna.
+ *
+ * @contract docs/contracts/import-articles-from-by-json-text-action.md
+ */
 class ImportArticlesFromByJsonTextAction
 {
     use QueueableAction;

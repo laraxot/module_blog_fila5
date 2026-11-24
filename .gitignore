@@ -72,3 +72,5 @@ graphify-out/
 .claude-audit/
 test-results/
 blog.code-workspace
+tests/coverage-*.*
+docs/screenshots/

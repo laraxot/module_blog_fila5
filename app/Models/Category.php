@@ -57,34 +57,10 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property string|null $deleted_by
  * @property string|null $parent_id
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $children
-<<<<<<< .merge_file_QFD5Af
- * @property int|null                                                              $children_count
- * @property Category|null                                                         $parent
- * @property array<string, array<string, mixed>>                                                                 $translations
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestors                  The model's recursive parents.
- * @property int|null                                                              $ancestors_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestorsAndSelf           The model's recursive parents and itself.
- * @property int|null                                                              $ancestors_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $bloodline                  The model's ancestors, descendants and itself.
- * @property int|null                                                              $bloodline_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $childrenAndSelf            The model's direct children and itself.
- * @property int|null                                                              $children_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendants                The model's recursive children.
- * @property int|null                                                              $descendants_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendantsAndSelf         The model's recursive children and itself.
- * @property int|null                                                              $descendants_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $parentAndSelf              The model's direct parent and itself.
- * @property int|null                                                              $parent_and_self_count
- * @property Category|null                                                         $rootAncestor               The model's topmost parent.
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblings                   The parent's other children.
- * @property int|null                                                              $siblings_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblingsAndSelf            All the parent's children.
- * @property int|null                                                              $siblings_and_self_count
-=======
  * @property int|null $children_count
  * @property Category|null $parent
  * @property mixed $post_counter
- * @property mixed $translations
+ * @property array<string, array<string, mixed>> $translations
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestors The model's recursive parents.
  * @property int|null $ancestors_count
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestorsAndSelf The model's recursive parents and itself.
@@ -109,54 +85,12 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property string|null $deleted_by
  * @property string|null $parent_id
  * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $children
- * @property int|null $children_count
- * @property Category|null $parent
- * @property mixed $post_counter
- * @property mixed $translations
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestors The model's recursive parents.
- * @property int|null $ancestors_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $ancestorsAndSelf The model's recursive parents and itself.
- * @property int|null $ancestors_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $bloodline The model's ancestors, descendants and itself.
- * @property int|null $bloodline_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $childrenAndSelf The model's direct children and itself.
- * @property int|null $children_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendants The model's recursive children.
- * @property int|null $descendants_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $descendantsAndSelf The model's recursive children and itself.
- * @property int|null $descendants_and_self_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $parentAndSelf The model's direct parent and itself.
- * @property int|null $parent_and_self_count
- * @property Category|null $rootAncestor The model's topmost parent.
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblings The parent's other children.
- * @property int|null $siblings_count
- * @property \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, Category> $siblingsAndSelf All the parent's children.
- * @property int|null $siblings_and_self_count
->>>>>>> .merge_file_awtVUQ
  *
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category breadthFirst()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category depthFirst()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category doesntHaveChildren()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
-<<<<<<< .merge_file_QFD5Af
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        getExpressionGrammar()
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        hasChildren()
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        hasParent()
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        isLeaf()
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        isRoot()
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        tree($maxDepth = null)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        treeOf((Model|callable) $constraint, $maxDepth = null)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereDeletedAt($value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereDeletedBy($value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereDepth($operator, $value = null)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereDescription($value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereLocale(string $column, string $locale)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereLocales(string $column, array<int, string> $locales)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereParentId($value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        withGlobalScopes(array<string, mixed> $scopes)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
-=======
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category getExpressionGrammar()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category hasChildren()
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category hasParent()
@@ -175,18 +109,12 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category withRelationshipExpression($direction, callable $constraint, $initialDepth, $from = null, $maxDepth = null)
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
->>>>>>> .merge_file_awtVUQ
  *
  * @property string|null $icon
  * @property Banner|null $banner
  * @property Collection<int, Article> $categoryArticles
  * @property int|null $category_articles_count
  *
-<<<<<<< .merge_file_QFD5Af
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereIcon($value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereJsonContainsLocale(string $column, string $locale, ?mixed $value)
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereJsonContainsLocales(string $column, array<int, string> $locales, ?mixed $value)
-=======
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category whereIcon($value)
@@ -204,16 +132,12 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
->>>>>>> .merge_file_awtVUQ
  *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *
  * @property string|null $name
  *
-<<<<<<< .merge_file_QFD5Af
- * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category        whereName($value)
-=======
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Category whereName($value)
@@ -237,7 +161,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> get($columns = ['*'])
->>>>>>> .merge_file_awtVUQ
  *
  * @mixin Model
  *

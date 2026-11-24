@@ -1,32 +1,24 @@
 ---
-title: "Contratti"
+title: "Contratti — Blog"
 type: index
-tags: [contracts, actions, interfaces]
+tags: [contracts, actions, blog]
 created: 2026-11-18
-updated: 2026-11-18
+updated: 2026-11-24
 ---
 
-# Contratti
+# Contratti del modulo Blog
 
-Cosa promette la superficie pubblica di questo pacchetto: le Action che scrivono dati, chiamano servizi esterni o hanno
-effetti collaterali, e le interfacce (`app/Contracts`). Regola: `Modules/Xot/docs/rules/action-behavioral-contract.md`.
+Cosa promettono le Action di Blog che scrivono nel DB o scaricano file: i due import JSON (legacy) e la copia dei contenuti
+tra lingue. Le Action `Resolve*`, `Format*`, `Filter*` calcolano valori per le viste e non hanno contratto.
 
-## Contratto di comportamento di un'Action
+Leggili prima di usare o imitare un import: «Non fa» e gli effetti collaterali elencano i difetti ereditati (nessun update,
+media duplicati al reimport, nessuna transazione) che non vanno copiati.
 
-Un file per Action, nome in kebab-case della classe (`create-ticket-action.md`), frontmatter `type: contract` e
-`action: <FQCN>`, e queste sei sezioni nell'ordine:
-
-```markdown
-## Input
-## Output
-## Invarianti
-## Effetti collaterali
-## Errori
-## Non fa
-```
-
-Il docblock dell'Action rimanda al file con la riga `Contratto di comportamento: docs/contracts/<file>.md`.
-Chi cambia il comportamento aggiorna il contratto nello stesso commit.
+Formato (6 sezioni, invarianti con ID e group Pest): [regola canonica](../../../Xot/docs/rules/action-behavioral-contract.md).
+Oggi nessuna invariante e' coperta da test (colonna `—`).
 
 ## Contratti
 
+- [ImportArticlesFromByJsonTextAction](import-articles-from-by-json-text-action.md) — import articoli, categorie e rating da JSON; crea, non aggiorna.
+- [ImportBannerFromByJsonTextAction](import-banner-from-by-json-text-action.md) — import banner e categorie da JSON, immagine scaricata da URL.
+- [TranslateContentAction](translate-content-action.md) — copia l'italiano nelle lingue vuote dei blocchi scelti; non traduce.

@@ -14,6 +14,11 @@ use function Safe\json_decode;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
+/**
+ * Importa banner e categorie da un JSON (legacy), con immagine scaricata da URL.
+ *
+ * @contract docs/contracts/import-banner-from-by-json-text-action.md
+ */
 class ImportBannerFromByJsonTextAction
 {
     use QueueableAction;

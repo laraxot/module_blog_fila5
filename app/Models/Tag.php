@@ -42,11 +42,7 @@ use Spatie\Tags\Tag as BaseTag;
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedBy($value)
  * @method static EloquentBuilder|Tag withType(?string $type = null)
  *
-<<<<<<< .merge_file_pwtjWU
- * @property array<string, array<string, mixed>>       $translations
-=======
- * @property mixed $translations
->>>>>>> .merge_file_m55zWu
+ * @property array<string, array<string, mixed>> $translations
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  *
