@@ -105,6 +105,21 @@ use function Safe\json_decode;
  * @property string|null $excerpt
  * @property string $created_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+<<<<<<< .merge_file_bcXViE
+ * @property string|null                     $updated_by
+ * @property string|null                     $created_by
+ * @property string|null                     $deleted_by
+ * @property array<int|string, mixed>|null                      $footer_blocks
+ * @property array<int|string, mixed>|null                      $sidebar_blocks
+ * @property int                             $is_featured
+ * @property string|null                     $closed_at
+ * @property Category|null                   $category
+ * @property string                          $main_image
+ * @property Collection<int, Rating>         $ratings
+ * @property int|null                        $ratings_count
+ * @property array<string, array<string, mixed>>                           $translations
+ * @property string|null                     $rewarded_at
+=======
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property string|null $deleted_by
@@ -118,6 +133,7 @@ use function Safe\json_decode;
  * @property int|null $ratings_count
  * @property mixed $translations
  * @property string|null $rewarded_at
+>>>>>>> .merge_file_7QWkkQ
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereAuthorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereCategoryId($value)
