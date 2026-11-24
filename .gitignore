@@ -72,3 +72,7 @@ graphify-out/
 .claude-audit/
 test-results/
 blog.code-workspace
+
+# screenshot di comparazione visiva (artefatti locali)
+docs/project/visual-comparison/
+docs/visual-comparison/
