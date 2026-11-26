@@ -4,7 +4,7 @@ type: decision
 module: Blog
 tags: [adr, blog, parental, sti, post, event, article]
 created: 2026-11-24
-updated: 2026-11-24
+updated: 2026-11-26
 status: accepted
 related:
   - ../../app/Models/Article.php
@@ -27,6 +27,11 @@ related:
 
 Domanda: come distinguere Novita' ed Eventi senza due tabelle e senza rinominare `Article`?
 
+
+## Driver della decisione
+
+- Un solo modello base per contenuti blog evita duplicare form, policy e query.
+- Post ed Event devono restare distinguibili in UI e sitemap senza tabelle separate obbligatorie.
 ## Decisione
 
 - Single Table Inheritance con `tightenco/parental`: `Article` usa `HasChildren` con
@@ -51,7 +56,7 @@ Domanda: come distinguere Novita' ed Eventi senza due tabelle e senza rinominare
   `../bmad-planning.md`) descrivono la strada abbandonata. Non leggere ne' scrivere `content_type` in codice nuovo; toglierla
   richiede una migrazione dedicata.
 
-## Verifica
+## Conferma
 
 - `Modules/Blog/tests/Feature/DemoContentSeederTest.php`: 8 post, 6 eventi, nessun `type` nullo.
 - `Modules/Blog/tests/Feature/BlogFrontOfficeNovitaTest.php`: l'elenco Novita' e la ricerca per slug restituiscono solo

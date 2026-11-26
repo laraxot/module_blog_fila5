@@ -9,7 +9,7 @@ updated: 2026-11-26
 
 # Architecture Decision Records — Blog
 
-Indice operativo della cartella owner-local. Il formato e la governance condivisi sono in [Xot](../../Xot/docs/adr/README.md).
+Indice operativo della cartella owner-local. Il formato e la governance condivisi sono in [Xot](../../../Xot/docs/adr/README.md).
 
 - [article-body-normalized-in-action.md](article-body-normalized-in-action.md)
 - [post-and-event-are-parental-children-of-article.md](post-and-event-are-parental-children-of-article.md)

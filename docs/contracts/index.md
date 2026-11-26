@@ -9,7 +9,7 @@ updated: 2026-11-26
 
 # Behavioral and surface contracts — Blog
 
-Indice operativo della cartella owner-local. Il formato e la governance condivisi sono in [Xot](../../Xot/docs/contracts/README.md).
+Indice operativo della cartella owner-local. Il formato e la governance condivisi sono in [Xot](../../../Xot/docs/contracts/README.md).
 
 - [import-articles-from-by-json-text-action.md](import-articles-from-by-json-text-action.md)
 - [import-banner-from-by-json-text-action.md](import-banner-from-by-json-text-action.md)
