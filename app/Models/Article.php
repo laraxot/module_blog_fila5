@@ -116,7 +116,7 @@ use function Safe\json_decode;
  * @property string $main_image
  * @property Collection<int, Rating> $ratings
  * @property int|null $ratings_count
- * @property mixed $translations
+ * @property array<string, array<string, mixed>> $translations
  * @property string|null $rewarded_at
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereAuthorId($value)

@@ -1,42 +1,23 @@
 ---
-title: "Architecture Decision Records"
+title: "ADR — Blog"
 type: index
-tags: [adr, decisioni]
+tags: [adr, decisioni, blog]
 created: 2026-11-18
-updated: 2026-11-18
+updated: 2026-11-24
 ---
 
-# Architecture Decision Records
+# ADR del modulo Blog
 
-Il **perche'** delle scelte di questo pacchetto: una decisione per file, con le alternative scartate.
-Il nome del file e' l'argomento, senza date ne' numeri (la data sta nella frontmatter).
+Il **perche'** della forma dei contenuti editoriali: come convivono Novita' ed Eventi nello stesso modello, come il corpo di
+un articolo diventa HTML pubblico, come la sitemap trova i contenuti pubblicati.
 
-## Formato
+Leggili prima di: aggiungere un tipo di contenuto, usare `type` o `content_type`, toccare il dettaglio pubblico di un
+articolo o scrivere una query di "contenuti pubblicati".
 
-```markdown
----
-title: "ADR — <decisione in una riga>"
-type: decision
-status: accepted | superseded | deprecated
-created: AAAA-MM-GG
-updated: AAAA-MM-GG
-issues: []
----
-
-# ADR: <decisione>
-
-## Contesto
-Fatti e vincoli che hanno reso necessaria la scelta (misure, norme, policy, incidenti).
-
-## Decisione
-Cosa si fa, in concreto, e dove sta nel codice.
-
-## Alternative scartate
-Ogni alternativa seria, con il motivo per cui non e' stata scelta.
-
-## Conseguenze
-Pro, contro, debito che resta, cosa misurare. Chi cambia la decisione scrive un nuovo ADR e segna questo `superseded`.
-```
+Formato (5 sezioni, frontmatter `type: decision`): [regola canonica](../../../Xot/docs/rules/action-behavioral-contract.md).
 
 ## Decisioni
 
+- [Novita' ed Eventi sono sottotipi Parental di Article](post-and-event-are-parental-children-of-article.md) — discriminante `type` (`post`/`event`), `content_type` e' un residuo da non usare.
+- [Corpo pubblico dell'articolo normalizzato in un'Action](article-body-normalized-in-action.md) — `ResolveArticleBodyAction`: tutti i blocchi, una testata, immagini in `src`.
+- [La sitemap riusa le query del front office](sitemap-reuses-theme-article-queries.md) — `ListPublishedArticlePathsAction` taggata per Seo, stessa definizione di "pubblicato".

@@ -12,6 +12,11 @@ use function Safe\json_encode;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
+/**
+ * Copia il contenuto italiano nelle lingue vuote dei blocchi scelti (nessuna traduzione automatica).
+ *
+ * @contract docs/contracts/translate-content-action.md
+ */
 class TranslateContentAction
 {
     use QueueableAction;

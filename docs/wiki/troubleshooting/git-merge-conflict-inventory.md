@@ -1,4 +1,7 @@
 ---
+<<<<<<< .merge_file_LEuo8p
+created: 2026-04-28
+=======
 title: "git merge conflict inventory 2026 04 28"
 type: note
 tags: [documentation]
@@ -8,6 +11,7 @@ qmd: "git merge conflict inventory 2026 04 28"
 issues: []
 discussions: []
 status: draft
+>>>>>>> .merge_file_Z1Nb41
 ---
 
 # Git Conflict Inventory

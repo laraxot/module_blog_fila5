@@ -80,27 +80,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property Collection<int, Menu> $children
  * @property int|null $children_count
  * @property MediaCollection<int, Media> $media
- * @property int|null $media_count
- * @property Menu|null $parent
- * @property Collection<int, Menu> $ancestors The model's recursive parents.
- * @property int|null $ancestors_count
- * @property Collection<int, Menu> $ancestorsAndSelf The model's recursive parents and itself.
- * @property int|null $ancestors_and_self_count
- * @property Collection<int, Menu> $bloodline The model's ancestors, descendants and itself.
- * @property int|null $bloodline_count
- * @property Collection<int, Menu> $childrenAndSelf The model's direct children and itself.
- * @property int|null $children_and_self_count
- * @property Collection<int, Menu> $descendants The model's recursive children.
- * @property int|null $descendants_count
- * @property Collection<int, Menu> $descendantsAndSelf The model's recursive children and itself.
- * @property int|null $descendants_and_self_count
- * @property Collection<int, Menu> $parentAndSelf The model's direct parent and itself.
- * @property int|null $parent_and_self_count
- * @property Menu|null $rootAncestor The model's topmost parent.
- * @property Collection<int, Menu> $siblings The parent's other children.
- * @property int|null $siblings_count
- * @property Collection<int, Menu> $siblingsAndSelf All the parent's children.
- * @property int|null $siblings_and_self_count
  *
  * @method static Collection<int, static> all($columns = ['*'])
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Builder|Menu breadthFirst()
@@ -122,13 +101,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @property Profile|null $creator
  * @property Profile|null $updater
- *
- * @method static Collection<int, static> all($columns = ['*'])
- * @method static Collection<int, static> get($columns = ['*'])
- * @method static Collection<int, static> all($columns = ['*'])
- * @method static Collection<int, static> get($columns = ['*'])
- * @method static Collection<int, static> all($columns = ['*'])
- * @method static Collection<int, static> get($columns = ['*'])
  *
  * @property-read int $depth
  * @property-read string $path

@@ -76,3 +76,5 @@ blog.code-workspace
 # screenshot di comparazione visiva (artefatti locali)
 docs/project/visual-comparison/
 docs/visual-comparison/
+tests/coverage-*.\*
+docs/screenshots/
