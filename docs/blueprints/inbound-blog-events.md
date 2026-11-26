@@ -118,7 +118,7 @@ Modificare solo gli schemi e la tabella necessari:
 **Config**: `Select::make('content_type')->options(['post' => 'Post / Novità', 'event' => 'Evento'])->live()`;
 non usare `reactive()`. **Non** bindare la colonna Parental `type`.
 Dominio: **post** agnostico; `content_type=post|event` (vedi
-[brainstorming-post-vs-article.md](../brainstorming-post-vs-article.md)).
+[brainstorming-post-vs-article.md](../../archive/docs-legacy/brainstorming-post-vs-article.md)).
 
 **Imports:** `Filament\\Schemas\\Components\\Utilities\\Get` e
 `Filament\\Schemas\\Components\\Utilities\\Set` soltanto se la visibilità

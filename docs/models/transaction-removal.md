@@ -173,7 +173,7 @@ Se in futuro servisse un sistema di crediti/transazioni, le opzioni sono:
 
 ### Documentazione Modulo
 - [Blog Module README](../README.md)
-- [Duplicate Methods Analysis](../duplicate-methods-analysis.md)
+- [Duplicate Methods Analysis](../../archive/docs-legacy/duplicate-methods-analysis.md)
 
 ### Root Progetto
 - [View Cache Fix](../../../../docs/view-cache-components-fix-componenti-mancanti.md)

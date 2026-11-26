@@ -93,7 +93,7 @@ qmd search "<topic>"
 - [Global On-Demand Pattern](../../../../docs/wiki/rules/on-demand-pattern.md)
 - [LLM Wiki Operational Discipline](../../../../docs/wiki/concepts/llm-wiki-operational-discipline.md)
 - [Trigger Map](../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
-- [Module Wiki Index](./wiki/index.md)
+- [Module Wiki Index](../archive/docs-legacy/wiki/index.md)
 
 ---
 *Ultimo aggiornamento: 2026-05-11 | Pattern: on-demand via QMD*

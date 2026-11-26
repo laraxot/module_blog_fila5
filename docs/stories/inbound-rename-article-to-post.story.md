@@ -34,7 +34,7 @@ Il rename è costoso (morph Comment, Filament, STI Parental, import).
 
 ## Dipendenze / blocchi
 Deferred finché `content_type=post|event` è stabile in FO e Filament.
-Decisione: [brainstorming-post-vs-article.md](../brainstorming-post-vs-article.md).
+Decisione: [brainstorming-post-vs-article.md](../../archive/docs-legacy/brainstorming-post-vs-article.md).
 
 ## Dev Notes
 Non fare alias frettolosi. Preferire rename orchestrato con test.

@@ -99,10 +99,10 @@ graph TD
 ## Riferimenti Globali
 
 - [Project Wiki Root](../../docs/wiki/)
-- [Global Rules](wiki/rules)
-- [Global Skills](wiki/skills)
-- [Global Commands](wiki/commands)
-- [Global Memories](wiki/memories)
+- [Global Rules](../archive/docs-legacy/wiki/rules)
+- [Global Skills](../archive/docs-legacy/wiki/skills)
+- [Global Commands](../archive/docs-legacy/wiki/commands)
+- [Global Memories](../archive/docs-legacy/wiki/memories)
 
 ## Setup Initiale (per nuovi moduli)
 
