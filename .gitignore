@@ -78,3 +78,6 @@ docs/project/visual-comparison/
 docs/visual-comparison/
 tests/coverage-*.\*
 docs/screenshots/
+
+# Indice vettoriale locale (non versionare)
+ruvector.db
