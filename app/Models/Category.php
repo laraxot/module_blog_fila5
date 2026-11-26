@@ -135,7 +135,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
- *
  * @property string|null $name
  *
  * @method static \Staudenmeir\LaravelAdjacencyList\Eloquent\Collection<int, static> all($columns = ['*'])

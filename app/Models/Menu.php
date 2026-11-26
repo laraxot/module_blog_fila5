@@ -101,7 +101,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @property Profile|null $creator
  * @property Profile|null $updater
- *
  * @property-read int $depth
  * @property-read string $path
  *
