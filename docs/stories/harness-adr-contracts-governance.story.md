@@ -5,7 +5,7 @@ status: done
 date: 2026-11-26
 owner: Blog
 related:
-  - ../adr/post-and-event-are-parental-children-of-article.md
+  - ../adr/0002-post-and-event-are-parental-children-of-article.md
   - ../../../Xot/docs/stories/0042-laravel-day-harness-adoption.story.md
   - ../../../Xot/docs/adr/0012-behavioral-contract-governance.md
 ---
@@ -20,7 +20,7 @@ workflow agente. Xot resta owner delle regole trasversali.
 
 ## Stato
 
-- [x] ADR substantive owner: [Novita'/Eventi Parental STI](../adr/post-and-event-are-parental-children-of-article.md)
+- [x] ADR substantive owner: [Novita'/Eventi Parental STI](../adr/0002-post-and-event-are-parental-children-of-article.md)
 - [x] Indice `docs/adr/README.md` aggiornato con link relativi
 - [x] Gate `PackagesHaveContractsAndAdrTest` verde (substantive ADR + sezioni minime)
 

@@ -6,6 +6,7 @@ tags: [adr, blog, parental, sti, post, event, article]
 created: 2026-11-24
 updated: 2026-11-26
 status: accepted
+decision-makers: [team Laraxot]
 related:
   - ../../app/Models/Article.php
   - ../../app/Models/Post.php
@@ -27,11 +28,13 @@ related:
 
 Domanda: come distinguere Novita' ed Eventi senza due tabelle e senza rinominare `Article`?
 
-
 ## Driver della decisione
 
-- Un solo modello base per contenuti blog evita duplicare form, policy e query.
-- Post ed Event devono restare distinguibili in UI e sitemap senza tabelle separate obbligatorie.
+- Un solo modello base per i contenuti editoriali evita di duplicare Resource Filament, traduzioni, commenti, media e sitemap.
+- Novita' ed Eventi devono restare distinguibili nelle query del front office e nella sitemap senza tabelle separate.
+- Il nome della classe `Article` e i dati esistenti (morph dei commenti, factory, seeder) non si rompono.
+- Un solo discriminante, quello gia' usato da Parental: niente secondo campo che divergerebbe.
+
 ## Decisione
 
 - Single Table Inheritance con `tightenco/parental`: `Article` usa `HasChildren` con
@@ -61,4 +64,5 @@ Domanda: come distinguere Novita' ed Eventi senza due tabelle e senza rinominare
 - `Modules/Blog/tests/Feature/DemoContentSeederTest.php`: 8 post, 6 eventi, nessun `type` nullo.
 - `Modules/Blog/tests/Feature/BlogFrontOfficeNovitaTest.php`: l'elenco Novita' e la ricerca per slug restituiscono solo
   `type = post`.
-- Solo revisione: `grep -rn content_type laravel/Modules/Blog/app` deve restare vuoto.
+- Comando da `laravel/`: `rg -n content_type Modules/Blog/app` non deve trovare nulla (verificato il 2026-11-26: vuoto).
+- Nessuna conferma automatica per «mai scrivere in `type` valori diversi da `post`/`event`»: regola di review; proposta: un test che verifichi che i valori di `type` in uso siano le chiavi di `Article::$childTypes` (riga 250).

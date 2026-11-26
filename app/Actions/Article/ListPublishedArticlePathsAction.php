@@ -16,6 +16,10 @@ use Spatie\QueueableAction\QueueableAction;
  *
  * /{lang}/blog/{slug} e /{lang}/events/{slug} li serve la pagina Folio del tema `[container0]/[slug0]/index.blade.php` tramite
  * `Cms\ResolvePageAction`, che chiede a `ThemeArticleQueries` gli stessi contenuti: qui si riusa quella query, non se ne scrive una nuova.
+ *
+ * @see docs/contracts/list-published-article-paths-action.md
+ *
+ * @contract docs/contracts/list-published-article-paths-action.md
  */
 final class ListPublishedArticlePathsAction implements SitemapLastModifiedContract, SitemapPathsContract
 {
@@ -53,7 +57,7 @@ final class ListPublishedArticlePathsAction implements SitemapLastModifiedContra
     /**
      * Ultima modifica di post ed eventi pubblicati, con gli stessi percorsi di execute() (#736).
      *
-     * @see Modules/Seo/docs/adr/search-engine-presence.md
+     * @see Modules/Seo/docs/adr/0002-search-engine-presence.md
      *
      * @return array<string, DateTimeInterface>
      */

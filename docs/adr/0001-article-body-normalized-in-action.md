@@ -4,8 +4,9 @@ type: decision
 module: Blog
 tags: [adr, blog, blocks, article, frontoffice, immagini]
 created: 2026-11-24
-updated: 2026-11-24
+updated: 2026-11-26
 status: accepted
+decision-makers: [team Laraxot]
 related:
   - ../../app/Actions/Article/ResolveArticleBodyAction.php
 ---
@@ -22,6 +23,13 @@ related:
   diventava un percorso rotto.
 
 Domanda: dove trasformare i blocchi grezzi in blocchi pronti per la vista?
+
+## Driver della decisione
+
+- Post ed eventi mostrano lo stesso corpo: una regola sola, non una per Blade.
+- La regola deve essere testabile senza render e senza database (modelli non salvati).
+- Il renderer dei blocchi del tema e' condiviso da tutte le pagine CMS: non si cambia per un caso dell'articolo.
+- Un solo `h1` per pagina (quello del titolo) e una sola immagine di testata.
 
 ## Decisione
 
@@ -43,7 +51,9 @@ Domanda: dove trasformare i blocchi grezzi in blocchi pronti per la vista?
 - Pro: una sola regola per post ed eventi, testabile su modelli non salvati.
 - Contro: un nuovo tipo di blocco passa invariato; se ha un'immagine in `url`, va aggiunto alla normalizzazione.
 
-## Verifica
+## Conferma
 
-- `Modules/Blog/tests/Feature/ResolveArticleBodyActionTest.php`: tutti i blocchi mantenuti, testata dalla prima immagine o
-  da `main_image_url`, titolo ripetuto scartato e nessun `h1`, immagini in `src`.
+- `cd laravel && vendor/bin/pest Modules/Blog/tests/Feature/ResolveArticleBodyActionTest.php`: tutti i blocchi mantenuti, testata dalla prima
+  immagine o da `main_image_url`, titolo ripetuto scartato e nessun `h1`, immagini in `src`. I tre test portano i group `BLOG-BODY-INV-1..5`
+  del [contratto](../contracts/resolve-article-body-action.md): `vendor/bin/pest Modules/Blog/tests --group=BLOG-BODY-INV-4`.
+- Nessuna conferma automatica per il punto «un nuovo tipo di blocco con immagine in `url` va aggiunto alla normalizzazione»: regola di review.

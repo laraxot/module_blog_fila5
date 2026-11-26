@@ -11,6 +11,6 @@ updated: 2026-11-26
 
 Indice operativo della cartella owner-local. Il formato e la governance condivisi sono in [Xot](../../../Xot/docs/adr/README.md).
 
-- [article-body-normalized-in-action.md](article-body-normalized-in-action.md)
-- [post-and-event-are-parental-children-of-article.md](post-and-event-are-parental-children-of-article.md)
-- [sitemap-reuses-theme-article-queries.md](sitemap-reuses-theme-article-queries.md)
+- [0001-article-body-normalized-in-action.md](0001-article-body-normalized-in-action.md)
+- [0002-post-and-event-are-parental-children-of-article.md](0002-post-and-event-are-parental-children-of-article.md)
+- [0003-sitemap-reuses-theme-article-queries.md](0003-sitemap-reuses-theme-article-queries.md)

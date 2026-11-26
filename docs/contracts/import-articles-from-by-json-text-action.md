@@ -1,10 +1,12 @@
 ---
 title: "Contratto — ImportArticlesFromByJsonTextAction"
 type: contract
-action: "Modules\Blog\Actions\Article\ImportArticlesFromByJsonTextAction"
+action: "Modules\\Blog\\Actions\\Article\\ImportArticlesFromByJsonTextAction"
+module: Blog
+status: active
 tags: [contract, action, blog, import, legacy]
 created: 2026-11-24
-updated: 2026-11-24
+updated: 2026-11-26
 ---
 
 # ImportArticlesFromByJsonTextAction
@@ -28,9 +30,9 @@ Codice legacy (formato di un export di mercati predittivi): il contratto descriv
 
 | ID | Regola | Group Pest |
 |---|---|---|
-| BLOG-IMPORT-ARTICLES-INV-1 | Un articolo esistente con lo stesso `slug` non viene modificato (`firstOrCreate`): l'import aggiunge, non aggiorna. | — |
-| BLOG-IMPORT-ARTICLES-INV-2 | Le categorie si cercano per `slug`; la catena `category` diventa una gerarchia `parent_id` e l'articolo prende l'ultima. | — |
-| BLOG-IMPORT-ARTICLES-INV-3 | Un articolo nuovo ha `published_at` = oggi, indipendentemente dal JSON. | — |
+| BLOG-IMPORT-ARTICLES-INV-1 | Un articolo esistente con lo stesso `slug` non viene modificato (`firstOrCreate`): l'import aggiunge, non aggiorna. | — (non dimostrato) |
+| BLOG-IMPORT-ARTICLES-INV-2 | Le categorie si cercano per `slug`; la catena `category` diventa una gerarchia `parent_id` e l'articolo prende l'ultima. | — (non dimostrato) |
+| BLOG-IMPORT-ARTICLES-INV-3 | Un articolo nuovo ha `published_at` = oggi, indipendentemente dal JSON. | — (non dimostrato) |
 
 ## Effetti collaterali
 
@@ -52,3 +54,10 @@ Codice legacy (formato di un export di mercati predittivi): il contratto descriv
 - Non imposta il `type` Parental (`post`/`event`): la colonna e' nullable, l'articolo importato resta con `type` null e non compare ne' tra le Novita' ne' tra gli Eventi.
 - Non valida i contenuti (testo, link) ne' autorizza: l'azione Filament e' gia' dietro la policy della Resource.
 - `is_following` riceve `volume_real_money` (difetto ereditato, non imitarlo).
+
+## Limiti noti
+
+- **Nessun test in tutto il repository.** `rg ImportArticlesFromByJsonText Modules Themes --glob '*.php'` trova solo la classe e `ArticleImportActionFactory`: le tre invarianti sono promesse dal codice, non provate.
+- **Nessuna autorizzazione propria.** L'azione Filament (`ArticleImportActionFactory`) non ha `authorize()` ne' `visible()`: chi puo' aprire la lista articoli puo' importare. Il testo JSON si puo' anche incollare nel `Textarea`, non solo caricare da file.
+- **L'URL delle immagini lo sceglie chi scrive il JSON.** `addMediaFromUrl($rating['thumbnail_2x'])` scarica dal server qualunque URL, senza elenco di host ammessi (rischio SSRF per chi ha accesso all'import). Letto dal codice, non provato con una richiesta.
+- Chiavi obbligatorie senza `??` (`slug`, `title`, `status`, `status_display`, `outcomes`, ...): una chiave mancante e' un errore PHP, non un `InvalidArgumentException`.
