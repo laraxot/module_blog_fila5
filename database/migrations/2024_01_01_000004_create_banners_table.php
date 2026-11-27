@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /*
@@ -39,9 +40,31 @@ return new class extends XotBaseMigration {
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                $this->updateTimestamps(table: $table, hasSoftDeletes: true);
+                $tableName = $this->getTable();
 
-                if (! $this->hasColumn('pos')) {
+                // Add timestamps only if they don't exist
+                if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'created_at')) {
+                    $table->timestamp('created_at')->nullable();
+                }
+                if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'updated_at')) {
+                    $table->timestamp('updated_at')->nullable();
+                }
+                if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'deleted_at')) {
+                    $table->softDeletes();
+                }
+
+                // Add audit columns
+                if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'created_by')) {
+                    $table->foreignId('created_by')->nullable();
+                }
+                if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'updated_by')) {
+                    $table->foreignId('updated_by')->nullable();
+                }
+                if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'deleted_by')) {
+                    $table->foreignId('deleted_by')->nullable();
+                }
+
+                if (! Schema::connection($this->model->getConnectionName())->hasColumn($tableName, 'pos')) {
                     $table->integer('pos')->nullable();
                 }
             }

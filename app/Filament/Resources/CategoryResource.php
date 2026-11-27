@@ -4,25 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
-use Filament\Schemas\Components\Utilities\Set;
-use Illuminate\Support\Str;
-// use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Modules\Blog\Filament\Resources\CategoryResource\Pages\ListCategories;
-use Modules\Blog\Models\Category;
-use Modules\UI\Filament\Forms\Components\IconPicker;
-use Modules\Xot\Actions\Cast\SafeArrayCastAction;
-use Modules\Xot\Filament\Resources\XotBaseResource;
-use Webmozart\Assert\Assert;
+use Modules\Blog\Filament\Resources\CategoryResource\Schemas\CategoryFormSchema;
+use Modules\Lang\Filament\Resources\LangBaseResource;
 
-class CategoryResource extends XotBaseResource
+class CategoryResource extends LangBaseResource
 {
-    // use Translatable; // Temporarily disabled until lara-zeus package is working
+    // Le pagine estendono LangBase*Record (Translatable): la risorsa deve estendere LangBaseResource,
+    // altrimenti "getDefaultTranslatableLocale does not exist" (500 su crea/modifica).
 
     // protected static ?string $model = Category::class;
 
@@ -38,6 +30,13 @@ class CategoryResource extends XotBaseResource
         return ['it', 'en'];
     }
 
+    /**
+     * @return array<int|string, Component>
+     */
+    public static function getFormFields(): array
+    {
+        return CategoryFormSchema::build();
+    }
 
     public static function getPages(): array
     {

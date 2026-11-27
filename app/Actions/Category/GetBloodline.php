@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Actions\Category;
 
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Modules\Blog\Models\Category;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
@@ -14,16 +14,15 @@ class GetBloodline
     use QueueableAction;
 
     /**
-     * @return Collection<int, \Modules\Blog\Models\Category>
+     * @return EloquentCollection<int, Category>
      */
-    public function execute(?int $category_id): Collection
+    public function execute(?int $categoryId): EloquentCollection
     {
-        if (null === $category_id) {
-            return collect([]);
+        if (null === $categoryId) {
+            return new EloquentCollection();
         }
-        Assert::notNull($category = Category::find($category_id), '['.__LINE__.']['.__FILE__.']');
+        Assert::notNull($category = Category::find($categoryId), '['.__LINE__.']['.__FILE__.']');
 
-        // return $category->bloodline()->get()->reverse();
-        return $category->ancestorsAndSelf()->get()->reverse();
+        return $category->ancestorsAndSelf()->get()->reverse()->values();
     }
 }

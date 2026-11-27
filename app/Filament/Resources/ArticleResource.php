@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Resources;
 
-use Modules\Blog\Filament\Resources\ArticleResource\Pages\CreateArticle;
-use Modules\Blog\Filament\Resources\ArticleResource\Pages\EditArticle;
-use Modules\Blog\Filament\Resources\ArticleResource\Pages\ListArticles;
-use Modules\Blog\Filament\Resources\ArticleResource\Pages\ViewArticle;
+use Filament\Schemas\Components\Component;
+use Modules\Blog\Filament\Resources\ArticleResource\Schemas\ArticleFormSchema;
 use Modules\Blog\Models\Article;
-use Modules\Xot\Filament\Resources\XotBaseResource;
+use Modules\Lang\Filament\Resources\LangBaseResource;
 
-class ArticleResource extends XotBaseResource
+class ArticleResource extends LangBaseResource
 {
+    // Le pagine estendono LangBase*Record (Translatable): la risorsa deve estendere LangBaseResource,
+    // altrimenti "getDefaultTranslatableLocale does not exist" (500 su crea/modifica).
+
     protected static ?string $model = Article::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
+    // protected static \BackedEnum|string|null $navigationIcon = 'icon-article';
 
     /**
      * @return array<int, string>
@@ -25,13 +27,11 @@ class ArticleResource extends XotBaseResource
         return ['it', 'en'];
     }
 
-    public static function getPages(): array
+    /**
+     * @return array<int|string, Component>
+     */
+    public static function getFormFields(): array
     {
-        return [
-            'index' => ListArticles::route('/'),
-            'create' => CreateArticle::route('/create'),
-            'edit' => EditArticle::route('/{record}/edit'),
-            'view' => ViewArticle::route('/{record}'),
-        ];
+        return ArticleFormSchema::build();
     }
 }

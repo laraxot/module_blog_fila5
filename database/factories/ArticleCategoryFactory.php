@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\Models\ArticleCategory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Blog\Models\ArticleCategory>
+ * @extends Factory<ArticleCategory>
  */
+/** @extends Factory<ArticleCategory> */
 class ArticleCategoryFactory extends Factory
 {
     /**

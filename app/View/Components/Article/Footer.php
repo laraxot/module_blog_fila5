@@ -27,15 +27,10 @@ class Footer extends Component
         public Model $article,
         public string $tpl = 'v1',
     ) {
-        $normalized = [];
-        if (is_array($blocks)) {
-            foreach ($blocks as $block) {
-                if (is_array($block)) {
-                    $normalized[] = $block;
-                }
-            }
+        if (! \is_array($blocks)) {
+            $blocks = [];
         }
-        $this->blocks = $normalized;
+        $this->blocks = $blocks;
     }
 
     public function render(): Renderable
@@ -45,8 +40,8 @@ class Footer extends Component
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
-        $view_params = [];
+        $viewParams = [];
 
-        return view($view, $view_params);
+        return view($view, $viewParams);
     }
 }

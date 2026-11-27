@@ -1,3 +1,15 @@
+---
+title: "roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "roadmap"
+issues: []
+discussions: []
+status: draft
+---
+
 # Roadmap Modulo Blog
 
 **Versione**: 2025.10
@@ -136,7 +148,7 @@
 ### A Lungo Termine
 1. [ ] Multi-language Support
 2. [ ] Advanced Analytics
-3. [ ] API Documentation
+3. [ ] API Documentation 
 
 ## Analisi Statica del Codice (PHPStan)
 
@@ -160,7 +172,7 @@ I risultati completi sono disponibili nella cartella [docs/phpstan](phpstan/).
 
 ### Obiettivi di Qualità
 
-Secondo le "Regole Windsurf per base_predict_fila5", gli obiettivi per l'analisi PHPStan sono:
+Secondo le "Regole Windsurf per base_predict_fila5_mono", gli obiettivi per l'analisi PHPStan sono:
 
 - Iniziare dal livello 1 per i nuovi moduli
 - Assicurarsi che tutto il codice passi almeno il livello 5
@@ -176,7 +188,6 @@ Secondo le "Regole Windsurf per base_predict_fila5", gli obiettivi per l'analisi
 5. Eseguire regolarmente l'analisi PHPStan durante lo sviluppo
 
 ---
-
 **Status**: 🚧 ACTIVE DEVELOPMENT
 ## Collegamenti
 

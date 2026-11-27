@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Blog\View\Composers;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorContract;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -14,29 +14,27 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Modules\Blog\Datas\ArticleData;
 use Modules\Blog\Models\Article;
-use Modules\Blog\Models\Banner;
 use Modules\Blog\Models\Category;
 use Modules\Blog\Models\Profile;
 use Modules\Blog\Models\Tag;
+use Modules\Blog\View\Composers\Composition\ThemeComposerBag;
 use Modules\UI\Datas\SliderData;
-use Modules\UI\View\Components\Render\Blocks;
-use Webmozart\Assert\Assert;
 
 class ThemeComposer
 {
+    public function __construct(
+        private readonly ThemeComposerBag $bag = new ThemeComposerBag,
+    ) {}
+
     /**
-     * Show recent categories with their latest .
-     *
      * @return Collection<int, Category>
      */
     public function categories(): Collection
     {
-        return Category::tree()->get()->toTree();
+        return $this->bag->categories()->categories();
     }
 
     /**
-     * Show recent categories with their latest .
-     *
      * @return Collection<int, Category>
      */
     public function getCategoriesArticles(): Collection
@@ -49,18 +47,16 @@ class ThemeComposer
      */
     public function getArticles(): EloquentCollection
     {
-        return Article::all()
-            ->sortBy(['created_at', 'desc']);
+        return $this->bag->articles()->allSorted();
     }
 
     /**
-     * @return Collection<int, Article>
+     * @return Collection<int, mixed>
      */
     public function getArticlesType(string $type, int $number = 6): Collection
     {
-        $fun = 'get'.Str::studly($type).'Articles';
-
-        $result = $this->{$fun}($number);
+        $method = 'get'.Str::studly($type).'Articles';
+        $result = $this->{$method}($number);
 
         return $result instanceof Collection ? $result : collect();
     }
@@ -70,18 +66,7 @@ class ThemeComposer
      */
     public function getFeaturedArticles(int $number = 6): Collection
     {
-        $rows = Article::published()
-            ->showHomepage()
-            ->publishedUntilToday()
-            ->take($number)
-            ->orderBy('published_at', 'desc')
-            ->get();
-        if (0 === $rows->count()) {
-            $rows = Article::get();
-            Article::whereRaw('1=1')->update(['show_on_homepage' => true]);
-        }
-
-        return $rows;
+        return $this->bag->articles()->featured($number);
     }
 
     /**
@@ -89,55 +74,31 @@ class ThemeComposer
      */
     public function getLatestArticles(int $number = 6): Collection
     {
-        return Article::published()
-            ->publishedUntilToday()
-            ->orderBy('published_at', 'desc')
-            ->take($number)
-            ->get();
+        return $this->bag->articles()->latest($number);
     }
 
     /**
      * @return list<ArticleData>
      */
-    public function getArticlesByCategory(string $category_id, int $number = 6): array
+    public function getArticlesByCategory(string $categoryId, int $number = 6): array
     {
-        $rows = Article::where('category_id', $category_id)
-            ->orderBy('published_at', 'desc')
-            ->take($number)
-            ->get();
-
-        return $this->getArticleDataArray($rows);
+        return $this->bag->articles()->byCategory($categoryId, $number);
     }
 
     /**
      * @return Paginator<int, Article>
      */
-    public function paginateArticlesByCategory(string $category_id, int $limit = 6): Paginator
+    public function paginateArticlesByCategory(string $categoryId, int $limit = 6): Paginator
     {
-        return Article::where('category_id', $category_id)
-            ->orderBy('published_at', 'desc')
-            ->simplePaginate($limit);
+        return $this->bag->articles()->paginateByCategory($categoryId, $limit);
     }
-
-    /*
-    public function getAuthors(): Collection
-    {
-        $rows = Profile::ProfileIsAuthor()
-            ->take(4)
-            ->get();
-
-        return $rows;
-    }
-    */
 
     /**
      * @return Collection<int, Category>
      */
     public function getNavCategories(): Collection
     {
-        return Category::has('articles', '>', 0)
-            ->take(8)
-            ->get();
+        return $this->bag->categories()->navCategories();
     }
 
     /**
@@ -145,22 +106,15 @@ class ThemeComposer
      */
     public function getFooterCategories(): Collection
     {
-        return Category::has('articles', '>', 0)
-            ->take(8)
-            ->get();
+        return $this->bag->categories()->navCategories();
     }
 
-    // --- da fare con parental
     /**
      * @return Collection<int, Profile>
      */
     public function getFooterAuthors(): Collection
     {
-        // $footerAuthors = Profile::profileIsAuthor()
-        // ->take(8)
-        return Profile::inRandomOrder()
-            ->limit(8)
-            ->get();
+        return $this->bag->catalog()->footerAuthors();
     }
 
     /**
@@ -168,7 +122,7 @@ class ThemeComposer
      */
     public function getTags(): Collection
     {
-        return Tag::all();
+        return $this->bag->catalog()->tags();
     }
 
     /**
@@ -176,7 +130,7 @@ class ThemeComposer
      */
     public function getFooterTags(): Collection
     {
-        return Tag::take(15)->get();
+        return $this->bag->catalog()->footerTags();
     }
 
     /**
@@ -184,7 +138,7 @@ class ThemeComposer
      */
     public function getMoreArticles(Model $model): Collection
     {
-        return collect([]);
+        return $this->bag->articles()->moreArticles($model);
     }
 
     /**
@@ -192,26 +146,16 @@ class ThemeComposer
      */
     public function getPaginatedArticles(int $num = 15): LengthAwarePaginator
     {
-        return Article::paginate($num);
+        return $this->bag->articles()->paginatedArticles($num);
     }
 
     public function showArticleSidebarContent(string $slug): Renderable
     {
-        Assert::isInstanceOf($article = Article::firstOrCreate(['slug' => $slug], ['sidebar_blocks' => []]), Article::class, '['.__LINE__.']['.__FILE__.']');
-        // $page = Page::firstOrCreate(['slug' => $slug], ['content_blocks' => []]);
-
-        $sidebarBlocks = $article->sidebar_blocks ?? [];
-        $blockComponent = new Blocks(
-            view: 'ui::components.render.blocks.v1',
-            blocks: is_array($sidebarBlocks) ? $sidebarBlocks : [],
-            model: $article,
-        );
-
-        return $blockComponent->render();
+        return $this->bag->sidebar()->showArticleSidebarContent($slug);
     }
 
     /**
-     * @return array<int|string, mixed>|Paginator<int, Article>
+     * @return Paginator<int, Article>|array<int|string, mixed>
      */
     public function getMethodData(string $method, int $number = 6): Paginator|array
     {
@@ -228,20 +172,12 @@ class ThemeComposer
      */
     public function getBanner(): array
     {
-        $results = Banner::all()->sortBy('pos');
-        $tmp = [];
-        foreach ($results as $content) {
-            $slider_data = $content->toArray();
-            $slider_data['link'] = $content->getUrlCategoryPage();
-            $tmp[] = SliderData::from($slider_data);
-        }
-
-        return $tmp;
+        return $this->bag->banners()->all();
     }
 
-    public function getSingleBanner(Banner $banner): SliderData
+    public function getSingleBanner(object $banner): SliderData
     {
-        return SliderData::from($banner->toArray());
+        return $this->bag->banners()->single($banner);
     }
 
     /**
@@ -259,9 +195,7 @@ class ThemeComposer
      */
     public function getArticlesLatest(int $number = 6): array
     {
-        $results = $this->getLatestArticles($number); // ->toArray();
-
-        return $this->getArticleDataArray($results);
+        return $this->bag->articles()->articlesLatest($number);
     }
 
     /**
@@ -269,10 +203,57 @@ class ThemeComposer
      */
     public function paginatedArticlesLatest(int $limit = 6): Paginator
     {
-        return Article::published()
-            ->publishedUntilToday()
-            ->orderBy('published_at', 'desc')
-            ->simplePaginate($limit);
+        return $this->bag->articles()->paginatedLatest($limit);
+    }
+
+    /**
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginatorContract<int, Article>
+     */
+    public function paginatedBlogPosts(int $limit = 9, ?string $search = null, ?string $categorySlug = null, array $excludeIds = []): LengthAwarePaginatorContract
+    {
+        return $this->bag->articles()->paginatedPosts($limit, $search, $categorySlug, $excludeIds);
+    }
+
+    /** @return Paginator<int, Article> */
+    public function paginatedPublicEvents(int $limit = 9): Paginator
+    {
+        return $this->bag->articles()->paginatedComingSoon($limit);
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function featuredBlogPosts(int $number = 3): Collection
+    {
+        return $this->bag->articles()->featuredPosts($number);
+    }
+
+    public function findPublishedPostBySlug(string $slug): ?Article
+    {
+        return $this->bag->articles()->findPublishedPostBySlug($slug);
+    }
+
+    /**
+     * @param  list<int|string>  $excludeIds
+     * @return LengthAwarePaginatorContract<int, Article>
+     */
+    public function paginatedEvents(int $limit = 9, array $excludeIds = []): LengthAwarePaginatorContract
+    {
+        return $this->bag->articles()->paginatedEvents($limit, $excludeIds);
+    }
+
+    public function findPublishedEventBySlug(string $slug): ?Article
+    {
+        return $this->bag->articles()->findPublishedEventBySlug($slug);
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function featuredEvents(int $number = 6): Collection
+    {
+        return $this->bag->articles()->featuredEvents($number);
     }
 
     /**
@@ -280,10 +261,7 @@ class ThemeComposer
      */
     public function paginatedArticlesComingSoon(int $limit = 6): Paginator
     {
-        return Article::published()
-            ->where('event_start_date', '>', now())
-            ->orderBy('event_start_date')
-            ->simplePaginate($limit);
+        return $this->bag->articles()->paginatedComingSoon($limit);
     }
 
     /**
@@ -291,10 +269,7 @@ class ThemeComposer
      */
     public function paginatedArticlesOrderByNumberOfBets(int $limit = 6): Paginator
     {
-        return Article::published()
-            ->publishedUntilToday()
-            ->orderBy('wagers_count', 'desc')
-            ->simplePaginate($limit);
+        return $this->bag->articles()->paginatedByWagers($limit);
     }
 
     /**
@@ -302,29 +277,12 @@ class ThemeComposer
      */
     public function paginatedArticlesOrderByVolumes(int $limit = 6): Paginator
     {
-        return Article::published()
-            ->publishedUntilToday()
-            ->orderBy('volume_play_money', 'desc')
-            ->simplePaginate($limit);
+        return $this->bag->articles()->paginatedByVolume($limit);
     }
 
-    /**
-     * --.
-     */
-    public function mapArticle(Article|ArticleData $article): ArticleData
+    public function mapArticle(object $article): object
     {
-        if ($article instanceof ArticleData) {
-            return $article;
-        }
-
-        $article = $article->toArray();
-
-        if (is_array($article['title'])) {
-            $lang = app()->getLocale();
-            $article['title'] = $article['title'][$lang] ?? last($article['title']);
-        }
-
-        return ArticleData::from($article);
+        return $this->bag->articles()->mapArticle($article);
     }
 
     /**
@@ -332,13 +290,7 @@ class ThemeComposer
      */
     public function getArticlesComingSoon(int $number = 6): array
     {
-        $results = Article::published()
-            ->where('event_start_date', '>', now())
-            ->orderBy('event_start_date')
-            ->take($number)
-            ->get();
-
-        return $this->getArticleDataArray($results);
+        return $this->bag->articles()->comingSoon($number);
     }
 
     /**
@@ -346,13 +298,7 @@ class ThemeComposer
      */
     public function getArticlesOrderByNumberOfBets(int $number = 6): array
     {
-        $results = Article::published()
-            ->publishedUntilToday()
-            ->orderBy('wagers_count', 'desc')
-            ->take($number)
-            ->get();
-
-        return $this->getArticleDataArray($results);
+        return $this->bag->articles()->orderedByWagers($number);
     }
 
     /**
@@ -360,13 +306,7 @@ class ThemeComposer
      */
     public function getArticlesOrderByVolumes(int $number = 6): array
     {
-        $results = Article::published()
-            ->publishedUntilToday()
-            ->orderBy('volume_play_money', 'desc')
-            ->take($number)
-            ->get();
-
-        return $this->getArticleDataArray($results);
+        return $this->bag->articles()->orderedByVolume($number);
     }
 
     /**
@@ -374,40 +314,26 @@ class ThemeComposer
      */
     public function getAllArticles(): array
     {
-        $results = Article::orderBy('created_at', 'desc')->get();
-
-        return $this->getArticleDataArray($results);
+        return $this->bag->articles()->allData();
     }
 
     /**
-     * @param EloquentCollection<int, Article>|Collection<int, Article> $rows
+     * @param  Collection<int, Article>  $rows
      * @return list<ArticleData>
      */
     public function getArticleDataArray(Collection $rows): array
     {
-        $tmp = [];
-        foreach ($rows->toArray() as $content) {
-            /** @var array<string, mixed> $content */
-            if (isset($content['title']) && is_array($content['title'])) {
-                $lang = app()->getLocale();
-                $content['title'] = $content['title'][$lang] ?? last($content['title']);
-            }
-            /* @var array<string, mixed> $content */
-            $tmp[] = ArticleData::from($content);
-        }
-
-        // dddx($tmp);
-        return $tmp;
+        return $this->bag->articles()->dataArray($rows);
     }
 
     public function getArticleModel(string $slug): ?Article
     {
-        return Article::where('slug', $slug)->first();
+        return $this->bag->articles()->model($slug);
     }
 
-    public function getCategoryModel(string $slug): ?Category
+    public function getCategoryModel(string $slug): ?Model
     {
-        return Category::where('slug', $slug)->first();
+        return $this->bag->categories()->model($slug);
     }
 
     /**
@@ -415,22 +341,6 @@ class ThemeComposer
      */
     public function getHotTopics(): array
     {
-        /** @var array<int, array<string, mixed>> $categories */
-        $categories = Category::query()
-            ->with(['categoryArticles' => static fn ($query) => $query->withCount('ratings')])
-            ->get()
-            ->map(fn (Category $category): array => [
-                'image' => $category->getFirstMediaUrl('category'),
-                'slug' => $category->slug,
-                'title' => $category->title,
-                'ratings_sum' => (int) (is_numeric($sum = $category->categoryArticles->sum('ratings_count')) ? $sum : 0),
-            ])
-            ->sortByDesc('ratings_sum')
-            ->take(3)
-            ->values()
-            ->all();
-
-        /* @var array<int, array<string, mixed>> $categories */
-        return $categories;
+        return $this->bag->categories()->hotTopics();
     }
 }

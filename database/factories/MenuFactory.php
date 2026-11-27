@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Blog\Models\Menu;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Blog\Models\Menu>
+ * @extends Factory<Menu>
  */
+/** @extends Factory<Menu> */
 class MenuFactory extends Factory
 {
     /**

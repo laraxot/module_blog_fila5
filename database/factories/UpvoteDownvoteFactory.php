@@ -25,7 +25,7 @@ class UpvoteDownvoteFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'is_upvote' => fake()->boolean,

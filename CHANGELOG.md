@@ -1,5 +1,16 @@
+---
+title: "CHANGELOG"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "CHANGELOG"
+issues: []
+discussions: []
+---
+
 # Changelog
 
-Formato: [Keep a Changelog](https://keepachangelog.com/it-IT/1.1.0/)
+Tutte le modifiche rilevanti di questo pacchetto sono documentate in questo file.
 
-## [Unreleased]
+Il file viene aggiornato automaticamente da [semantic-release](https://github.com/semantic-release/semantic-release) (Conventional Commits).

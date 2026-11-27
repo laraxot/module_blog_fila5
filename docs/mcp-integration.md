@@ -1,8 +1,20 @@
+---
+title: "mcp integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "mcp integration"
+issues: []
+discussions: []
+status: draft
+---
+
 # Integrazione dei Server MCP con il Modulo Blog
 
 ## Panoramica
 
-Questo documento fornisce linee guida per l'integrazione dei server MCP (Model Context Protocol) con il modulo Blog, seguendo le regole di sviluppo e le convenzioni di codice stabilite per i progetti base_predict_fila5.
+Questo documento fornisce linee guida per l'integrazione dei server MCP (Model Context Protocol) con il modulo Blog, seguendo le regole di sviluppo e le convenzioni di codice stabilite per i progetti base_predict_fila5_mono.
 
 ## Server MCP Consigliati
 
@@ -58,7 +70,7 @@ class AnalyzePostContentAction
                 'keywords'
             ]
         );
-
+        
         return new ContentAnalysisData(
             readabilityScore: $analysis['readability']['score'] ?? 0,
             seoScore: $analysis['seo']['score'] ?? 0,
@@ -155,17 +167,17 @@ class PostStatisticsRepository
     public function getStatisticsByCategory(): array
     {
         $results = $this->mcpService->mysql()->executeQuery(
-            'SELECT c.name as category, COUNT(p.id) as post_count,
-             AVG(LENGTH(p.content)) as avg_length,
+            'SELECT c.name as category, COUNT(p.id) as post_count, 
+             AVG(LENGTH(p.content)) as avg_length, 
              SUM(p.view_count) as total_views
              FROM posts p
              JOIN post_category pc ON p.id = pc.post_id
              JOIN categories c ON pc.category_id = c.id
              GROUP BY c.name'
         );
-
+        
         $statistics = [];
-
+        
         foreach ($results as $result) {
             $statistics[$result['category']] = new PostStatisticsData(
                 category: $result['category'],
@@ -174,7 +186,7 @@ class PostStatisticsRepository
                 totalViews: (int) $result['total_views']
             );
         }
-
+        
         return $statistics;
     }
 }
@@ -201,7 +213,7 @@ use Filament\Forms\Components\Placeholder;
 class EditPost extends EditRecord
 {
     protected static string $resource = PostResource::class;
-
+    
     public function getHeaderActions(): array
     {
         return [
@@ -210,32 +222,32 @@ class EditPost extends EditRecord
                 ->icon('heroicon-o-sparkles')
                 ->action(function () {
                     $post = $this->record;
-
+                    
                     /** @var MCPServiceContract $mcpService */
                     $mcpService = app(MCPServiceContract::class);
-
+                    
                     $analysis = $mcpService->sequentialThinking()->analyze(
                         $post->content,
                         ['readability', 'seo', 'sentiment', 'keywords']
                     );
-
+                    
                     // Memorizza l'analisi
                     $mcpService->memory()->store(
                         "post_analysis_{$post->id}",
                         $analysis
                     );
-
+                    
                     // Aggiorna i metadati del post
                     $post->update([
                         'meta_description' => $analysis['seo']['meta_description'] ?? $post->meta_description,
                         'keywords' => implode(', ', $analysis['keywords'] ?? [])
                     ]);
-
+                    
                     Notification::make()
                         ->title('Analisi completata')
                         ->success()
                         ->send();
-
+                    
                     $this->refreshFormData([
                         'meta_description',
                         'keywords'
@@ -243,7 +255,7 @@ class EditPost extends EditRecord
                 })
         ];
     }
-
+    
     protected function getHeaderWidgets(): array
     {
         return [
@@ -255,4 +267,4 @@ class EditPost extends EditRecord
 
 ## Conclusione
 
-L'integrazione dei server MCP con il modulo Blog consente di migliorare significativamente le funzionalità del modulo, fornendo analisi avanzate dei contenuti, memorizzazione efficiente dei metadati e interazioni complesse con il database. Seguendo le linee guida e gli esempi forniti in questo documento, è possibile implementare queste funzionalità in modo conforme alle regole di sviluppo stabilite per i progetti base_predict_fila5.
+L'integrazione dei server MCP con il modulo Blog consente di migliorare significativamente le funzionalità del modulo, fornendo analisi avanzate dei contenuti, memorizzazione efficiente dei metadati e interazioni complesse con il database. Seguendo le linee guida e gli esempi forniti in questo documento, è possibile implementare queste funzionalità in modo conforme alle regole di sviluppo stabilite per i progetti base_predict_fila5_mono.

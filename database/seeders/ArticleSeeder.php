@@ -16,6 +16,7 @@ use Webmozart\Assert\Assert;
 class ArticleSeeder extends Seeder
 {
     /** @var list<array{name: string, image: string}> */
+    /** @var array<int, array<string, mixed>> */
     private array $categories = [
         ['name' => 'Animals', 'image' => 'https://picsum.photos/id/219/800/600'],
         ['name' => 'Mountains', 'image' => 'https://picsum.photos/id/353/800/600'],
@@ -56,17 +57,18 @@ class ArticleSeeder extends Seeder
 
     /**
      * @param array<string, mixed> $data
+     *
      * @return Collection<int, Article>
      */
     private function createArticle(array $data = []): Collection
     {
         $date = $this->date->subDay();
 
-        Assert::notEmpty($this->categories, 'Categories must not be empty');
-        $category_key = array_rand($this->categories);
-        Assert::keyExists($this->categories, $category_key, 'Category key must exist');
+        /* @phpstan-ignore-next-line argument.type */
+        $categoryKey = array_rand($this->categories);
+        Assert::keyExists($this->categories, $categoryKey, 'Category key must exist');
 
-        $category = $this->categories[$category_key];
+        $category = $this->categories[$categoryKey];
         Assert::isArray($category, 'Category must be an array');
         Assert::keyExists($category, 'image', 'Category must have image key');
 

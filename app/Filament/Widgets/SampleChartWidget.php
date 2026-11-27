@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Widgets;
 
-use Filament\Widgets\ChartWidget;
+use Modules\Xot\Filament\Widgets\XotBaseChartWidget;
 
-class SampleChartWidget extends ChartWidget
+class SampleChartWidget extends XotBaseChartWidget
 {
     protected ?string $heading = 'Blog Posts';
 
