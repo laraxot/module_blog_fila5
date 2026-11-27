@@ -3,25 +3,11 @@ title: "Contratti — Blog"
 type: index
 tags: [contracts, actions, blog]
 created: 2026-11-18
-<<<<<<< .merge_file_mtBMIv
-updated: 2026-11-24
-=======
 updated: 2026-11-26
->>>>>>> .merge_file_X641fh
 ---
 
 # Contratti del modulo Blog
 
-<<<<<<< .merge_file_mtBMIv
-Cosa promettono le Action di Blog che scrivono nel DB o scaricano file: i due import JSON (legacy) e la copia dei contenuti
-tra lingue. Le Action `Resolve*`, `Format*`, `Filter*` calcolano valori per le viste e non hanno contratto.
-
-Leggili prima di usare o imitare un import: «Non fa» e gli effetti collaterali elencano i difetti ereditati (nessun update,
-media duplicati al reimport, nessuna transazione) che non vanno copiati.
-
-Formato (6 sezioni, invarianti con ID e group Pest): [regola canonica](../../../Xot/docs/rules/action-behavioral-contract.md).
-Oggi nessuna invariante e' coperta da test (colonna `—`).
-=======
 Cosa promettono le Action di Blog che scrivono nel DB, scaricano file, chiamano servizi esterni o decidono cosa arriva alla pagina pubblica e alla sitemap:
 i due import JSON (legacy), la copia dei contenuti tra lingue, la normalizzazione del corpo dell'articolo, l'elenco dei percorsi per la sitemap e l'abbozzo di NewsAPI.
 Le altre Action `Resolve*`, `Format*`, `Filter*` calcolano valori per le viste e non hanno contratto.
@@ -35,7 +21,6 @@ Provare una promessa: `cd laravel && vendor/bin/pest Modules/Blog/tests --group=
 ## Contratti
 
 Contenuto pubblico e sitemap:
->>>>>>> .merge_file_X641fh
 
 - [ResolveArticleBodyAction](resolve-article-body-action.md) — corpo pubblico di post ed eventi: tutti i blocchi, una testata, un solo `h1`, immagini in `src`.
 - [ListPublishedArticlePathsAction](list-published-article-paths-action.md) — percorsi e `lastmod` di post ed eventi pubblicati per la sitemap di Seo.
@@ -76,11 +61,6 @@ Action del modulo senza contratto, per rischio:
 
 Invarianti promesse e non dimostrate (da scrivere con `->group('<ID>')` o `#[Group('<ID>')]`, in una passata dedicata ai test):
 
-<<<<<<< .merge_file_mtBMIv
-- [ImportArticlesFromByJsonTextAction](import-articles-from-by-json-text-action.md) — import articoli, categorie e rating da JSON; crea, non aggiorna.
-- [ImportBannerFromByJsonTextAction](import-banner-from-by-json-text-action.md) — import banner e categorie da JSON, immagine scaricata da URL.
-- [TranslateContentAction](translate-content-action.md) — copia l'italiano nelle lingue vuote dei blocchi scelti; non traduce.
-=======
 | ID | Cosa servirebbe |
 |---|---|
 | BLOG-IMPORT-ARTICLES-INV-1..3 | Un JSON di due articoli, importato due volte con `Http::fake()`: un solo articolo per `slug`, categorie annidate, `published_at` = oggi. |
@@ -90,4 +70,3 @@ Invarianti promesse e non dimostrate (da scrivere con `->group('<ID>')` o `#[Gro
 | BLOG-SITEMAP-INV-2, BLOG-SITEMAP-INV-5 | Aggiungere il group ai test di `Modules/Fixcity/tests/Feature/Pages/SeoLinksTest.php` (altro pacchetto); aggiungere il caso evento senza `published_at`. |
 | BLOG-SITEMAP-INV-3, BLOG-SITEMAP-INV-4 | Slug vuoto; `execute()` e `lastModified()` con le stesse chiavi. |
 | BLOG-NEWSAPI-INV-1, BLOG-NEWSAPI-INV-2 | `Http::fake()`: senza chiave configurata lancia prima della richiesta; con la chiave non scrive nulla. |
->>>>>>> .merge_file_X641fh

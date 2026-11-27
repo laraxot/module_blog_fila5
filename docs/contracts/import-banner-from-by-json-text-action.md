@@ -1,19 +1,12 @@
 ---
 title: "Contratto — ImportBannerFromByJsonTextAction"
 type: contract
-<<<<<<< .merge_file_MjnO6r
-action: "Modules\Blog\Actions\Banner\ImportBannerFromByJsonTextAction"
-tags: [contract, action, blog, banner, import, legacy]
-created: 2026-11-24
-updated: 2026-11-24
-=======
 action: "Modules\\Blog\\Actions\\Banner\\ImportBannerFromByJsonTextAction"
 module: Blog
 status: active
 tags: [contract, action, blog, banner, import, legacy]
 created: 2026-11-24
 updated: 2026-11-26
->>>>>>> .merge_file_TWyLZF
 ---
 
 # ImportBannerFromByJsonTextAction
@@ -35,15 +28,9 @@ Sorgente: `app/Actions/Banner/ImportBannerFromByJsonTextAction.php`. Chiamante: 
 
 | ID | Regola | Group Pest |
 |---|---|---|
-<<<<<<< .merge_file_MjnO6r
-| BLOG-IMPORT-BANNER-INV-1 | Un banner esistente con stessi `title` e `action_text` non viene modificato (`firstOrCreate`). | — |
-| BLOG-IMPORT-BANNER-INV-2 | Ogni banner e' legato a una categoria cercata per `slug` di `category_dict`, creata se manca (anche con slug vuoto). | — |
-| BLOG-IMPORT-BANNER-INV-3 | Gli elementi del JSON che non sono oggetti si saltano senza errore. | — |
-=======
 | BLOG-IMPORT-BANNER-INV-1 | Un banner esistente con stessi `title` e `action_text` non viene modificato (`firstOrCreate`). | — (non dimostrato) |
 | BLOG-IMPORT-BANNER-INV-2 | Ogni banner e' legato a una categoria cercata per `slug` di `category_dict`, creata se manca (anche con slug vuoto). | — (non dimostrato) |
 | BLOG-IMPORT-BANNER-INV-3 | Gli elementi del JSON che non sono oggetti si saltano senza errore. | — (non dimostrato) |
->>>>>>> .merge_file_TWyLZF
 
 ## Effetti collaterali
 
@@ -62,12 +49,9 @@ Sorgente: `app/Actions/Banner/ImportBannerFromByJsonTextAction.php`. Chiamante: 
 - Non aggiorna ne' cancella banner esistenti.
 - Non valida `link` (puo' essere qualunque stringa, anche uno schema non http).
 - Non autorizza: lo fa la Resource Filament.
-<<<<<<< .merge_file_MjnO6r
-=======
 
 ## Limiti noti
 
 - **Nessun test in tutto il repository.** `rg ImportBannerFromByJsonText Modules Themes --glob '*.php'` trova solo la classe e `ListBanners`: le tre invarianti non sono provate.
 - **Nessuna autorizzazione propria**: l'azione in `ListBanners.php` non ha `authorize()` ne' `visible()`; il JSON si puo' incollare nel `Textarea`.
 - **L'URL di `desktop_thumbnail` lo sceglie chi scrive il JSON** (`addMediaFromUrl`, nessun elenco di host): rischio SSRF per chi ha accesso all'import. Letto dal codice.
->>>>>>> .merge_file_TWyLZF
