@@ -46,7 +46,7 @@ Ingresso della documentazione del modulo. Ogni affermazione e' stata confrontata
 1. Rotte: `routes/web.php` e `routes/api.php` sono vuoti; `php artisan route:list --json` mostra 23 rotte, tutte del pannello Filament `blog/admin`. Le pagine Folio del modulo (`resources/views/pages/blog/[slug].blade.php` e `events/[slug].blade.php`, route name `blog.show` e `events.show`, visibili con `php artisan folio:list`, non con `route:list`) sono **oscurate** dalla pagina del tema Sixteen `[container0]/[slug0]/index.blade.php`, che serve il dettaglio di articoli ed eventi (misurato 2026-10-26: uno slug inventato risponde 200 «Novita'» dal tema, una pagina di questo modulo darebbe 404). Non vanno cancellate: `route('events.show', ...)` e' usata da due template del tema. Vedi [page-directory-structure del tema](../../../Themes/Sixteen/docs/page-directory-structure.md).
 2. Residui di un altro progetto: `app/resources_to_delete/` contiene 112 file, tra cui viste `play_money_markets` (mercati predittivi), e il nome della cartella dice che vanno eliminati. Molti documenti rimandano a un modulo `Predict` che non esiste in `laravel/Modules`.
 3. Duplicati dentro `app/`: `app/config/config.php` e `app/Config/config.php` sono identici; `app/lang/` convive con `lang/`; `app/Models/Article.bak`.
-4. Documentazione: [ai.md](./ai.md), [comment.md](./comment.md) e [themes.md](./themes.md) sono elenchi di URL, non descrivono integrazioni.
+4. Documentazione: [ai.md](../archive/docs-legacy/ai.md), [comment.md](./comment.md) e [themes.md](./themes.md) sono elenchi di URL, non descrivono integrazioni.
 5. Test: 6 file in `tests/` (misurato 2026-10-26). `BlogFrontOfficeNovitaTest` e `BlogFrontOfficeEventsTest` (10 test) sono **rossi** gia' sulla baseline: `DemoContentSeeder:28` fa `Category::firstOrCreate` senza `id` e `categories.id` e' `varchar(191)` senza default, quindi la seconda categoria da' `Duplicate entry ''`. Non dipende dalla sitemap (DCP-273). Da decidere chi possiede la forma di `categories` (la migration del Blog crea `id()` + `title`, il DB reale ha chiave stringa + `name`).
 
 ## Quick start
@@ -62,11 +62,11 @@ DB_DATABASE_LIMESURVEY= bash ../bashscripts/tools/pest-scratch-db.sh Modules/Blo
 
 ## Mappa della documentazione
 
-Indice operativo: [00-INDEX.md](./00-index.md). Decisioni: [decision-log.md](./decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](./wiki/log.md). Story: [stories/](./stories/).
+Indice operativo: [00-INDEX.md](./00-index.md). Decisioni: [decision-log.md](../archive/docs-legacy/decision-log.md) (vuoto, solo intestazione). Registro: [wiki/log.md](../archive/docs-legacy/wiki/log.md). Story: [stories/](./stories/).
 
 ## Post agnostico
 
-[brainstorming-post-vs-article.md](./brainstorming-post-vs-article.md) · rename deferred [IM-BLOG-008](./stories/inbound-rename-article-to-post.story.md).
+[brainstorming-post-vs-article.md](../archive/docs-legacy/brainstorming-post-vs-article.md) · rename deferred [IM-BLOG-008](./stories/inbound-rename-article-to-post.story.md).
 
 ## Story aperte sui contenuti demo (2026-11-12)
 

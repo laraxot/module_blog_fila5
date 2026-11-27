@@ -18,6 +18,10 @@ use Spatie\QueueableAction\QueueableAction;
  * - Empty paragraphs and images without a URL are dropped; other block types pass through unchanged.
  *
  * Callers: Themes/Sixteen blocks/partials/article-body (blog and events detail).
+ *
+ * @see docs/contracts/resolve-article-body-action.md
+ *
+ * @contract docs/contracts/resolve-article-body-action.md
  */
 final class ResolveArticleBodyAction
 {

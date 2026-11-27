@@ -27,7 +27,7 @@ foto locali, commenti approvati/pending e risposte — senza Lorem Ipsum.
 Una demo vuota o con filler distrugge fiducia. Blog + Comment esistono già;
 Dominio **post** agnostico; `content_type=post|event` su model `Article`
 (no modulo Event). Brainstorming:
-[brainstorming-post-vs-article.md](../brainstorming-post-vs-article.md). Event:
+[brainstorming-post-vs-article.md](../../archive/docs-legacy/brainstorming-post-vs-article.md). Event:
 [brainstorming-event-module-vs-article-type.md](../../../Fixcity/docs/bmad/inbound-marketing/brainstorming-event-module-vs-article-type.md).
 
 ## Acceptance Criteria

@@ -150,7 +150,7 @@ final class ThemeArticleQueries
     /**
      * Ultima modifica dei post pubblicati: slug => updated_at (sitemap `<lastmod>`, #736).
      *
-     * @see Modules/Seo/docs/adr/search-engine-presence.md
+     * @see Modules/Seo/docs/adr/0002-search-engine-presence.md
      *
      * @return Collection<string, mixed>
      */
@@ -162,7 +162,7 @@ final class ThemeArticleQueries
     /**
      * Ultima modifica degli eventi pubblicati: slug => updated_at (sitemap `<lastmod>`, #736).
      *
-     * @see Modules/Seo/docs/adr/search-engine-presence.md
+     * @see Modules/Seo/docs/adr/0002-search-engine-presence.md
      *
      * @return Collection<string, mixed>
      */

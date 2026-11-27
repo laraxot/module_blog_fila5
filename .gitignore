@@ -72,12 +72,23 @@ graphify-out/
 .claude-audit/
 test-results/
 blog.code-workspace
+<<<<<<< .merge_file_rbVpDn
 <<<<<<< .merge_file_66S0DU
+=======
+>>>>>>> .merge_file_1OAeMq
 
 # screenshot di comparazione visiva (artefatti locali)
 docs/project/visual-comparison/
 docs/visual-comparison/
+<<<<<<< .merge_file_rbVpDn
 =======
 tests/coverage-*.*
 docs/screenshots/
 >>>>>>> .merge_file_NOQBxT
+=======
+tests/coverage-*.\*
+docs/screenshots/
+
+# Indice vettoriale locale (non versionare)
+ruvector.db
+>>>>>>> .merge_file_1OAeMq

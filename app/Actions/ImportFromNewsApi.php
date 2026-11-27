@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Http;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
+/**
+ * Abbozzo legacy: chiama NewsAPI e non importa nulla; nessun chiamante.
+ *
+ * @see docs/contracts/import-from-news-api.md
+ *
+ * @contract docs/contracts/import-from-news-api.md
+ */
 class ImportFromNewsApi
 {
     use QueueableAction;

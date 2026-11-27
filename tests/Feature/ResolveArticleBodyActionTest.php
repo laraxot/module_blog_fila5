@@ -6,6 +6,7 @@ namespace Modules\Blog\Tests\Feature;
 
 use Modules\Blog\Actions\Article\ResolveArticleBodyAction;
 use Modules\Blog\Models\Article;
+use PHPUnit\Framework\Attributes\Group;
 use Tests\TestCase;
 
 /**
@@ -19,6 +20,8 @@ final class ResolveArticleBodyActionTest extends TestCase
     /** Pure mapping over unsaved models: no schema work needed. */
     protected function runTestingMigrations(): void {}
 
+    #[Group('BLOG-BODY-INV-1')]
+    #[Group('BLOG-BODY-INV-2')]
     public function test_keeps_every_block_and_uses_the_first_image_as_figure_when_no_main_image(): void
     {
         $article = $this->article('', [
@@ -38,6 +41,8 @@ final class ResolveArticleBodyActionTest extends TestCase
         $this->assertSame('h3', $body['blocks'][0]['data']['level']);
     }
 
+    #[Group('BLOG-BODY-INV-2')]
+    #[Group('BLOG-BODY-INV-3')]
     public function test_main_image_takes_metadata_only_from_a_matching_block(): void
     {
         $article = $this->article('/img/main.png', [
@@ -52,6 +57,8 @@ final class ResolveArticleBodyActionTest extends TestCase
         $this->assertSame('/img/other.png', $body['blocks'][0]['data']['src']);
     }
 
+    #[Group('BLOG-BODY-INV-4')]
+    #[Group('BLOG-BODY-INV-5')]
     public function test_drops_a_heading_repeating_the_article_title_and_never_emits_h1(): void
     {
         $article = $this->article('', [

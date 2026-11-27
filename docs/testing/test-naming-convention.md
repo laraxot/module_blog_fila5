@@ -38,7 +38,7 @@ TagTest.php
 
 ## PHPStan sui test articolo
 
-Dettaglio fix swarm (factory tipizzate, `published_at`, guard su `fresh()`): [phpstan-article-tests.story](../stories/phpstan-article-tests.story.md).
+Dettaglio fix swarm (factory tipizzate, `published_at`, guard su `fresh()`): [phpstan-article-tests.story](../../archive/docs-legacy/stories/phpstan-article-tests.story.md).
 
 ## 📚 Riferimenti
 

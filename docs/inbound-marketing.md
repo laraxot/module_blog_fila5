@@ -24,7 +24,7 @@ destinatario, problema, evidenza, data di revisione e CTA non aggressiva.
 - Stories: [playbook](./stories/inbound-playbook-resources.story.md) ·
   [demo seeder](./stories/inbound-demo-content-seeder.story.md) · indice Fixcity
 - Dominio: **post** agnostico · `content_type=post|event` · model PHP `Article`
-  ([brainstorming post](./brainstorming-post-vs-article.md))
+  ([brainstorming post](../archive/docs-legacy/brainstorming-post-vs-article.md))
 - Verdict Event: **no** modulo Event ora
   ([brainstorming](../../Fixcity/docs/bmad/inbound-marketing/brainstorming-event-module-vs-article-type.md))
 - Seed: `php artisan db:seed --class="Modules\\Blog\\Database\\Seeders\\DemoContentSeeder"`

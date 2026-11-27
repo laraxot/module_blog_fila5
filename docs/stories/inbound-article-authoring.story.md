@@ -25,7 +25,7 @@ esistente, senza introdurre un modello Event duplicato.
 ## Perché
 Nel dominio il concetto agnostico è **post** (`content_type=post|event`).
 La classe PHP resta `Article` (Ponytail). La colonna Parental `type` non è
-tassonomia. Vedi [brainstorming-post-vs-article.md](../brainstorming-post-vs-article.md).
+tassonomia. Vedi [brainstorming-post-vs-article.md](../../archive/docs-legacy/brainstorming-post-vs-article.md).
 
 ## Acceptance Criteria
 - [ ] `content_type=post` mostra i campi editoriali e `content_type=event` mostra i campi evento pertinenti.

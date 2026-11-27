@@ -40,7 +40,12 @@ qmd: "redirect blog"
 
 # Redirect
 
+<<<<<<< .merge_file_T189SV
 <<<<<<< .merge_file_6vkAjo
+=======
+Indice operativo: [00-index.md](./00-index.md).
+
+>>>>>>> .merge_file_5hAAOc
 **Ultimo Aggiornamento**: 2026-03-24
 
 ## Mappa delle cartelle
@@ -51,6 +56,7 @@ Le cartelle di import grezzo (`raw/`, `root-*-files/`), immagini e log sono escl
 | Cartella | File .md |
 |---|---|
 | [`filament/`](filament/) | 1 |
+<<<<<<< .merge_file_T189SV
 | [`fixes/`](fixes/) | 1 |
 | [`llm-wiki/`](llm-wiki/) | 1 |
 | [`models/`](models/README.md) | 3 |
@@ -61,3 +67,12 @@ Le cartelle di import grezzo (`raw/`, `root-*-files/`), immagini e log sono escl
 =======
 Indice operativo canonico: [00-INDEX.md](./00-INDEX.md).
 >>>>>>> .merge_file_u0L7nf
+=======
+| [`fixes/`](../archive/docs-legacy/fixes) | 1 |
+| [`llm-wiki/`](../archive/docs-legacy/llm-wiki) | 1 |
+| [`models/`](models/README.md) | 3 |
+| [`providers/`](providers/) | 1 |
+| [`roadmap/`](../archive/docs-legacy/roadmap/README.md) | 1 |
+| [`testing/`](testing/) | 1 |
+| [`wiki/`](../archive/docs-legacy/wiki/index.md) | 19 |
+>>>>>>> .merge_file_5hAAOc
