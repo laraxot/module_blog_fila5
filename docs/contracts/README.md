@@ -70,3 +70,12 @@ Invarianti promesse e non dimostrate (da scrivere con `->group('<ID>')` o `#[Gro
 | BLOG-SITEMAP-INV-2, BLOG-SITEMAP-INV-5 | Aggiungere il group ai test di `Modules/Fixcity/tests/Feature/Pages/SeoLinksTest.php` (altro pacchetto); aggiungere il caso evento senza `published_at`. |
 | BLOG-SITEMAP-INV-3, BLOG-SITEMAP-INV-4 | Slug vuoto; `execute()` e `lastModified()` con le stesse chiavi. |
 | BLOG-NEWSAPI-INV-1, BLOG-NEWSAPI-INV-2 | `Http::fake()`: senza chiave configurata lancia prima della richiesta; con la chiave non scrive nulla. |
+
+## Harness minimo: ownership, evidenza e recupero (2026-11-27)
+
+I contratti di **module_blog_fila5** restano accanto alle Action, interfacce o superfici di questo package; root e Xot definiscono lo standard, non copiano le promesse. Un contratto comportamentale esplicita **Input, Output, Invarianti, Effetti collaterali, Errori, Non fa**; ogni ID di invariante punta a un group Pest effettivo oppure segnala `non dimostrata`. Se esiste la classe, il docblock deve rimandare al file con `@contract` e `@see`; per temi senza classi PHP non inventare Action/contratti.
+
+- [Standard Xot](https://github.com/laraxot/module_xot_fila5/blob/dev/docs/contracts/contract-authoring-standard.md) · [ownership root](https://github.com/laraxot/base_ptvx_fila5/blob/dev/docs/adr/0001-harness-minimo-e-ownership.md) · [runbook ECC/Second Brain](https://github.com/laraxot/base_ptvx_fila5/blob/dev/docs/harness/README.md).
+- **BMAD**: prima di cambiare una promessa, fissa nella story owner scope, esclusioni, evidenza e approvazioni richieste.
+- **ECC**: i marker di merge rendono invalido l'indice; citare una suite non significa averla eseguita. Distingui `pass`, `fail`, `non eseguito` e registra il debito in [rollout #15](https://github.com/laraxot/base_ptvx_fila5/issues/15).
+- **Second Brain**: QMD/Graphify e `.harness/memory/{facts,lessons}.md` sono puntatori a evidenza datata, non copie dei contratti.
