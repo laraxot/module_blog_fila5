@@ -9,11 +9,8 @@ use Modules\Xot\Actions\GetModelByModelTypeAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
-<<<<<<< .merge_file_kgvthE
-=======
 use function Safe\json_encode;
 
->>>>>>> .merge_file_cuE2G3
 /**
  * Copia il contenuto italiano nelle lingue vuote dei blocchi scelti (nessuna traduzione automatica).
  *

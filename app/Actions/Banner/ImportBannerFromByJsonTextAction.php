@@ -11,11 +11,8 @@ use Modules\Blog\Models\Category;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
-<<<<<<< .merge_file_89roMR
-=======
 use function Safe\json_decode;
 
->>>>>>> .merge_file_FezUUv
 /**
  * Importa banner e categorie da un JSON (legacy), con immagine scaricata da URL.
  *

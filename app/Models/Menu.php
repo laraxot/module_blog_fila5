@@ -101,10 +101,6 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  *
  * @property Profile|null $creator
  * @property Profile|null $updater
-<<<<<<< .merge_file_cqauih
- *
-=======
->>>>>>> .merge_file_1XvUEb
  * @property-read int $depth
  * @property-read string $path
  *

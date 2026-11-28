@@ -13,11 +13,8 @@ use Spatie\MediaLibrary\MediaCollections\FileAdder;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
-<<<<<<< .merge_file_Peyqh8
-=======
 use function Safe\json_decode;
 
->>>>>>> .merge_file_PzxRPH
 /**
  * Importa articoli, categorie e rating da un JSON (legacy): crea, non aggiorna.
  *
